@@ -1,0 +1,254 @@
+{"Forms":[
+  {
+    "name":"FSA-2001 Request for Direct Loan Assistance",
+    "file_name": "FSA2001 Requst for Direct Loan Application (021022).pdf",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum ullamcorper dolor eu molestie. Aliquam vulputate dui id fringilla malesuada. Morbi quis libero placerat, pulvinar diam tincidunt, bibendum turpis. Nullam malesuada lorem ut mattis ornare. Sed lacinia felis at dui vehicula, in imperdiet nulla varius. Phasellus a purus quis urna iaculis finibus. Donec eget dolor fringilla, posuere lacus vitae, sodales sapien. Nullam ac ex id odio lobortis aliquet." ,
+    "parts":[
+      {
+        "name": "Part A",
+        "title": "Individual Applicants",
+        "description": "Individual applicants and married applicants with a non-applicant spouse will complete Items 1 through 16. Items 11, 14 and 15 are voluntary. *Race, ethnicity, and gender information is requested by the Federal Government to monitor FSA's compliance with Federal laws prohibiting discrimination against applicants. Applicants are not required to furnish this information but are encouraged to do so. Failure to provide this information may result in not receiving targeted funds for which the applicant may be eligible. This information will not be used to evaluate this application.",
+        "items":[
+          {
+            "id": "1",
+            "name": "Exact Full Legal Name",
+            "comment" : "List the applicant's full legal name.  The full legal name means an individual's first name, middle name, and last name without the use of initials or a nickname."
+          },
+          {
+            "id": "2",
+            "name": "Email Address",
+            "comment": "Enter the applicant's e-mail address."
+          },
+          {
+            "id": "3",
+            "name": "Mailing Address",
+            "comment": "List the applicants mailing address location.  This will include the name of the registered street, the town/city and state (Including Zip Code)."
+          },
+          {
+            "id": "4A",
+            "name": "Physical Address",
+            "comment": "List the applicants mailing address location.  This will include the name of the registered street, the town/city and state (If different than mailing address)."
+          },
+          {
+            "id": "4B",
+            "name": "County of Residence",
+            "comment": "Enter the county where the applicant's residence is located."
+          },
+          {
+            "id": "5",
+            "name": "Contact Telephone Numbers:",
+            "comment": "Enter the applicant's home (landline), cell and/or business telephone number, as applicable.  Indicate applicant's best contact telephone number by selecting “Primary” in the applicable box (Including Area Code)."
+          }
+        ]
+      },
+      {
+        "name": "Part B",
+        "title": "Marries parties applying jointly",
+        "description": "Married couples (not legal entity) who are joint operators of the operation, are applying jointly, and who have not formed a legal entity will complete the sections. Items 7, 10 and 11 are voluntary. <b>The other spouse</b> will complete Items 13 through 23; Items 19, 22 and 23 are voluntary. Items 25 through 28 pertain to both applicants jointly.",
+        "items":[
+          {
+            "id": "1",
+            "name": "Exact Full Legal Name",
+            "comment" : "List the applicant's full legal name.  The full legal name means an individual's first name, middle name, and last name without the use of initials or a nickname."
+          },
+          {
+            "id": "2",
+            "name": "Email Address",
+            "comment": "Enter the applicant's e-mail address."
+          },
+          {
+            "id": "3",
+            "name": "Social Security Number",
+            "comment": "Nine (9) digits preferably in XXX-XX-XXXX format."
+          },
+          {
+            "id": "4",
+            "name": "Date of Birth",
+            "comment": "Applicants date of birth in DD-MM-YYYY formart"
+          },
+          {
+            "id": "5",
+            "name": "Contact Telephone Numbers:",
+            "comment": "Enter the applicant's home (landline), cell and/or business telephone number, as applicable.  Indicate applicant's best contact telephone number by selecting “Primary” in the applicable box (Including Area Code)."
+          }
+        ]
+      },
+      {
+        "name": "Part C",
+        "title": "Entity Applicant",
+        "description": "",
+        "items":[
+          {
+            "id": "1",
+            "name": "Full Entity or Trust Name",
+            "comment" : "Please use the full legal Entity name from the Entity certificate. The entity name is the legal name of your business. Information must match Farm Programs. (CCC902). The operating entity must be authorized to operate a farm in the state (or states) in which the farm is located. The Entity or Trust name must match the FSA Farm Program Records."
+          }
+        ]
+      },
+      {
+        "name": "Part D",
+        "title": "General Information",
+        "description": "An entity is a corporation, formal, joint operation, Limited Liability Corporation, Trust or other legal business organization comprised of 1 or more individuals which may or may not have an entity name or entity tax identification number. Organizations operating as non-profit entities and Estates are not considered eligible entities for Farm Loan Program purposes. Informal entities may leave Items through 8 blank. Items 21, 24 and 25 are voluntary. All other information must be provided on each entity associated with the operation and each individual member of the associated entity. NOTE: Individual liability is required regardless of entity type.",
+        "items":[
+          {
+            "id": "1",
+            "name": "Counties Being Farmed",
+            "comment" : "List counties being farmed and to be farmed. This must match the producer data report from FSA Farm Programs. If you are renting/leasing any farm land, you must have agreements in place for these farms between you and the landowner."
+          }
+        ]
+      },
+      {
+        "name": "Part E",
+        "title": "Notification, Certification, and Acknowledgment",
+        "description": "",
+        "items":[
+          {
+            "id": "1",
+            "name": "Business under any other name",
+            "comment" : "Check “YES” if you ever conducted business under any other name, otherwise check “NO”.  If “YES” provide the names used in Item 9."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"FSA-2002 Three-Year Financial History",
+    "file_name": "FSA 2002 with comments 2021.pdf",
+    "description": "A detailed three years financial history. This form is not. Applicant may submit alternate documents that provide the information collected on this form.",
+    "parts":[
+      {
+        "name": "General",
+        "title": "General Information",
+        "description": "",
+        "items":[
+          {
+            "id": "1",
+            "name": "Name",
+            "comment" : "Enter the full legal name as an individual. First name, middle name, and last name without the use of initials or nicknames."
+          }
+        ]
+      },
+      {
+        "name": "Part A",
+        "title": "Operating Income",
+        "description": "",
+        "items":[
+          {
+            "id": "1",
+            "name": "Crop Sales",
+            "comment" : "Enter the total dollar amount for all crop sales in the column for the year in which the crop was sold."
+          },
+          {
+            "id": "2",
+            "name": "Livestock & Poultry Sales",
+            "comment" : "Enter the total dollar amount of sales for all livestock and/or poultry in each of the three years."
+          }
+        ]
+      },
+      {
+        "name": "Part B",
+        "title": "Operating Expenses",
+        "description": "",
+        "items":[
+          {
+            "id": "1",
+            "name": "Car and Truck",
+            "comment" : "Enter the total dollar amount for all crop sales in the column for the year in which the crop was sold."
+          },
+          {
+            "id": "2",
+            "name": "Livestock & Poultry Sales",
+            "comment" : "Enter the total dollar amount of sales for all livestock and/or poultry in each of the three years."
+          }
+        ]
+      },
+      {
+        "name": "Part C",
+        "title": "Non-Operating",
+        "description": "",
+        "items":[
+          {
+            "id": "1",
+            "name": "Owner Withdrawal",
+            "comment" : "Enter the total dollar amount for all crop sales in the column for the year in which the crop was sold."
+          },
+          {
+            "id": "2",
+            "name": "Income Taxes",
+            "comment" : "Enter the total dollar amount of sales for all livestock and/or poultry in each of the three years."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"FSA-2003 Three-Year Production History",
+    "file_name": "FSA 2003 with Comments.pdf",
+    "description": "A detailed three years production history. This form is not required. Applicant may submit alternate documents that provide the information collected on this form.",
+    "parts":[
+      {
+        "name": "General",
+        "title": "General Information",
+        "description": "",
+        "items":[
+          {
+            "id": "1",
+            "name": "Name",
+            "comment" : "Enter the full legal name as an individual. First name, middle name, and last name without the use of initials or nicknames."
+          }
+        ]
+      },
+      {
+        "name": "Part A",
+        "title": "Dairy Production",
+        "description": "",
+        "items":[
+          {
+            "id": "1",
+            "name": "Dairy Cows",
+            "comment" : "Enter the total dollar amount for all crop sales in the column for the year in which the crop was sold."
+          },
+          {
+            "id": "1.a.",
+            "name": "Heard numbers",
+            "comment" : "Enter the total dollar amount of sales for all livestock and/or poultry in each of the three years."
+          }
+        ]
+      },
+      {
+        "name": "Part B",
+        "title": "Livestock and Poultry Production",
+        "description": "",
+        "items":[
+          {
+            "id": "1",
+            "name": "Live Stock Type",
+            "comment" : "Enter the total dollar amount for all crop sales in the column for the year in which the crop was sold."
+          },
+          {
+            "id": "2",
+            "name": "United Raises",
+            "comment" : "Enter the total dollar amount of sales for all livestock and/or poultry in each of the three years."
+          }
+        ]
+      },
+      {
+        "name": "Part C",
+        "title": "Crop Production",
+        "description": "",
+        "items":[
+          {
+            "id": "1",
+            "name": "Crop & Unit",
+            "comment" : "Enter a description for each type of crop and how that unit is marketed (bushels, pounds, etc.) for all raised crops in each of the three years.  Complete a separate section for each type of crop raised including crops that were only raised for a portion of that particular year."
+          },
+          {
+            "id": "1.a.",
+            "name": "Total Yield",
+            "comment" : "Enter the total yield (bushels, pounds, etc.) for each crop described above, for each of the three years."
+          }
+        ]
+      }
+    ]
+  }
+]}

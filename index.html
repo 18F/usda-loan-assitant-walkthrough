@@ -61,7 +61,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/USDAcolor.png" alt="">
-        <span class="d-none d-lg-block">Walkthrough</span>
+        <span class="d-none d-lg-block">Loan Assistant</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -141,7 +141,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Farm Loan Application Walkthrough</h1>
+      <h1>Farm Loan Application Assistant Tool</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -159,7 +159,81 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum ullamcorper dolor eu molestie. Aliquam vulputate dui id fringilla malesuada. Morbi quis libero placerat, pulvinar diam tincidunt, bibendum turpis. Nullam malesuada lorem ut mattis ornare. Sed lacinia felis at dui vehicula, in imperdiet nulla varius. Phasellus a purus quis urna iaculis finibus. Donec eget dolor fringilla, posuere lacus vitae, sodales sapien. Nullam ac ex id odio lobortis aliquet.
               </p>
               <p class="center">
-                <a class = "button" href="/hover.html" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=400,height=700'); return false;">Launch Walk Though Tool</a> 
+                <button type="button" class="btn btn-primary" onclick="window.open('/hover.html','targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=400,height=700'); return false;">
+                  Walkthough Tool
+                </button> 
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
+                  Application Assistant
+                </button>
+                
+                <div class="modal fade" id="disablebackdrop" tabindex="-1" data-bs-backdrop="true" aria-hidden="true" style="display: none;">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Application Assistant</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        What is the goal of your loan?
+                      </div>
+                      <div class="list-group">
+                        <button type="button" class="list-group-item list-group-item-success" data-bs-toggle="modal" data-bs-target="#step2">Purchase or Expand a Farm</button>
+                        <button type="button" class="list-group-item list-group-item-success">Purchase Livestock, etc.</button>
+                        <button type="button" class="list-group-item list-group-item-success">Storage Loan</button>
+                        <button type="button" class="list-group-item list-group-item-success">Commodity Loan</button>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="step2" tabindex="-1" data-bs-backdrop="true" aria-hidden="true" style="display: none;">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Application Assistant</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Are you looking to fund an agricultural youth project (often associated with 4-H or FFA)?
+                      </div>
+                      <div class="list-group">
+                        <button type="button" class="list-group-item list-group-item-success" data-bs-toggle="modal" data-bs-target="#step3">Yes</button>
+                        <button type="button" class="list-group-item list-group-item-success">No</button>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="step3" tabindex="-1" data-bs-backdrop="true" aria-hidden="true" style="display: none;">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Application Assistant</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        before you fill loan you must collect the following information:
+                        <ul>
+                          <li>Tax returns for the last 5 years</li>
+                          <li>All your creditors and debt information</li>
+                        </ul>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Find my loan office</button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </p>
               <p>
                 You can find detail walk though of each application form i the menu to your Left or general overview of the application process below.

@@ -241,14 +241,28 @@
   <script>
     (function() {
       // Load first page
-      setupMenu();
+      hov = getQueryVar(name="hov");
+      // console.log("hov",hov);
+      if (hov=="true"){
+        setupMenu(hov=true);
+        $("#mozViewerFrame").hide();
+      }else{
+        setupMenu();
+      }
+      
       form = getForm()
-      console.log(form)
+      // console.log(form)
       $('#form-header').html(form.name)
       $('#form-bread').html(form.name)
       $('#form-description').html(form.description)
       $('#form-footer').html(`Click here to <a href="/application/${form.file_name}" download>download the form</a> to fill it with <a href="https://get.adobe.com/reader/" target=_BLANK>Adobe Acrobat Reader</a>`);
-      // showPDF(form.file_name);
+      showPDF(form.file_name);
+
+      hov = getQueryVar(name="hov");
+      console.log("hov",hov);
+      if (hov=="true"){
+        $("#mozViewerFrame").hide();
+      }
 
 
       $.each(form.parts,function(index,part){ 

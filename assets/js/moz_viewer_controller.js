@@ -28,26 +28,37 @@ function getForms() {
   return result["Forms"];
   }
 
-setupMenu = function(){
+setupMenu = function(hov=false){
   forms = getForms()
   // console.log(forms)  
   i=0;
   forms.forEach(form => {
-    // console.log(form);
-    li = '<li><a href="/form.html?q='+i+'"><i class="bi bi-circle"></i><span>'+form.name+'</span></a></li>';
+    // console.log(form, hov);
+    if (hov==true){
+      li = '<li><a href="/form.html?q='+i+'&hov=true"><i class="bi bi-circle"></i><span>'+form.name+'</span></a></li>';
+    }else{
+      li = '<li><a href="/form.html?q='+i+'&hov=false"><i class="bi bi-circle"></i><span>'+form.name+'</span></a></li>';
+    }
     $("#forms-nav").append(li);
     i=i+1;
   });
 }
 
-getQ = function(){
+getQueryVar = function(name="q"){
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
-  
-  return params.q; 
+  return params[name]; 
 }
 
+// getQ = function(){
+//   const params = new Proxy(new URLSearchParams(window.location.search), {
+//     get: (searchParams, prop) => searchParams.get(prop),
+//   });
+//   console.log(params[name])
+//   return params.q; 
+// }
+
 getForm = function(){
-  return getForms()[getQ()]
+  return getForms()[getQueryVar(name="q")]
 }

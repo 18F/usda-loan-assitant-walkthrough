@@ -32,6 +32,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Nunito", sans-serif;
 }
 
+.sticky-pdf {
+  position: -webkit-sticky;
+  position: sticky;
+  align-self: flex-start;
+  top: 70px;
+}
+
 /*--------------------------------------------------------------
 # Main
 --------------------------------------------------------------*/

@@ -62,3 +62,23 @@ getQueryVar = function(name="q"){
 getForm = function(){
   return getForms()[getQueryVar(name="q")]
 }
+
+$('.test-btn').click(function() {
+  viewerUrl = 'assets/vendor/pdfjs/web/viewer.html?';
+  fileName = 'file=/application/Form-AD1026-Highly-Erodible-Land.pdf';
+  offset = '#page=2&zoom=125,0,300'
+  document.getElementById('mozViewerFrame').src = viewerUrl+fileName+offset;
+
+  var iFrame =  document.getElementById('mozViewerFrame');
+  if (iFrame.contentDocument) {
+    currentPageNum = iFrame.contentDocument.getElementById('pageNumber').value;
+    console.log(currentPageNum);
+    zoomAmount = iFrame.contentDocument.getElementById('scaleSelect').value;
+    if (!isNaN(zoomAmount)) {
+      zoomAmount = Number(zoomAmount);
+      zoomAmount *= 100;
+      zoomAmount = Math.round(zoomAmount); // Make sure there's no floating point decimal remaining
+    }
+  }
+  return false;
+});

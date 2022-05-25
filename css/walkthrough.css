@@ -1,0 +1,8 @@
+#pdf-main-container {
+    width: 100%;
+    margin: 20px auto;
+}
+
+#pdf-canvas {
+    width: 100%;
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>159A3C71-FF1C-4EBD-A2C6-E34B803ECC63</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons" transform="translate(-801.000000, -270.000000)">
+            <g id="Carousel-Arrow" transform="translate(817.000000, 286.000000) rotate(-180.000000) translate(-817.000000, -286.000000) translate(801.000000, 270.000000)">
+                <g id="Shape">
+                    <polygon fill="#000000" fill-rule="nonzero" points="13.3333333 8 11.4533333 9.88 17.56 16 11.4533333 22.12 13.3333333 24 21.3333333 16"></polygon>
+                    <path d="M1,1 L1,31 L31,31 L31,1 L1,1 Z" stroke="#212121" stroke-width="2"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

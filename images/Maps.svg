@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="23px" viewBox="0 0 17 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 270</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8.5,0 C13.1961,0 17,3.925 17,8.771 C17,12.575 11.7638,19.65 9.5097,22.509 C8.9931,23.164 8.0069,23.164 7.4903,22.509 C5.2362,19.65 0,12.575 0,8.771 C0,3.925 3.8039,0 8.5,0 Z M8.5,12.575 C10.5428,12.575 12.1865,10.879 12.1865,8.771 C12.1865,6.663 10.5428,4.967 8.5,4.967 C6.4572,4.967 4.8135,6.663 4.8135,8.771 C4.8135,10.879 6.4572,12.575 8.5,12.575 Z" id="path-1"></path>
+    </defs>
+    <g id="Program-Page-Layout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Service-Center-Locator-Copy-7" transform="translate(-240.000000, -1302.000000)">
+            <g id="Group-270" transform="translate(240.000000, 1302.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-269"></g>
+                <polygon id="Fill-268" fill="#006546" mask="url(#mask-2)" points="-5 28 22 28 22 -5 -5 -5"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

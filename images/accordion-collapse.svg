@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="5px" viewBox="0 0 16 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 57.1 (101010) - https://sketch.com -->
+    <title>8A2B7F60-16B7-42D2-B1A4-0229E94B4A03</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M14.9088785,6 L1.09084252,6 C0.787900449,6 0.530288105,6.10600183 0.318144968,6.31814496 C0.106001831,6.5302881 0,6.78776096 0,7.0908425 L0,9.27280647 C0,9.57588801 0.106001831,9.83336088 0.318144968,10.0453645 C0.530288105,10.2575077 0.787900449,10.3635095 1.09084252,10.3635095 L14.909018,10.3635095 C15.2120996,10.3635095 15.4697119,10.2575077 15.681855,10.0453645 C15.8938587,9.83336088 16,9.57588801 16,9.27280647 L16,7.0908425 C15.9998605,6.78776096 15.8939982,6.53014862 15.6817156,6.31814496 C15.4695724,6.10600183 15.2119601,6 14.9088785,6 Z" id="path-1"></path>
+    </defs>
+    <g id="UI-Components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons" transform="translate(-497.000000, -1010.000000)">
+            <g id="Icons/minus" transform="translate(497.000000, 1004.000000)">
+                <g>
+                    <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Shape"></g>
+                    <polygon id="fill" fill="#212121" mask="url(#mask-2)" points="0 0 16 0 16 16 0 16"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

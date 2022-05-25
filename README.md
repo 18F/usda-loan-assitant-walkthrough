@@ -1,1 +1,1 @@
-# usda-loan-assitant
+# USDA Loan Application Walkthrough Module

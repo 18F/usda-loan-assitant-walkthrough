@@ -6,3 +6,53 @@
 #pdf-canvas {
     width: 100%;
 }
+
+
+@media (min-width: 991.98px) {
+    main {
+        padding-top: 40px;
+    }
+}
+
+.container.page {
+    padding-top: 40px;
+}
+
+
+/* Accordion Changes  */
+
+.accordion-item{
+    border-style: none;
+}
+
+button.accordion-button{
+    background-color: var(--bs-body-bg);
+    font-size: 2.2rem;
+    line-height: 3.4rem;
+    font-weight: 300;
+}
+
+button.accordion-button:not(.collapsed){
+    background-color: var(--bs-body-bg);
+    color: #006546;
+}
+
+
+/* Card Changes */
+
+.headline-3, h3 {
+    font-size: 2.3rem;
+    line-height: 3rem;
+}
+
+.content-card .headline{
+    margin-bottom: 3rem;
+}
+
+/* Button changes */
+button.btn{
+    font-size: 1.2rem;
+    line-height: 3.4rem;
+    font-weight: 800;
+}
+

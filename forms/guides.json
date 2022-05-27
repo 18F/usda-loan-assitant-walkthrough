@@ -1,0 +1,22 @@
+{
+  "Guides": [
+    {
+      "name": "Overview",
+      "file_name": "loan%20making-overview-graphic.pdf",
+      "url": "",
+      "description": "Loan Making Overview description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum ullamcorper dolor eu molestie. Aliquam vulputate dui id fringilla malesuada. Morbi quis libero placerat, pulvinar diam tincidunt, bibendum turpis. Nullam malesuada lorem ut mattis ornare. Sed lacinia felis at dui vehicula, in imperdiet nulla varius. Phasellus a purus quis urna iaculis finibus. Donec eget dolor fringilla, posuere lacus vitae, sodales sapien. Nullam ac ex id odio lobortis aliquet."
+    },
+    {
+      "name": "Loan Process",
+      "file_name": "Page%202%20Loan%20Process.pdf",
+      "url": "",
+      "description": "Loan Process description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum ullamcorper dolor eu molestie. Aliquam vulputate dui id fringilla malesuada. Morbi quis libero placerat, pulvinar diam tincidunt, bibendum turpis. Nullam malesuada lorem ut mattis ornare. Sed lacinia felis at dui vehicula, in imperdiet nulla varius. Phasellus a purus quis urna iaculis finibus. Donec eget dolor fringilla, posuere lacus vitae, sodales sapien. Nullam ac ex id odio lobortis aliquet."
+    },
+    {
+      "name": "Additional Documentation",
+      "file_name": "Page 7 Additional Documentation.pdf",
+      "url": "",
+      "description": "Additional description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum ullamcorper dolor eu molestie. Aliquam vulputate dui id fringilla malesuada. Morbi quis libero placerat, pulvinar diam tincidunt, bibendum turpis. Nullam malesuada lorem ut mattis ornare. Sed lacinia felis at dui vehicula, in imperdiet nulla varius. Phasellus a purus quis urna iaculis finibus. Donec eget dolor fringilla, posuere lacus vitae, sodales sapien. Nullam ac ex id odio lobortis aliquet."
+    }
+  ]
+}

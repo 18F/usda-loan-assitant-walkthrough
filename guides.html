@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Loan Readiness / Home</title>
+  <title>Loan Assistance Tool / Walkthrough Module / Guides </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -265,7 +265,7 @@
   <div class="row">
 
     <div class="col-md-3">
-      <div class="content-card h-100">
+      <div class="content-card accent-top h-100">
         <div class="headline">                      
           <h3>Application Guides</h3> 
         </div>                 
@@ -279,7 +279,7 @@
     </div>
 
     <div class="col-md-9">
-      <div class="content-card h-100">
+      <div class="content-card accent-top h-100">
         <div class="headline">                      
           <h3 id="form-title">...</h3> 
           <p id="form-desc">...</p>
@@ -324,12 +324,6 @@
 
   <script>
     (function() {
-      // Load first page
-      // showPDF('loan making-overview-graphic.pdf');
-      // setupMenu();
-      // should we sho a specific 
-
-
 
       // Show Guide List
       $.getJSON( "/forms/guides.json", function( data ) {
@@ -350,12 +344,12 @@
         }else{
           show_anchor = $("#guide-0");
         }
-        showPDF(show_anchor.attr("data-file-name"));
+        showPDF(
+          show_anchor.attr("data-file-name"),
+          title = show_anchor.attr("data-title"),
+          desc = show_anchor.attr("data-desc"),
+        );
         });
-
-
-
-
     })();
 
   </script>

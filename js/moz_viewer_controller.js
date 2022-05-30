@@ -59,14 +59,6 @@ getQueryVar = function(name="q"){
   return params[name]; 
 }
 
-// getQ = function(){
-//   const params = new Proxy(new URLSearchParams(window.location.search), {
-//     get: (searchParams, prop) => searchParams.get(prop),
-//   });
-//   console.log(params[name])
-//   return params.q; 
-// }
-
 getForm = function(){
   return getForms()[getQueryVar(name="q")]
 }

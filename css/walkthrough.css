@@ -37,22 +37,82 @@ button.accordion-button:not(.collapsed){
     color: #006546;
 }
 
+.inner-accordion-button{
+    background-color: var(--bs-body-bg);
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 400;
+    border-left: 1px dotted #006546;
+}
+
+.inner-accordion-body{
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    color: #212121;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+
 
 /* Card Changes */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Public Sans";
+    color: #212121;
+    font-weight: 700;
+    margin-bottom: .5rem;
+}
+
+.headline-1, h1 {
+    font-size: 3.8rem;
+    line-height: 4.8rem;
+    margin: 0.67em 0;
+}
+
+.headline-2, h2 {
+    font-size: 2.8rem;
+    line-height: 3.8rem;
+}
 
 .headline-3, h3 {
     font-size: 2.3rem;
     line-height: 3rem;
 }
 
-.content-card .headline{
-    margin-bottom: 3rem;
+.form-card .headline{
+    margin-bottom: 8.0rem;
 }
 
-/* Button changes */
-button.btn{
+
+.form-card .headline{
+    height:3rem;
+}
+
+.btn{
     font-size: 1.2rem;
     line-height: 3.4rem;
     font-weight: 800;
 }
 
+a {
+    color: #006546;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a.visited, a:visited {
+    color: #4c2c92;
+}
+
+
+/* Form viewer  */
+
+#pdf-main-container {
+    width: 100%;
+    margin: 20px auto;
+}
+
+#pdf-canvas {
+    width: 100%;
+}

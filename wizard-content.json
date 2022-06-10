@@ -1,0 +1,516 @@
+{
+    "steps": [{
+            "id": 1,
+            "title": "How to Use the Loan Assistance Tool",
+            "type": "video",
+            "content": {
+                "oldsrc": "videos/sample-5s.mp4",
+                "src": "https://www.youtube.com/embed/dPfq0DrkUSE",
+                "captionText": "Watch the short video. Then, click the button below to get started with the Loan Assistance Tool."
+            },
+            "buttons": [{
+                "buttonText": "GET STARTED",
+                "color": "white",
+                "textColor": "#065941",
+                "nextStepId": 2
+            }]
+        },
+        {
+            "id": 2,
+            "sectionHeader": null,
+            "title": "Eligibility Self Assessment",
+            "subtitle": null,
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": "Answer a short questionnaire to learn whether you meet the basic eligibility qualifications for FSA loans."
+                }]
+            },
+            "buttons": [{
+                "buttonText": "START SELF ASSESSMENT",
+                "textColor": "#094785",
+                "color": "white",
+                "nextStepId": 3,
+                "url": null
+            }],
+            "resetToStepId": null
+        },
+        {
+            "id": 3,
+            "sectionHeader": "Eligibility Self Assessment",
+            "title": "Citizenship",
+            "subtitle": null,
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": "Are you a United States citizen, non-citizen national or legal resident alien of the United States, including Puerto Rico, the U.S. Virgin Islands, Guam, American Samoa, and certain former Pacific Trust Territories?"
+                }]
+            },
+            "buttons": [{
+                    "buttonText": "BACK",
+                    "textColor": "#34495e",
+                    "color": "white",
+                    "nextStepId": 2,
+                    "url": null
+                },
+                {
+                    "buttonText": "YES",
+                    "textColor": "#20a286",
+                    "nextStepId": 4,
+                    "url": null
+                },
+                {
+                    "buttonText": "NO",
+                    "textColor": "#df5d79",
+                    "nextStepId": 7,
+                    "url": null
+                }
+            ],
+            "resetToStepId": 2
+        },
+        {
+            "id": 4,
+            "sectionHeader": "Eligibility Self Assessment",
+            "title": "Convictions",
+            "subtitle": null,
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": "Have you ever been convicted for planting, cultivating, growing, producing, harvesting, storing, trafficking, or possessing controlled substances?"
+                }]
+            },
+            "buttons": [{
+                    "buttonText": "BACK",
+                    "textColor": "#34495e",
+                    "color": "white",
+                    "nextStepId": 3,
+                    "url": null
+                },
+                {
+                    "buttonText": "YES",
+                    "textColor": "#df5d79",
+                    "nextStepId": 7,
+                    "url": null
+                },
+                {
+                    "buttonText": "NO",
+                    "textColor": "#20a286",
+                    "nextStepId": 5,
+                    "url": null
+                }
+            ],
+            "resetToStepId": 2
+        },
+        {
+            "id": 5,
+            "sectionHeader": "Eligibility Self Assessment",
+            "title": "Federal Debts",
+            "subtitle": null,
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": "Are you delinquent on a federal debt, other than IRS tax debt (at the time of loan closing)?"
+                }]
+            },
+            "buttons": [{
+                    "buttonText": "BACK",
+                    "textColor": "#34495e",
+                    "color": "white",
+                    "nextStepId": 4,
+                    "url": null
+                },
+                {
+                    "buttonText": "YES",
+                    "textColor": "#df5d79",
+                    "nextStepId": 7,
+                    "url": null
+                },
+                {
+                    "buttonText": "NO",
+                    "textColor": "#20a286",
+                    "nextStepId": 6,
+                    "url": null
+                }
+            ],
+            "resetToStepId": 2
+        },
+        {
+            "id": 6,
+            "sectionHeader": "Eligibility Self Assessment",
+            "title": "Crop Insurance Violations",
+            "subtitle": null,
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": "Are you disqualified as a result of a federal crop insurance violation?"
+                }]
+            },
+            "buttons": [{
+                    "buttonText": "BACK",
+                    "textColor": "#34495e",
+                    "color": "white",
+                    "nextStepId": 5,
+                    "url": null
+                },
+                {
+                    "buttonText": "YES",
+                    "textColor": "#df5d79",
+                    "nextStepId": 7,
+                    "url": null
+                },
+                {
+                    "buttonText": "NO",
+                    "textColor": "#20a286",
+                    "nextStepId": 8,
+                    "url": null
+                }
+            ],
+            "resetToStepId": 2
+        },
+        {
+            "id": 7,
+            "sectionHeader": "Eligibility Self Assessment",
+            "title": "TBA message: eligibility not met",
+            "subtitle": null,
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": "If you feel like this is an error, or would like to discuss your specific situation, contact your local USDA Service Center."
+                }]
+            },
+            "buttons": [{
+                "buttonText": "FIND YOUR LOCAL SERVICE CENTER",
+                "textColor": "#094785",
+                "color": "white",
+                "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+            }],
+            "resetToStepId": 2
+        },
+        {
+            "id": 8,
+            "sectionHeader": "Eligibility Self Assessment",
+            "title": "Based on your responses to the self assessment you may meet the basic eligibility requirements to proceed.",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": "Click the button below to answer a few short questions to discover which USDA farm loans are right for you."
+                }]
+            },
+            "buttons": [{
+                "buttonText": "START LOAN DISCOVERY",
+                "textColor": "#20a286",
+                "nextStepId": 9
+            }],
+            "resetToStepId": null
+        },
+        {
+            "id": 9,
+            "sectionHeader": "Loan Discovery - Youth Loan Program",
+            "title": "Funding Agricultural Youth Projects",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": "Will you be between the ages 10 and 20 at the time of loan closing?"
+                }]
+            },
+            "buttons": [{
+                    "buttonText": "YES",
+                    "textColor": "#34495e",
+                    "color": "white",
+                    "nextStepId": 10
+                },
+                {
+                    "buttonText": "NO",
+                    "textColor": "#20a286",
+                    "nextStepId": 14
+                }
+            ],
+            "resetToStepId": 9
+        },
+        {
+            "id": 10,
+            "sectionHeader": "Loan Discovery - Youth Loan Program",
+            "title": "Funding Agricultural Youth Projects",
+            "subtitle": "Associated with 4-H or FFA",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                        "paragraphContent": "FSA makes loans to individual young persons to start and operate income-producing projects of modest size in connection with their participation in 4-H clubs, FFA, a Tribal youth group, or similar agricultural youth organization."
+                    },
+                    {
+                        "paragraphContent": "The project being financed with an FSA Youth Loan needs to provide an opportunity for the young person to acquire experience and education in agriculture-related skills."
+                    },
+                    {
+                        "paragraphContent": "Are you seeking assistance with an educational agricultural project?"
+                    }
+                ]
+            },
+            "buttons": [{
+                    "buttonText": "YES",
+                    "textColor": "#34495e",
+                    "color": "white",
+                    "nextStepId": 11
+                },
+                {
+                    "buttonText": "NO",
+                    "textColor": "#20a286",
+                    "nextStepId": 14
+                }
+            ],
+            "resetToStepId": 9
+        },
+        {
+            "id": 11,
+            "sectionHeader": "Youth Loan Program",
+            "title": "Youth Loan Intro Video",
+            "type": "video",
+            "content": {
+                "src": "videos/sample-5s.mp4",
+                "captionText": "Watch the short video to learn about the Youth Loan Program. Then, click the below button to learn what you will need to apply for Youth Loan funds."
+            },
+            "buttons": [{
+                "buttonText": "HOW TO APPLY FOR FUNDS",
+                "textColor": "#20a286",
+                "nextStepId": 12
+            }],
+            "resetToStepId": 9
+        },
+        {
+            "id": 12,
+            "sectionHeader": "Youth Loan Program",
+            "title": "What You Will Need to Apply",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": {
+                        "type": "numbered",
+                        "bullets": [{
+                                "bulletContent": "A recommendation from a project advisor to verify that they:",
+                                "subBullets": {
+                                    "type": "unordered",
+                                    "bullets": [{
+                                            "bulletContent": "Will sponsor you and your project"
+                                        },
+                                        {
+                                            "bulletContent": "Have the correct training and experience to supervise your project"
+                                        },
+                                        {
+                                            "bulletContent": "Are available to help whenever needed"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "bulletContent": "Your parent(s) and/or legal guardian(s) consent to the loan application.",
+                                "subBullets": null
+                            },
+                            {
+                                "bulletContent": "Completed loan application."
+                            }
+                        ]
+                    }
+                }]
+            },
+            "buttons": [{
+                "buttonText": "START THE LOAN APPLICATION",
+                "textColor": "#20a286",
+                "nextStepId": 13
+            }],
+            "resetToStepId": 9
+        },
+        {
+            "id": 13,
+            "sectionHeader": "Start Your Application",
+            "title": "Applying online? You have options!",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                        "paragraphContent": "For your convenience, you have two options for completing your farm loan application online."
+                    },
+                    {
+                        "paragraphContent": "Click the button on the left to immediately complete the online loan application without assistance. "
+                    },
+                    {
+                        "paragraphContent": "Alternatively, click the button on the right to use the Walk-Through Tool to guide you through each step of the application process."
+                    }
+                ]
+            },
+            "buttons": [{
+                    "buttonText": "Submit your application online.",
+                    "textColor": "#34495e",
+                    "color": "white",
+                    "url": "https://www.farmers.gov/"
+                },
+                {
+                    "buttonText": "Apply using the Form Walk-Through Tool.",
+                    "textColor": "#20a286",
+                    "url": "https://www.farmers.gov/"
+                }
+            ],
+            "resetToStepId": 9
+        },
+        {
+            "id": 14,
+            "sectionHeader": "Loan Discover - Direct Loans",
+            "title": "Responsible Party",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": "Are you over 18 years old and legally able to accept responsibility for a loan obligation?"
+                }]
+            },
+            "buttons": [{
+                    "buttonText": "YES",
+                    "textColor": "#20a286",
+                    "nextStepId": 15
+                },
+                {
+                    "buttonText": "NO",
+                    "textColor": "#df5d79",
+                    "nextStepId": 7
+                }
+            ],
+            "resetToStepId": 9
+        },
+        {
+            "id": 15,
+            "sectionHeader": "Loan Discover - Direct Loans",
+            "title": "Loan Type",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": "Do you need to borrow more than $50,000?"
+                }]
+            },
+            "buttons": [{
+                    "buttonText": "YES",
+                    "textColor": "#20a286",
+                    "nextStepId": 16
+                },
+                {
+                    "buttonText": "NO",
+                    "textColor": "#34495e",
+                    "nextStepId": 18
+                }
+            ],
+            "resetToStepId": 9
+        },
+        {
+            "id": 16,
+            "sectionHeader": "Loan Discover - Direct Loans",
+            "title": "Emergency Loans",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": "Do you seek emergency relief to offset the impact of a natural disaster?"
+                }]
+            },
+            "buttons": [{
+                    "buttonText": "YES",
+                    "textColor": "#20a286",
+                    "nextStepId": 22
+                },
+                {
+                    "buttonText": "NO",
+                    "textColor": "#34495e",
+                    "nextStepId": 17
+                }
+            ],
+            "resetToStepId": 9
+        },
+        {
+            "id": 17,
+            "sectionHeader": "Loan Discover - Direct Loans",
+            "title": "What are you looking to fund?",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                        "paragraphContent": "What are you looking to fund?"
+                    }
+                ]
+            },
+            "buttons": [{
+                    "buttonText": "Land purchase or construction project (Ownership)",
+                    "textColor": "#20a286",
+                    "nextStepId": 25
+                },
+                {
+                    "buttonText": "Equipment, seed, livestock, etc. (Operating)",
+                    "textColor": "#34495e",
+                    "nextStepId": 28
+                },
+                {
+                    "buttonText": "I am interested in multiple loan types.",
+                    "textColor": "#34495e",
+                    "nextStepId": 30
+                }
+            ],
+            "resetToStepId": 9
+        },
+        {
+            "id": 18,
+            "sectionHeader": "Loan Discovery – Microloans Program",
+            "title": "Who are Microloans intended for?",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": {
+                        "type": "unordered",
+                        "bullets": [{
+                                "bulletContent": "Microloans focus on serving the financing needs of:",
+                                "subBullets": {
+                                    "type": "unordered",
+                                    "bullets": [{
+                                            "bulletContent": "Small farm operations."
+                                        },
+                                        {
+                                            "bulletContent": "Beginning farmers."
+                                        },
+                                        {
+                                            "bulletContent": "Niche and non-traditional farm operations (such as truck farms)."
+                                        },
+                                        {
+                                            "bulletContent": "Farms participating in direct marketing and sales to farmers’ markets, Community Supported Agriculture (CSA), restaurants, or grocery stores."
+                                        },
+                                        {
+                                            "bulletContent": "Farms using hydroponic, aquaponic, organic and vertical growing methods."
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "paragraphContent": "Are you seeking a microloan?"
+                }]
+            },
+            "buttons": [{
+                "buttonText": "YES",
+                "textColor": "#20a286",
+                "nextStepId": 19
+            },
+            {
+                "buttonText": "NO",
+                "textColor": "#34495e",
+                "nextStepId": 16
+            }],
+            "resetToStepId": 9
+        },
+        {
+            "id": 19,
+            "title": "Microloan Program",
+            "type": "video",
+            "content": {
+                "src": "https://www.youtube.com/embed/dPfq0DrkUSE",
+                "captionText": "Watch the short video to learn about the Microloan Program. Then, click the below button to learn what you will need to apply for Microloans."
+            },
+            "buttons": [{
+                "buttonText": "HOW TO APPLY FOR FUNDS",
+                "color": "white",
+                "textColor": "#065941",
+                "nextStepId": 20
+            }]
+        }
+    ]
+}

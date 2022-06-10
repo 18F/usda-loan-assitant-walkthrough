@@ -1,0 +1,37 @@
+wizard-content:
+  - steps: (REQUIRED) array/list -> Only [step] objects
+
+step:
+  - id:            (REQUIRED) Number -> Any integer greater than zero
+  - title:         (REQUIRED) string/text -> providing the step with a title
+  - type:          (REQUIRED) string/text -> Must be either "video" or "informational" to indicate what type of content object this step will contain
+  - content:       (REQUIRED) object -> Must be either a [video] or [informational] object
+  - buttons:       (REQUIRED) array/list -> Only [button] objects
+  - subtitle:      (OPTIONAL) string/text -> providing the step with a subtitle
+  - sectionHeader: (OPTIONAL) string/text -> providing the step content with a section header
+  - resetToStepId: (OPTIONAL) Number -> Integer that maps to another [step].id field from above (creates an additional button to jump back to an earlier step)
+
+button:
+  - buttonText: (REQUIRED) string/text -> text that will be embedded in the button
+  - color:      (REQUIRED) string/text -> a valid CSS color value (color name, hex code, RGB, etc.) to be used in coloring the button
+  - textColor:  (OPTIONAL) string/text -> a valid CSS color value (color name, hex code, RGB, etc.) to be used in coloring the buttonText
+  - nextStepId: (OPTIONAL) Number -> Integer that maps to a [step].id field to indicate the next step to go to on click (REQUIRED if [button].url is not present)
+  - url:        (OPTIONAL) string/text -> a URL that sets up the button to navigate to a different page on click (REQUIRED if [button].nextStepId is not present)
+
+video:
+  - src:         (REQUIRED) string/text -> a valid path/URL to the video file to embed in the current step as content
+  - captionText: (REQUIRED) string/text -> text describing the purpose of the video or some other information pertaining to the video
+
+informational:
+  - paragraphs: (REQUIRED) array/list -> Only [paragraph] objects
+
+paragraph:
+  - paragraphContent: (REQUIRED) string/text OR [bulletList] object -> the content that forms this paragraph (either plain text or a bulleted list)
+
+bulletList:
+  - type:    (REQUIRED) string/text -> Must be either "numbered" or "unordered" to indicate what type of list to place the bullets into
+  - bullets: (REQUIRED) array/list -> Only [bullet] objects
+
+bullet:
+  - bulletContent: (REQUIRED) string/text -> the text to place in this bullet
+  - subBullets:    (OPTIONAL) array/list -> Only [bullet] objects / this recurses downward to provide a subbullet list to the current bullet

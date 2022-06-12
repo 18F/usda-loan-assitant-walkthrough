@@ -296,7 +296,8 @@
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
     <script src="https://code.getmdl.io/1.2.1/material.js" type="text/javascript"></script>
-    <script src="./js/wizardBuilder.js" type="text/javascript"></script>
+    <script src="js/moz_viewer_controller.js"></script>
+    <script src="js/wizardBuilder.js" type="text/javascript"></script>
     <script type="text/javascript">
         // TODO: Make it so that this can run after "stepper.js" is loaded?
         WizardBuilder.initialize("lrt-stepper", "wizard-content.json");
@@ -305,7 +306,14 @@
     <script>
         (function() {
 
-
+            // Create fast forward method 
+            // let goto = parseInt(getQueryVar(name = "goto"));
+            // if (goto) {
+            //     if (!isNaN(goto)) {
+            //         WizardBuilder.initialize("lrt-stepper", "wizard-content.json");
+            //         WizardBuilder.goToStep("lrt-stepper", goto);
+            //     }
+            // }
 
         })();
     </script>

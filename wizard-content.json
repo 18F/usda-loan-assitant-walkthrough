@@ -425,9 +425,8 @@
             "type": "informational",
             "content": {
                 "paragraphs": [{
-                        "paragraphContent": "What are you looking to fund?"
-                    }
-                ]
+                    "paragraphContent": "What are you looking to fund?"
+                }]
             },
             "buttons": [{
                     "buttonText": "Land purchase or construction project (Ownership)",
@@ -454,9 +453,9 @@
             "type": "informational",
             "content": {
                 "paragraphs": [{
-                    "paragraphContent": {
-                        "type": "unordered",
-                        "bullets": [{
+                        "paragraphContent": {
+                            "type": "unordered",
+                            "bullets": [{
                                 "bulletContent": "Microloans focus on serving the financing needs of:",
                                 "subBullets": {
                                     "type": "unordered",
@@ -477,24 +476,25 @@
                                         }
                                     ]
                                 }
-                            }
-                        ]
+                            }]
+                        }
+                    },
+                    {
+                        "paragraphContent": "Are you seeking a microloan?"
                     }
-                },
-                {
-                    "paragraphContent": "Are you seeking a microloan?"
-                }]
+                ]
             },
             "buttons": [{
-                "buttonText": "YES",
-                "textColor": "#20a286",
-                "nextStepId": 19
-            },
-            {
-                "buttonText": "NO",
-                "textColor": "#34495e",
-                "nextStepId": 16
-            }],
+                    "buttonText": "YES",
+                    "textColor": "#20a286",
+                    "nextStepId": 19
+                },
+                {
+                    "buttonText": "NO",
+                    "textColor": "#34495e",
+                    "nextStepId": 16
+                }
+            ],
             "resetToStepId": 9
         },
         {
@@ -510,7 +510,320 @@
                 "color": "white",
                 "textColor": "#065941",
                 "nextStepId": 20
-            }]
+            }],
+            "resetToStepId": 9
+        },
+        {
+            "id": 20,
+            "sectionHeader": "Microloan Program",
+            "title": "What You Will Need to Apply",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": {
+                        "type": "numbered",
+                        "bullets": [{
+                                "bulletContent": "Proof of legal name"
+                            },
+                            {
+                                "bulletContent": "Copies of all leases, contracts, options, and other agreements"
+                            },
+                            {
+                                "bulletContent": "Verification of income, debts, and assets"
+                            },
+                            {
+                                "bulletContent": "Credit report fee"
+                            },
+                            {
+                                "bulletContent": "Completed loan application"
+                            }
+                        ]
+                    }
+                }]
+            },
+            "buttons": [{
+                "buttonText": "START THE LOAN APPLICATION",
+                "textColor": "#20a286",
+                "nextStepId": 21
+            }],
+            "resetToStepId": 9
+        },
+        {
+            "id": 21,
+            "sectionHeader": "Start Your Application",
+            "title": "Applying online? You have options!",
+            "subtitle": "Microloan Program",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                        "paragraphContent": "For your convenience, you have two options for completing your farm loan application online."
+                    },
+                    {
+                        "paragraphContent": "Click the button on the left to immediately complete the online loan application without assistance."
+                    },
+                    {
+                        "paragraphContent": "Alternatively, click the button on the right to use the Walk-Through Tool to guide you through each step of the application process."
+                    }
+                ]
+            },
+            "buttons": [{
+                    "buttonText": "Submit your application online.",
+                    "textColor": "#20a286",
+                    "url": "https://www.fsa.usda.gov/"
+                },
+                {
+                    "buttonText": "Apply using the Walk-Through Tool.",
+                    "textColor": "#34495e",
+                    "url": "/walkthrough.html?show_forms=FSA-2330"
+                }
+            ],
+            "resetToStepId": 9
+        },
+        {
+            "id": 22,
+            "title": "Emergency Relief Program",
+            "type": "video",
+            "content": {
+                "src": "https://www.youtube.com/embed/dPfq0DrkUSE",
+                "captionText": "Watch the short video to learn about the Emergency Relief Program. Then, click the below button to learn what you will need to apply for emergency relief."
+            },
+            "buttons": [{
+                "buttonText": "APPLY FOR EMERGENCY FUNDS",
+                "color": "white",
+                "textColor": "#065941",
+                "nextStepId": 23
+            }],
+            "resetToStepId": 9
+        },
+        {
+            "id": 23,
+            "sectionHeader": "Emergency Relief Program",
+            "title": "What You Will Need to Apply",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": {
+                        "type": "numbered",
+                        "bullets": [{
+                                "bulletContent": "Proof of legal name"
+                            },
+                            {
+                                "bulletContent": "Copies of all leases, contracts, options, and other agreements"
+                            },
+                            {
+                                "bulletContent": "Verification of income, debts, and assets"
+                            },
+                            {
+                                "bulletContent": "Credit report fee"
+                            },
+                            {
+                                "bulletContent": "Completed loan application"
+                            }
+                        ]
+                    }
+                }]
+            },
+            "buttons": [{
+                "buttonText": "START THE LOAN APPLICATION",
+                "textColor": "#20a286",
+                "nextStepId": 24
+            }],
+            "resetToStepId": 9
+        },
+        {
+            "id": 24,
+            "sectionHeader": "Start Your Application",
+            "title": "Applying online? You have options!",
+            "subtitle": "Microloan Program",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                        "paragraphContent": "For your convenience, you have two options for completing your farm loan application online."
+                    },
+                    {
+                        "paragraphContent": "Click the button on the left to immediately complete the online loan application without assistance."
+                    },
+                    {
+                        "paragraphContent": "Alternatively, click the button on the right to use the Walk-Through Tool to guide you through each step of the application process."
+                    }
+                ]
+            },
+            "buttons": [{
+                    "buttonText": "Submit your application online.",
+                    "textColor": "#20a286",
+                    "url": "https://www.fsa.usda.gov/"
+                },
+                {
+                    "buttonText": "Apply using the Walk-Through Tool.",
+                    "textColor": "#34495e",
+                    "url": "/walkthrough.html?show_forms=FSA-2310,FSA-2001"
+                }
+            ],
+            "resetToStepId": 9
+        },
+        {
+            "id": 25,
+            "title": "Farm Ownership Loans",
+            "type": "video",
+            "content": {
+                "src": "https://www.youtube.com/embed/dPfq0DrkUSE",
+                "captionText": "Watch the short video to learn about Farm Ownership Loans for construction projects and land purchases. Then, click the below button to learn what you will need to apply for an ownership loan."
+            },
+            "buttons": [{
+                "buttonText": "HOW TO APPLY FOR FUNDS",
+                "color": "white",
+                "textColor": "#065941",
+                "nextStepId": 26
+            }],
+            "resetToStepId": 9
+        },
+        {
+            "id": 26,
+            "sectionHeader": "Farm Ownership Loans",
+            "title": "What You Will Need to Apply",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": {
+                        "type": "numbered",
+                        "bullets": [{
+                                "bulletContent": "Proof of legal name"
+                            },
+                            {
+                                "bulletContent": "Copies of all leases, contracts, options, and other agreements"
+                            },
+                            {
+                                "bulletContent": "Verification of income, debts, and assets"
+                            },
+                            {
+                                "bulletContent": "Credit report fee"
+                            },
+                            {
+                                "bulletContent": "Completed loan application"
+                            }
+                        ]
+                    }
+                }]
+            },
+            "buttons": [{
+                "buttonText": "START THE LOAN APPLICATION",
+                "textColor": "#20a286",
+                "nextStepId": 27
+            }],
+            "resetToStepId": 9
+        },
+        {
+            "id": 27,
+            "sectionHeader": "Start Your Application",
+            "title": "Applying online? You have options!",
+            "subtitle": "Farm Ownership Loans",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                        "paragraphContent": "For your convenience, you have two options for completing your farm loan application online."
+                    },
+                    {
+                        "paragraphContent": "Click the button on the left to immediately complete the online loan application without assistance."
+                    },
+                    {
+                        "paragraphContent": "Alternatively, click the button on the right to use the Walk-Through Tool to guide you through each step of the application process."
+                    }
+                ]
+            },
+            "buttons": [{
+                    "buttonText": "Submit your application online.",
+                    "textColor": "#20a286",
+                    "url": "https://www.fsa.usda.gov/"
+                },
+                {
+                    "buttonText": "Apply using the Walk-Through Tool.",
+                    "textColor": "#34495e",
+                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2006"
+                }
+            ],
+            "resetToStepId": 9
+        },
+        {
+            "id": 28,
+            "title": "Operating Loans",
+            "type": "video",
+            "content": {
+                "src": "https://www.youtube.com/embed/dPfq0DrkUSE",
+                "captionText": "Watch the short video to learn about Operating Loans for equipment, seed, feed, livestock, etc. Then, click the below button to learn what you will need to apply for an operating loan."
+            },
+            "buttons": [{
+                "buttonText": "HOW TO APPLY FOR FUNDS",
+                "color": "white",
+                "textColor": "#065941",
+                "nextStepId": 29
+            }],
+            "resetToStepId": 9
+        },
+        {
+            "id": 29,
+            "sectionHeader": "Operating Loans",
+            "title": "What You Will Need to Apply",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                    "paragraphContent": {
+                        "type": "numbered",
+                        "bullets": [{
+                                "bulletContent": "Proof of legal name"
+                            },
+                            {
+                                "bulletContent": "Copies of all leases, contracts, options, and other agreements"
+                            },
+                            {
+                                "bulletContent": "Verification of income, debts, and assets"
+                            },
+                            {
+                                "bulletContent": "Credit report fee"
+                            },
+                            {
+                                "bulletContent": "Completed loan application"
+                            }
+                        ]
+                    }
+                }]
+            },
+            "buttons": [{
+                "buttonText": "START THE LOAN APPLICATION",
+                "textColor": "#20a286",
+                "nextStepId": 30
+            }],
+            "resetToStepId": 9
+        },
+        {
+            "id": 30,
+            "sectionHeader": "Start Your Application",
+            "title": "Applying online? You have options!",
+            "subtitle": "Operating Loans",
+            "type": "informational",
+            "content": {
+                "paragraphs": [{
+                        "paragraphContent": "For your convenience, you have two options for completing your farm loan application online."
+                    },
+                    {
+                        "paragraphContent": "Click the button on the left to immediately complete the online loan application without assistance."
+                    },
+                    {
+                        "paragraphContent": "Alternatively, click the button on the right to use the Walk-Through Tool to guide you through each step of the application process."
+                    }
+                ]
+            },
+            "buttons": [{
+                    "buttonText": "Submit your application online.",
+                    "textColor": "#20a286",
+                    "url": "https://www.fsa.usda.gov/"
+                },
+                {
+                    "buttonText": "Apply using the Walk-Through Tool.",
+                    "textColor": "#34495e",
+                    "url": "/walkthrough.html"
+                }
+            ],
+            "resetToStepId": 9
         }
     ]
 }

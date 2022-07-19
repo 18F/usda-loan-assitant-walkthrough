@@ -597,8 +597,8 @@
         },
         {
             "id": 23,
-            "sectionHeader": "Emergency Relief Program",
             "title": "What You Will Need to Apply",
+            "subtitle": "Emergency Relief Program",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -634,7 +634,7 @@
             "id": 24,
             "sectionHeader": "Start Your Application",
             "title": "Applying online? You have options!",
-            "subtitle": "Microloan Program",
+            "subtitle": "Emergency Relief Program",
             "type": "informational",
             "content": {
                 "paragraphs": [{

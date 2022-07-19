@@ -367,7 +367,7 @@
 
                     new_part = `<div class="accordion-item">
             <h2 class="accordion-header" id="part-header-wrapper-${part_index}">
-              <button id="part-header-content-${part_index}" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#part-content-wrapper-${part_index}" aria-expanded="false" aria-controls="part-content-wrapper-${part_index}" data-parent="#form_walkthrough">
+              <button id="part-header-content-${part_index}" class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#part-content-wrapper-${part_index}" aria-expanded="false" aria-controls="part-content-wrapper-${part_index}" data-parent="#form_walkthrough">
               ${part.name}
               </button>
             </h2>
@@ -387,7 +387,7 @@
                     $.each(part.items, function(item_index, item) {
                         new_item = `<div class="accordion-item">
               <h2 class="accordion-header" id="part-${part_index}-header-wrapper-${item_index}">
-                <button class="inner-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#part-${part_index}-content-wrapper-${item_index}" aria-expanded="false" aria-controls="part-${part_index}-content-wrapper-${item_index}" data-parent="#part-inner-accordion-${part_index}">
+                <button class="inner-accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#part-${part_index}-content-wrapper-${item_index}" aria-expanded="false" aria-controls="part-${part_index}-content-wrapper-${item_index}" data-parent="#part-inner-accordion-${part_index}">
                   ${item.id} - ${item.name}
                 </button>
               </h2>

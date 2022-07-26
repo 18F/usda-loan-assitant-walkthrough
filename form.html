@@ -388,11 +388,11 @@
                         new_item = `<div class="accordion-item">
               <h2 class="accordion-header" id="part-${part_index}-header-wrapper-${item_index}">
                 <button class="inner-accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#part-${part_index}-content-wrapper-${item_index}" aria-expanded="false" aria-controls="part-${part_index}-content-wrapper-${item_index}" data-parent="#part-inner-accordion-${part_index}">
-                  ${item.id} - ${item.name}
+                  ${item.id}<!--  - ${item.name} -->
                 </button>
               </h2>
               <div id="part-${part_index}-content-wrapper-${item_index}" class="accordion-collapse collapse" aria-labelledby="part-${part_index}-header-wrapper-${item_index}" data-bs-parent="#part-inner-accordion-${part_index}">
-                <div class="inner-accordion-body">${item.comment}</div>
+                <div class="inner-accordion-body"><b>${item.name}</b></br>${item.comment}</div>
               </div>
             </div>`;
                         $(`#part-inner-accordion-${part_index}`).append(new_item);

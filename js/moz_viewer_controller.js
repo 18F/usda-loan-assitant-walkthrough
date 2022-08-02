@@ -1,6 +1,6 @@
 function showPDF(fileName, title = "", desc = "", viewerId = 'mozViewerFrame') {
   console.log('loading pdf '+ fileName +' '+title);
-  viewerUrl = 'js/pdfjs/web/viewer.html?';
+  viewerUrl = '/js/pdfjs/web/viewer.html?';
   fileName = 'file=/forms/'+fileName;
   document.getElementById(viewerId).src = viewerUrl+fileName;
 

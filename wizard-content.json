@@ -24,6 +24,7 @@
             "title": "Eligibility Self Assessment",
             "subtitle": null,
             "type": "informational",
+            "progressBarStage":"start",
             "content": {
                 "paragraphs": [{
                     "paragraphContent": "Answer a short questionnaire to learn whether you meet the basic eligibility qualifications for FSA loans."
@@ -178,6 +179,7 @@
             "id": 7,
             "sectionHeader": "Eligibility Self Assessment",
             "title": "TBA message: eligibility not met",
+            "progressBarStage":"eligibility",
             "subtitle": null,
             "type": "informational",
             "content": {
@@ -196,6 +198,7 @@
         {
             "id": 8,
             "sectionHeader": "Eligibility Self Assessment",
+            "progressBarStage":"eligibility",
             "title": "Based on your responses to the self assessment you may meet the basic eligibility requirements to proceed.",
             "type": "informational",
             "content": {
@@ -214,6 +217,7 @@
             "id": 9,
             "sectionHeader": "Loan Discovery - Youth Loan Program",
             "title": "Funding Agricultural Youth Projects",
+            "progressBarStage":"discovery",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -238,6 +242,7 @@
             "id": 10,
             "sectionHeader": "Loan Discovery - Youth Loan Program",
             "title": "Funding Agricultural Youth Projects",
+            "progressBarStage":"discovery",
             "subtitle": "Associated with 4-H or FFA",
             "type": "informational",
             "content": {
@@ -270,6 +275,7 @@
             "id": 11,
             "sectionHeader": "Youth Loan Program",
             "title": "Youth Loan Intro Video",
+            "progressBarStage":"discovery",
             "type": "video",
             "content": {
                 "src": "videos/sample-5s.mp4",
@@ -286,6 +292,7 @@
             "id": 12,
             "sectionHeader": "Youth Loan Program",
             "title": "What You Will Need to Apply",
+            "progressBarStage":"preparation",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -328,6 +335,7 @@
         {
             "id": 13,
             "sectionHeader": "Start Your Application",
+            "progressBarStage":"application",
             "title": "Applying online? You have options!",
             "type": "informational",
             "content": {
@@ -359,6 +367,7 @@
         {
             "id": 14,
             "sectionHeader": "Loan Discover - Direct Loans",
+            "progressBarStage":"discovery",
             "title": "Responsible Party",
             "type": "informational",
             "content": {
@@ -382,6 +391,7 @@
         {
             "id": 15,
             "sectionHeader": "Loan Discover - Direct Loans",
+            "progressBarStage":"discovery",
             "title": "Loan Type",
             "type": "informational",
             "content": {
@@ -406,6 +416,7 @@
             "id": 16,
             "sectionHeader": "Loan Discover - Direct Loans",
             "title": "Emergency Loans",
+            "progressBarStage":"discovery",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -429,6 +440,7 @@
             "id": 17,
             "sectionHeader": "Loan Discover - Direct Loans",
             "title": "What are you looking to fund?",
+            "progressBarStage":"discovery",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -457,6 +469,7 @@
             "id": 18,
             "sectionHeader": "Loan Discovery – Microloans Program",
             "title": "Who are Microloans intended for?",
+            "progressBarStage":"discovery",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -507,6 +520,7 @@
         {
             "id": 19,
             "title": "Microloan Program",
+            "progressBarStage":"discovery",
             "type": "video",
             "content": {
                 "src": "https://www.youtube.com/embed/dPfq0DrkUSE",
@@ -524,6 +538,7 @@
             "id": 20,
             "sectionHeader": "Microloan Program",
             "title": "What You Will Need to Apply",
+            "progressBarStage":"preparation",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -560,6 +575,7 @@
             "sectionHeader": "Start Your Application",
             "title": "Applying online? You have options!",
             "subtitle": "Microloan Program",
+            "progressBarStage":"application",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -589,6 +605,7 @@
         {
             "id": 22,
             "title": "Emergency Relief Program",
+            "progressBarStage":"discovery",
             "type": "video",
             "content": {
                 "src": "https://www.youtube.com/embed/dPfq0DrkUSE",
@@ -606,6 +623,7 @@
             "id": 23,
             "title": "What You Will Need to Apply",
             "subtitle": "Emergency Relief Program",
+            "progressBarStage":"preparation",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -642,6 +660,7 @@
             "sectionHeader": "Start Your Application",
             "title": "Applying online? You have options!",
             "subtitle": "Emergency Relief Program",
+            "progressBarStage":"application",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -671,6 +690,7 @@
         {
             "id": 25,
             "title": "Farm Ownership Loans",
+            "progressBarStage":"discovery",
             "type": "video",
             "content": {
                 "src": "https://www.youtube.com/embed/dPfq0DrkUSE",
@@ -688,6 +708,7 @@
             "id": 26,
             "sectionHeader": "Farm Ownership Loans",
             "title": "What You Will Need to Apply",
+            "progressBarStage":"preparation",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -724,6 +745,7 @@
             "sectionHeader": "Start Your Application",
             "title": "Applying online? You have options!",
             "subtitle": "Farm Ownership Loans",
+            "progressBarStage":"application",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -753,6 +775,7 @@
         {
             "id": 28,
             "title": "Operating Loans",
+            "progressBarStage":"discovery",
             "type": "video",
             "content": {
                 "src": "https://www.youtube.com/embed/dPfq0DrkUSE",
@@ -770,6 +793,7 @@
             "id": 29,
             "sectionHeader": "Operating Loans",
             "title": "What You Will Need to Apply",
+            "progressBarStage":"preparation",
             "type": "informational",
             "content": {
                 "paragraphs": [{
@@ -806,6 +830,7 @@
             "sectionHeader": "Start Your Application",
             "title": "Applying online? You have options!",
             "subtitle": "Operating Loans",
+            "progressBarStage":"application",
             "type": "informational",
             "content": {
                 "paragraphs": [{

@@ -2,12 +2,12 @@
     "steps": [{
             "id": 1,
             "title": "How to Use the Loan Assistance Tool",
-            "type": "image",
+            "type": "video",
             "progressBarStage":"start",
             "content": {
-                "oldsrc": "videos/sample-5s.mp4",
-                "alsooldsrc": "https://www.youtube.com/embed/dPfq0DrkUSE",
-                "src": "https://www.usda.gov/sites/default/files/hero-blog-topic-farming.jpg",
+                "local_video_src": "videos/sample-5s.mp4",
+                "src": "https://www.youtube.com/embed/r5XDv3Svm5M",
+                "image_src": "https://www.usda.gov/sites/default/files/hero-blog-topic-farming.jpg",
                 "captionText": "Watch the short video. Then, click the button below to get started with the Loan Assistance Tool."
                 
             },
@@ -359,7 +359,7 @@
                 {
                     "buttonText": "Apply using the Form Walk-Through Tool.",
                     "textColor": "#20a286",
-                    "url": "https://www.farmers.gov/"
+                    "url": "/walkthrough.html?show_forms=FSA-2301"
                 }
             ],
             "resetToStepId": 9

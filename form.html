@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,7 +17,11 @@
     <link rel="stylesheet" media="all" href="css/styles.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="css/walkthrough.css" rel="stylesheet">
-
+    <style>
+        .inner-link:hover {
+            color: #212121 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -331,7 +335,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src="js/jquery-3.6.0.min.js"></script>
 
     <script src="js/moz_viewer_controller.js"></script>
     <!-- <script src="js/farmers.min.js"></script> -->
@@ -342,7 +347,6 @@
 
             // Show Forms Grid
             $.getJSON("/forms/forms.json", function (data) {
-             
                 const form_ids = getQueryVar(name = "show_forms");
                 if (form_ids) {
                     if (form_ids == "null") {
@@ -359,7 +363,6 @@
                 const key = getQueryVar("key");
                 form_data = data["Forms"][key];
                 showPDF(form_data.file_name);
-
                 $('#form-name').html(form_data.name)
                 $('#form-description').html(form_data.description)
                 $('#form-footer').html(`Click here to <a href="/forms/${form_data.file_name}" download>download the form</a> to fill it with <a href="https://get.adobe.com/reader/" target=_BLANK>Adobe Acrobat Reader</a>`);
@@ -368,19 +371,19 @@
                     console.log(part_index, part)
 
                     new_part = `<div class="accordion-item">
-                <h2 class="accordion-header" id="part-header-wrapper-${part_index}">
-                  <button id="part-header-content-${part_index}" class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#part-content-wrapper-${part_index}" aria-expanded="false" aria-controls="part-content-wrapper-${part_index}" data-parent="#form_walkthrough">
-                  ${part.name}
-                  </button>
-                </h2>
-                <div id="part-content-wrapper-${part_index}" class="collapse" aria-labelledby="part-header-content-${part_index}" data-parent="#form_walkthrough">
-                  <div class="accordion-body" id="part-content-${part_index}">
-                    <h3>${part.title}</h3>
-                    <div class = "subheading">${part.description}</div>
-                    <div class="accordion accordion-flush" id="part-inner-accordion-${part_index}"></div>
-                  </div>
-                </div>
-              </div>`;
+                                    <h2 class="accordion-header" id="part-header-wrapper-${part_index}">
+                                      <button id="part-header-content-${part_index}" class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#part-content-wrapper-${part_index}" aria-expanded="false" aria-controls="part-content-wrapper-${part_index}" data-parent="#form_walkthrough">
+                                      ${part.name}
+                                      </button>
+                                    </h2>
+                                    <div id="part-content-wrapper-${part_index}" class="collapse" aria-labelledby="part-header-content-${part_index}" data-parent="#form_walkthrough">
+                                      <div class="accordion-body" id="part-content-${part_index}">
+                                        <h3>${part.title}</h3>
+                                        <div class = "subheading">${part.description}</div>
+                                        <div class="accordion accordion-flush" id="part-inner-accordion-${part_index}"></div>
+                                      </div>
+                                    </div>
+                                </div>`;
 
                     $('#form_walkthrough').append(new_part);
 
@@ -388,33 +391,48 @@
 
                     $.each(part.items, function (item_index, item) {
                         new_item = `<div class="accordion-item">
-                  <h2 class="accordion-header" id="part-${part_index}-header-wrapper-${item_index}">
-                    <button class="inner-accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-name="${item.name}" data-bs-target="#part-${part_index}-content-wrapper-${item_index}" aria-expanded="false" aria-controls="part-${part_index}-content-wrapper-${item_index}" data-parent="#part-inner-accordion-${part_index}">
-                      ${item.id} - ${item.name}
-                    </button>
-                  </h2>
-                  <div id="part-${part_index}-content-wrapper-${item_index}" class="accordion-collapse collapse" aria-labelledby="part-${part_index}-header-wrapper-${item_index}" data-bs-parent="#part-inner-accordion-${part_index}">
-                    <div class="inner-accordion-body">${item.comment}</div>
-                  </div>
-                </div>`;
+                                      <h2 class="accordion-header" id="part-${part_index}-header-wrapper-${item_index}">
+                                        <button class="inner-accordion-button inner-${item.id} index-${item_index} collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-id="${item.id}" data-bs-name="${item.name}" data-bs-target="#part-${part_index}-content-wrapper-${item_index}" aria-expanded="false" aria-controls="part-${part_index}-content-wrapper-${item_index}" data-parent="#part-inner-accordion-${part_index}" pid="${item.pid}" partid="part-header-content-${part_index}">
+                                          <a href="#${item.id}" style="color:#212121;text-decoration:none;" class="inner-link"> ${item.id} - ${item.name}</a>
+                                        </button>
+                                      </h2>
+                                      <div id="part-${part_index}-content-wrapper-${item_index}" class="accordion-collapse collapse" aria-labelledby="part-${part_index}-header-wrapper-${item_index}" data-bs-parent="#part-inner-accordion-${part_index}">
+                                        <div class="inner-accordion-body">${item.comment}</div>
+                                      </div>
+                                    </div>`;
                         $(`#part-inner-accordion-${part_index}`).append(new_item);
                     });
 
-                    $(".inner-accordion-button").on('click', function (e) {
-                        e.preventDefault()
-                        var name = $(this).attr('data-bs-name');
-                        //$('#mozViewerFrame > ').scrollTop($("*:contains('"+name+"'):last").offset().top);
-                        //const element = document.getElementById("viewerContainer").scrollIntoView();
-                        $("#mozViewerFrame").animate({ scrollTop: 1400 }, 500); //500 - time of animation
-                    });
-
                 });
+
+                $(".inner-accordion-button").click(function (e) {
+                    var pid=$(this).attr("pid");
+                    if(pid!="")
+                        $("iframe").contents().find("#"+pid).focus();
+                })
             });
-           
+
+            $(document).ready(function () {
+                $("iframe").on("load", function () {
+                    $(this).contents().on("mousedown, mouseup, click", function (e) {
+                        if(e.target.id !=""){
+                            var item=$("button[pid='"+e.target.id+"']");
+                            var part=$("#"+item.attr("partid"));
+                            if(part.attr("aria-expanded")=="false") {
+                                part.click();  
+                                var parts=document.querySelectorAll(".accordion-button");
+                                parts.forEach((ele)=>{
+                                    if($(ele).attr("aria-expanded")=="true") $(ele).click();  
+                                })
+                            }
+                            if(item.attr("aria-expanded")=="false") item.click();
+                        }
+                    });                    
+                });               
+            });
+
         })();
 
-
-        
     </script>
 
 </body>

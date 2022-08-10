@@ -2,14 +2,11 @@
     "steps": [{
             "id": 1,
             "title": "How to Use the Loan Assistance Tool",
-            "type": "image",
-            "progressBarStage":"start",
+            "type": "video",
             "content": {
                 "oldsrc": "videos/sample-5s.mp4",
-                "alsooldsrc": "https://www.youtube.com/embed/dPfq0DrkUSE",
-                "src": "https://www.usda.gov/sites/default/files/hero-blog-topic-farming.jpg",
+                "src": "https://www.youtube.com/embed/dPfq0DrkUSE",
                 "captionText": "Watch the short video. Then, click the button below to get started with the Loan Assistance Tool."
-                
             },
             "buttons": [{
                 "buttonText": "GET STARTED",
@@ -41,7 +38,6 @@
         {
             "id": 3,
             "sectionHeader": "Eligibility Self Assessment",
-            "progressBarStage":"eligibility",
             "title": "Citizenship",
             "subtitle": null,
             "type": "informational",
@@ -75,7 +71,6 @@
         {
             "id": 4,
             "sectionHeader": "Eligibility Self Assessment",
-            "progressBarStage":"eligibility",
             "title": "Convictions",
             "subtitle": null,
             "type": "informational",
@@ -109,7 +104,6 @@
         {
             "id": 5,
             "sectionHeader": "Eligibility Self Assessment",
-            "progressBarStage":"eligibility",
             "title": "Federal Debts",
             "subtitle": null,
             "type": "informational",
@@ -144,7 +138,6 @@
             "id": 6,
             "sectionHeader": "Eligibility Self Assessment",
             "title": "Crop Insurance Violations",
-            "progressBarStage":"eligibility",
             "subtitle": null,
             "type": "informational",
             "content": {

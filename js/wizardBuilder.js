@@ -452,8 +452,8 @@ var WizardBuilder = window.WizardBuilder || {};
 
         _mdlWizardItemCount += 1;
         targetStep.mdlStepNumber = _mdlWizardItemCount;
-        window.scrollTo(0, document.body.scrollHeight+1050);
-
+        //window.scrollTo(0, document.body.scrollHeight+1000) modified by NOA
+        gsap.to(window, {duration: 0.5, scrollTo: ".is-active"});
     }
 
     /**

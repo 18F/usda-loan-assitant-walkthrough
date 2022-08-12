@@ -178,6 +178,10 @@
     display: block;
 }
 
+.mdl-step.is-active .mdl-step__progress {
+    display: block;
+}
+
 .mdl-step.is-active .mdl-step__label-indicator {
     background-color: #49a564;
     color: white;
@@ -300,6 +304,14 @@
 .mdl-step__content {
     display: none;
     /* height: calc(100% - 132px); */
+    width: inherit;
+    overflow: auto;
+    margin-left: 64px;
+    margin-right: 24px;
+}
+
+.mdl-step__progress {
+    display: none;
     width: inherit;
     overflow: auto;
     margin-left: 64px;

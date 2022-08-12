@@ -6,6 +6,13 @@ var WizardBuilder = window.WizardBuilder || {};
 
     var _mdlWizardItemCount = 0;
     const _MDL_STEP_INDEX = {};
+    const PROGRESS_BAR_STAGES = {
+        "start" : "Start", 
+        "eligibility": "Eligibility",
+        "discovery": "Discovery",
+        "preparation": "Preparation",
+        "application": "Application"
+    };
 
     /**
      * Helper method to recursively find the first descendent element with a target class
@@ -45,7 +52,7 @@ var WizardBuilder = window.WizardBuilder || {};
      * @param {string} subtitle  OPTIONAL - the subtitle of the wizard step
      * @returns {HTMLElement}    <span> element representing the wizard step's label
      */
-    function _createWizardTitleElement(title, subtitle) {
+    function _createWizardTitleElement(title, subtitle, stage = false) {
         let labelSpan = document.createElement("span");
         labelSpan.classList.add("mdl-step__label");
 
@@ -70,6 +77,43 @@ var WizardBuilder = window.WizardBuilder || {};
         return labelSpan;
     }
 
+
+
+    /**
+     * Helper function to build an MDL-Stepper Label element
+     * @param {string} stage     the current stage in the progress bar. must be one of PROGRESS_BAR_STAGES
+     * @returns {HTMLElement}    <div> element representing the wizard progress bar
+     */
+    function _createWizardProgressElement(current_stage = false) {
+
+        // If progress bar stage is present display it
+        if (!Object.keys(PROGRESS_BAR_STAGES).includes(current_stage)){
+            current_stage = "start"
+        }
+        let progressBarWrapper = document.createElement("ul");
+        progressBarWrapper.classList.add("progress-bar");
+        progressBarWrapper.classList.add("mdl-step__progress");
+
+        var showActive = true;
+        
+        Object.keys(PROGRESS_BAR_STAGES).forEach(function (item, index) {
+            let stageElement = document.createElement("li");
+            stageElement.classList.add("progress-stage");
+            if (showActive){
+                stageElement.classList.add("progress-stage-active");
+            }
+            stageElement.innerHTML = PROGRESS_BAR_STAGES[item];
+            progressBarWrapper.appendChild(stageElement);
+
+            if (item == current_stage){
+                showActive = false;
+            }
+        });
+
+        return progressBarWrapper;
+    }
+
+
     /**
      * Helper function to build a simple paragraph element
      * @param {string} paragraphText  the content to place in the paragraph element
@@ -83,7 +127,7 @@ var WizardBuilder = window.WizardBuilder || {};
 
     /**
      * Helper function to build a video content element
-     * @param {string} src          path to remote video file (presently has to be mp4)
+     * @param {string} src          path to local or remote video file (presently has to be mp4)
      * @param {string} captionText  text to caption the video for the purposes of instruction or description
      * @returns {HTMLElement}       <section> element containing video content for embedding in a wizard step
      */
@@ -156,12 +200,28 @@ var WizardBuilder = window.WizardBuilder || {};
         } else {
             alert("Unrecognized bulleted list type detected: " + listType);
         }
+        listElement.classList.add("checklist");
 
         var bulletArrayLength = bullets.length;
         for (var i = 0; i < bulletArrayLength; i++) {
             let bullet = bullets[i];
             let bulletElement = document.createElement("li");
+            let bulletCheckbox = document.createElement("input");
+            bulletCheckbox.setAttribute("type", "checkbox");
+            bulletCheckbox.classList.add("need-check");
+            bulletCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    this.parentElement.classList.add('checked-item')
+                  console.log("Checkbox is checked..");
+                } else {
+                    this.parentElement.classList.remove('checked-item')
+                  console.log("Checkbox is not checked..");
+                }
+              });            
+
+
             // For each bullet add the bullet's content
+            bulletElement.appendChild(bulletCheckbox);
             bulletElement.appendChild(document.createTextNode(bullet.bulletContent));
             // Check if the current bullet has subbullets, if so, recursively add them
             let subBullets = bullet.subBullets;
@@ -210,7 +270,7 @@ var WizardBuilder = window.WizardBuilder || {};
     /**
      * Helper function to build an MDL-Stepper Content element
      * @param {object} content        object containing the step's content
-     * @param {string} stepType       string indicating type of step ("video" -> video or "informational" -> paragraphs/bulleted lists)
+     * @param {string} stepType       string indicating type of step ("video" -> video, "image" -> "image" or "informational" -> paragraphs/bulleted lists)
      * @param {string} sectionHeader  OPTIONAL - string providing a small section header for the current step
      * @returns {HTMLElement}         <div> element representing the wizard step's content
      */
@@ -232,6 +292,8 @@ var WizardBuilder = window.WizardBuilder || {};
         var cleanStepType = stepType.trim().toLowerCase();
         if (cleanStepType === "video") {
             contentDiv.appendChild(_createVideoContentElement(content.src, content.captionText));
+        } else if (cleanStepType === "image") {
+            contentDiv.appendChild(_createImageContentElement(content.src, content.captionText));
         } else if (cleanStepType === "informational") {
             contentDiv.appendChild(_createInformationalContentElement(content.paragraphs));
         } else {
@@ -338,7 +400,10 @@ var WizardBuilder = window.WizardBuilder || {};
 
         let wizardStepActionElement = _createWizardActionElement(wizardElementId, step.buttons, step.resetToStepId);
         wizardStepElement.appendChild(wizardStepActionElement);
-
+        
+        let wizardStepProgressBarElement = _createWizardProgressElement(step.progressBarStage);
+        wizardStepElement.appendChild(wizardStepProgressBarElement);
+        
         return wizardStepElement;
     }
 

@@ -317,6 +317,13 @@
             // scroll to target element when page load
             gsap.to(window, {duration: 0.5, scrollTo: ".is-active"});
             
+            let steps = getCookie("steps");
+            if (steps != "" && steps>1) {
+                for(let i=2;i<=steps;i++){
+                    WizardBuilder.addStep("lrt-stepper", i);
+                    WizardBuilder.goToStep("lrt-stepper", i);
+                }                
+            } 
             // Create fast forward method 
             // let goto = parseInt(getQueryVar(name = "goto"));
             // if (goto) {
@@ -324,8 +331,7 @@
             //         WizardBuilder.initialize("lrt-stepper", "wizard-content.json");
             //         WizardBuilder.goToStep("lrt-stepper", goto);
             //     }
-            // }
-
+            // }            
         })();
         function setCookie(cname, cvalue, exdays) {
           const d = new Date();

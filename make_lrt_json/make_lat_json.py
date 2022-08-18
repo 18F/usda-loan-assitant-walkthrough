@@ -17,7 +17,7 @@ data["steps"] = []
 
 step_sheet = wb["Content by Screen"]
 
-for row in range(4, step_sheet.max_row + 1):
+for row in range(3, step_sheet.max_row + 1):
     # if row > 8: break
     if not step_sheet[f"B{row}"].value: continue
 

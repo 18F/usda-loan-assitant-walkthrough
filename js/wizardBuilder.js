@@ -360,8 +360,15 @@ var WizardBuilder = window.WizardBuilder || {};
                 }
             } else if (button.url) {
                 // If the button indicates a "url", then the onclick should simply navigate to the given "url"
-                buttonElement.onclick = function(_) {
-                    location.href = button.url;
+                // If the url ends in a PDF enforce download
+                if (button.url.endsWith('pdf')) {
+                    buttonElement.onclick = function(_) {
+                        window.open(button.url);
+                    }
+                } else {
+                    buttonElement.onclick = function(_) {
+                        location.href = button.url;
+                    }
                 }
             } else {
                 alert("A button object must have either a \"nextStepId\" attribute or \"url\" attribute.");

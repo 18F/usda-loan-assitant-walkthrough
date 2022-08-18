@@ -195,33 +195,37 @@ var WizardBuilder = window.WizardBuilder || {};
         if (cleanListType === "numbered") {
             listElement = document.createElement("ol");
             // If "unordered" make "ul" element
-        } else if (cleanListType === "unordered") {
+        } else if (cleanListType === "unordered" || cleanListType === "checkbox"){
             listElement = document.createElement("ul");
         } else {
             alert("Unrecognized bulleted list type detected: " + listType);
         }
-        listElement.classList.add("checklist");
+
+
 
         var bulletArrayLength = bullets.length;
         for (var i = 0; i < bulletArrayLength; i++) {
             let bullet = bullets[i];
             let bulletElement = document.createElement("li");
-            let bulletCheckbox = document.createElement("input");
-            bulletCheckbox.setAttribute("type", "checkbox");
-            bulletCheckbox.classList.add("need-check");
-            bulletCheckbox.addEventListener('change', function() {
-                if (this.checked) {
-                    this.parentElement.classList.add('checked-item')
-                  console.log("Checkbox is checked..");
-                } else {
-                    this.parentElement.classList.remove('checked-item')
-                  console.log("Checkbox is not checked..");
-                }
-              });            
 
+            if (cleanListType === "checkbox") {
+                listElement.classList.add("checklist");
+                let bulletCheckbox = document.createElement("input");
+                bulletCheckbox.setAttribute("type", "checkbox");
+                bulletCheckbox.classList.add("need-check");
+                bulletCheckbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        this.parentElement.classList.add('checked-item')
+                    console.log("Checkbox is checked..");
+                    } else {
+                        this.parentElement.classList.remove('checked-item')
+                    console.log("Checkbox is not checked..");
+                    }
+                });
+                // For each bullet add the bullet's content
+                bulletElement.appendChild(bulletCheckbox);
+            }
 
-            // For each bullet add the bullet's content
-            bulletElement.appendChild(bulletCheckbox);
             bulletElement.appendChild(document.createTextNode(bullet.bulletContent));
             // Check if the current bullet has subbullets, if so, recursively add them
             let subBullets = bullet.subBullets;
@@ -334,9 +338,10 @@ var WizardBuilder = window.WizardBuilder || {};
      * @param {string} wizardElementId  the id given to the target, parent <ul> element
      * @param {Array} buttons           array of objects containing the necessary information for generating the step's buttons
      * @param {Number} resetToStepId    OPTIONAL - number indicating the step to jump back to for the optional reset button
-     * @returns {HTMLElement}           <div> element containing the various buttons/actions that can be taken on a given step
+     * @param {string} resetText        OPTIONAL - The string for the content reset button 
+    * @returns {HTMLElement}           <div> element containing the various buttons/actions that can be taken on a given step
      */
-    function _createWizardActionElement(wizardElementId, buttons, resetToStepId) {
+    function _createWizardActionElement(wizardElementId, buttons, resetToStepId, resetText = "Start Over") {
         let actionElement = document.createElement("div");
         actionElement.classList.add("mdl-step__actions");
 
@@ -368,7 +373,8 @@ var WizardBuilder = window.WizardBuilder || {};
 
         // If an optional "resetToStepId" was given, then create a "Start Over"
         if (resetToStepId) {
-            let resetButtonElement = _createButtonElement("Start Over", "white", "#CCC", buttonArrayLength);
+
+            let resetButtonElement = _createButtonElement(resetText, "white", "#CCC", buttonArrayLength);
             resetButtonElement.style.marginLeft = "auto";
             resetButtonElement.style.border = "none";
             // The button jumps back to the given step whose ID equals "resetToStepId"
@@ -402,7 +408,7 @@ var WizardBuilder = window.WizardBuilder || {};
         let wizardStepContentElement = _createWizardContentElement(step.content, step.type, step.sectionHeader);
         wizardStepElement.appendChild(wizardStepContentElement);
 
-        let wizardStepActionElement = _createWizardActionElement(wizardElementId, step.buttons, step.resetToStepId);
+        let wizardStepActionElement = _createWizardActionElement(wizardElementId, step.buttons, step.resetToStepId, step.resetText);
         wizardStepElement.appendChild(wizardStepActionElement);
         
         let wizardStepProgressBarElement = _createWizardProgressElement(step.progressBarStage);

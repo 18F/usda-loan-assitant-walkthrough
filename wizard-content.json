@@ -1127,7 +1127,7 @@
                     "buttonText": "No",
                     "color": "white",
                     "nextStepId": 40,
-                    "textColor": "#df5d79"
+                    "textColor": "#4472c4"
                 }
             ],
             "content": {
@@ -1162,7 +1162,7 @@
                     "buttonText": "No",
                     "color": "white",
                     "nextStepId": 40,
-                    "textColor": "#df5d79"
+                    "textColor": "#4472c4"
                 }
             ],
             "content": {
@@ -1188,7 +1188,7 @@
                     "buttonText": "Download the Readiness Checklist",
                     "color": "white",
                     "textColor": "#20a286",
-                    "url": "/checklists/Loan%20Assistance%20Tool%20-%20Checklist%20for%20a%20Youth%20Loan%20Application%20(072722).pdf"
+                    "url": "/checklists/Youth%20Loan%20Readiness%20Checklist.pdf"
                 },
                 {
                     "buttonText": "Obtain Assistance with Loan Forms",
@@ -1218,7 +1218,7 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
@@ -1244,7 +1244,7 @@
                     "buttonText": "No",
                     "color": "white",
                     "nextStepId": 43,
-                    "textColor": "#df5d79"
+                    "textColor": "#4472c4"
                 }
             ],
             "content": {
@@ -1273,7 +1273,7 @@
                     "buttonText": "No",
                     "color": "white",
                     "nextStepId": 43,
-                    "textColor": "#df5d79"
+                    "textColor": "#4472c4"
                 }
             ],
             "content": {
@@ -1299,7 +1299,7 @@
                     "buttonText": "Download the Readiness Checklist",
                     "color": "white",
                     "textColor": "#20a286",
-                    "url": "/checklists/Loan%20Assistance%20Tool%20-%20Checklist%20for%20an%20Emergency%20Loan%20(080122).pdf"
+                    "url": "/checklists/Emergency%20Loan%20Readiness%20Checklist.pdf"
                 },
                 {
                     "buttonText": "Obtain Assistance with Loan Forms",
@@ -1329,7 +1329,7 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
@@ -1355,7 +1355,7 @@
                     "buttonText": "No",
                     "color": "white",
                     "nextStepId": 46,
-                    "textColor": "#df5d79"
+                    "textColor": "#4472c4"
                 }
             ],
             "content": {
@@ -1384,7 +1384,7 @@
                     "buttonText": "No",
                     "color": "white",
                     "nextStepId": 46,
-                    "textColor": "#df5d79"
+                    "textColor": "#4472c4"
                 }
             ],
             "content": {
@@ -1413,7 +1413,7 @@
                     "buttonText": "Download the Readiness Checklist",
                     "color": "white",
                     "textColor": "#20a286",
-                    "url": "/checklists/Loan%20Assistance%20Tool%20-%20Checklist%20for%20a%20Microloan%20FO%20%26%20%20OL%20(081022).pdf"
+                    "url": "/checklists/Microloan%20Readiness%20Checklist.pdf"
                 },
                 {
                     "buttonText": "Obtain Assistance with Loan Forms",
@@ -1443,7 +1443,7 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
@@ -1607,7 +1607,7 @@
                     "buttonText": "Download the Readiness Checklist",
                     "color": "white",
                     "textColor": "#20a286",
-                    "url": "/checklists/Loan%20Assistance%20Tool%20-%20Checklist%20for%20a%20FArm%20OWnership%20Loan%20Application%20(081022).pdf"
+                    "url": "/checklists/Farm%20Ownership%20Loan%20Readiness%20Checklist.pdf"
                 },
                 {
                     "buttonText": "Obtain Assistance with Loan Forms",
@@ -1637,7 +1637,7 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
@@ -1698,7 +1698,7 @@
                     "buttonText": "Download the Readiness Checklist",
                     "color": "white",
                     "textColor": "#20a286",
-                    "url": "/checklists/Loan%20Assistance%20Tool%20-%20Checklist%20for%20a%20FArm%20OWnership%20Loan%20Application%20(081022).pdf"
+                    "url": "/checklists/Farm%20Ownership%20Loan%20Readiness%20Checklist.pdf"
                 },
                 {
                     "buttonText": "Obtain Assistance with Loan Forms",
@@ -1728,7 +1728,7 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
@@ -1773,7 +1773,7 @@
                     "buttonText": "Download the Readiness Checklist",
                     "color": "white",
                     "textColor": "#20a286",
-                    "url": "/checklists/Loan%20Assistance%20Tool%20-%20Checklist%20for%20a%20FArm%20OWnership%20Loan%20Application%20(081022).pdf"
+                    "url": "/checklists/Farm%20Ownership%20Loan%20Readiness%20Checklist.pdf"
                 },
                 {
                     "buttonText": "Obtain Assistance with Loan Forms",
@@ -1803,7 +1803,7 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
@@ -1854,7 +1854,7 @@
                     "buttonText": "Download the Readiness Checklist",
                     "color": "white",
                     "textColor": "#20a286",
-                    "url": "/checklists/Loan%20Assistance%20Tool%20-%20Checklist%20for%20a%20Term%20Operating%20Loan%20APPLICATION%20(updated%20072522).pdf"
+                    "url": "/checklists/Annual%20and%20Term%20Operating%20Loan%20Readiness%20Checklist.pdf"
                 },
                 {
                     "buttonText": "Obtain Assistance with Loan Forms",
@@ -1884,7 +1884,7 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
@@ -1935,7 +1935,7 @@
                     "buttonText": "Download the Readiness Checklist",
                     "color": "white",
                     "textColor": "#20a286",
-                    "url": "/checklists/Loan%20Assistance%20Tool%20-%20Checklist%20for%20a%20Term%20Operating%20Loan%20APPLICATION%20(updated%20072522).pdf"
+                    "url": "/checklists/Annual%20and%20Term%20Operating%20Loan%20Readiness%20Checklist.pdf"
                 },
                 {
                     "buttonText": "Obtain Assistance with Loan Forms",
@@ -1965,7 +1965,7 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]

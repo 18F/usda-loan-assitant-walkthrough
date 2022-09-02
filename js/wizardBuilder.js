@@ -353,8 +353,8 @@ var WizardBuilder = window.WizardBuilder || {};
             if (button.nextStepId) {
                 // If the button indicates a "nextStepId", then the onclick should add the next step and navigate to it
                 buttonElement.onclick = function(_) {
-                    // save steps into cookie when user click button
-                    setCookie("steps", button.nextStepId, 365);
+                    // push steps array into cookie when user click button
+                    setCookie("steps", getCookie("steps")+","+button.nextStepId, 365);
                     WizardBuilder.addStep(wizardElementId, button.nextStepId);
                     WizardBuilder.goToStep(wizardElementId, button.nextStepId);
                 }
@@ -386,7 +386,7 @@ var WizardBuilder = window.WizardBuilder || {};
             resetButtonElement.style.border = "none";
             // The button jumps back to the given step whose ID equals "resetToStepId"
             resetButtonElement.onclick = function(_) {
-                // save steps into cookie When user click "Start Over" button
+                // reset steps into cookie When user click "Start Over" button
                 setCookie("steps", resetToStepId, 365);
                 WizardBuilder.addStep(wizardElementId, resetToStepId);
 				WizardBuilder.goToStep(wizardElementId, resetToStepId);

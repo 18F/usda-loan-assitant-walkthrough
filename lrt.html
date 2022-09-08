@@ -123,9 +123,16 @@
                                     </a>
                                 </li>
                                 <li class="tb-megamenu-item level-1 mega" data-id="menu_link_content:guides" data-level="1" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="Guides" aria-level="1">
-                                    <a href="/lrt.html" class="page-link mm-active" data-label="/lrt.html" aria-label="Go to the Loan Readiness Tool" data-category="Readiness">
+                                    <a id="loanEligibility" href="/lrt.html" class="page-link mm-active" data-label="/lrt.html" aria-label="Go to the Loan Readiness Tool" data-category="Readiness">
                                         <div class="mm-nav-link">
-                                            <div class="mm-top-level-title">Loan Eligibility</div>
+                                            <div class="mm-top-level-title">Eligibility Assessment</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tb-megamenu-item level-1 mega" data-id="menu_link_content:guides" data-level="1" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="Guides" aria-level="1">
+                                    <a id="loanDiscovery" href="/lrt.html?discovery" class="page-link" data-label="/lrt.html" aria-label="Go to the Loan Readiness Tool" data-category="Readiness">
+                                        <div class="mm-nav-link">
+                                            <div class="mm-top-level-title">Loan Discovery</div>
                                         </div>
                                     </a>
                                 </li>
@@ -269,7 +276,8 @@
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
     <script src="https://code.getmdl.io/1.2.1/material.js" type="text/javascript"></script>
-    
+    <script src="js/farmers.min.js"></script>
+
     <!-- add GSAP library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
     <!-- add GSAP ScrollTo Plugin-->
@@ -287,23 +295,31 @@
     </script>
     <script src="./js/stepper.min.js" type="text/javascript"></script>
     <script>
+        const loanDiscovery=[2,5,8,11,14,17,20,23,26,29,32,35,36];
         (function() {
-            // scroll to target element when page load
-            gsap.to(window, {duration: 0.5, scrollTo: ".is-active"});
+            document.getElementById("loanDiscovery").classList.remove("mm-active");
+            if(location.search=="?discovery"){
+                document.getElementById("loanEligibility").classList.remove("mm-active");
+                document.getElementById("loanDiscovery").classList.add("mm-active");
+                loanDiscovery.forEach((item)=>{
+                    WizardBuilder.addStep("lrt-stepper", item);
+                    WizardBuilder.goToStep("lrt-stepper", item);
+                })
+            }else{
             
-            let steps = getCookie("steps");
+                let steps = getCookie("steps");
 
-            if (steps != "") {
-                let stepArray=steps.split(",");
-                stepArray.forEach((item)=>{  
-                    if(item>2){
-                        console.log(item)
-                        WizardBuilder.addStep("lrt-stepper", item*1);
-                        WizardBuilder.goToStep("lrt-stepper", item*1);
-                    }
-                })    
-            } else {
-                setCookie("steps", "2", 365);
+                if (steps != "") {
+                    let stepArray=steps.split(",");
+                    stepArray.forEach((item)=>{  
+                        if(item>2){                        
+                            WizardBuilder.addStep("lrt-stepper", item*1);
+                            WizardBuilder.goToStep("lrt-stepper", item*1);
+                        }
+                    })    
+                } else {
+                    setCookie("steps", "2", 365);
+                }
             }
         })();
         function setCookie(cname, cvalue, exdays) {

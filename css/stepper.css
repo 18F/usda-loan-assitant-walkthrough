@@ -127,6 +127,7 @@
 
 .mdl-button {
     position: relative;
+    display:inline-block;
     width: 31rem;
     height: 18rem;
     padding: 3rem;
@@ -145,6 +146,13 @@
 
 .mdl-button:hover {
     border: 0.2rem solid #49a564;
+}
+
+@media all and (max-width:30em){
+    .mdl-button{
+        display: block;
+        margin: 0.2em auto;
+    }
 }
 
 .mdl-step {

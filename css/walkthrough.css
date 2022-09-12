@@ -95,11 +95,49 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-start {
-    width: 400px;
+    text-align: center;
     height: 150px;
     font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
     align-items: center;
     line-height: 140px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+    text-decoration: none; 
+}
+
+.btn-start:hover {
+    color: #fff;
+    background-color: #157347;
+    border-color: #146c43;
+    text-decoration: none; 
+
+    text-align: center;
+    height: 150px;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    align-items: center;
+    line-height: 140px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.btn-start:visited  {
+    color: #fff;
+    background-color: #157347;
+    border-color: #146c43;
+    text-decoration: none; 
+}
+
+.btn-start:active {
+    color: #fff;
+    background-color: #146c43;
+    border-color: #13653f;
+    text-decoration: none; 
 }
 
 a {

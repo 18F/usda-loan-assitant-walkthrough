@@ -387,7 +387,7 @@ var WizardBuilder = window.WizardBuilder || {};
 
             let resetButtonElement = _createButtonElement(resetText, "white", "#CCC", buttonArrayLength);
             resetButtonElement.style.marginLeft = "auto";
-            resetButtonElement.style.border = "none";
+            // resetButtonElement.style.border = "none";
             // The button jumps back to the given step whose ID equals "resetToStepId"
             resetButtonElement.onclick = function(_) {
                 // reset steps into cookie When user click "Start Over" button

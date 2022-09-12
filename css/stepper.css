@@ -136,10 +136,15 @@
     margin-right: 2rem;
     cursor: pointer;
     border: none;
-    /*border: 0.2rem solid #bbb;
+    border: 0.2rem solid #bbb;
     box-shadow: 0 0.1rem 0.4rem 0 #bbb;
-    border-radius: 0.2rem;*/
+    border-radius: 0.2rem;
     background-color: white;
+    
+}
+
+.mdl-button:hover {
+    border: 0.2rem solid #49a564;
 }
 
 .mdl-step {

@@ -29,7 +29,7 @@ paragraph:
   - paragraphContent: (REQUIRED) string/text OR [bulletList] object -> the content that forms this paragraph (either plain text or a bulleted list)
 
 bulletList:
-  - type:    (REQUIRED) string/text -> Must be either "numbered" or "unordered" to indicate what type of list to place the bullets into
+  - type:    (REQUIRED) string/text -> Must be either "checkboxes", "numbered" or "unordered" to indicate what type of list to place the bullets into
   - bullets: (REQUIRED) array/list -> Only [bullet] objects
 
 bullet:

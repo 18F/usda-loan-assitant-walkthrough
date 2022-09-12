@@ -18,7 +18,6 @@
     padding-top: 40px;
 }
 
-
 /* Accordion Changes  */
 
 .accordion-item{
@@ -95,6 +94,14 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
 }
 
+.btn-start {
+    width: 400px;
+    height: 150px;
+    font-size: 3rem;
+    align-items: center;
+    line-height: 140px;
+}
+
 a {
     color: #006546;
     text-decoration: underline;
@@ -115,4 +122,26 @@ a.visited, a:visited {
 
 #pdf-canvas {
     width: 100%;
+}
+
+/* responsive videos */
+
+.video-container {
+    overflow: hidden;
+    position: relative;
+    width:100%;
+}
+
+.video-container::after {
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

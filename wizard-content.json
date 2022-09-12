@@ -5,7 +5,7 @@
                 {
                     "buttonText": "Start Your Self Assessment",
                     "color": "white",
-                    "nextStepId": 3,
+                    "nextStepId": 2,
                     "textColor": "#094785"
                 }
             ],
@@ -22,7 +22,7 @@
                     }
                 ]
             },
-            "id": 2,
+            "id": 1,
             "progressBarStage": "start",
             "sectionHeader": "",
             "subtitle": "Eligibility Self Assessment",
@@ -34,19 +34,19 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 5,
+                    "nextStepId": 4,
                     "textColor": "#df5d79"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 6,
+                    "nextStepId": 5,
                     "textColor": "#20a286"
                 },
                 {
-                    "buttonText": "Click here for more information.",
+                    "buttonText": "Learn More",
                     "color": "white",
-                    "nextStepId": 4,
+                    "nextStepId": 3,
                     "textColor": "#4472c4"
                 }
             ],
@@ -57,10 +57,10 @@
                     }
                 ]
             },
-            "id": 3,
+            "id": 2,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
             "title": "Convictions",
@@ -71,7 +71,7 @@
                 {
                     "buttonText": "Return to Question",
                     "color": "white",
-                    "nextStepId": 3,
+                    "nextStepId": 2,
                     "textColor": "#4472c4"
                 }
             ],
@@ -85,7 +85,7 @@
                     }
                 ]
             },
-            "id": 4,
+            "id": 3,
             "progressBarStage": "eligibility",
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "What Does This Mean?",
@@ -114,10 +114,10 @@
                     }
                 ]
             },
-            "id": 5,
+            "id": 4,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Convictions",
@@ -128,19 +128,19 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 9,
+                    "nextStepId": 8,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 8,
+                    "nextStepId": 7,
                     "textColor": "#df5d79"
                 },
                 {
-                    "buttonText": "Click here for more information.",
+                    "buttonText": "Learn More",
                     "color": "white",
-                    "nextStepId": 7,
+                    "nextStepId": 6,
                     "textColor": "#4472c4"
                 }
             ],
@@ -151,10 +151,10 @@
                     }
                 ]
             },
-            "id": 6,
+            "id": 5,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
             "title": "Legal Competency",
@@ -165,7 +165,7 @@
                 {
                     "buttonText": "Return to Question",
                     "color": "white",
-                    "nextStepId": 6,
+                    "nextStepId": 5,
                     "textColor": "#4472c4"
                 }
             ],
@@ -176,7 +176,7 @@
                     }
                 ]
             },
-            "id": 7,
+            "id": 6,
             "progressBarStage": "eligibility",
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "What does this mean?",
@@ -205,10 +205,10 @@
                     }
                 ]
             },
-            "id": 8,
+            "id": 7,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Legal Competency",
@@ -219,19 +219,19 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 12,
+                    "nextStepId": 11,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 11,
+                    "nextStepId": 10,
                     "textColor": "#df5d79"
                 },
                 {
-                    "buttonText": "Click here for more information.",
+                    "buttonText": "Learn More",
                     "color": "white",
-                    "nextStepId": 10,
+                    "nextStepId": 9,
                     "textColor": "#4472c4"
                 }
             ],
@@ -242,10 +242,10 @@
                     }
                 ]
             },
-            "id": 9,
+            "id": 8,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
             "title": "Citizenship",
@@ -256,7 +256,7 @@
                 {
                     "buttonText": "Return to Question",
                     "color": "white",
-                    "nextStepId": 9,
+                    "nextStepId": 8,
                     "textColor": "#4472c4"
                 }
             ],
@@ -270,7 +270,7 @@
                     }
                 ]
             },
-            "id": 10,
+            "id": 9,
             "progressBarStage": "eligibility",
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "What Does This Mean?",
@@ -299,10 +299,10 @@
                     }
                 ]
             },
-            "id": 11,
+            "id": 10,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Citizenship",
@@ -313,19 +313,19 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 15,
+                    "nextStepId": 14,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 14,
+                    "nextStepId": 13,
                     "textColor": "#df5d79"
                 },
                 {
-                    "buttonText": "Click here for more information.",
+                    "buttonText": "Learn More",
                     "color": "white",
-                    "nextStepId": 13,
+                    "nextStepId": 12,
                     "textColor": "#4472c4"
                 }
             ],
@@ -336,10 +336,10 @@
                     }
                 ]
             },
-            "id": 12,
+            "id": 11,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
             "title": "Credit History",
@@ -350,7 +350,7 @@
                 {
                     "buttonText": "Return to Question",
                     "color": "white",
-                    "nextStepId": 12,
+                    "nextStepId": 11,
                     "textColor": "#4472c4"
                 }
             ],
@@ -361,7 +361,7 @@
                     }
                 ]
             },
-            "id": 13,
+            "id": 12,
             "progressBarStage": "eligibility",
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "What Does This Mean?",
@@ -390,10 +390,10 @@
                     }
                 ]
             },
-            "id": 14,
+            "id": 13,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Credit History",
@@ -404,19 +404,19 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 17,
+                    "nextStepId": 16,
                     "textColor": "#df5d79"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 18,
+                    "nextStepId": 17,
                     "textColor": "#20a286"
                 },
                 {
-                    "buttonText": "Click here for more information.",
+                    "buttonText": "Learn More",
                     "color": "white",
-                    "nextStepId": 16,
+                    "nextStepId": 15,
                     "textColor": "#4472c4"
                 }
             ],
@@ -427,10 +427,10 @@
                     }
                 ]
             },
-            "id": 15,
+            "id": 14,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
             "title": "Credit Alternatives",
@@ -441,7 +441,7 @@
                 {
                     "buttonText": "Return to Question",
                     "color": "white",
-                    "nextStepId": 15,
+                    "nextStepId": 14,
                     "textColor": "#4472c4"
                 }
             ],
@@ -452,7 +452,7 @@
                     }
                 ]
             },
-            "id": 16,
+            "id": 15,
             "progressBarStage": "eligibility",
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "What Does This Mean?",
@@ -481,10 +481,10 @@
                     }
                 ]
             },
-            "id": 17,
+            "id": 16,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Credit Alternatives",
@@ -495,19 +495,19 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 20,
+                    "nextStepId": 19,
                     "textColor": "#df5d79"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 21,
+                    "nextStepId": 20,
                     "textColor": "#20a286"
                 },
                 {
-                    "buttonText": "Click here for more information.",
+                    "buttonText": "Learn More",
                     "color": "white",
-                    "nextStepId": 19,
+                    "nextStepId": 18,
                     "textColor": "#4472c4"
                 }
             ],
@@ -518,10 +518,10 @@
                     }
                 ]
             },
-            "id": 18,
+            "id": 17,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
             "title": "Federal Debts",
@@ -532,7 +532,7 @@
                 {
                     "buttonText": "Return to Question",
                     "color": "white",
-                    "nextStepId": 18,
+                    "nextStepId": 17,
                     "textColor": "#4472c4"
                 }
             ],
@@ -549,7 +549,7 @@
                     }
                 ]
             },
-            "id": 19,
+            "id": 18,
             "progressBarStage": "eligibility",
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "What Does This Mean?",
@@ -578,10 +578,10 @@
                     }
                 ]
             },
-            "id": 20,
+            "id": 19,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Federal Debts",
@@ -592,19 +592,19 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 23,
+                    "nextStepId": 22,
                     "textColor": "#df5d79"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 24,
+                    "nextStepId": 23,
                     "textColor": "#20a286"
                 },
                 {
-                    "buttonText": "Click here for more information.",
+                    "buttonText": "Learn More",
                     "color": "white",
-                    "nextStepId": 22,
+                    "nextStepId": 21,
                     "textColor": "#4472c4"
                 }
             ],
@@ -615,10 +615,10 @@
                     }
                 ]
             },
-            "id": 21,
+            "id": 20,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
             "title": "FSA Debt Forgiveness",
@@ -629,7 +629,7 @@
                 {
                     "buttonText": "Return to Question",
                     "color": "white",
-                    "nextStepId": 21,
+                    "nextStepId": 20,
                     "textColor": "#4472c4"
                 }
             ],
@@ -659,7 +659,7 @@
                     }
                 ]
             },
-            "id": 22,
+            "id": 21,
             "progressBarStage": "eligibility",
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "What Does This Mean?",
@@ -688,10 +688,10 @@
                     }
                 ]
             },
-            "id": 23,
+            "id": 22,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "FSA Debt Forgiveness",
@@ -702,19 +702,19 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 26,
+                    "nextStepId": 25,
                     "textColor": "#df5d79"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 27,
+                    "nextStepId": 26,
                     "textColor": "#20a286"
                 },
                 {
-                    "buttonText": "Click here for more information.",
+                    "buttonText": "Learn More",
                     "color": "white",
-                    "nextStepId": 25,
+                    "nextStepId": 24,
                     "textColor": "#4472c4"
                 }
             ],
@@ -725,10 +725,10 @@
                     }
                 ]
             },
-            "id": 24,
+            "id": 23,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
             "title": "Federal Crop Insurance Violations",
@@ -739,7 +739,7 @@
                 {
                     "buttonText": "Return to Question",
                     "color": "white",
-                    "nextStepId": 24,
+                    "nextStepId": 23,
                     "textColor": "#4472c4"
                 }
             ],
@@ -750,7 +750,7 @@
                     }
                 ]
             },
-            "id": 25,
+            "id": 24,
             "progressBarStage": "eligibility",
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "What Does This Mean?",
@@ -779,10 +779,10 @@
                     }
                 ]
             },
-            "id": 26,
+            "id": 25,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Federal Crop Insurance Violations",
@@ -793,19 +793,19 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 30,
+                    "nextStepId": 29,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 29,
+                    "nextStepId": 28,
                     "textColor": "#df5d79"
                 },
                 {
-                    "buttonText": "Click here for more information.",
+                    "buttonText": "Learn More",
                     "color": "white",
-                    "nextStepId": 28,
+                    "nextStepId": 27,
                     "textColor": "#4472c4"
                 }
             ],
@@ -816,10 +816,10 @@
                     }
                 ]
             },
-            "id": 27,
+            "id": 26,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
             "title": "Farming Experience",
@@ -830,7 +830,7 @@
                 {
                     "buttonText": "Return to Question",
                     "color": "white",
-                    "nextStepId": 27,
+                    "nextStepId": 26,
                     "textColor": "#4472c4"
                 }
             ],
@@ -841,7 +841,7 @@
                     }
                 ]
             },
-            "id": 28,
+            "id": 27,
             "progressBarStage": "eligibility",
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "What Does This Mean?",
@@ -870,10 +870,10 @@
                     }
                 ]
             },
-            "id": 29,
+            "id": 28,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Farming Experience",
@@ -884,19 +884,19 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 33,
+                    "nextStepId": 32,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 32,
+                    "nextStepId": 31,
                     "textColor": "#df5d79"
                 },
                 {
-                    "buttonText": "Click here for more information.",
+                    "buttonText": "Learn More",
                     "color": "white",
-                    "nextStepId": 31,
+                    "nextStepId": 30,
                     "textColor": "#4472c4"
                 }
             ],
@@ -907,10 +907,10 @@
                     }
                 ]
             },
-            "id": 30,
+            "id": 29,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
             "title": "Farm Operations",
@@ -921,7 +921,7 @@
                 {
                     "buttonText": "Return to Question",
                     "color": "white",
-                    "nextStepId": 30,
+                    "nextStepId": 29,
                     "textColor": "#4472c4"
                 }
             ],
@@ -932,7 +932,7 @@
                     }
                 ]
             },
-            "id": 31,
+            "id": 30,
             "progressBarStage": "eligibility",
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "What Does This Mean?",
@@ -961,10 +961,10 @@
                     }
                 ]
             },
-            "id": 32,
+            "id": 31,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Farm Operations",
@@ -975,19 +975,19 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 35,
+                    "nextStepId": 34,
                     "textColor": "#df5d79"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 36,
+                    "nextStepId": 35,
                     "textColor": "#20a286"
                 },
                 {
-                    "buttonText": "Click here for more information.",
+                    "buttonText": "Learn More",
                     "color": "white",
-                    "nextStepId": 34,
+                    "nextStepId": 33,
                     "textColor": "#4472c4"
                 }
             ],
@@ -998,10 +998,10 @@
                     }
                 ]
             },
-            "id": 33,
+            "id": 32,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
             "title": "Non-Profit Organizations",
@@ -1012,7 +1012,7 @@
                 {
                     "buttonText": "Return to Question",
                     "color": "white",
-                    "nextStepId": 33,
+                    "nextStepId": 32,
                     "textColor": "#4472c4"
                 }
             ],
@@ -1023,7 +1023,7 @@
                     }
                 ]
             },
-            "id": 34,
+            "id": 33,
             "progressBarStage": "eligibility",
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "What Does This Mean?",
@@ -1052,10 +1052,10 @@
                     }
                 ]
             },
-            "id": 35,
+            "id": 34,
             "progressBarStage": "eligibility",
             "resetText": "Start Over",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Non-Profit Organizations",
@@ -1066,7 +1066,7 @@
                 {
                     "buttonText": "Proceed to Loan Discovery",
                     "color": "white",
-                    "nextStepId": 37,
+                    "nextStepId": 36,
                     "textColor": "#094785"
                 }
             ],
@@ -1077,10 +1077,10 @@
                     }
                 ]
             },
-            "id": 36,
+            "id": 35,
             "progressBarStage": "eligibility",
             "resetText": "Restart Self Assessment",
-            "resetToStepId": 2,
+            "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
             "title": "No Eligibility Concerns",
@@ -1091,7 +1091,7 @@
                 {
                     "buttonText": "Discover Our Loans",
                     "color": "white",
-                    "nextStepId": 38,
+                    "nextStepId": 37,
                     "textColor": "#20a286"
                 }
             ],
@@ -1108,7 +1108,7 @@
                     }
                 ]
             },
-            "id": 37,
+            "id": 36,
             "progressBarStage": "discovery",
             "sectionHeader": "",
             "subtitle": "Loan Discovery",
@@ -1120,14 +1120,14 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 39,
+                    "nextStepId": 38,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 41,
-                    "textColor": "#df5d79"
+                    "nextStepId": 40,
+                    "textColor": "#4472c4"
                 }
             ],
             "content": {
@@ -1143,7 +1143,7 @@
                     }
                 ]
             },
-            "id": 38,
+            "id": 37,
             "progressBarStage": "discovery",
             "sectionHeader": "Loan Discovery",
             "subtitle": "Associated with 4-H or FFA",
@@ -1155,14 +1155,14 @@
                 {
                     "buttonText": "Proceed with a Youth Loan",
                     "color": "white",
-                    "nextStepId": 40,
+                    "nextStepId": 39,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 41,
-                    "textColor": "#df5d79"
+                    "nextStepId": 40,
+                    "textColor": "#4472c4"
                 }
             ],
             "content": {
@@ -1175,7 +1175,7 @@
                     }
                 ]
             },
-            "id": 39,
+            "id": 38,
             "progressBarStage": "discovery",
             "sectionHeader": "Loan Discovery",
             "subtitle": "Associated with 4-H or FFA",
@@ -1185,9 +1185,15 @@
         {
             "buttons": [
                 {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Youth%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
                     "buttonText": "Obtain Assistance with Loan Forms",
                     "color": "white",
-                    "nextStepId": 60,
+                    "nextStepId": 59,
                     "textColor": "#094785"
                 }
             ],
@@ -1212,15 +1218,15 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
             },
-            "id": 40,
+            "id": 39,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
-            "resetToStepId": 37,
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Associated with 4-H or FFA",
             "title": "Youth Loans",
@@ -1231,20 +1237,52 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 42,
+                    "nextStepId": 41,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 44,
-                    "textColor": "#df5d79"
+                    "nextStepId": 43,
+                    "textColor": "#4472c4"
                 }
             ],
             "content": {
                 "paragraphs": [
                     {
                         "paragraphContent": "Are you seeking an Emergency Loan for a loss associated with a natural disaster or emergency declaration?"
+                    }
+                ]
+            },
+            "id": 40,
+            "progressBarStage": "discovery",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Associated with a Natural Disaster of Emergency Declaration\n",
+            "title": "Emergency Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Proceed with an Emergency Loan",
+                    "color": "white",
+                    "nextStepId": 42,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 43,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "The Emergency Loan Program is triggered when a natural disaster is designated by the Secretary of Agriculture, or a natural disaster or emergency is declared by the President under the Stafford Act. These loans help producers who suffer qualifying farm related losses directly caused by the disaster in a county declared or designated as a primary disaster or quarantine area. Also, farmers located in counties that are contiguous to the declared, designated, or quarantined area may qualify for Emergency loans."
+                    },
+                    {
+                        "paragraphContent": "For production losses, a 30% reduction in a primary crop in a designated or contiguous county is required. Losses to quality, such as receiving a 30% reduced price for flood damaged crops, may be eligible for assistance, too."
                     }
                 ]
             },
@@ -1258,37 +1296,11 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Proceed with an Emergency Loan",
+                    "buttonText": "Download the Readiness Checklist",
                     "color": "white",
-                    "nextStepId": 43,
-                    "textColor": "#20a286"
+                    "textColor": "#20a286",
+                    "url": "/checklists/Emergency%20Loan%20Readiness%20Checklist.pdf"
                 },
-                {
-                    "buttonText": "No",
-                    "color": "white",
-                    "nextStepId": 44,
-                    "textColor": "#df5d79"
-                }
-            ],
-            "content": {
-                "paragraphs": [
-                    {
-                        "paragraphContent": "The Emergency Loan Program is triggered when a natural disaster is designated by the Secretary of Agriculture, or a natural disaster or emergency is declared by the President under the Stafford Act. These loans help producers who suffer qualifying farm related losses directly caused by the disaster in a county declared or designated as a primary disaster or quarantine area. Also, farmers located in counties that are contiguous to the declared, designated, or quarantined area may qualify for Emergency loans."
-                    },
-                    {
-                        "paragraphContent": "For production losses, a 30% reduction in a primary crop in a designated or contiguous county is required. Losses to quality, such as receiving a 30% reduced price for flood damaged crops, may be eligible for assistance, too."
-                    }
-                ]
-            },
-            "id": 42,
-            "progressBarStage": "discovery",
-            "sectionHeader": "Loan Discovery",
-            "subtitle": "Associated with a Natural Disaster of Emergency Declaration\n",
-            "title": "Emergency Loans",
-            "type": "informational"
-        },
-        {
-            "buttons": [
                 {
                     "buttonText": "Obtain Assistance with Loan Forms",
                     "color": "white",
@@ -1317,15 +1329,15 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
             },
-            "id": 43,
+            "id": 42,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
-            "resetToStepId": 37,
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Associated with a Natural Disaster of Emergency Declaration\n",
             "title": "Emergency Loans",
@@ -1336,14 +1348,14 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 45,
+                    "nextStepId": 44,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 47,
-                    "textColor": "#df5d79"
+                    "nextStepId": 46,
+                    "textColor": "#4472c4"
                 }
             ],
             "content": {
@@ -1353,7 +1365,7 @@
                     }
                 ]
             },
-            "id": 44,
+            "id": 43,
             "progressBarStage": "discovery",
             "sectionHeader": "Loan Discovery",
             "subtitle": "Loans up to $50,000",
@@ -1365,14 +1377,14 @@
                 {
                     "buttonText": "Proceed with a Microloan",
                     "color": "white",
-                    "nextStepId": 46,
+                    "nextStepId": 45,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 47,
-                    "textColor": "#df5d79"
+                    "nextStepId": 46,
+                    "textColor": "#4472c4"
                 }
             ],
             "content": {
@@ -1388,7 +1400,7 @@
                     }
                 ]
             },
-            "id": 45,
+            "id": 44,
             "progressBarStage": "discovery",
             "sectionHeader": "Loan Discovery",
             "subtitle": "Loans up to $50,000",
@@ -1398,9 +1410,15 @@
         {
             "buttons": [
                 {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Microloan%20Readiness%20Checklist.pdf"
+                },
+                {
                     "buttonText": "Obtain Assistance with Loan Forms",
                     "color": "white",
-                    "nextStepId": 60,
+                    "nextStepId": 61,
                     "textColor": "#094785"
                 }
             ],
@@ -1425,15 +1443,15 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
             },
-            "id": 46,
+            "id": 45,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
-            "resetToStepId": 37,
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Loans up to $50,000",
             "title": "Microloans",
@@ -1444,19 +1462,19 @@
                 {
                     "buttonText": "Explore Farm Ownership Loans",
                     "color": "white",
-                    "nextStepId": 48,
+                    "nextStepId": 47,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "Explore Term Operating Loans",
                     "color": "white",
-                    "nextStepId": 56,
+                    "nextStepId": 55,
                     "textColor": "#094785"
                 },
                 {
                     "buttonText": "Expore Annual Operating Loans",
                     "color": "white",
-                    "nextStepId": 58,
+                    "nextStepId": 57,
                     "textColor": "#065941"
                 }
             ],
@@ -1467,7 +1485,7 @@
                     }
                 ]
             },
-            "id": 47,
+            "id": 46,
             "progressBarStage": "discovery",
             "sectionHeader": "Loan Discovery",
             "subtitle": "For Farm Ownership and Operating Expenses",
@@ -1479,7 +1497,7 @@
                 {
                     "buttonText": "Learn About Farm Ownership Loans",
                     "color": "white",
-                    "nextStepId": 49,
+                    "nextStepId": 48,
                     "textColor": "#094785"
                 }
             ],
@@ -1493,10 +1511,10 @@
                     }
                 ]
             },
-            "id": 48,
+            "id": 47,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Direct Loans",
-            "resetToStepId": 47,
+            "resetToStepId": 46,
             "sectionHeader": "Loan Discovery",
             "subtitle": "To Purchase or Enlarge Family Flans",
             "title": "Farm Ownership Loans",
@@ -1507,19 +1525,19 @@
                 {
                     "buttonText": "Down Payment Loans",
                     "color": "white",
-                    "nextStepId": 50,
+                    "nextStepId": 49,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "Joint Financing Loans",
                     "color": "white",
-                    "nextStepId": 52,
+                    "nextStepId": 51,
                     "textColor": "#094785"
                 },
                 {
                     "buttonText": "Direct Farm Ownership Loans",
                     "color": "white",
-                    "nextStepId": 54,
+                    "nextStepId": 53,
                     "textColor": "#065941"
                 }
             ],
@@ -1546,10 +1564,10 @@
                     }
                 ]
             },
-            "id": 49,
+            "id": 48,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Direct Loans",
-            "resetToStepId": 47,
+            "resetToStepId": 46,
             "sectionHeader": "Loan Discovery",
             "subtitle": "To Purchase or Enlarge Family Farms",
             "title": "Farm Ownership Loans",
@@ -1560,7 +1578,7 @@
                 {
                     "buttonText": "Proceed with a Down Payment Loan",
                     "color": "white",
-                    "nextStepId": 51,
+                    "nextStepId": 50,
                     "textColor": "#20a286"
                 }
             ],
@@ -1574,17 +1592,30 @@
                     }
                 ]
             },
-            "id": 50,
+            "id": 49,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Farm Ownership Loans",
-            "resetToStepId": 49,
+            "resetToStepId": 48,
             "sectionHeader": "Loan Discovery",
             "subtitle": "",
             "title": "Down Payment Loans",
             "type": "informational"
         },
         {
-            "buttons": [],
+            "buttons": [
+                {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Farm%20Ownership%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "nextStepId": 62,
+                    "textColor": "#094785"
+                }
+            ],
             "content": {
                 "paragraphs": [
                     {
@@ -1606,15 +1637,15 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
             },
-            "id": 51,
+            "id": 50,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
-            "resetToStepId": 37,
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "",
             "title": "Down Payment Loans",
@@ -1625,7 +1656,7 @@
                 {
                     "buttonText": "Proceed with a Joint Financing Loan",
                     "color": "white",
-                    "nextStepId": 53,
+                    "nextStepId": 52,
                     "textColor": "#20a286"
                 }
             ],
@@ -1652,10 +1683,10 @@
                     }
                 ]
             },
-            "id": 52,
+            "id": 51,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Farm Ownership Loans",
-            "resetToStepId": 49,
+            "resetToStepId": 48,
             "sectionHeader": "Loan Discovery",
             "subtitle": "",
             "title": "Joint Financing Loans",
@@ -1664,9 +1695,15 @@
         {
             "buttons": [
                 {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Farm%20Ownership%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
                     "buttonText": "Obtain Assistance with Loan Forms",
                     "color": "white",
-                    "nextStepId": 60,
+                    "nextStepId": 63,
                     "textColor": "#094785"
                 }
             ],
@@ -1691,15 +1728,15 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
             },
-            "id": 53,
+            "id": 52,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
-            "resetToStepId": 37,
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "",
             "title": "Joint Financing Loans",
@@ -1710,7 +1747,7 @@
                 {
                     "buttonText": "Proceed with a Direct Farm Ownership Loan",
                     "color": "white",
-                    "nextStepId": 55,
+                    "nextStepId": 54,
                     "textColor": "#20a286"
                 }
             ],
@@ -1721,10 +1758,10 @@
                     }
                 ]
             },
-            "id": 54,
+            "id": 53,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Farm Ownership Loans",
-            "resetToStepId": 49,
+            "resetToStepId": 48,
             "sectionHeader": "Loan Discovery",
             "subtitle": "",
             "title": "Direct Farm Ownership Loans",
@@ -1733,9 +1770,15 @@
         {
             "buttons": [
                 {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Farm%20Ownership%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
                     "buttonText": "Obtain Assistance with Loan Forms",
                     "color": "white",
-                    "nextStepId": 60,
+                    "nextStepId": 64,
                     "textColor": "#094785"
                 }
             ],
@@ -1760,15 +1803,15 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
             },
-            "id": 55,
+            "id": 54,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
-            "resetToStepId": 37,
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "",
             "title": "Direct Farm Ownership Loans",
@@ -1779,7 +1822,7 @@
                 {
                     "buttonText": "Proceed with a Term Operating Loan",
                     "color": "white",
-                    "nextStepId": 57,
+                    "nextStepId": 56,
                     "textColor": "#20a286"
                 }
             ],
@@ -1796,10 +1839,10 @@
                     }
                 ]
             },
-            "id": 56,
+            "id": 55,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Direct Loans",
-            "resetToStepId": 47,
+            "resetToStepId": 46,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Terminal Loans of Up to 7 Years",
             "title": "Term Operating Loans",
@@ -1808,9 +1851,15 @@
         {
             "buttons": [
                 {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Annual%20and%20Term%20Operating%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
                     "buttonText": "Obtain Assistance with Loan Forms",
                     "color": "white",
-                    "nextStepId": 60,
+                    "nextStepId": 65,
                     "textColor": "#094785"
                 }
             ],
@@ -1835,15 +1884,15 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
             },
-            "id": 57,
+            "id": 56,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
-            "resetToStepId": 37,
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Terminal Loans of Up to 7 Years",
             "title": "Term Operating Loans",
@@ -1854,7 +1903,7 @@
                 {
                     "buttonText": "Proceed with an Annual Operating Loan",
                     "color": "white",
-                    "nextStepId": 59,
+                    "nextStepId": 58,
                     "textColor": "#20a286"
                 }
             ],
@@ -1871,10 +1920,10 @@
                     }
                 ]
             },
-            "id": 58,
+            "id": 57,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Direct Loans",
-            "resetToStepId": 47,
+            "resetToStepId": 46,
             "sectionHeader": "Loan Discovery",
             "subtitle": "For Annual Production Expenses",
             "title": "Annual Operating Loans",
@@ -1883,9 +1932,15 @@
         {
             "buttons": [
                 {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Annual%20and%20Term%20Operating%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
                     "buttonText": "Obtain Assistance with Loan Forms",
                     "color": "white",
-                    "nextStepId": 60,
+                    "nextStepId": 66,
                     "textColor": "#094785"
                 }
             ],
@@ -1910,15 +1965,15 @@
                                     "bulletContent": "Fill out and submit your forms."
                                 }
                             ],
-                            "type": "checkbox"
+                            "type": "numbered"
                         }
                     }
                 ]
             },
-            "id": 59,
+            "id": 58,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
-            "resetToStepId": 37,
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "For Annual Production Expenses",
             "title": "Annual Operating Loans",
@@ -1930,7 +1985,42 @@
                     "buttonText": "Obtain Assistance with Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "?"
+                    "url": "/walkthrough.html?show_forms=FSA-2301,AD-1026"
+                },
+                {
+                    "buttonText": "Find your local FSA Office",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 59,
+            "progressBarStage": "preparation",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Youth Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2302,FSA-2309,FSA-2310,FSA-2370,AD-1026,"
                 },
                 {
                     "buttonText": "Find your local FSA Office",
@@ -1955,7 +2045,217 @@
             "id": 60,
             "progressBarStage": "preparation",
             "sectionHeader": "Loan Discovery",
-            "subtitle": "",
+            "subtitle": "Emergency Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?show_forms=FSA-2330,AD-1026,FSA-2014,FSA-2037"
+                },
+                {
+                    "buttonText": "Find your local FSA Office",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 61,
+            "progressBarStage": "preparation",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Microloans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2150,FSA-2302,FSA-2370,FSA-851,AD-1026"
+                },
+                {
+                    "buttonText": "Find your local FSA Office",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 62,
+            "progressBarStage": "preparation",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Down Payment Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2150,FSA-2302,FSA-2370,FSA-851,AD-1026"
+                },
+                {
+                    "buttonText": "Find your local FSA Office",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 63,
+            "progressBarStage": "preparation",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Joint Financing Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2150,FSA-2302,FSA-2370,FSA-851,AD-1026"
+                },
+                {
+                    "buttonText": "Find your local FSA Office",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 64,
+            "progressBarStage": "preparation",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Direct Farm Ownership Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2302,FSA-2370,AD-1026"
+                },
+                {
+                    "buttonText": "Find your local FSA Office",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 65,
+            "progressBarStage": "preparation",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Term Operating Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2302,FSA-2370,AD-1026"
+                },
+                {
+                    "buttonText": "Find your local FSA Office",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 66,
+            "progressBarStage": "preparation",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Annual Operating Loans",
             "title": "Forms Support",
             "type": "informational"
         }

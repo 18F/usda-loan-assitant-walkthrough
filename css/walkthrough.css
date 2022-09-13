@@ -5218,7 +5218,13 @@ footer .footer-tertiary-section .footer-branding .agency-logo .agency-link .agen
 footer .footer-tertiary-section .footer-social {
     display: flex;
     justify-content: space-between;
+    gap: 5px;
     width: 22.4rem;
+}
+footer .grid-col-auto{
+    width: 20%;
+    text-align: center;
+    font-size: 11px;
 }
 .social-link {
     height: 3.2rem;
@@ -10544,7 +10550,7 @@ footer .footer-tertiary-section {
 }
 footer .footer-tertiary-section .footer-bottom {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     width: 100%;
     font-size: 1.6rem;
 }
@@ -17287,4 +17293,3 @@ h6#related-resources {
     flex-grow: 1;
     margin-bottom: 3rem;
 }
-

@@ -183,3 +183,81 @@ a.visited, a:visited {
     width: 100%;
     height: 100%;
 }
+
+/* Footer */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+    display: block;
+}
+ul.footer-primary-links {
+    margin-top: 1em;
+}
+
+.footer-links-nav {
+    padding-left: 0;
+}
+.footer-links-nav a {
+    position: relative;
+}
+.footer-links-nav a span.ext {
+    position: absolute;
+    margin-top: 0.5rem;
+}
+.footer-links-nav a svg.ext {
+    margin-left: 0.5rem;
+}
+.footer-links-container .farmers-basic-block {
+    position: relative;
+    top: -1rem;
+    margin: auto;
+}
+.footer-links-container .farmers-basic-block:nth-child(3) {
+    margin: 0;
+}
+.footer-links-container .farmers-basic-block:nth-child(3) .subnav-content {
+    font-size: 1.4rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+}
+.footer-links-container .farmers-basic-block:nth-child(3) .subnav-content a {
+    text-decoration: underline;
+}
+.footer-links-container .farmers-basic-block:nth-child(3) .subnav-content.helpdesk {
+    padding-left: 0;
+}
+.footer-logo img {
+    position: relative;
+    left: -1rem;
+    width: 17rem !important;
+    float: none !important;
+    margin-right: 0 !important;
+}
+field-content .image-carousel .image-carousel-footer .usa-grid p,
+.image-carousel .image-carousel-footer .field-content .usa-grid p,
+.image-carousel .image-carousel-footer .row p {
+    width: 100%;
+}
+.image-carousel .image-carousel-footer a {
+    height: 22px;
+    color: #006546;
+    font-family: "Source Sans Pro";
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 22px;
+    padding-top: 1.5rem;
+    background-image: none;
+    position: relative;
+    right: -1.5vw;
+}

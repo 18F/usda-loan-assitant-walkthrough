@@ -10,6 +10,7 @@
                 }
             ],
             "content": {
+                "captionText": "Watch the short video above. Then, click the button below to see if you are eligible.",
                 "paragraphs": [
                     {
                         "paragraphContent": "The first step is to determine if you qualify for an FSA Farm Loan."
@@ -20,7 +21,8 @@
                     {
                         "paragraphContent": "Click the button below to determine your eligibility."
                     }
-                ]
+                ],
+                "src": "https://www.youtube.com/embed/dPfq0DrkUSE"
             },
             "id": 1,
             "progressBarStage": "start",
@@ -95,10 +97,10 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -186,10 +188,10 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -280,10 +282,10 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -371,10 +373,10 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -462,10 +464,10 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -559,10 +561,10 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -669,10 +671,10 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -760,10 +762,10 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -851,10 +853,10 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -942,10 +944,10 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -1033,10 +1035,10 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -1083,7 +1085,7 @@
             "resetToStepId": 1,
             "sectionHeader": "Eligibility Self Assessment",
             "subtitle": "",
-            "title": "No Eligibility Concerns",
+            "title": "Self-Assessment Completed",
             "type": "informational"
         },
         {
@@ -1120,123 +1122,6 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 38,
-                    "textColor": "#20a286"
-                },
-                {
-                    "buttonText": "No",
-                    "color": "white",
-                    "nextStepId": 40,
-                    "textColor": "#4472c4"
-                }
-            ],
-            "content": {
-                "paragraphs": [
-                    {
-                        "paragraphContent": "FSA makes loans to young people to start and operate income-producing projects of modest size in connection with their participation in 4-H clubs, FFA, Tribal youth groups, or similar agricultural youth organizations."
-                    },
-                    {
-                        "paragraphContent": "For a project to be eligible for a Youth Loan, it needs to provide an opportunity for the young person to acquire experience and education in agriculture-related skills."
-                    },
-                    {
-                        "paragraphContent": "Are you seeking financial assistance with an educational agricultural project?"
-                    }
-                ]
-            },
-            "id": 37,
-            "progressBarStage": "discovery",
-            "sectionHeader": "Loan Discovery",
-            "subtitle": "Associated with 4-H or FFA",
-            "title": "Youth Loans",
-            "type": "informational"
-        },
-        {
-            "buttons": [
-                {
-                    "buttonText": "Proceed with a Youth Loan",
-                    "color": "white",
-                    "nextStepId": 39,
-                    "textColor": "#20a286"
-                },
-                {
-                    "buttonText": "No",
-                    "color": "white",
-                    "nextStepId": 40,
-                    "textColor": "#4472c4"
-                }
-            ],
-            "content": {
-                "paragraphs": [
-                    {
-                        "paragraphContent": "To qualify for a FSA Youth Loan, you must be between the ages of 10 and 20 at the time of the loan closing. You must be seeking a loan for educational purposes, up to $5,000. You will need to have a Project Advisor/Sponsor and the consent of a parent or legal guardian."
-                    },
-                    {
-                        "paragraphContent": "Note: If you are over 18 years of age, and seeking more than $5,000, you may qualify for other FSA loans."
-                    }
-                ]
-            },
-            "id": 38,
-            "progressBarStage": "discovery",
-            "sectionHeader": "Loan Discovery",
-            "subtitle": "Associated with 4-H or FFA",
-            "title": "Youth Loans",
-            "type": "informational"
-        },
-        {
-            "buttons": [
-                {
-                    "buttonText": "Download the Readiness Checklist",
-                    "color": "white",
-                    "textColor": "#20a286",
-                    "url": "/checklists/Youth%20Loan%20Readiness%20Checklist.pdf"
-                },
-                {
-                    "buttonText": "Obtain Assistance with Loan Forms",
-                    "color": "white",
-                    "nextStepId": 59,
-                    "textColor": "#094785"
-                }
-            ],
-            "content": {
-                "paragraphs": [
-                    {
-                        "paragraphContent": "Your Next Steps"
-                    },
-                    {
-                        "paragraphContent": "IMPORTANT: Make sure you have gathered all documentation before proceeding with the loan forms."
-                    },
-                    {
-                        "paragraphContent": {
-                            "bullets": [
-                                {
-                                    "bulletContent": "Download and print out the Readiness Checklist for the Youth Loan Program."
-                                },
-                                {
-                                    "bulletContent": "Gather the necessary loan application forms and documentation from the checklist."
-                                },
-                                {
-                                    "bulletContent": "Fill out and submit your forms."
-                                }
-                            ],
-                            "type": "numbered"
-                        }
-                    }
-                ]
-            },
-            "id": 39,
-            "progressBarStage": "preparation",
-            "resetText": "Discover Additional Loan Options",
-            "resetToStepId": 36,
-            "sectionHeader": "Loan Discovery",
-            "subtitle": "Associated with 4-H or FFA",
-            "title": "Youth Loans",
-            "type": "informational"
-        },
-        {
-            "buttons": [
-                {
-                    "buttonText": "Yes",
-                    "color": "white",
                     "nextStepId": 41,
                     "textColor": "#20a286"
                 },
@@ -1254,7 +1139,7 @@
                     }
                 ]
             },
-            "id": 40,
+            "id": 37,
             "progressBarStage": "discovery",
             "sectionHeader": "Loan Discovery",
             "subtitle": "Associated with a Natural Disaster of Emergency Declaration\n",
@@ -1286,7 +1171,7 @@
                     }
                 ]
             },
-            "id": 41,
+            "id": 38,
             "progressBarStage": "discovery",
             "sectionHeader": "Loan Discovery",
             "subtitle": "Associated with a Natural Disaster of Emergency Declaration\n",
@@ -1334,7 +1219,7 @@
                     }
                 ]
             },
-            "id": 42,
+            "id": 39,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
             "resetToStepId": 36,
@@ -1365,7 +1250,7 @@
                     }
                 ]
             },
-            "id": 43,
+            "id": 40,
             "progressBarStage": "discovery",
             "sectionHeader": "Loan Discovery",
             "subtitle": "Loans up to $50,000",
@@ -1400,7 +1285,7 @@
                     }
                 ]
             },
-            "id": 44,
+            "id": 41,
             "progressBarStage": "discovery",
             "sectionHeader": "Loan Discovery",
             "subtitle": "Loans up to $50,000",
@@ -1448,7 +1333,7 @@
                     }
                 ]
             },
-            "id": 45,
+            "id": 42,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
             "resetToStepId": 36,
@@ -1485,7 +1370,7 @@
                     }
                 ]
             },
-            "id": 46,
+            "id": 43,
             "progressBarStage": "discovery",
             "sectionHeader": "Loan Discovery",
             "subtitle": "For Farm Ownership and Operating Expenses",
@@ -1511,7 +1396,7 @@
                     }
                 ]
             },
-            "id": 47,
+            "id": 44,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Direct Loans",
             "resetToStepId": 46,
@@ -1529,7 +1414,7 @@
                     "textColor": "#20a286"
                 },
                 {
-                    "buttonText": "Joint Financing Loans",
+                    "buttonText": "Joint Financing/Participation Loans",
                     "color": "white",
                     "nextStepId": 51,
                     "textColor": "#094785"
@@ -1553,7 +1438,7 @@
                                     "bulletContent": "Down Payment Loans \u2013 The applicant must make a down payment of at least 5% of the purchase price"
                                 },
                                 {
-                                    "bulletContent": "Joint Financing Loans \u2013 No down payment required, but at least 50% of the purchase price must be financed by a commercial lender or contract for deed holder."
+                                    "bulletContent": "Joint Financing/Participation Loans \u2013 No down payment required, but at least 50% of the purchase price must be financed by a commercial lender or contract for deed holder."
                                 },
                                 {
                                     "bulletContent": "Direct Farm Ownership Loans \u2013 No down payment required; FSA can finance up to 100% of the appraised value up to the loan limit."
@@ -1564,7 +1449,7 @@
                     }
                 ]
             },
-            "id": 48,
+            "id": 45,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Direct Loans",
             "resetToStepId": 46,
@@ -1592,7 +1477,7 @@
                     }
                 ]
             },
-            "id": 49,
+            "id": 46,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Farm Ownership Loans",
             "resetToStepId": 48,
@@ -1642,7 +1527,7 @@
                     }
                 ]
             },
-            "id": 50,
+            "id": 47,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
             "resetToStepId": 36,
@@ -1663,7 +1548,7 @@
             "content": {
                 "paragraphs": [
                     {
-                        "paragraphContent": "Joint Financing Loans may be used to purchase a farm, enlarge an existing farm, construct new farm buildings and/or improve structures, pay closing costs, and promote soil and water conservation and protection."
+                        "paragraphContent": "Joint Financing/Participation Loans may be used to purchase a farm, enlarge an existing farm, construct new farm buildings and/or improve structures, pay closing costs, and promote soil and water conservation and protection."
                     },
                     {
                         "paragraphContent": "Requirements:"
@@ -1683,13 +1568,13 @@
                     }
                 ]
             },
-            "id": 51,
+            "id": 48,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Farm Ownership Loans",
             "resetToStepId": 48,
             "sectionHeader": "Loan Discovery",
             "subtitle": "",
-            "title": "Joint Financing Loans",
+            "title": "Joint Financing/Participation Loans",
             "type": "informational"
         },
         {
@@ -1733,13 +1618,13 @@
                     }
                 ]
             },
-            "id": 52,
+            "id": 49,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
             "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "",
-            "title": "Joint Financing Loans",
+            "title": "Joint Financing/Participation Loans",
             "type": "informational"
         },
         {
@@ -1758,7 +1643,7 @@
                     }
                 ]
             },
-            "id": 53,
+            "id": 50,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Farm Ownership Loans",
             "resetToStepId": 48,
@@ -1808,7 +1693,7 @@
                     }
                 ]
             },
-            "id": 54,
+            "id": 51,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
             "resetToStepId": 36,
@@ -1839,7 +1724,7 @@
                     }
                 ]
             },
-            "id": 55,
+            "id": 52,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Direct Loans",
             "resetToStepId": 46,
@@ -1889,7 +1774,7 @@
                     }
                 ]
             },
-            "id": 56,
+            "id": 53,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
             "resetToStepId": 36,
@@ -1920,7 +1805,7 @@
                     }
                 ]
             },
-            "id": 57,
+            "id": 54,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Direct Loans",
             "resetToStepId": 46,
@@ -1970,7 +1855,7 @@
                     }
                 ]
             },
-            "id": 58,
+            "id": 55,
             "progressBarStage": "preparation",
             "resetText": "Discover Additional Loan Options",
             "resetToStepId": 36,
@@ -1982,16 +1867,133 @@
         {
             "buttons": [
                 {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 38,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 40,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "FSA makes loans to young people to start and operate income-producing projects of modest size in connection with their participation in 4-H clubs, FFA, Tribal youth groups, or similar agricultural youth organizations."
+                    },
+                    {
+                        "paragraphContent": "For a project to be eligible for a Youth Loan, it needs to provide an opportunity for the young person to acquire experience and education in agriculture-related skills."
+                    },
+                    {
+                        "paragraphContent": "Are you seeking financial assistance with an educational agricultural project?"
+                    }
+                ]
+            },
+            "id": 56,
+            "progressBarStage": "discovery",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Associated with 4-H or FFA",
+            "title": "Youth Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Proceed with a Youth Loan",
+                    "color": "white",
+                    "nextStepId": 39,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 40,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "To qualify for a FSA Youth Loan, you must be between the ages of 10 and 20 at the time of the loan closing. You must be seeking a loan for educational purposes, up to $5,000. You will need to have a Project Advisor/Sponsor and the consent of a parent or legal guardian."
+                    },
+                    {
+                        "paragraphContent": "Note: If you are over 18 years of age, and seeking more than $5,000, you may qualify for other FSA loans."
+                    }
+                ]
+            },
+            "id": 57,
+            "progressBarStage": "discovery",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Associated with 4-H or FFA",
+            "title": "Youth Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Youth%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "nextStepId": 59,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Your Next Steps"
+                    },
+                    {
+                        "paragraphContent": "IMPORTANT: Make sure you have gathered all documentation before proceeding with the loan forms."
+                    },
+                    {
+                        "paragraphContent": {
+                            "bullets": [
+                                {
+                                    "bulletContent": "Download and print out the Readiness Checklist for the Youth Loan Program."
+                                },
+                                {
+                                    "bulletContent": "Gather the necessary loan application forms and documentation from the checklist."
+                                },
+                                {
+                                    "bulletContent": "Fill out and submit your forms."
+                                }
+                            ],
+                            "type": "numbered"
+                        }
+                    }
+                ]
+            },
+            "id": 58,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Additional Loan Options",
+            "resetToStepId": 36,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Associated with 4-H or FFA",
+            "title": "Youth Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
                     "buttonText": "Obtain Assistance with Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
                     "url": "/walkthrough.html?show_forms=FSA-2301,AD-1026"
                 },
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -2023,10 +2025,10 @@
                     "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2302,FSA-2309,FSA-2310,FSA-2370,AD-1026,"
                 },
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -2058,10 +2060,10 @@
                     "url": "/walkthrough.html?show_forms=FSA-2330,AD-1026,FSA-2014,FSA-2037"
                 },
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -2093,10 +2095,10 @@
                     "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2150,FSA-2302,FSA-2370,FSA-851,AD-1026"
                 },
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -2128,10 +2130,10 @@
                     "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2150,FSA-2302,FSA-2370,FSA-851,AD-1026"
                 },
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -2150,7 +2152,7 @@
             "id": 63,
             "progressBarStage": "preparation",
             "sectionHeader": "Loan Discovery",
-            "subtitle": "Joint Financing Loans",
+            "subtitle": "Joint Financing/Participation Loans",
             "title": "Forms Support",
             "type": "informational"
         },
@@ -2163,10 +2165,10 @@
                     "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2150,FSA-2302,FSA-2370,FSA-851,AD-1026"
                 },
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -2198,10 +2200,10 @@
                     "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2302,FSA-2370,AD-1026"
                 },
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {
@@ -2233,10 +2235,10 @@
                     "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2302,FSA-2370,AD-1026"
                 },
                 {
-                    "buttonText": "Find your local FSA Office",
+                    "buttonText": "Find your local Farm Loan Manager",
                     "color": "white",
                     "textColor": "#4472c4",
-                    "url": "https://www.farmers.gov/working-with-us/service-center-locator"
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
                 }
             ],
             "content": {

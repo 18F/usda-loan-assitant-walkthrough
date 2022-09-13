@@ -5218,14 +5218,10 @@ footer .footer-tertiary-section .footer-branding .agency-logo .agency-link .agen
 footer .footer-tertiary-section .footer-social {
     display: flex;
     justify-content: space-between;
-    gap: 5px;
     width: 22.4rem;
 }
-footer .grid-col-auto{
-    width: 20%;
-    text-align: center;
-    font-size: 11px;
-}
+footer .footer-tertiary-section .footer-social .grid-col-auto{width: 20%;text-align: center;font-size: 10px;}
+footer .footer-tertiary-section .footer-social img{height: 100%;}
 .social-link {
     height: 3.2rem;
     min-width: 3.2rem;
@@ -10550,9 +10546,10 @@ footer .footer-tertiary-section {
 }
 footer .footer-tertiary-section .footer-bottom {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100%;
     font-size: 1.6rem;
+    margin-top: 20px;    
 }
 @media (max-width: 769px) {
     footer .footer-tertiary-section .footer-bottom {

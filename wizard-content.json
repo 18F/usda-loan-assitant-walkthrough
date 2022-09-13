@@ -1122,13 +1122,13 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 41,
+                    "nextStepId": 38,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 43,
+                    "nextStepId": 40,
                     "textColor": "#4472c4"
                 }
             ],
@@ -1151,13 +1151,13 @@
                 {
                     "buttonText": "Proceed with an Emergency Loan",
                     "color": "white",
-                    "nextStepId": 42,
+                    "nextStepId": 39,
                     "textColor": "#20a286"
                 },
                 {
-                    "buttonText": "No",
+                    "buttonText": "Discover Additional Loan Options",
                     "color": "white",
-                    "nextStepId": 43,
+                    "nextStepId": 40,
                     "textColor": "#4472c4"
                 }
             ],
@@ -1233,13 +1233,13 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 44,
+                    "nextStepId": 41,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 46,
+                    "nextStepId": 43,
                     "textColor": "#4472c4"
                 }
             ],
@@ -1262,13 +1262,13 @@
                 {
                     "buttonText": "Proceed with a Microloan",
                     "color": "white",
-                    "nextStepId": 45,
+                    "nextStepId": 42,
                     "textColor": "#20a286"
                 },
                 {
-                    "buttonText": "No",
+                    "buttonText": "Discover Additional Loan Options",
                     "color": "white",
-                    "nextStepId": 46,
+                    "nextStepId": 43,
                     "textColor": "#4472c4"
                 }
             ],
@@ -1347,19 +1347,19 @@
                 {
                     "buttonText": "Explore Farm Ownership Loans",
                     "color": "white",
-                    "nextStepId": 47,
+                    "nextStepId": 44,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "Explore Term Operating Loans",
                     "color": "white",
-                    "nextStepId": 55,
+                    "nextStepId": 52,
                     "textColor": "#094785"
                 },
                 {
                     "buttonText": "Expore Annual Operating Loans",
                     "color": "white",
-                    "nextStepId": 57,
+                    "nextStepId": 54,
                     "textColor": "#065941"
                 }
             ],
@@ -1372,6 +1372,8 @@
             },
             "id": 43,
             "progressBarStage": "discovery",
+            "resetText": "Discover Additional Loan Options",
+            "resetToStepId": 56,
             "sectionHeader": "Loan Discovery",
             "subtitle": "For Farm Ownership and Operating Expenses",
             "title": "Direct Loans",
@@ -1382,7 +1384,7 @@
                 {
                     "buttonText": "Learn About Farm Ownership Loans",
                     "color": "white",
-                    "nextStepId": 48,
+                    "nextStepId": 45,
                     "textColor": "#094785"
                 }
             ],
@@ -1399,7 +1401,7 @@
             "id": 44,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Direct Loans",
-            "resetToStepId": 46,
+            "resetToStepId": 43,
             "sectionHeader": "Loan Discovery",
             "subtitle": "To Purchase or Enlarge Family Flans",
             "title": "Farm Ownership Loans",
@@ -1410,19 +1412,19 @@
                 {
                     "buttonText": "Down Payment Loans",
                     "color": "white",
-                    "nextStepId": 49,
+                    "nextStepId": 46,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "Joint Financing/Participation Loans",
                     "color": "white",
-                    "nextStepId": 51,
+                    "nextStepId": 48,
                     "textColor": "#094785"
                 },
                 {
                     "buttonText": "Direct Farm Ownership Loans",
                     "color": "white",
-                    "nextStepId": 53,
+                    "nextStepId": 50,
                     "textColor": "#065941"
                 }
             ],
@@ -1452,7 +1454,7 @@
             "id": 45,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Direct Loans",
-            "resetToStepId": 46,
+            "resetToStepId": 43,
             "sectionHeader": "Loan Discovery",
             "subtitle": "To Purchase or Enlarge Family Farms",
             "title": "Farm Ownership Loans",
@@ -1463,7 +1465,7 @@
                 {
                     "buttonText": "Proceed with a Down Payment Loan",
                     "color": "white",
-                    "nextStepId": 50,
+                    "nextStepId": 47,
                     "textColor": "#20a286"
                 }
             ],
@@ -1480,7 +1482,7 @@
             "id": 46,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Farm Ownership Loans",
-            "resetToStepId": 48,
+            "resetToStepId": 45,
             "sectionHeader": "Loan Discovery",
             "subtitle": "",
             "title": "Down Payment Loans",
@@ -1541,7 +1543,7 @@
                 {
                     "buttonText": "Proceed with a Joint Financing Loan",
                     "color": "white",
-                    "nextStepId": 52,
+                    "nextStepId": 49,
                     "textColor": "#20a286"
                 }
             ],
@@ -1571,7 +1573,7 @@
             "id": 48,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Farm Ownership Loans",
-            "resetToStepId": 48,
+            "resetToStepId": 45,
             "sectionHeader": "Loan Discovery",
             "subtitle": "",
             "title": "Joint Financing/Participation Loans",
@@ -1632,7 +1634,7 @@
                 {
                     "buttonText": "Proceed with a Direct Farm Ownership Loan",
                     "color": "white",
-                    "nextStepId": 54,
+                    "nextStepId": 51,
                     "textColor": "#20a286"
                 }
             ],
@@ -1646,7 +1648,7 @@
             "id": 50,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Farm Ownership Loans",
-            "resetToStepId": 48,
+            "resetToStepId": 45,
             "sectionHeader": "Loan Discovery",
             "subtitle": "",
             "title": "Direct Farm Ownership Loans",
@@ -1707,7 +1709,7 @@
                 {
                     "buttonText": "Proceed with a Term Operating Loan",
                     "color": "white",
-                    "nextStepId": 56,
+                    "nextStepId": 53,
                     "textColor": "#20a286"
                 }
             ],
@@ -1727,7 +1729,7 @@
             "id": 52,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Direct Loans",
-            "resetToStepId": 46,
+            "resetToStepId": 43,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Terminal Loans of Up to 7 Years",
             "title": "Term Operating Loans",
@@ -1788,7 +1790,7 @@
                 {
                     "buttonText": "Proceed with an Annual Operating Loan",
                     "color": "white",
-                    "nextStepId": 58,
+                    "nextStepId": 55,
                     "textColor": "#20a286"
                 }
             ],
@@ -1808,7 +1810,7 @@
             "id": 54,
             "progressBarStage": "discovery",
             "resetText": "Discover Other Direct Loans",
-            "resetToStepId": 46,
+            "resetToStepId": 43,
             "sectionHeader": "Loan Discovery",
             "subtitle": "For Annual Production Expenses",
             "title": "Annual Operating Loans",
@@ -1869,13 +1871,13 @@
                 {
                     "buttonText": "Yes",
                     "color": "white",
-                    "nextStepId": 38,
+                    "nextStepId": 57,
                     "textColor": "#20a286"
                 },
                 {
                     "buttonText": "No",
                     "color": "white",
-                    "nextStepId": 40,
+                    "nextStepId": 36,
                     "textColor": "#4472c4"
                 }
             ],
@@ -1904,13 +1906,13 @@
                 {
                     "buttonText": "Proceed with a Youth Loan",
                     "color": "white",
-                    "nextStepId": 39,
+                    "nextStepId": 58,
                     "textColor": "#20a286"
                 },
                 {
-                    "buttonText": "No",
+                    "buttonText": "Discover Additional Loan Options",
                     "color": "white",
-                    "nextStepId": 40,
+                    "nextStepId": 36,
                     "textColor": "#4472c4"
                 }
             ],

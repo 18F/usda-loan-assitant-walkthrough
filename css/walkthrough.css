@@ -987,100 +987,100 @@ button {
 }
 @font-face {
     font-family: "Public Sans";
-    src: url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Regular.eot), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Regular.eot?#iefix) format("embedded-opentype"),
-        url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Regular.woff2) format("woff2"), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Regular.woff) format("woff"),
-        url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Regular.woff2) format("woff2"), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Regular.otf) format("opentype"),
-        url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Regular.ttf) format("truetype"), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Regular.svg#public_sansregular) format("svg");
+    src: url(/fonts/public-sans/PublicSans-Regular.eot), url(/fonts/public-sans/PublicSans-Regular.eot?#iefix) format("embedded-opentype"),
+        url(/fonts/public-sans/PublicSans-Regular.woff2) format("woff2"), url(/fonts/public-sans/PublicSans-Regular.woff) format("woff"),
+        url(/fonts/public-sans/PublicSans-Regular.woff2) format("woff2"), url(/fonts/public-sans/PublicSans-Regular.otf) format("opentype"),
+        url(/fonts/public-sans/PublicSans-Regular.ttf) format("truetype"), url(/fonts/public-sans/PublicSans-Regular.svg#public_sansregular) format("svg");
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
     font-family: "Public Sans";
-    src: url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Black.ttf), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Black.ttf) format("truetype");
+    src: url(/fonts/public-sans/PublicSans-Black.ttf), url(/fonts/public-sans/PublicSans-Black.ttf) format("truetype");
     font-weight: 900;
     font-style: normal;
 }
 @font-face {
     font-family: "Public Sans";
-    src: url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-ExtraBold.woff), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-ExtraBold.ttf) format("truetype");
+    src: url(/fonts/public-sans/PublicSans-ExtraBold.woff), url(/fonts/public-sans/PublicSans-ExtraBold.ttf) format("truetype");
     font-weight: 800;
     font-style: normal;
 }
 @font-face {
     font-family: "Public Sans";
-    src: url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Bold.woff), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Bold.ttf) format("truetype");
+    src: url(/fonts/public-sans/PublicSans-Bold.woff), url(/fonts/public-sans/PublicSans-Bold.ttf) format("truetype");
     font-weight: 700;
     font-style: normal;
 }
 @font-face {
     font-family: "Public Sans";
-    src: url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-SemiBold.woff), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-SemiBold.ttf) format("truetype");
+    src: url(/fonts/public-sans/PublicSans-SemiBold.woff), url(/fonts/public-sans/PublicSans-SemiBold.ttf) format("truetype");
     font-weight: 600;
     font-style: normal;
 }
 @font-face {
     font-family: "Public Sans";
-    src: url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Medium.woff), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Medium.ttf) format("truetype");
+    src: url(/fonts/public-sans/PublicSans-Medium.woff), url(/fonts/public-sans/PublicSans-Medium.ttf) format("truetype");
     font-weight: 500;
     font-style: normal;
 }
 @font-face {
     font-family: "Public Sans";
-    src: url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Regular.woff), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Regular.ttf) format("truetype");
+    src: url(/fonts/public-sans/PublicSans-Regular.woff), url(/fonts/public-sans/PublicSans-Regular.ttf) format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
     font-family: "Public Sans";
-    src: url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Light.woff), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Light.ttf) format("truetype");
+    src: url(/fonts/public-sans/PublicSans-Light.woff), url(/fonts/public-sans/PublicSans-Light.ttf) format("truetype");
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
     font-family: "Public Sans";
-    src: url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-ExtraLight.woff), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-ExtraLight.ttf) format("truetype");
+    src: url(/fonts/public-sans/PublicSans-ExtraLight.woff), url(/fonts/public-sans/PublicSans-ExtraLight.ttf) format("truetype");
     font-weight: 200;
     font-style: normal;
 }
 @font-face {
     font-family: "Public Sans";
-    src: url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Italic.woff), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-Italic.ttf) format("truetype");
+    src: url(/fonts/public-sans/PublicSans-Italic.woff), url(/fonts/public-sans/PublicSans-Italic.ttf) format("truetype");
     font-weight: 400;
     font-style: italic;
 }
 @font-face {
     font-family: "Public Sans";
-    src: url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-BoldItalic.woff), url(/themes/farmers_update/assets/fonts/public-sans/PublicSans-BoldItalic.ttf) format("truetype");
+    src: url(/fonts/public-sans/PublicSans-BoldItalic.woff), url(/fonts/public-sans/PublicSans-BoldItalic.ttf) format("truetype");
     font-weight: 700;
     font-style: italic;
 }
 @font-face {
     font-family: Merriweather;
-    src: url(/themes/farmers_update/assets/fonts/merriweather/Latin-Merriweather-Regular.woff), url(/themes/farmers_update/assets/fonts/merriweather/Latin-Merriweather-Regular.ttf) format("truetype");
+    src: url(/fonts/merriweather/Latin-Merriweather-Regular.woff), url(/fonts/merriweather/Latin-Merriweather-Regular.ttf) format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
     font-family: Merriweather;
-    src: url(/themes/farmers_update/assets/fonts/merriweather/Latin-Merriweather-Bold.woff), url(/themes/farmers_update/assets/fonts/merriweather/Latin-Merriweather-Bold.ttf) format("truetype");
+    src: url(/fonts/merriweather/Latin-Merriweather-Bold.woff), url(/fonts/merriweather/Latin-Merriweather-Bold.ttf) format("truetype");
     font-weight: 700;
     font-style: normal;
 }
 @font-face {
     font-family: Merriweather;
-    src: url(/themes/farmers_update/assets/fonts/merriweather/Latin-Merriweather-BoldItalic.woff), url(/themes/farmers_update/assets/fonts/merriweather/Latin-Merriweather-BoldItalic.ttf) format("truetype");
+    src: url(/fonts/merriweather/Latin-Merriweather-BoldItalic.woff), url(/fonts/merriweather/Latin-Merriweather-BoldItalic.ttf) format("truetype");
     font-weight: 700;
     font-style: italic;
 }
 @font-face {
     font-family: Merriweather;
-    src: url(/themes/farmers_update/assets/fonts/merriweather/Latin-Merriweather-Light.woff), url(/themes/farmers_update/assets/fonts/merriweather/Latin-Merriweather-Light.ttf) format("truetype");
+    src: url(/fonts/merriweather/Latin-Merriweather-Light.woff), url(/fonts/merriweather/Latin-Merriweather-Light.ttf) format("truetype");
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
     font-family: Merriweather;
-    src: url(/themes/farmers_update/assets/fonts/merriweather/Latin-Merriweather-LightItalic.woff), url(/themes/farmers_update/assets/fonts/merriweather/Latin-Merriweather-LightItalic.ttf) format("truetype");
+    src: url(/fonts/merriweather/Latin-Merriweather-LightItalic.woff), url(/fonts/merriweather/Latin-Merriweather-LightItalic.ttf) format("truetype");
     font-weight: 300;
     font-style: italic;
 }
@@ -2245,7 +2245,7 @@ ul.links-horizontal-bar li:not(:last-child):after {
 .alert-wrapper.compact-alert .usa-alert-body.exclamation-icon .usa-alert-heading:before {
     content: "";
     display: inline-block;
-    background-image: url(/themes/farmers_update/assets/img/alerts/exclamation-icon.svg);
+    background-image: url(/images/alerts/exclamation-icon.svg);
     background-repeat: no-repeat;
     background-size: 2.4rem 2.4rem;
     background-position: 0 1px;
@@ -2333,7 +2333,7 @@ ul.links-horizontal-bar li:not(:last-child):after {
 .usa-alert-info .usa-alert-body,
 .usa-alert-success .usa-alert-body,
 .usa-alert-warning .usa-alert-body {
-    background-image: url(/themes/farmers_update/assets/img/alerts/info-icon.svg);
+    background-image: url(/images/alerts/info-icon.svg);
     background-repeat: no-repeat;
     background-size: 24px 24px;
     background-position: 9px 11px;
@@ -2342,7 +2342,7 @@ ul.links-horizontal-bar li:not(:last-child):after {
 .usa-alert-info .usa-alert-body.exclamation-icon,
 .usa-alert-success .usa-alert-body.exclamation-icon,
 .usa-alert-warning .usa-alert-body.exclamation-icon {
-    background-image: url(/themes/farmers_update/assets/img/alerts/exclamation-icon.svg);
+    background-image: url(/images/alerts/exclamation-icon.svg);
 }
 .usa-alert {
     padding-right: 2rem;
@@ -2380,14 +2380,14 @@ a {
 }
 a.visited,
 a:visited {
-    color: #4c2c92;
+    color: #006546;
 }
 a.visited.hover,
 a.visited:hover,
 a:visited.hover,
 a:visited:hover {
-    text-shadow: 0 0 0.08rem #4c2c92;
-    -webkit-text-stroke: 1px #4c2c92;
+    text-shadow: 0 0 0.08rem #006546;
+    -webkit-text-stroke: 1px #006546;
 }
 a.hover,
 a:hover {
@@ -2420,20 +2420,20 @@ a:focus {
     right: 1.5rem;
     height: 4rem;
     width: 4rem;
-    background: url(/themes/farmers_update/assets/img/caret-right.svg) no-repeat 99.5% 0.4rem;
+    background: url(/images/caret-right.svg) no-repeat 99.5% 0.4rem;
     background-size: 2rem;
 }
 .text-link.visited,
 .text-link:visited {
-    color: #4c2c92;
+    color: #006546;
 }
 .text-link.visited.hover,
 .text-link.visited:hover,
 .text-link:visited.hover,
 .text-link:visited:hover {
-    color: #004785;
-    text-shadow: 0 0 0 #004785;
-    -webkit-text-stroke: 0 #004785;
+    color: ##49a564;
+    text-shadow: 0 0 0 ##49a564;
+    -webkit-text-stroke: 0 ##49a564;
 }
 .text-link.hover,
 .text-link:hover {
@@ -2460,7 +2460,7 @@ a:focus {
     margin-right: -4rem;
     height: 2rem;
     width: 1.6rem;
-    background: url(/themes/farmers_update/assets/img/external-link-icon.svg) no-repeat;
+    background: url(/images/external-link-icon.svg) no-repeat;
     background-position: right 0.9rem;
     background-size: 1.2rem;
 }
@@ -2509,7 +2509,7 @@ a:focus {
     display: inline-block;
     flex-shrink: 0;
     vertical-align: top;
-    background: url(/themes/farmers_update/assets/img/leaves.svg) no-repeat;
+    background: url(/images/leaves.svg) no-repeat;
     width: 18px;
     height: 26px;
     float: left;
@@ -2892,50 +2892,50 @@ table tbody + tbody {
     background-repeat: no-repeat;
 }
 .icon.caret-right {
-    background-image: url(/themes/farmers_update/assets/img/caret-right.svg);
+    background-image: url(/images/caret-right.svg);
 }
 .icon.search {
-    background-image: url(/themes/farmers_update/assets/img/search.svg);
+    background-image: url(/images/search.svg);
 }
 .icon.chevron-up {
-    background-image: url(/themes/farmers_update/assets/img/chevron-up.svg);
+    background-image: url(/images/chevron-up.svg);
     transform: rotateX(180deg);
 }
 .icon.chevron-down {
-    background-image: url(/themes/farmers_update/assets/img/chevron-down.svg);
+    background-image: url(/images/chevron-down.svg);
 }
 .icon.close {
-    background-image: url(/themes/farmers_update/assets/img/close.svg);
+    background-image: url(/images/close.svg);
 }
 .icon.external-link {
-    background-image: url(/themes/farmers_update/assets/img/external-link.svg);
+    background-image: url(/images/external-link.svg);
 }
 .icon.accordion-expand {
-    background-image: url(/themes/farmers_update/assets/img/accordion-expand.svg);
+    background-image: url(/images/accordion-expand.svg);
 }
 .icon.accordion-collapse {
-    background-image: url(/themes/farmers_update/assets/img/accordion-collapse.svg);
+    background-image: url(/images/accordion-collapse.svg);
 }
 .icon.popover {
-    background-image: url(/themes/farmers_update/assets/img/popover.svg);
+    background-image: url(/images/popover.svg);
 }
 .icon.info {
-    background-image: url(/themes/farmers_update/assets/img/info.svg);
+    background-image: url(/images/info.svg);
 }
 .icon.mail {
-    background-image: url(/themes/farmers_update/assets/img/mail.svg);
+    background-image: url(/images/mail.svg);
 }
 .icon.print {
-    background-image: url(/themes/farmers_update/assets/img/print.svg);
+    background-image: url(/images/print.svg);
 }
 .icon.location {
-    background-image: url(/themes/farmers_update/assets/img/location.svg);
+    background-image: url(/images/location.svg);
 }
 .icon.phone {
-    background-image: url(/themes/farmers_update/assets/img/Phone.svg);
+    background-image: url(/images/Phone.svg);
 }
 .icon.globe {
-    background-image: url(/themes/farmers_update/assets/img/globe.svg);
+    background-image: url(/images/globe.svg);
 }
 .header-icon {
     display: flex;
@@ -2943,7 +2943,7 @@ table tbody + tbody {
 .header-icon.globe:before {
     content: "";
     display: inline-block;
-    background-image: url(/themes/farmers_update/assets/img/globe.svg);
+    background-image: url(/images/globe.svg);
     background-repeat: no-repeat;
 }
 .headline-1.header-icon.globe:before,
@@ -3003,16 +3003,16 @@ h6.header-icon.globe:before {
     background-repeat: no-repeat;
 }
 .outline-icon.farmer {
-    background-image: url(/themes/farmers_update/assets/img/farmer.svg);
+    background-image: url(/images/farmer.svg);
 }
 .outline-icon.mfp {
-    background-image: url(/themes/farmers_update/assets/img/mfp.svg);
+    background-image: url(/images/mfp.svg);
 }
 .outline-icon.land {
-    background-image: url(/themes/farmers_update/assets/img/land.svg);
+    background-image: url(/images/land.svg);
 }
 .outline-icon.barn {
-    background-image: url(/themes/farmers_update/assets/img/barn.svg);
+    background-image: url(/images/barn.svg);
 }
 img {
     max-width: 100%;
@@ -3943,7 +3943,7 @@ a.usa-button-big:hover {
     margin-top: -13px;
     margin-left: -25px;
     background-color: #fff;
-    background-image: url(/themes/farmers_update/assets/img/leaves.svg);
+    background-image: url(/images/leaves.svg);
     background-position: center;
     background-repeat: no-repeat;
     padding: 0 14px;
@@ -3995,7 +3995,7 @@ a.usa-button-big:hover {
     color: #fff;
 }
 .box-accordion .box-accordion-top[aria-expanded="true"] .box-accordion-toggle {
-    background-image: url(/themes/farmers_update/assets/img/box-accordion-minus.svg);
+    background-image: url(/images/box-accordion-minus.svg);
 }
 .box-accordion .box-accordion-top[aria-expanded="true"] .box-accordion-toggle::after {
     content: " ";
@@ -4020,7 +4020,7 @@ a.usa-button-big:hover {
     margin-top: 1rem;
     height: 4rem;
     width: 100%;
-    background-image: url(/themes/farmers_update/assets/img/box-accordion-plus.svg);
+    background-image: url(/images/box-accordion-plus.svg);
     background-size: 3.2rem;
     background-repeat: no-repeat;
     background-position: left 0.8rem;
@@ -4123,11 +4123,11 @@ a.usa-button-big:hover {
     background-size: 1.2rem;
     background-repeat: no-repeat;
     background-position: right 0.9rem;
-    background-image: url(/themes/farmers_update/assets/img/accordion-expand-blue.svg);
+    background-image: url(/images/accordion-expand-blue.svg);
     text-decoration: none;
 }
 .card-accordion .card-accordion-toggle .card-accordion-show-less {
-    background-image: url(/themes/farmers_update/assets/img/accordion-collapse-blue.svg);
+    background-image: url(/images/accordion-collapse-blue.svg);
     background-position: right 1.3rem;
 }
 .card-accordion-horizontal-content {
@@ -4248,8 +4248,8 @@ a.usa-button-big:hover {
 }
 #usa-gov-web-banner .usa-banner-button[aria-expanded="false"]:after,
 .usa-banner .usa-banner-button[aria-expanded="false"]:after {
-    background-image: url(/themes/farmers_update/assets/img/angle-arrow-down-primary.png);
-    background-image: url(/themes/farmers_update/assets/img/angle-arrow-down-primary.svg);
+    background-image: url(/images/angle-arrow-down-primary.png);
+    background-image: url(/images/angle-arrow-down-primary.svg);
     background-size: 100%;
     content: "";
     display: inline-block;
@@ -4259,8 +4259,8 @@ a.usa-button-big:hover {
 }
 #usa-gov-web-banner .usa-banner-button[aria-expanded="true"]:after,
 .usa-banner .usa-banner-button[aria-expanded="true"]:after {
-    background-image: url(/themes/farmers_update/assets/img/angle-arrow-up-primary.png);
-    background-image: url(/themes/farmers_update/assets/img/angle-arrow-up-primary.svg);
+    background-image: url(/images/angle-arrow-up-primary.png);
+    background-image: url(/images/angle-arrow-up-primary.svg);
     background-size: 100%;
     content: "";
     display: inline-block;
@@ -4413,7 +4413,7 @@ label.checked input:not(:checked) {
     -webkit-appearance: none;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url(/themes/farmers_update/assets/img/correct8.svg);
+    background-image: url(/images/correct8.svg);
     border: none !important;
 }
 .cb-input:hover {
@@ -4638,7 +4638,7 @@ label.checked input:not(:checked) {
     -webkit-appearance: none;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url(/themes/farmers_update/assets/img/correct8.svg);
+    background-image: url(/images/correct8.svg);
     border: none !important;
 }
 .cb-card .cb-input:hover,
@@ -4682,7 +4682,7 @@ select {
     -webkit-appearance: none;
     cursor: pointer;
     background-color: #fff;
-    background-image: url(/themes/farmers_update/assets/img/arrow-down.svg);
+    background-image: url(/images/arrow-down.svg);
     background-position: right 16px center;
     background-repeat: no-repeat;
     background-size: 1.3rem;
@@ -4715,7 +4715,7 @@ select:hover {
 select.disabled,
 select:disabled {
     background-color: #f7f7f7;
-    background-image: url(/themes/farmers_update/assets/img/arrow-down-disabled.svg);
+    background-image: url(/images/arrow-down-disabled.svg);
     border: 1px solid #bbb;
     cursor: not-allowed;
     color: #bbb;
@@ -4883,10 +4883,10 @@ select:disabled {
 }
 #search-field [type="submit"],
 #search-field-mobile [type="submit"] {
-    background-image: url(/themes/farmers_update/assets/img/search.svg);
+    background-image: url(/images/search.svg);
     background-position: 50%;
     background-repeat: no-repeat;
-    /* background-color: #f7f7f7; */
+    background-color: #f7f7f7;
     width: 4.5rem;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
@@ -5228,19 +5228,19 @@ footer .footer-tertiary-section .footer-social img{height: 100%;}
     text-decoration: none;
 }
 .twitter-link {
-    background: url(/themes/farmers_update/assets/img/social-icons/outline/svg/twitter-outline.svg) no-repeat;
+    background: url(/images/social-icons/outline/svg/twitter-outline.svg) no-repeat;
 }
 .facebook-link {
-    background: url(/themes/farmers_update/assets/img/social-icons/outline/svg/facebook-outline.svg) no-repeat;
+    background: url(/images/social-icons/outline/svg/facebook-outline.svg) no-repeat;
 }
 .instagram-link {
-    background: url(/themes/farmers_update/assets/img/social-icons/outline/svg/instagram-outline.svg) no-repeat;
+    background: url(/images/social-icons/outline/svg/instagram-outline.svg) no-repeat;
 }
 .flickr-link {
-    background: url(/themes/farmers_update/assets/img/social-icons/outline/svg/flickr-outline.svg) no-repeat;
+    background: url(/images/social-icons/outline/svg/flickr-outline.svg) no-repeat;
 }
 .youtube-link {
-    background: url(/themes/farmers_update/assets/img/social-icons/outline/svg/youtube-outline.svg) no-repeat;
+    background: url(/images/social-icons/outline/svg/youtube-outline.svg) no-repeat;
 }
 #search-field,
 #search-field-mobile {
@@ -5379,7 +5379,7 @@ footer .footer-tertiary-section .footer-social img{height: 100%;}
 }
 .mm-mobile-primary-nav .nav-container .menus-slider-container .primary-nav ~ div ul li.has-submenu,
 .mobile-primary-nav .nav-container .menus-slider-container .primary-nav ~ div ul li.has-submenu {
-    background-image: url(/themes/farmers_update/assets/img/arrow-right-white.svg);
+    background-image: url(/images/arrow-right-white.svg);
     background-repeat: no-repeat;
     background-size: 1rem;
     background-position: right center;
@@ -5423,7 +5423,7 @@ footer .footer-tertiary-section .footer-social img{height: 100%;}
 }
 .mm-mobile-primary-nav .nav-container .menus-slider-container .primary-nav li .accordion-button > span .nav-arrow,
 .mobile-primary-nav .nav-container .menus-slider-container .primary-nav li .accordion-button > span .nav-arrow {
-    background-image: url(/themes/farmers_update/assets/img/arrow-right-white.svg);
+    background-image: url(/images/arrow-right-white.svg);
     background-size: 0.8rem;
 }
 .mm-mobile-primary-nav .nav-container .mobile-nav-header,
@@ -5442,7 +5442,7 @@ footer .footer-tertiary-section .footer-social img{height: 100%;}
 .mobile-primary-nav .nav-container .mobile-nav-header > span {
     width: 2rem;
     height: 2rem;
-    background-image: url(/themes/farmers_update/assets/img/close-white.svg);
+    background-image: url(/images/close-white.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1.8rem;
@@ -5455,7 +5455,7 @@ footer .footer-tertiary-section .footer-social img{height: 100%;}
 .mm-mobile-primary-nav .nav-container .mobile-nav-header div.mobile-menu-back,
 .mobile-primary-nav .nav-container .mobile-nav-header div.mobile-menu-back {
     width: 100%;
-    background-image: url(/themes/farmers_update/assets/img/arrow-left-white.svg);
+    background-image: url(/images/arrow-left-white.svg);
     background-repeat: no-repeat;
     background-size: 1rem;
     background-position: left center;
@@ -7065,7 +7065,7 @@ li.level-1.no-sidemenu .mm-grid-featured div.field__item > div > a {
     width: 1.2rem;
     height: 1.2rem;
     margin-left: 1rem;
-    background-image: url(/themes/farmers_update/assets/img/close-plus-white.svg);
+    background-image: url(/images/close-plus-white.svg);
     background-repeat: no-repeat;
 }
 .mm-mobile-primary-nav.megamenu .mm-signup {
@@ -7696,7 +7696,7 @@ ul.sidemenu > li > a:visited:hover {
     padding-right: 0;
 }
 .usa-banner-text #nav-branding-bar .icon-globe {
-    background-image: url(/themes/farmers_update/assets/img/globe.svg) !important;
+    background-image: url(/images/globe.svg) !important;
     background-repeat: no-repeat;
     padding-left: 1.7rem !important;
     margin-left: 7px;
@@ -7722,7 +7722,7 @@ ul.sidemenu > li > a:visited:hover {
     text-decoration: none;
 }
 .utility-nav-links li a.icon-globe {
-    background-image: url(/themes/farmers_update/assets/img/globe.svg);
+    background-image: url(/images/globe.svg);
     background-repeat: no-repeat;
     padding-left: 1.4rem;
     background-position: left 3px;
@@ -10861,8 +10861,8 @@ input[type="radio"]:focus + label::before {
     box-shadow: 0 0 0 2px #fff, 0 0 0 4px #006546, 0 0 3px 4px #1a6ad3, 0 0 7px 4px #1a6ad3;
 }
 input[type="checkbox"]:checked + label::before {
-    background-image: url(/themes/farmers_update/assets/img/correct8.png);
-    background-image: url(/themes/farmers_update/assets/img/correct8.svg);
+    background-image: url(/images/correct8.png);
+    background-image: url(/images/correct8.svg);
     background-position: 50%;
     background-repeat: no-repeat;
 }
@@ -11286,7 +11286,7 @@ ul.entity-moderation-form #edit-current label:after {
 }
 .video-block-wrap .video-item a:before {
     content: "";
-    background-image: url(/themes/farmers_update/assets/img/youtube-btn.png);
+    background-image: url(/images/youtube-btn.png);
     height: 40px;
     width: 55px;
     display: block;
@@ -11308,7 +11308,7 @@ ul.entity-moderation-form #edit-current label:after {
     }
 }
 .disaster-link-wrap .disaster-link-text {
-    background-image: url(/themes/farmers_update/assets/img/hand.svg);
+    background-image: url(/images/hand.svg);
     background-repeat: no-repeat;
     background-position: left center;
     background-size: 115px;
@@ -11572,7 +11572,7 @@ ul.entity-moderation-form #edit-current label:after {
     background-position: 99% 25%;
 }
 #homepage-hero-grid .hero-content .hero-logo {
-    background: url(/themes/farmers_update/assets/img/farmers-logo-white.svg) no-repeat;
+    background: url(/images/farmers-logo-white.svg) no-repeat;
     margin: 5rem 0 2.5rem 0;
     height: 6.4rem;
     width: 11rem;
@@ -11616,7 +11616,7 @@ ul.entity-moderation-form #edit-current label:after {
     float: left;
 }
 #homepage-hero-grid .hero-content a:after {
-    background: url(/themes/farmers_update/assets/img/caret-right-white.svg) no-repeat;
+    background: url(/images/caret-right-white.svg) no-repeat;
     background-position: 99% 25%;
 }
 #homepage-hero-grid .hero-content a:hover {
@@ -12849,7 +12849,7 @@ ul.entity-moderation-form #edit-current label:after {
     #highlighted-blog-post section.vertical-tabs h4.tab-title:hover,
     #highlighted-blog-post section.vertical-tabs h5.tab-title:hover,
     #highlighted-blog-post section.vertical-tabs h6.tab-title:hover {
-        background: url(/themes/farmers_update/assets/img/tab-arrow-right.svg) no-repeat;
+        background: url(/images/tab-arrow-right.svg) no-repeat;
         background-size: 1.5rem;
         background-position: center right;
         background-color: #dbede0;
@@ -12860,7 +12860,7 @@ ul.entity-moderation-form #edit-current label:after {
     #highlighted-blog-post section.vertical-tabs h5.tab-title.active,
     #highlighted-blog-post section.vertical-tabs h6.tab-title.active {
         border-left: 8px solid #006546;
-        background: url(/themes/farmers_update/assets/img/tab-arrow-right.svg) no-repeat;
+        background: url(/images/tab-arrow-right.svg) no-repeat;
         background-size: 1.5rem;
         background-position: center right;
         background-color: #fff;
@@ -13208,26 +13208,26 @@ ul.entity-moderation-form #edit-current label:after {
     content: none;
 }
 .blog-carousel-wrap .glide-arrow[class*="-prev"] {
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow-left.svg);
+    background-image: url(/images/carousel-arrow-left.svg);
     background-size: cover;
     z-index: 1;
 }
 .blog-carousel-wrap .glide-arrow[class*="-prev"]:focus,
 .blog-carousel-wrap .glide-arrow[class*="-prev"]:hover {
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow-left.svg);
+    background-image: url(/images/carousel-arrow-left.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 .blog-carousel-wrap .glide-arrow[class*="-next"] {
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow.svg);
+    background-image: url(/images/carousel-arrow.svg);
     background-size: cover;
     z-index: 1;
     right: 0;
 }
 .blog-carousel-wrap .glide-arrow[class*="-next"]:focus,
 .blog-carousel-wrap .glide-arrow[class*="-next"]:hover {
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow.svg);
+    background-image: url(/images/carousel-arrow.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -13385,11 +13385,11 @@ ul.entity-moderation-form #edit-current label:after {
     }
 }
 #blog-hero-carousel .glide-arrow[class*="-next"] {
-    background-image: url(/themes/farmers_update/assets/img/Full-Width-Carousel-Arrow-Right.svg);
+    background-image: url(/images/Full-Width-Carousel-Arrow-Right.svg);
     right: 0;
 }
 #blog-hero-carousel .glide-arrow[class*="-prev"] {
-    background-image: url(/themes/farmers_update/assets/img/Full-Width-Carousel-Arrow-Left.svg);
+    background-image: url(/images/Full-Width-Carousel-Arrow-Left.svg);
     left: 0;
 }
 #blog-hero-carousel .glide-arrow.blog-hero-carousel-prev:hover {
@@ -13429,7 +13429,7 @@ ul.entity-moderation-form #edit-current label:after {
     }
 }
 .blog-stories-carousel-outer-wrap .blog-stories-carousel-prev {
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow-left.svg);
+    background-image: url(/images/carousel-arrow-left.svg);
     left: -4rem;
 }
 @media screen and (max-width: 1080px) {
@@ -13438,7 +13438,7 @@ ul.entity-moderation-form #edit-current label:after {
     }
 }
 .blog-stories-carousel-outer-wrap .blog-stories-carousel-next {
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow.svg);
+    background-image: url(/images/carousel-arrow.svg);
     right: -5rem;
 }
 @media screen and (max-width: 1080px) {
@@ -13679,14 +13679,14 @@ ul.entity-moderation-form #edit-current label:after {
 .view-multi-select-blog-category-carousel .glide-arrow[class*="-next"],
 .view-multi-select-blog-category-carousel .glide__arrow[class*="-next"] {
     right: -6rem;
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow.svg);
+    background-image: url(/images/carousel-arrow.svg);
 }
 .view-blog-category-carousel .glide-arrow[class*="-prev"],
 .view-blog-category-carousel .glide__arrow[class*="-prev"],
 .view-multi-select-blog-category-carousel .glide-arrow[class*="-prev"],
 .view-multi-select-blog-category-carousel .glide__arrow[class*="-prev"] {
     left: -5rem;
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow-left.svg);
+    background-image: url(/images/carousel-arrow-left.svg);
 }
 .view-blog-category-carousel .glide-arrow:disabled,
 .view-blog-category-carousel .glide__arrow:disabled,
@@ -14066,7 +14066,7 @@ div[class*="ajax-progress"] {
     text-decoration: none;
     color: #006546;
     padding-right: 3rem;
-    background-image: url(/themes/farmers_update/assets/img/circle-arrow.png);
+    background-image: url(/images/circle-arrow.png);
     background-repeat: no-repeat;
     background-position: right center;
     margin-right: -5px;
@@ -14518,7 +14518,7 @@ body.maintenance-page .footer-social {
     background-size: 1.2rem;
     background-repeat: no-repeat;
     background-position: right center;
-    background-image: url(/themes/farmers_update/assets/img/accordion-expand-blue.svg);
+    background-image: url(/images/accordion-expand-blue.svg);
     text-transform: uppercase;
 }
 #farmers-loan-tool .usa-accordion-button a {
@@ -15271,7 +15271,7 @@ article[about="/recover"] .resource-links-block#block-views-block-bfr-coordinato
     word-wrap: break-word;
 }
 .view-bfr-coordinators .view-content .views-field-field-bfr-email .field-content a:before {
-    background-image: url(/themes/farmers_update/assets/img/Mail.svg);
+    background-image: url(/images/Mail.svg);
     content: "";
     display: inline-block;
     background-repeat: no-repeat;
@@ -15287,7 +15287,7 @@ article[about="/recover"] .resource-links-block#block-views-block-bfr-coordinato
     display: flex;
 }
 .view-bfr-coordinators .views-field-field-bfr-phone a:before {
-    background-image: url(/themes/farmers_update/assets/img/Phone.svg);
+    background-image: url(/images/Phone.svg);
     content: "";
     display: inline-block;
     background-repeat: no-repeat;
@@ -16302,7 +16302,7 @@ input.checkbox-card-input:checked + .cb-icon {
     background-color: #49a564;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url(/themes/farmers_update/assets/img/correct8.svg);
+    background-image: url(/images/correct8.svg);
 }
 label.radio-label {
     cursor: pointer;
@@ -16761,7 +16761,7 @@ h6#related-resources {
 }
 #filters-close span {
     padding-right: 6rem;
-    background-image: url(/themes/farmers_update/assets/img/close.svg);
+    background-image: url(/images/close.svg);
     background-repeat: no-repeat;
     background-size: 2rem 2rem;
     background-position: 6rem;
@@ -16791,7 +16791,7 @@ h6#related-resources {
     padding-left: 3.5rem;
     width: auto;
     cursor: pointer;
-    background-image: url(/themes/farmers_update/assets/img/filters.png);
+    background-image: url(/images/filters.png);
     background-repeat: no-repeat;
 }
 .view-conservation-at-work-videos #reset-filters-mobile,
@@ -16983,26 +16983,26 @@ h6#related-resources {
     content: none;
 }
 .carousel-wrap .glide-arrow[class*="-prev"] {
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow-left.svg);
+    background-image: url(/images/carousel-arrow-left.svg);
     background-size: cover;
     z-index: 1;
 }
 .carousel-wrap .glide-arrow[class*="-prev"]:focus,
 .carousel-wrap .glide-arrow[class*="-prev"]:hover {
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow-left.svg);
+    background-image: url(/images/carousel-arrow-left.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 .carousel-wrap .glide-arrow[class*="-next"] {
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow.svg);
+    background-image: url(/images/carousel-arrow.svg);
     background-size: cover;
     z-index: 1;
     right: 0;
 }
 .carousel-wrap .glide-arrow[class*="-next"]:focus,
 .carousel-wrap .glide-arrow[class*="-next"]:hover {
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow.svg);
+    background-image: url(/images/carousel-arrow.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -17041,7 +17041,7 @@ h6#related-resources {
 #video-carousel .video-item-wrap .video-time {
     grid-column: 2;
     grid-row: 1;
-    background-image: url(/themes/farmers_update/assets/img/vid-time.png);
+    background-image: url(/images/vid-time.png);
     background-size: 2rem 2rem;
     background-position: 0 2px;
     background-repeat: no-repeat;
@@ -17099,7 +17099,7 @@ h6#related-resources {
 }
 #video-carousel-wrap .video-carousel-prev {
     left: 0;
-    background-image: url(/themes/farmers_update/assets/img/Full-Width-Carousel-Arrow-Left.svg);
+    background-image: url(/images/Full-Width-Carousel-Arrow-Left.svg);
     background-position: -4px;
 }
 #video-carousel-wrap .video-carousel-prev:hover {
@@ -17107,7 +17107,7 @@ h6#related-resources {
 }
 #video-carousel-wrap .video-carousel-next {
     right: 0;
-    background-image: url(/themes/farmers_update/assets/img/Full-Width-Carousel-Arrow-Right.svg);
+    background-image: url(/images/Full-Width-Carousel-Arrow-Right.svg);
     background-position: 4px;
 }
 #video-carousel-wrap .video-carousel-next:hover {
@@ -17141,12 +17141,12 @@ h6#related-resources {
     background-color: transparent;
 }
 #video-carousel-wrap #mobile-video-slick .mobile-vid-prev {
-    background-image: url(/themes/farmers_update/assets/img/mobile-vid-prev.png);
+    background-image: url(/images/mobile-vid-prev.png);
     background-position: 0 7px;
     background-repeat: no-repeat;
 }
 #video-carousel-wrap #mobile-video-slick .mobile-vid-next {
-    background-image: url(/themes/farmers_update/assets/img/mobile-vid-next.png);
+    background-image: url(/images/mobile-vid-next.png);
     background-position: 18px 6px;
     background-repeat: no-repeat;
 }
@@ -17202,12 +17202,12 @@ h6#related-resources {
 .image-carousel .arrow-control.image-carousel-next {
     position: relative;
     right: -6rem;
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow.svg);
+    background-image: url(/images/carousel-arrow.svg);
 }
 .image-carousel .arrow-control.image-carousel-prev {
     position: relative;
     left: -6rem;
-    background-image: url(/themes/farmers_update/assets/img/carousel-arrow-left.svg);
+    background-image: url(/images/carousel-arrow-left.svg);
 }
 .image-carousel .arrow-control.glide__arrow {
     height: 4rem;

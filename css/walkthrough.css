@@ -2431,9 +2431,9 @@ a:focus {
 .text-link.visited:hover,
 .text-link:visited.hover,
 .text-link:visited:hover {
-    color: #004785;
-    text-shadow: 0 0 0 #004785;
-    -webkit-text-stroke: 0 #004785;
+    color: ##49a564;
+    text-shadow: 0 0 0 ##49a564;
+    -webkit-text-stroke: 0 ##49a564;
 }
 .text-link.hover,
 .text-link:hover {

@@ -354,7 +354,6 @@ var WizardBuilder = window.WizardBuilder || {};
                 // If the button indicates a "nextStepId", then the onclick should add the next step and navigate to it
                 buttonElement.onclick = function(_) {
                     // push steps array into cookie when user click button
-                    console.log(button.nextStepId)
                     if(button.nextStepId==2)
                         setCookie("steps", "2", 365);
                     else
@@ -540,7 +539,7 @@ var WizardBuilder = window.WizardBuilder || {};
         targetStep.mdlStepNumber = _mdlWizardItemCount;
         
         // scroll to target element when user click green button
-        gsap.to(window, {duration: 0.5, scrollTo: ".is-active"});
+        gsap.to(window, {duration: 0.5, scrollTo: {y:".is-active", offsetY:100}});
     }
 
     /**

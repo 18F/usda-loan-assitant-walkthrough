@@ -151,7 +151,7 @@
 @media all and (max-width:30em){
     .mdl-button{
         display: block;
-        margin: 0.2em auto;
+       margin: 0.2em auto;
     }
 }
 

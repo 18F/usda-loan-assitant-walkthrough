@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Loan Assistance Tool / Walkthrough Module / Walkthrough </title>
+    <title>Loan Assistance Tool / Form Support / Form </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -126,13 +126,20 @@
                                 <li class="tb-megamenu-item level-1 mega" data-id="menu_link_content:guides" data-level="1" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="Guides" aria-level="1">
                                     <a href="/lrt.html" class="page-link" data-label="/lrt.html" aria-label="Go to the Loan Readiness Tool" data-category="Readiness">
                                         <div class="mm-nav-link">
-                                            <div class="mm-top-level-title">Loan Eligibility</div>
+                                            <div class="mm-top-level-title">Eligibility Assessment</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tb-megamenu-item level-1 mega" data-id="menu_link_content:guides" data-level="1" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="Guides" aria-level="1">
+                                    <a id="loanDiscovery" href="/lrt.html?discovery" class="page-link" data-label="/lrt.html" aria-label="Go to the Loan Discovery Tool" data-category="Readiness">
+                                        <div class="mm-nav-link">
+                                            <div class="mm-top-level-title">Loan Discovery</div>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="tb-megamenu-item level-1 mega" data-id="menu_link_content:walkthrough" data-level="1" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" data-label="Walkthrough"
                                     aria-level="1">
-                                    <a href="/walkthrough.html" class="page-link mm-active" data-label="/walkthrough.html" aria-label="Go to Loan Support Page" id="walkthrough-link" data-category="Loans">
+                                    <a href="/walkthrough.html" class="page-link mm-active" data-label="/walkthrough.html" aria-label="Go to Form Support Page" id="walkthrough-link" data-category="Loans">
                                         <div class="mm-nav-link">
                                             <div class="mm-top-level-title">Form Support</div>
                                         </div>
@@ -165,47 +172,28 @@
                             <span>close</span>
                         </div>
                         <div class="mm-top-section-container">
-                            <div class="mm-signup">
-                                <span class="utility-nav-buttons">    
-                <a class="btn tertiary utility-nav-links" href="/working-with-us/sign-in" title="LOG IN | SIGN UP">        LOG IN | SIGN UP    </a>
-              </span>
-                            </div>
                             <div class="mm-search">
                                 <div id="search-field-mobile">
-                                    <form class="search" action="[ SITE SEARCH URL ]" data-drupal-form-fields="affiliate,header-search">
+                                    <form class="search" action="walkthrough.html" data-drupal-form-fields="affiliate,header-search">
                                         <div role="search" aria-label="Mobile Site Search">
                                             <input name="utf8" type="hidden" value="✓">
-                                            <input id="affiliatename-mobile" name="affiliate" type="hidden" value="[ SITE DOMAIN ]">
-                                            <label class="usa-sr-only" for="header-search-mobile">Search [ SITE DOMAIN ]</label>
-                                            <input id="header-search-mobile" autocomplete="off" name="query" type="search" placeholder="Search [ SITE DOMAIN ]" tabindex="0">
+                                            <input id="affiliatename-mobile" name="affiliate" type="hidden" value="Application Form Search">
+                                            <label class="usa-sr-only" for="header-search-mobile">Search Application Forms</label>
+                                            <input id="header-search-mobile" autocomplete="off" name="query" type="search" placeholder="Search Application Forms" tabindex="0">
                                             <button type="submit" tabindex="0">                
-                      <span class="usa-sr-only">Search</span>            
-                    </button>
-                                            <input name="commit" type="hidden" value="Search">
+                                            <span class="usa-sr-only">Search</span>            
+                                            </button>
+                                           <input name="commit" type="hidden" value="Search">
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <div class="mm-top-section">
-                                <a class="mm-mobile-top-nav home" href="/">Home</a>
-                                <div class="mm-top-nav-header">Jump to list of pages for:</div>
-                                <ul class="mm-top-nav">
-                                    <li>
-                                        <a href="#mm-mobile-menu-loans" class="mm-mobile-top-nav" aria-label="Jump to Loans">Loans</a>
-                                    </li>
-                                    <li>
-                                        <a href="#mm-mobile-menu-protection-and-recovery" class="mm-mobile-top-nav" aria-label="Jump to Protection and Recovery">Protection and Recovery</a>
-                                    </li>
-                                    <li>
-                                        <a href="#mm-mobile-menu-conservation" class="mm-mobile-top-nav" aria-label="Jump to Conservation">Conservation</a>
-                                    </li>
-                                    <li>
-                                        <a href="#mm-mobile-menu-working-with-us" class="mm-mobile-top-nav" aria-label="Jump to Working With Us">Working With Us</a>
-                                    </li>
-                                    <li>
-                                        <a href="#mm-mobile-menu-your-business" class="mm-mobile-top-nav" aria-label="Jump to Your Business">Your Business</a>
-                                    </li>
-                                </ul>
+                                <a class="mm-mobile-top-nav home" href="/">Home</a>                               
+                                <a class="mm-mobile-top-nav home" href="/guides.html">Guides</a>
+                                <a class="mm-mobile-top-nav home" href="/lrt.html">Eligibility Assessment</a>
+                                <a class="mm-mobile-top-nav home" href="/lrt.html?discovery">Loan Discovery</a>
+                                <a class="mm-mobile-top-nav home" href="/workthrough.html">Form Support</a>
                             </div>
                         </div>
                         <div class="mm-utility-nav">
@@ -223,9 +211,6 @@
                                     <a href="https://www.usda.gov" aria-label="USDA.gov" tabindex="0">USDA.gov</a>
                                 </li>
                             </ul>
-                            <span class="utility-nav-buttons">
-              <a class="btn tertiary utility-nav-links" href="/working-with-us/sign-in" title="LOG IN | SIGN UP">    LOG IN | SIGN UP</a>
-            </span>
                         </div>
                     </div>
                 </div>
@@ -434,7 +419,7 @@
     <script src="js/jquery-3.6.0.min.js"></script>
 
     <script src="js/moz_viewer_controller.js"></script>
-    <!-- <script src="js/farmers.min.js"></script> -->
+    <script src="js/farmers.min.js"></script>
 
 
     <script>

@@ -164,6 +164,6 @@ a:visited {
     color: #4c2c92;
 }
 
-.mdl-step__actions button:last-child:not(:first-child){
+/* .mdl-step__actions button:last-child:not(:first-child){
     color: #F7BE00 !important;
-}
+} */

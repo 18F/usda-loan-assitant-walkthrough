@@ -384,7 +384,7 @@ var WizardBuilder = window.WizardBuilder || {};
         // If an optional "resetToStepId" was given, then create a "Start Over"
         if (resetToStepId) {
 
-            let resetButtonElement = _createButtonElement(resetText, "white", "#CCC", buttonArrayLength);
+            let resetButtonElement = _createButtonElement(resetText, "white", "#F7BE00", buttonArrayLength);
             resetButtonElement.style.marginLeft = "auto";
             // resetButtonElement.style.border = "none";
             // The button jumps back to the given step whose ID equals "resetToStepId"

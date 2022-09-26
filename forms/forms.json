@@ -1062,7 +1062,7 @@
                   "title": "Entity Applicant"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter the names of the counties being farmed by the operation.",
@@ -1141,7 +1141,7 @@
                   "title": "General Information"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Select \u201cYES\u201d if you (or any member of the entity) have ever conducted business under another name, otherwise check \u201cNO\u201d.\n\nIf \u201cYES\u201d provide names used in item 9.",
@@ -1407,7 +1407,7 @@
                   "title": "Certification and Signatures"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [],
                   "name": "Part G",
                   "title": "FSA Use Only"
@@ -1421,7 +1421,7 @@
           "name": "FSA-2002 Three-Year Financial History",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter your full legal name as it appears on your driver's license or State-issued ID card.",
@@ -1437,7 +1437,7 @@
                   "title": "General Information"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Indicate the last three years in the spaces provided at the top of each column.  ",
@@ -1775,7 +1775,7 @@
                   "title": "Operating Expenses"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Indicate the last three years in the spaces provided at the top of each column.",
@@ -1827,7 +1827,7 @@
                   "title": "Non-Operating"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "For each year, enter the total dollar amount of principle paid toward the original loan amounts for all loans covering the costs of machinery, livestock, and real estate.",
@@ -1870,7 +1870,7 @@
                   "title": "Financing"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "For each year, enter the total dollar amount received from the sale of depreciable items (equipment, breeding livestock, etc.) and real estate. ",
@@ -1913,7 +1913,7 @@
                   "title": "Capital"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Provide your signature.",
@@ -1946,7 +1946,7 @@
           "name": "FSA-2003 Three-Year Production History",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter your full legal name as it appears on your driver's license or State-issued ID card.",
@@ -1962,7 +1962,7 @@
                   "title": "General Information"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Indicate the last three years in the spaces provided at the top of each column, starting with the most recent year.  ",
@@ -2032,7 +2032,7 @@
                   "title": "Dairy Production"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "For this section, enter the type of livestock being raised (cattle, hogs, sheep, etc.). For greater clarity (when applicable), indicate the specific type of livestock, such as brood cows, market animals, calves, etc. \n\n\nNote: Each livestock type should be entered separately.\n",
@@ -2255,7 +2255,7 @@
                   "title": "Livestock and Poultry Production"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Indicate the last three years in the spaces provided at the top of each column, starting with the most recent year.  ",
@@ -2595,7 +2595,7 @@
                   "title": "Crop Production"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Provide your signature.",
@@ -2628,7 +2628,7 @@
           "name": "FSA-2004 Authorization to Release Information",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter your full legal name as it appears on your driver's license or State-issued ID card.\n\nNote: Each co-applicant and entity member must also complete this form.",
@@ -3041,7 +3041,7 @@
           "name": "FSA-2006 Property Owned and Leased",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [],
                   "name": "General",
                   "title": "General Information"
@@ -3607,7 +3607,7 @@
           "name": "FSA-2007 Cosigner Application and Agreement",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter your full legal name as it appears on your driver's license or State-issued ID card.",
@@ -3774,7 +3774,7 @@
                   "title": "Cosigner"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Select YES if you ever conducted business under any other name. Otherwise, select NO.  \n\nNote: If you selected YES, provide the names used in Item 8.",
@@ -3932,7 +3932,7 @@
                   "title": "Certification and Cosigner Signatures"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "FSA USE ONLY: Name of the person who received the application and credit report fee.",
@@ -3987,7 +3987,7 @@
           "name": "FSA-2014 Verification of Income",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter the full legal name of your employer and their physical address (including the street, city, and state). \n\nNote: An employer is an institution or person who pays you wages for work performed.",
@@ -4075,7 +4075,7 @@
                   "title": "General"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter the applicant's start date of employment.",
@@ -4145,7 +4145,7 @@
                   "title": "Verification of Employment"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter any source of additional income received by the applicant but not listed in Part B.",
@@ -4257,7 +4257,7 @@
       "name": "FSA-2015 Verification of Debts and Assets",
       "parts": [
           {
-              "description": null,
+              "description": "",
               "items": [
                   {
                       "comment": "Enter the full legal name of the creditor and the creditor's physical address (including the street, city, and state).\n\nNote: A creditor refers to a financial institution or person who is owed money.  ",
@@ -4336,7 +4336,7 @@
               "title": "General"
           },
           {
-              "description": null,
+              "description": "",
               "items": [
                   {
                       "comment": "At the top of each column, enter the type of debt for each account verified.  For example, indicate if the debt is a personal or business debt. Is the debt secured, unsecured, revolving, or an installment debt?\n\nNote: The following items will be addressed by the creditor.",
@@ -4532,7 +4532,7 @@
               "title": "Verification of Debts"
           },
           {
-              "description": null,
+              "description": "",
               "items": [
                   {
                       "comment": "At the top of each column, enter any items of value that the applicant pledged that can be used for security (i.e. cash, jewelry, receivables, prepaid expenses, inventory, equipment, livestock, land, automobile, etc.).",
@@ -4611,7 +4611,7 @@
               "title": "Verification of Assets"
           },
           {
-              "description": null,
+              "description": "",
               "items": [
                   {
                       "comment": "Enter any additional information that you feel may be important to note concerning the account.",
@@ -4680,7 +4680,7 @@
           "name": "FSA-2037 Farm Business Plan Worksheet (Balance Sheet)",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter your full legal name as it appears on your driver's license or State-issued ID card.\n\nNote: An entity representative will need to complete a balance sheet for the entity. Additionally, each entity member will need to complete an individual balance sheet.",
@@ -5449,7 +5449,7 @@
                   "title": "Long Term Liabilities"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter the value of cash on hand, personal checking accounts, and savings accounts.",
@@ -5573,7 +5573,7 @@
                   "title": "Personal Assets"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "For items (1) through (4), enter the name of each creditor for personal liabilities.",
@@ -5713,7 +5713,7 @@
                   "title": "Warning"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter the quantity of each item, if they are the same. \n\nNote: List items on separate lines if they have different serial numbers.",
@@ -5801,7 +5801,7 @@
                   "title": "Machinery and Equipment"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter the quantity of each farm vehicle, if they are the same. \n\nNote: List items on separate lines if they have different serial numbers/VIN.",
@@ -5906,7 +5906,7 @@
           "name": "FSA-2038 Farm Business Plan Worksheet (Projected/Actual Income and Expense)",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter your full legal name as it appears on your driver's license or State-issued ID card if applying individually. If applying as an entity, enter the name of the entity.",
@@ -5940,7 +5940,7 @@
                   "title": "General Information"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter a description of each crop that will be planted during the crop cycle. \n\nNote: List each crop separately. If using different farming practices (for example continuous crop, summer fallow, double crop, pivot irrigated, flood irrigated, etc) please list each crop separately, as they will have differing yields. \nIt may be beneficial to list crops separately if they cross county lines, have different owners, percentage shares, or yield variations from one area of the farm to another.\n\nPlease add additional sheets/paper to account for each type of crops if you need additional space.",
@@ -6424,7 +6424,7 @@
                   "title": "Income"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter any car and truck expenses that you are projecting for the operating cycle.\n\nNote: This does not include loan payments, but does include repair and maintence to farm vehicles. See your tax return for reference.",
@@ -6638,7 +6638,7 @@
                   "title": "Expenses"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter the total family living expenses. \n\nNote: Include all household operating expenses such as groceries, utilities, health insurance, and all non-farm-related debt payments (including personal home mortgage, car notes, and credit card debt).",
@@ -6681,7 +6681,7 @@
                   "title": "Non-Operating"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter the dollar amount to be received (or actually received), during the production cycle, from the sale of depreciable items (such as equipment and breeding livestock) or real estate.",
@@ -6757,7 +6757,7 @@
       "name": "FSA-2150 Development Plan",
       "parts": [
           {
-              "description": null,
+              "description": "",
               "items": [
                   {
                       "comment": "Enter your full legal name as it appears on your driver's license or State-issued ID card.",
@@ -6845,7 +6845,7 @@
               "title": "General"
           },
           {
-              "description": null,
+              "description": "",
               "items": [
                   {
                       "comment": "Provide your signature. ",
@@ -6878,7 +6878,7 @@
           "name": "FSA-2301 Request for Youth Loan",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter your full legal name as it appears on your social security card or state identification card.",
@@ -7304,7 +7304,7 @@
                   "title": "Applicant Information"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "PROJECT ADVISOR ONLY:  Describe how you plan to assist and supervise the applicant during this project (for example, provide education, oversight, guidance, etc.).",
@@ -7374,7 +7374,7 @@
                   "title": "PROJECT ADVISOR RECOMMENDATION"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "PARENT/GUARDIAN: Describe how you plan to assist and supervise the applicant during this project (for example, provide shelter for project animals, provide daily supervision and guidance, etc.).",
@@ -7417,7 +7417,7 @@
                   "title": "PARENT/GUARDIAN RECOMMENDATION"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "FSA USE ONLY: Leave this field empty.",
@@ -7477,7 +7477,7 @@
           "name": "FSA-2302 Description of Farm Training and Experience",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter your full legal name as entered on FSA 2001 for an individual. If this is an entity, enter the entity name.",
@@ -7537,7 +7537,7 @@
           "name": "FSA-2309 Certification of Disaster Losses",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter your full legal name as it appears on your driver's license or State-issued ID card.",
@@ -7975,7 +7975,7 @@
           "name": "FSA-2310 Lender's Verification of Loan Application (Emergency Loan Use)",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "APPLICANT: Enter your full legal name as it appears on your driver's license or State-issued ID card.",
@@ -8027,7 +8027,7 @@
                   "title": "APPLICANT'S REQUEST"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "LENDER: If the applicant is presently indebted, list the principal amount still owed on each debt, minus any interest or finance charges, as of today's date.",
@@ -8250,7 +8250,7 @@
                   "title": "LENDER'S VERIFICATION"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "LENDER: Enter your name as the lender's representative, followed by the name and address of the lending institution you represent.",
@@ -8301,7 +8301,7 @@
           "name": "FSA-2314 Streamlined Request for Direct OL Assistance",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter your full legal name as it appears on your social security card or state identification card.",
@@ -8348,7 +8348,7 @@
                   "title": "APPLICANT"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Select Annual OL, Term OL, or both. ",
@@ -8371,7 +8371,7 @@
                   "title": null
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter the date of your last Operating Loan application. Select YES if you have made significant changes to the operation since your last loan request and provide details in Item 7. Otherwise, select NO.\n\nNote: Significant changes may include changes in non-farm income, operations, crops, and livestock that will cause a significant impact on your income or expenses.",
@@ -8498,7 +8498,7 @@
                   "title": "NOTIFICATIONS, CERTIFICATIONS AND ACKNOWLEDGMENT"
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "FOR FSA USE ONLY. ",
@@ -8605,7 +8605,7 @@
                   "title": null
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter your 9-digit social security number (without dashes).",
@@ -8693,7 +8693,7 @@
                   "title": null
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Select the entity type that best represents your entity. ",
@@ -8799,7 +8799,7 @@
                   "title": null
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "In the Crops field, list in detail each crop to be grown, the number of acres per crop, and the projected yield per crop. Additionally, in the Livestock field, list in detail the type of livestock and the projected number of livestock to be sold.",
@@ -8977,7 +8977,7 @@
                   "title": null
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "APPLICANT 2: Enter your full legal name as it appears on your social security card or state identification card.",
@@ -9218,7 +9218,7 @@
                   "title": null
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "List all counties being farmed/ranched (and to be farmed/ranched). This must match the producer data report from Farm Programs. \n\nNote: You must have agreements in place for these farms between you and the landowner.",
@@ -9288,7 +9288,7 @@
                   "title": null
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Select YES if you (or any member of the entity) have ever conducted business under another name. Otherwise, select NO.\n\nIf YES provide names used in item 8.",
@@ -9430,7 +9430,7 @@
                   "title": null
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "FSA USE ONLY",
@@ -9481,7 +9481,7 @@
           "name": "FSA-2370 Request for Waiver of Borrower Training Requirements / Borrower Training Assessment",
           "parts": [
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "Enter your full legal name as it appears on your social security card or state identification card.",
@@ -9544,7 +9544,7 @@
                   "title": null
               },
               {
-                  "description": null,
+                  "description": "",
                   "items": [
                       {
                           "comment": "FSA USE ONLY",
@@ -9583,7 +9583,7 @@
       "name": "AD-1026 Highly Erodible Land Conservation (HELC) and Wetland Conservation (WC) Certification",
       "parts": [
           {
-              "description": null,
+              "description": "",
               "items": [
                   {
                       "comment": "Enter your full legal name as it appears on your driver's license or State-issued ID card.",
@@ -9732,7 +9732,7 @@
               "title": "HELC/WC Compliance Questions"
           },
           {
-              "description": null,
+              "description": "",
               "items": [
                   {
                       "comment": "If you selected \"YES\" to Questions 6 or 7, enter the farm or tract/field number.",
@@ -9775,7 +9775,7 @@
               "title": "Additional Information"
           },
           {
-              "description": null,
+              "description": "",
               "items": [
                   {
                       "comment": "Provide your signature.",

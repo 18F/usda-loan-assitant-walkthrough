@@ -219,12 +219,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 30px;
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
 }
 
 .card-header, .card-footer {
-  border-color: #ebeef4;
-  background-color: #fff;
   color: #1A6600;
   padding: 15px;
 }
@@ -237,7 +234,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Poppins", sans-serif;
 }
 .card-title span {
-  color: #899bbd;
   font-size: 14px;
   font-weight: 400;
 }

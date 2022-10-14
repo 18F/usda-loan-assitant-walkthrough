@@ -96,7 +96,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-start {
     text-align: center;
-    height: 5rem;
+    height: 6rem;
     width: 30rem;
     font-size: 3rem;
     font-weight: 700;
@@ -104,8 +104,8 @@ h1, h2, h3, h4, h5, h6 {
     align-items: left;
     cursor: pointer;
     color: #fff;
-    background-color: blue;
-    border-color: blue;
+    background-color: #1a6ad3;
+    border-color: #1a6ad3;
     text-decoration: none; 
 }
 
@@ -2410,9 +2410,9 @@ a:focus {
 .text-link.visited:hover,
 .text-link:visited.hover,
 .text-link:visited:hover {
-    color: ##49a564;
-    text-shadow: 0 0 0 ##49a564;
-    -webkit-text-stroke: 0 ##49a564;
+    color: #49a564;
+    text-shadow: 0 0 0 #49a564;
+    -webkit-text-stroke: 0 #49a564;
 }
 .text-link.hover,
 .text-link:hover {

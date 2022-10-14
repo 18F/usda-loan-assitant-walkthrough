@@ -705,3 +705,4 @@ $RECYCLE.BIN/
 
 # Script output
 *_out
+package-lock.json

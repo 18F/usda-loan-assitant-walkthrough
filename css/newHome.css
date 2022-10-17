@@ -2,7 +2,6 @@
     background-color: #006546;
     background-image: url('../images/hero.jpg');
     background-size: cover;
-    height: 50rem;
     display:flex;
     flex-direction: row-reverse;
 
@@ -14,10 +13,6 @@
 
 .card {
     margin: 1rem;
-    width: 80rem;
-    height: 50rem;
-    zoom: 0.5;
-    -moz-transform: scale(0.5);
-    float: right; 
-}
 
+    float: right;
+}

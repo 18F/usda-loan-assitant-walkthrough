@@ -3,14 +3,13 @@
         {
             "buttons": [
                 {
-                    "buttonText": "Start Your Eligibility Self-Assessment",
+                    "buttonText": "Start Eligibility<br>Self-Assessment",
                     "color": "white",
                     "nextStepId": 2,
                     "textColor": "#094785"
                 }
             ],
             "content": {
-                "captionText": "Watch the short video above. Then, click the button below to see if you are eligible.",
                 "paragraphs": [
                     {
                         "paragraphContent": "The first step is to determine if you qualify for a FSA Farm Loan."
@@ -21,13 +20,12 @@
                     {
                         "paragraphContent": "Click the button below to determine your eligibility."
                     }
-                ],
-                "src": "https://www.youtube.com/embed/dPfq0DrkUSE"
+                ]
             },
             "id": 1,
             "progressBarStage": "start",
             "sectionHeader": "",
-            "subtitle": "Eligibility Self Assessment",
+            "subtitle": "Eligibility Self-Assessment",
             "title": "Are you eligible for a FSA loan?\n",
             "type": "informational"
         },
@@ -63,9 +61,9 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 1,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "",
-            "title": "Convictions",
+            "title": "Recent Drug Convictions",
             "type": "informational"
         },
         {
@@ -83,15 +81,15 @@
                         "paragraphContent": "Applicants are not eligible for FSA loans if convicted under Federal or State law for planting, cultivating, growing, producing, harvesting, or storing a controlled substance."
                     },
                     {
-                        "paragraphContent": "However, if the applicant can provide documentation that the conviction was more than 4 years ago, then he or she may be eligible."
+                        "paragraphContent": "However, if applicants can provide documentation that the convictions were more than 4 years ago, then they may be eligible."
                     }
                 ]
             },
             "id": 3,
             "progressBarStage": "eligibility",
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "What Does This Mean?",
-            "title": "Convictions",
+            "title": "Recent Drug Convictions",
             "type": "informational"
         },
         {
@@ -117,9 +115,9 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 2,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "Possible Eligibility Issue!",
-            "title": "Convictions",
+            "title": "Recent Drug Convictions",
             "type": "informational"
         },
         {
@@ -154,7 +152,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 2,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "",
             "title": "Legal Competency",
             "type": "informational"
@@ -177,7 +175,7 @@
             },
             "id": 6,
             "progressBarStage": "eligibility",
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "What does this mean?",
             "title": "Legal Competency",
             "type": "informational"
@@ -205,7 +203,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 5,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Legal Competency",
             "type": "informational"
@@ -234,7 +232,7 @@
             "content": {
                 "paragraphs": [
                     {
-                        "paragraphContent": "Are you a United States citizen, non-citizen national or legal resident alien of the United States?"
+                        "paragraphContent": "Are you a U.S. citizen, a non-citizen national, or a legal resident alien of the United States?"
                     }
                 ]
             },
@@ -242,7 +240,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 5,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "",
             "title": "Citizenship",
             "type": "informational"
@@ -268,7 +266,7 @@
             },
             "id": 9,
             "progressBarStage": "eligibility",
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "What Does This Mean?",
             "title": "Citizenship",
             "type": "informational"
@@ -296,7 +294,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 8,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Citizenship",
             "type": "informational"
@@ -333,7 +331,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 8,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "",
             "title": "Credit History",
             "type": "informational"
@@ -356,7 +354,7 @@
             },
             "id": 12,
             "progressBarStage": "eligibility",
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "What Does This Mean?",
             "title": "Credit History",
             "type": "informational"
@@ -384,7 +382,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 11,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Credit History",
             "type": "informational"
@@ -421,7 +419,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 11,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "",
             "title": "Credit Alternatives",
             "type": "informational"
@@ -444,7 +442,7 @@
             },
             "id": 15,
             "progressBarStage": "eligibility",
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "What Does This Mean?",
             "title": "Credit Alternatives",
             "type": "informational"
@@ -472,7 +470,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 14,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Credit Alternatives",
             "type": "informational"
@@ -501,7 +499,7 @@
             "content": {
                 "paragraphs": [
                     {
-                        "paragraphContent": "Do you have delinquent federal debts or unpaid federal judgments, other than IRS tax debt?"
+                        "paragraphContent": "Do you have delinquent federal debts or unpaid federal judgements, other than IRS tax debt?"
                     }
                 ]
             },
@@ -509,7 +507,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 14,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "",
             "title": "Federal Debts",
             "type": "informational"
@@ -538,7 +536,7 @@
             },
             "id": 18,
             "progressBarStage": "eligibility",
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "What Does This Mean?",
             "title": "Federal Debts",
             "type": "informational"
@@ -555,7 +553,7 @@
             "content": {
                 "paragraphs": [
                     {
-                        "paragraphContent": "You indicated that you have delinquent federal debts or unpaid federal judgments."
+                        "paragraphContent": "You indicated that you have delinquent federal debts or unpaid federal judgements."
                     },
                     {
                         "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans."
@@ -566,7 +564,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 17,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Federal Debts",
             "type": "informational"
@@ -603,7 +601,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 17,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "",
             "title": "FSA Debt Forgiveness",
             "type": "informational"
@@ -620,7 +618,7 @@
             "content": {
                 "paragraphs": [
                     {
-                        "paragraphContent": "Applicants who have been forgiven of a past FSA loan will be considered ineligible for Direct Loan Assistance unless they have extenuating circumstances such as:"
+                        "paragraphContent": "Applicants who have been forgiven of a past FSA loan will be considered ineligible for Direct Loan Assistance, with the exception of Annual Operating Loans, unless they have extenuating circumstances such as:"
                     },
                     {
                         "paragraphContent": {
@@ -645,7 +643,7 @@
             },
             "id": 21,
             "progressBarStage": "eligibility",
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "What Does This Mean?",
             "title": "FSA Debt Forgiveness",
             "type": "informational"
@@ -665,7 +663,7 @@
                         "paragraphContent": "You indicated that you have been forgiven for a past FSA loan."
                     },
                     {
-                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans."
+                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans, except Annual Operating Loans."
                     }
                 ]
             },
@@ -673,7 +671,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 20,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "FSA Debt Forgiveness",
             "type": "informational"
@@ -710,7 +708,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 20,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "",
             "title": "Federal Crop Insurance Violations",
             "type": "informational"
@@ -733,7 +731,7 @@
             },
             "id": 24,
             "progressBarStage": "eligibility",
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "What Does This Mean?",
             "title": "Federal Crop Insurance Violations",
             "type": "informational"
@@ -761,7 +759,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 23,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Federal Crop Insurance Violations",
             "type": "informational"
@@ -798,7 +796,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 23,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "",
             "title": "Farming Experience",
             "type": "informational"
@@ -824,7 +822,7 @@
             },
             "id": 27,
             "progressBarStage": "eligibility",
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "What Does This Mean?",
             "title": "Farming Experience",
             "type": "informational"
@@ -852,7 +850,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 26,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Farming Experience",
             "type": "informational"
@@ -889,7 +887,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 26,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "",
             "title": "Farm Operations",
             "type": "informational"
@@ -912,7 +910,7 @@
             },
             "id": 30,
             "progressBarStage": "eligibility",
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "What Does This Mean?",
             "title": "Farm Operations",
             "type": "informational"
@@ -940,7 +938,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 29,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Farm Operations",
             "type": "informational"
@@ -977,7 +975,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 29,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "",
             "title": "Non-Profit Organizations",
             "type": "informational"
@@ -1000,7 +998,7 @@
             },
             "id": 33,
             "progressBarStage": "eligibility",
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "What Does This Mean?",
             "title": "Non-Profit Organizations",
             "type": "informational"
@@ -1020,7 +1018,7 @@
                         "paragraphContent": "You indicated that you are applying as a Non-Profit Organization."
                     },
                     {
-                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans."
+                        "paragraphContent": "Based on your response to this question, you are not eligible for FSA loans. However, you can proceed as a for-profit entity or individual applicant."
                     }
                 ]
             },
@@ -1028,7 +1026,7 @@
             "progressBarStage": "eligibility",
             "resetText": "Go Back",
             "resetToStepId": 32,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "Possible Eligibility Issue!",
             "title": "Non-Profit Organizations",
             "type": "informational"
@@ -1051,9 +1049,9 @@
             },
             "id": 35,
             "progressBarStage": "eligibility",
-            "resetText": "Restart Self Assessment",
+            "resetText": "Restart Eligibility\nSelf-Assessment",
             "resetToStepId": 1,
-            "sectionHeader": "Eligibility Self Assessment",
+            "sectionHeader": "Eligibility Self-Assessment",
             "subtitle": "",
             "title": "Self-Assessment Completed",
             "type": "informational"
@@ -1070,7 +1068,7 @@
             "content": {
                 "paragraphs": [
                     {
-                        "paragraphContent": "FSA offers various loan programs including Microloans, Farm Ownership Loans, Operating Loans. Emergency Loans, and Youth Loans. While FSA is committed to serving all farmers and ranchers, by statute, FSA targets a portion of all Guaranteed loan funds, Microloan funding, and Youth loans, to historically underserved farmers and ranchers."
+                        "paragraphContent": "FSA offers various loan programs including Microloans, Operating Loans, Farm Ownership Loans, Emergency Loans, and Youth Loans. While FSA is committed to serving all farmers and ranchers, by statute, FSA targets a portion of all Guaranteed loan funds, Microloan funding, and Youth loans, to historically underserved farmers and ranchers."
                     },
                     {
                         "paragraphContent": "The following screens will take you through a series of questions to find the loan product that is right for you and provide you with a checklist of the documents you will need to begin the loan application process."
@@ -1134,13 +1132,13 @@
             "content": {
                 "paragraphs": [
                     {
-                        "paragraphContent": "The focus of Microloans is financing the needs of small, beginning farmers, niche and non-traditional farm operations, such as truck farms, farms participating in direct marketing and sales such as farmers\u2019 markets, CSA\u2019s (Community Supported Agriculture), restaurants, and grocery stores, or those using hydroponic, aquaponic, organic and vertical growing methods."
+                        "paragraphContent": "Microloans are designed to fit the needs of small farms, beginning farmers, niche and non-traditional farm operations, to include truck farms, farms participating in direct marketing, such as farmers\u2019 markets, CSAs (Community Supported Agriculture), restaurants, and grocery stores. Microloans can also be used for hydroponic, aquaponic, organic and vertical growing methods."
                     },
                     {
-                        "paragraphContent": "There is no minimum loan amount. You may request up to $50,000 for a Farm Ownership Microloan and up to an additional $50,000 for an Operating Microloan. The $50,000 limit includes any possible outstanding FSA Direct Operating or Farm Ownership unpaid principal loan balances. A loan applicant may have a Guaranteed Operating Loan, Farm Ownership loan or Emergency Loan and still qualify for a Microloan."
+                        "paragraphContent": "You may request up to $50,000 for a Farm Ownership Microloan and up to an additional $50,000 for an Operating Microloan. \n\nNote: The $50,000 limit includes any possible outstanding FSA Direct Operating or Farm Ownership unpaid principal loan balances."
                     },
                     {
-                        "paragraphContent": "Need More Capital? Consider a Farm Ownership or Operating Loan."
+                        "paragraphContent": "A loan applicant may have a Guaranteed Operating Loan, Farm Ownership loan or Emergency Loan and still qualify for a Microloan.\n\nNeed More Capital? Consider a Farm Ownership or Operating Loan."
                     }
                 ]
             },
@@ -2011,6 +2009,8 @@
             },
             "id": 60,
             "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Youth Loans",
             "title": "Forms Support",
@@ -2046,6 +2046,8 @@
             },
             "id": 61,
             "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Emergency Loans",
             "title": "Forms Support",
@@ -2081,6 +2083,8 @@
             },
             "id": 62,
             "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 40,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Microloans",
             "title": "Forms Support",
@@ -2116,6 +2120,8 @@
             },
             "id": 63,
             "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Down Payment Loans",
             "title": "Forms Support",
@@ -2151,6 +2157,8 @@
             },
             "id": 64,
             "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Joint Financing/Participation Loans",
             "title": "Forms Support",
@@ -2186,6 +2194,8 @@
             },
             "id": 65,
             "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Direct Farm Ownership Loans",
             "title": "Forms Support",
@@ -2221,6 +2231,8 @@
             },
             "id": 66,
             "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Term Operating Loans",
             "title": "Forms Support",
@@ -2256,6 +2268,8 @@
             },
             "id": 67,
             "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
             "subtitle": "Annual Operating Loans",
             "title": "Forms Support",

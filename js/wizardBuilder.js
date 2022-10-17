@@ -329,7 +329,7 @@ var WizardBuilder = window.WizardBuilder || {};
             button.style.order = orderNumber;
         }
         // Add text to the button
-        button.appendChild(document.createTextNode(buttonText));
+        button.innerHTML = buttonText;
         return button;
     }
 

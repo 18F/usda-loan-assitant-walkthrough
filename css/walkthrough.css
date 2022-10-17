@@ -112,7 +112,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-start:hover {
-    color: #004785;
 }
 
 .btn-start:visited  {
@@ -128,7 +127,6 @@ a {
 }
 
 a.visited, a:visited {
-    color: #122E51;
 }
 
 

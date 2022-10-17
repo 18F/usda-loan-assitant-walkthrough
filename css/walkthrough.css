@@ -1084,7 +1084,7 @@ h6 {
     font-family: "Public Sans";
     color: #212121;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
 }
 .headline-1,
 h1 {

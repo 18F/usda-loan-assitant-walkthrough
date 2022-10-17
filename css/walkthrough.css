@@ -96,21 +96,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-start {
     text-align: center;
+    line-height: 6rem;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-family: "Public Sans";
+    font-size: 3rem;
+    font-weight: bold;
     height: 6rem;
     width: 30rem;
-    font-size: 3rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    align-items: left;
     cursor: pointer;
-    color: #fff;
     background-color: #1a6ad3;
     border-color: #1a6ad3;
-    text-decoration: none; 
+    border-radius: 4px;
+    shadow: 0,1,4,0 #BBBBBB;
 }
 
 .btn-start:hover {
-    
+    color: #004785;
 }
 
 .btn-start:visited  {
@@ -126,7 +128,7 @@ a {
 }
 
 a.visited, a:visited {
-    color: #4c2c92;
+    color: #122E51;
 }
 
 

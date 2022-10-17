@@ -17,7 +17,6 @@
     <link rel="stylesheet" media="all" href="css/styles.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="css/walkthrough.css" rel="stylesheet">
-    <link rel="stylesheet" media="all" href="css/newHome.css" />
 </head>
 
 <body>
@@ -235,8 +234,9 @@
 
     <main id="main-content" class="backgroundHero">
 
-    <div class="card"> 
+    <div class="homecard"> 
         <div class="container">
+
             <div class="row">
                 <div class="primary-region medium-12">
                     <h1 class="primary-region__title">
@@ -244,16 +244,11 @@
                     </h1>
                 </div>
             </div>
-        </div>
 
-        <div class="container">
             <div class="row ">
                 <div class="col-md-12">
-                    <div class="content-card accent-top h-100">
-                        <div class="spacer">&nbsp;</div>
-                        <h3 class="">Welcome</h3>
-                        <h3 class="">Start your journey with FSA</h3>
-                        <div class="spacer">&nbsp;</div>
+                    <div class="content-card accent-top">
+                        <h3 class="card-title">Start your journey with FSA</h3>
                         <div class="card-body">
                             <ul>
                                 <li>Am I eligible for a FSA Farm Loan?</li>
@@ -261,17 +256,17 @@
                                 <li>Where can I get  help completing the loan application forms?</li>
                             </ul>
                         </div>
-                        <div class="spacer">&nbsp;</div>
-                        <a href="lrt.html" style="text-decoration: none;">
-                            <div class="btn lg-btn">
-                                Get Started
-                            </div>
-                        </a>
+                        <button class="btn lg-btn" onclick="window.location.assign('/lrt.html')">
+                            Get Started
+                        </button>
                     </div>
                 </div>
             </div>
+
         </div>
-    </div>   
+
+    </div>  
+ 
     <div class="spacer">&nbsp;</div>
     </main>
 

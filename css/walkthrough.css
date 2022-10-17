@@ -17277,3 +17277,27 @@ h6#related-resources {
     flex-grow: 1;
     margin-bottom: 3rem;
 }
+
+.backgroundHero {
+    background-color: #006546;
+    background-image: url('../images/hero.jpg');
+    background-size: cover;
+    display:flex;
+    flex-direction: row-reverse;
+    min-height: 70vh;
+
+}
+
+.backgroundHero div.container {
+    background-color: white; 
+    padding-bottom: 2rem;
+}
+
+.backgroundClear {
+    background-color: rgba(0,0,0,0.0);
+}
+
+.homecard {
+    margin: 1rem;
+    float: right;
+}

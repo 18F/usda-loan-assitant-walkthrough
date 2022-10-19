@@ -1254,7 +1254,7 @@
             "resetText": "Explore Other Direct Loans",
             "resetToStepId": 49,
             "sectionHeader": "Loan Discovery",
-            "subtitle": "To Purchase or Enlarge Family Flans",
+            "subtitle": "To Purchase or Enlarge Family Farms",
             "title": "Farm Ownership Loans",
             "type": "informational"
         },
@@ -1326,7 +1326,7 @@
                         "paragraphContent": "Down Payment Loans assist socially disadvantaged, military veterans, and beginning farmers in purchasing a farm."
                     },
                     {
-                        "paragraphContent": "Requirements:"
+                        "paragraphContent": "Requirements: Applicant must make a down payment of at least 5% of the purchase price."
                     }
                 ]
             },
@@ -1576,7 +1576,7 @@
                         "paragraphContent": "Farm Operating Loans may be used for normal operating expenses, machinery and equipment, minor real estate repairs or improvements, and refinancing debt."
                     },
                     {
-                        "paragraphContent": "Operating Loan options include terminal loans of up to seven years and annual operating loans that are generally repaid within 12 months."
+                        "paragraphContent": "Operating Loan options include term loans of up to seven years and annual operating loans that are generally repaid within 12 months."
                     }
                 ]
             },
@@ -1616,7 +1616,7 @@
             "resetText": "Discover Other Operating Loans",
             "resetToStepId": 49,
             "sectionHeader": "Loan Discovery",
-            "subtitle": "Terminal Loans of Up to 7 Years",
+            "subtitle": "Term Loans of Up to 7 Years",
             "title": "Term Operating Loans",
             "type": "informational"
         },
@@ -1666,7 +1666,7 @@
             "resetText": "Discover Additional Loan Options",
             "resetToStepId": 40,
             "sectionHeader": "Loan Discovery",
-            "subtitle": "Terminal Loans of Up to 7 Years",
+            "subtitle": "Term Loans of Up to 7 Years",
             "title": "Term Operating Loans",
             "type": "informational"
         },
@@ -1798,7 +1798,7 @@
             "content": {
                 "paragraphs": [
                     {
-                        "paragraphContent": "The Emergency Loan Program is triggered when a natural disaster is designated by the Secretary of Agriculture, or a natural disaster or emergency is declared by the President under the Stafford Act. These loans help producers who suffer qualifying farm related losses directly caused by the disaster in a county declared or designated as a primary disaster or quarantine area. Also, farmers located in counties that are contiguous to the declared, designated, or quarantined area may qualify for Emergency loans."
+                        "paragraphContent": "The Emergency Loan Program is triggered when a natural disaster is designated by the Secretary of Agriculture, or a natural disaster or emergency is declared by the President under the Stafford Act. These loans help producers who suffer qualifying farm related losses directly caused by the disaster in a county declared or designated as a primary disaster or quarantine area."
                     },
                     {
                         "paragraphContent": "For production losses, a 30% reduction in a primary crop in a designated or contiguous county is required. Losses to quality, such as receiving a 30% reduced price for flood-damaged crops, may be eligible for assistance, too."
@@ -1893,7 +1893,7 @@
             "id": 57,
             "progressBarStage": "discovery",
             "sectionHeader": "Loan Discovery",
-            "subtitle": "Associated with 4-H or FFA",
+            "subtitle": "",
             "title": "Youth Loans",
             "type": "informational"
         },
@@ -1925,7 +1925,7 @@
             "id": 58,
             "progressBarStage": "discovery",
             "sectionHeader": "Loan Discovery",
-            "subtitle": "Associated with 4-H or FFA",
+            "subtitle": "",
             "title": "Youth Loans",
             "type": "informational"
         },
@@ -1975,7 +1975,7 @@
             "resetText": "Discover Other Loan Options",
             "resetToStepId": 36,
             "sectionHeader": "Loan Discovery",
-            "subtitle": "Associated with 4-H or FFA",
+            "subtitle": "",
             "title": "Youth Loans",
             "type": "informational"
         },

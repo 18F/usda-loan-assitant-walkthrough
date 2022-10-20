@@ -3979,7 +3979,7 @@
                   "title": "FSA Use Only"
               }
           ],
-          "url": null
+          "url": ""
       },
       {   "id": "FSA-2014",
           "description": "Use this form to verify the applicants' income and make feasibility determinations on the request for loan assistance.",
@@ -7526,7 +7526,7 @@
                       }
                   ],
                   "name": "Instructions",
-                  "title": null
+                  "title": ""
               }
           ],
           "url": "https://www.fsa.usda.gov/Assets/USDA-FSA-Public/usdafiles/Farm-Loan-Programs/pdfs/direct-loan-apps/Form_FSA_2302_Farm_Training_Experience_Description.pdf"
@@ -7964,7 +7964,7 @@
                       }
                   ],
                   "name": "General",
-                  "title": null
+                  "title": ""
               }
           ],
           "url": "https://www.fsa.usda.gov/Assets/USDA-FSA-Public/usdafiles/Farm-Loan-Programs/pdfs/direct-loan-apps/Form_FSA_2309_Certification_of_Disaster_Losses.pdf"
@@ -8368,7 +8368,7 @@
                       }
                   ],
                   "name": "Part B",
-                  "title": null
+                  "title": ""
               },
               {
                   "description": "",
@@ -8545,7 +8545,7 @@
                   "title": "FSA USE ONLY"
               }
           ],
-          "url": null
+          "url": ""
       },
       {   "id": "FSA-2330",
           "description": "Use this form to submit information for applicants applying for microloans.",
@@ -8602,7 +8602,7 @@
                       }
                   ],
                   "name": "Part A",
-                  "title": null
+                  "title": ""
               },
               {
                   "description": "",
@@ -8690,7 +8690,7 @@
                       }
                   ],
                   "name": "Part B",
-                  "title": null
+                  "title": ""
               },
               {
                   "description": "",
@@ -8796,7 +8796,7 @@
                       }
                   ],
                   "name": "Part C",
-                  "title": null
+                  "title": ""
               },
               {
                   "description": "",
@@ -8974,7 +8974,7 @@
                       }
                   ],
                   "name": "Part D",
-                  "title": null
+                  "title": ""
               },
               {
                   "description": "",
@@ -9215,7 +9215,7 @@
                       }
                   ],
                   "name": "Part E",
-                  "title": null
+                  "title": ""
               },
               {
                   "description": "",
@@ -9285,7 +9285,7 @@
                       }
                   ],
                   "name": "Part F",
-                  "title": null
+                  "title": ""
               },
               {
                   "description": "",
@@ -9427,7 +9427,7 @@
                       }
                   ],
                   "name": "Part G",
-                  "title": null
+                  "title": ""
               },
               {
                   "description": "",
@@ -9470,7 +9470,7 @@
                       }
                   ],
                   "name": "Part H",
-                  "title": null
+                  "title": ""
               }
           ],
           "url": "https://www.reginfo.gov/public/do/DownloadDocument?objectID=41524201"
@@ -9541,7 +9541,7 @@
                       }
                   ],
                   "name": "Part A",
-                  "title": null
+                  "title": ""
               },
               {
                   "description": "",
@@ -9572,10 +9572,10 @@
                       }
                   ],
                   "name": "Part B",
-                  "title": null
+                  "title": ""
               }
           ],
-          "url": null
+          "url": ""
       },
       {   "id": "AD-1026",
       "description": "Use this form to certify understanding of the conservation compliance requirements under USDA programs. It is not necessary to complete this form if you have previously filed AD-1026 with FSA and there has not been a change in your farming operation or the people affiliated with the operation from what was previously reported.",

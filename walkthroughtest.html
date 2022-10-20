@@ -442,7 +442,15 @@
 
                 show_count = 0;
                 total_count = 0;
-         
+
+                // Get loan type 
+                let c = getQueryVar(name = "loan_type");
+                if (c) {
+                    forms_for = q.toLowerCase();
+                    $("#header-search").val(q);
+                } else {
+                    forms_for = false;
+                }
 
                 // Get search query 
                 let q = getQueryVar(name = "query");
@@ -467,11 +475,17 @@
                 }
 
                 var cards = [];
-                $.each(data["Emergency Loans"], function(key, form) {
+                $.each(data["Forms"], function(key, form) {
 
                     // Form filter ?show_forms=FORM_ID,FORM_ID If form_ids is missing or empty show all.
                     if (show_forms) {
                         if ($.inArray(form["id"], show_forms) < 0) {
+                            return
+                        }
+                    }
+
+                    if (loan_type) {
+                        if ($.inArray(form["id"], loan_forms (loan_forms)(loan_type)) < 0) {
                             return
                         }
                     }

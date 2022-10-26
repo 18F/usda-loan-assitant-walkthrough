@@ -335,7 +335,7 @@
                             <ul class="menu">
                                 <li class="menu-item"><a href="https://www.fsa.usda.gov/help/accessibility-statement/index" aria-label="Go to FSA Accessibility Statement">Accessibility Statement</a></li>
                                 <li class="menu-item"><a href="http://ask.usda.gov/s/" aria-label="Go to Ask USDA">Common Questions</a></li>
-                                <li class="menu-item"><a href="https://www.fsa.usda.gov/news-room/efoia/index" aria-label="Go to USDA.gov">Freedom of Information Act</a></li>
+                                <li class="menu-item"><a href="https://www.fsa.usda.gov/news-room/efoia/index" aria-label="Go to efoia index">Freedom of Information Act</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -499,8 +499,8 @@
                 </p>
               </div>
               <div class="link">
-                <a class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">Get assistance completing this form</a>
-                <a class="text-link" href="/forms/${form["file_name"]}" download>Download</a>
+                <a aria-label="Get assistance completing form ${form.name}" class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">Get assistance completing this form</a>
+                <a aria-label="Download form ${form.name}"class="text-link" href="/forms/${form["file_name"]}" download>Download</a>
               </div>
             </div>
           </div>`;

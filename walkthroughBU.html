@@ -465,7 +465,8 @@
                     }
                     $('#show_forms').val(form_ids);
                     $('#walkthrough-link').attr("href", `/walkthrough.html?show_forms=${form_ids}`);
-                } else {
+                } 
+                else {
                     show_forms = false;
                 }
 
@@ -492,24 +493,24 @@
 
 
                     var new_card = `<div class="col">
-            <div class="content-card accent-top form-card h-100">
-              <div class="headline">
-                <h3><a class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">${form.name}</a></h3>
-              </div>
-              <div class="content">
-                <p>
-                  ${form["description"]}
-                </p>
-              </div>
-              <div class="link">
-                <a class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">Get assistance completing this form</a>
-                <a class="text-link" href="/forms/${form["file_name"]}" download>Download</a>
-              </div>
-            </div>
-          </div>`;
-                    cards.push(new_card);
-
-                });
+                                        <div class="content-card accent-top form-card h-100">
+                                            <div class="headline">
+                                                <h3><a class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">${form.name}</a></h3>
+                                            </div>
+                                            <div class="content">
+                                                <p>
+                                                ${form["description"]}
+                                                </p>
+                                            </div>
+                                            <div class="link">
+                                                <a class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">Get assistance completing this form</a>
+                                                <a class="text-link" href="/forms/${form["file_name"]}" download>Download</a>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                        cards.push(new_card);
+                    }
+                );
 
                 $("#forms-holder").append(cards.join(""));
 
@@ -521,8 +522,8 @@
                 } else {
                     $('#search-status').hide();
                 }
-
-            });
+            }
+        );
         })();
     </script>
 

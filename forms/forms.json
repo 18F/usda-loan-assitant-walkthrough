@@ -9830,18 +9830,46 @@
       "url": "https://www.farmers.gov/sites/default/files/documents/Form-AD1026-Highly-Erodible-Land.pdf"
       }
     ],
-    "loantype": [
+    "LoanType": [
         {
-            "type": "emergency",
-            "forms": ["FSA-2330","AD-1026","FSA-2014","FSA-2037"],
-            "name": "Emergency Loans",
-            "description": "Lorem Ipsum dolor sit amet"
+            "type": "microloan",
+            "forms": ["FSA-2330","AD-1026", "FSA-2014", "FSA-2037"],
+            "name": "Microloans",
+            "description": "Microloans, farm ownership loans or operating loans up to $50,000, are designed to meet the needs of small and beginning farmers, or non-traditional specialty operations. The requirements and paperwork for Microloans are often simpler than those of other loan products.",
+            "imageName": "microloan.jpg",
+            "imageAltText": ""
         },
         {
-            "type": "youth", 
-            "forms": ["FSA-2330","AD-1026"],
+            "type": "ownership",
+            "forms": ["FSA-2001", "FSA-2002", "FSA-2003", "FSA-2004", "FSA-2005", "FSA-2006", "FSA-2007", "FSA-2014", "FSA-2015", "FSA-2037", "FSA-2038", "FSA-2150", "FSA-2302", "FSA-2370", "FSA-851", "AD-1026"],
+            "name": "Farm Ownership Loans",
+            "description": "Farm Ownership Loans can be used for the purchase or expansion of a farm or ranch. Loan funds can be used for closing costs, construction or improvement of farm structures, or for soil and water conservation.",
+            "imageName": "farmownershiploan.jpg",
+            "imageAltText": ""
+        },
+        {
+            "type": "operating",
+            "forms": ["FSA-2001", "FSA-2002", "FSA-2003", "FSA-2004", "FSA-2005", "FSA-2006", "FSA-2007", "FSA-2014", "FSA-2015", "FSA-2037", "FSA-2038", "FSA-2150", "FSA-2302", "FSA-2370", "FSA-851", "AD-1026"],
+            "name": "Farm Operating Loans",
+            "description": "Farm Operating Loans can be used to purchase livestock, seed, and equipment. Loan funds can also cover startup costs and family living expenses.",
+            "imageName": "operatingloan.jpg",
+            "imageAltText": ""
+        },
+        {
+            "type": "emergency",
+            "forms": ["FSA-2001", "FSA-2002", "FSA-2003", "FSA-2004", "FSA-2005", "FSA-2006", "FSA-2007", "FSA-2014","FSA-2015", "FSA-2037", "FSA-2038", "FSA-2302", "FSA-2309", "FSA-2310", "FSA-2370", "AD-1026"],
             "name": "Emergency Loans",
-            "description": "Lorem Ipsum dolor sit amet"
+            "description": "Emergency Loans are available to farmers and ranchers who have suffered losses due to natural disasters. Dmergency loan funds can be used to restore or replace vital property, pay all or part of production costs, pay essential family living expenses, and reorganize the farming operation.",
+            "imageName": "emergencyloan.jpg",
+            "imageAltText": ""
+        },
+        {
+            "type": "youth",
+            "forms": ["FSA-2301", "AD-1026"],
+            "name": "Youth Loans",
+            "description": "Youth Loans help young people between 10 and 20 years old to fund agricultural projects. Recipients are typically involved in education programs, like 4-H clubs or FFA.",
+            "imageName": "youthloan.jpg",
+            "imageAltText": ""
         }
     ]
 }

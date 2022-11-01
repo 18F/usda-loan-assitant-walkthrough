@@ -248,7 +248,7 @@
                         </p>
                         <div class="warning-container">
                             <div class="warning-left-bar">
-                                
+
                             </div>
                             <div class="warning-icon">
                                 <img src="./images\alerts\warning.png" alt="warning icon" height="32" width="32">
@@ -430,39 +430,171 @@
 
     <script>
         (function() {
-            // Show Forms Grid
-            $.getJSON("/forms/forms.json", function(data) {
-                show_count = 0;
-                total_count = 0;
+            // Show Forms Grid for specific loan type
+            if(location.search.includes("?")){
+                var loanType = location.search.replace("?",'');
+                // Show Forms Grid with forms for specific loan type
+                $.getJSON("/forms/forms.json", function(data) {
+                    
+                    show_count = 0;
+                    total_count = 0;
 
-                // Get search query 
-                let q = getQueryVar(name = "query");
-                if (q) {
-                    search_val = q.toLowerCase();
-                    $("#header-search").val(q);
-                } else {
-                    search_val = false;
-                }
-
-                const form_ids = getQueryVar(name = "show_forms");
-                if (form_ids) {
-                    if (form_ids == "null") {
-                        show_forms = false;
+                    // Get search query 
+                    let q = getQueryVar(name = "query");
+                    if (q) {
+                        search_val = q.toLowerCase();
+                        $("#header-search").val(q);
                     } else {
-                        show_forms = form_ids.split(",");
+                        search_val = false;
                     }
-                    $('#show_forms').val(form_ids);
-                    $('#walkthrough-link').attr("href", `/walkthrough.html?show_forms=${form_ids}`);
-                } else {
-                    show_forms = false;
-                }
 
-                var cards = [];
-                $.each(data["Forms"], function(key, form) {
+                    const form_ids = getQueryVar(name = "show_forms");
+                    if (form_ids) {
+                        if (form_ids == "null") {
+                            show_forms = false;
+                        } else {
+                            show_forms = form_ids.split(",");
+                        }
+                        $('#show_forms').val(form_ids);
+                        $('#walkthrough-link').attr("href", `/walkthrough.html?show_forms=${form_ids}`);
+                    } 
+                    else {
+                        show_forms = false;
+                    }
 
+                    //loanType
+                    var index = data['LoanType'].findIndex(function(item, i){
+                        return item.type === loanType;
+                    });
+
+                    var cards = [];
+                    $.each(data["Forms"], function(key, form) {
+                        if(!data['LoanType'][index]['forms'].includes(form['id'])) {
+                            return;
+                        }
+
+                        if (show_forms) {
+                            if ($.inArray(form["id"], show_forms) < 0) {
+                                return
+                            }
+                        }
+
+                        total_count += 1;
+
+                        // Search filter 
+                        if (search_val) {
+                            if ((form["name"].toLowerCase().indexOf(search_val) < 0) && (form["description"].toLowerCase().indexOf(search_val) < 0)) {
+                                return
+                            }
+                        }
+
+                        show_count += 1;;
+
+                        var new_card = `<div class="col">
+                                            <div class="content-card accent-top form-card h-100">
+                                                <div class="headline">
+                                                    <h3><a class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">${form.name}</a></h3>
+                                                </div>
+                                                <div class="content">
+                                                    <p>
+                                                    ${form["description"]}
+                                                    </p>
+                                                </div>
+                                                <div class="link">
+                                                    <a class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">Get assistance completing this form</a>
+                                                    <a class="text-link" href="/forms/${form["file_name"]}" download>Download</a>
+                                                </div>
+                                            </div>
+                                        </div>`;
+                        cards.push(new_card);
+                        }
+                    );
+
+                    $("#forms-holder").append(cards.join(""));
+
+                    if (search_val) {
+                        $('#show_count').html(show_count);
+                        $('#total_count').html(total_count);
+                        $('#show-all-link').attr("href", `/walkthrough.html?show_forms=${form_ids}`);
+                        $('#search-status').show();
+                    } else {
+                        $('#search-status').hide();
+                    }
+                });
+            }
+            else // Show all loan types
+            { 
+                $.getJSON("/forms/forms.json", function(data) {
+                    show_count = 0;
+                    total_count = 0;
+
+                    // Get search query 
+                    let q = getQueryVar(name = "query");
+                    if (q) {
+                        search_val = q.toLowerCase();
+                        $("#header-search").val(q);
+                    } else {
+                        search_val = false;
+                    }
+
+                    const form_ids = getQueryVar(name = "show_forms");
+                    if (form_ids) {
+                        if (form_ids == "null") {
+                            show_forms = false;
+                        } else {
+                            show_forms = form_ids.split(",");
+                        }
+                        $('#show_forms').val(form_ids);
+                        $('#walkthrough-link').attr("href", `/walkthrough.html?show_forms=${form_ids}`);
+                    } else {
+                        show_forms = false;
+                    }
+
+                    var cards = [];
+                    // Old cards 
+                    // $.each(data["Forms"], function(key, form) {
+
+                    //     // Form filter ?show_forms=FORM_ID,FORM_ID If form_ids is missing or empty show all.
+                    //     if (show_forms) {
+                    //         if ($.inArray(form["id"], show_forms) < 0) {
+                    //             return
+                    //         }
+                    //     }
+
+                    //     total_count += 1;
+
+                    //     // Search filter 
+                    //     if (search_val) {
+                    //         if ((form["name"].toLowerCase().indexOf(search_val) < 0) && (form["description"].toLowerCase().indexOf(search_val) < 0)) {
+                    //             return
+                    //         }
+                    //     }
+
+                    //     show_count += 1;;
+                        
+                    //     var new_card = `<div class="col">
+                    //                         <div class="content-card accent-top form-card h-100">
+                    //                         <div class="headline">
+                    //                             <h3><a class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">${form.name}</a></h3>
+                    //                         </div>
+                    //                         <div class="content">
+                    //                             <p>
+                    //                             ${form["description"]}
+                    //                             </p>
+                    //                         </div>
+                    //                         <div class="link">
+                    //                             <a class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">Get assistance completing this form</a>
+                    //                             <a class="text-link" href="/forms/${form["file_name"]}" download>Download</a>
+                    //                         </div>
+                    //                         </div>
+                    //                     </div>`;
+                    //     cards.push(new_card);
+                    // });
+
+                    $.each(data["LoanType"], function(key, type) {
                     // Form filter ?show_forms=FORM_ID,FORM_ID If form_ids is missing or empty show all.
                     if (show_forms) {
-                        if ($.inArray(form["id"], show_forms) < 0) {
+                        if ($.inArray(type["id"], show_forms) < 0) {
                             return
                         }
                     }
@@ -471,47 +603,57 @@
 
                     // Search filter 
                     if (search_val) {
-                        if ((form["name"].toLowerCase().indexOf(search_val) < 0) && (form["description"].toLowerCase().indexOf(search_val) < 0)) {
+                        if ((type["name"].toLowerCase().indexOf(search_val) < 0) && (type["description"].toLowerCase().indexOf(search_val) < 0)) {
                             return
                         }
                     }
 
                     show_count += 1;;
 
-
                     var new_card = `<div class="col">
-            <div class="content-card accent-top form-card h-100">
-              <div class="headline">
-                <h3><a class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">${form.name}</a></h3>
-              </div>
-              <div class="content">
-                <p>
-                  ${form["description"]}
-                </p>
-              </div>
-              <div class="link">
-                <a class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">Get assistance completing this form</a>
-                <a class="text-link" href="/forms/${form["file_name"]}" download>Download</a>
-              </div>
-            </div>
-          </div>`;
+                                        <div class="loantype-card-container">
+                                            <div class="loantype-card-image">
+                                                <img src="./images/loantypes/${type["imageName"]}" alt="${type["imageAltText"]}">
+                                            </div>
+                                            <div class="loantype-card-title">
+                                                <p>
+                                                    ${type["name"]}
+                                                </p>
+                                            </div>
+                                            <div class="loantype-card-description">
+                                                <p>
+                                                    ${type["description"]}
+                                                </p>
+                                            </div>
+                                            <div class="loantype-card-button-container">
+                                                <div class="loantype-card-button">
+                                                    <a id=${type["type"]} href="/walkthrough.html?${type["type"]}" class="page-link" data-label="/walkthrough.html?${type["type"]}" aria-label="Go to the ${type["type"]} Loan Details" data-category=${type["type"]}>
+                                                        <div class="mm-nav-link">
+                                                            <div class="mm-top-level-title">ACCESS FORMS</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
                     cards.push(new_card);
+                    });
+
+                    $("#forms-holder").append(cards.join(""));
+
+                    if (search_val) {
+                        $('#show_count').html(show_count);
+                        $('#total_count').html(total_count);
+                        $('#show-all-link').attr("href", `/walkthrough.html?show_forms=${form_ids}`);
+                        $('#search-status').show();
+                    } else {
+                        $('#search-status').hide();
+                    }
 
                 });
-
-                $("#forms-holder").append(cards.join(""));
-
-                if (search_val) {
-                    $('#show_count').html(show_count);
-                    $('#total_count').html(total_count);
-                    $('#show-all-link').attr("href", `/walkthrough.html?show_forms=${form_ids}`);
-                    $('#search-status').show();
-                } else {
-                    $('#search-status').hide();
-                }
-
-            });
+            }
         })();
+                
     </script>
 
 </body>

@@ -17303,14 +17303,15 @@ h6#related-resources {
     float: right;
 }
 
+/* Warning text */
 .warning-container {
-    background-color: lemonchiffon;
+    background-color: #F8EDC7;
     width: 100%;
     display: grid;
     grid-template-columns: 1rem auto 1fr;
 }
     .warning-left-bar {
-        background-color: darkgoldenrod;
+        background-color: #FFBE2E;
         width: 100%;
         height: 100%;
         padding: .5rem;
@@ -17338,4 +17339,31 @@ h6#related-resources {
             font-size: 16px;
             line-height: 150%;
             padding: 2rem 0 0;
+        }
+
+/* Cards */
+.loantype-card-container {
+    display: grid;
+    grid-template-rows: auto 3rem 16rem 3rem;
+}
+    .loantype-card-image {
+        width: 324;
+        height: 162;
+        display: grid;
+        padding: 0%;
+    }
+
+    .loantype-card-title {
+    
+    }
+
+    .loantype-card-description {
+    
+    }
+
+    .loantype-card-button-container {
+    
+    }
+        .loantype-card-button {
+        
         }

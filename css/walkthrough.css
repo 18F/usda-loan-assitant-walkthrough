@@ -7,7 +7,6 @@
     width: 100%;
 }
 
-
 @media (min-width: 991.98px) {
     main {
         padding-top: 40px;
@@ -17278,6 +17277,8 @@ h6#related-resources {
     margin-bottom: 3rem;
 }
 
+
+/* Added by Johnny */
 .backgroundHero {
     background-color: #006546;
     background-image: url('../images/hero.jpg');
@@ -17301,3 +17302,40 @@ h6#related-resources {
     margin: 1rem;
     float: right;
 }
+
+.warning-container {
+    background-color: lemonchiffon;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1rem auto 1fr;
+}
+    .warning-left-bar {
+        background-color: darkgoldenrod;
+        width: 100%;
+        height: 100%;
+        padding: .5rem;
+    }
+    .warning-icon {
+        width: 100%;
+        padding: 2rem;
+    }
+    .warning-message {
+        width: 100%;
+        padding: 2rem;
+        display: grid;
+        grid-template-rows: 2rem 1fr;
+    }
+        .warning-message-bold {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 120%;
+            height: 3rem;
+        }
+        .warning-message-message {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            padding: 2rem 0 0;
+        }

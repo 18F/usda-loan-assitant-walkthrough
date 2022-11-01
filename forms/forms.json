@@ -1,5 +1,5 @@
 {
-  "Forms": [      
+    "Forms": [      
       {   "id": "FSA-2001",
           "description": "Use this form to apply for all direct loans and identify all applicants.",
           "file_name": "Form_FSA_2001_Direct_Loan_Application_Form.pdf",
@@ -9829,5 +9829,19 @@
       ],
       "url": "https://www.farmers.gov/sites/default/files/documents/Form-AD1026-Highly-Erodible-Land.pdf"
       }
-  ]
+    ],
+    "loantype": [
+        {
+            "type": "emergency",
+            "forms": ["FSA-2330","AD-1026","FSA-2014","FSA-2037"],
+            "name": "Emergency Loans",
+            "description": "Lorem Ipsum dolor sit amet"
+        },
+        {
+            "type": "youth", 
+            "forms": ["FSA-2330","AD-1026"],
+            "name": "Emergency Loans",
+            "description": "Lorem Ipsum dolor sit amet"
+        }
+    ]
 }

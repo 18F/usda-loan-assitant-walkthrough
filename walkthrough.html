@@ -430,12 +430,11 @@
 
     <script>
         (function() {
-            // Show Forms Grid for specific loan type
+            // Check if specific loan has been picked "?" indicates a specific loan has been picked.  Otherwise show all loans on a grid
             if(location.search.includes("?")){
                 var loanType = location.search.replace("?",'');
                 // Show Forms Grid with forms for specific loan type
                 $.getJSON("/forms/forms.json", function(data) {
-                    
                     show_count = 0;
                     total_count = 0;
 
@@ -444,7 +443,8 @@
                     if (q) {
                         search_val = q.toLowerCase();
                         $("#header-search").val(q);
-                    } else {
+                    }
+                    else {
                         search_val = false;
                     }
 
@@ -462,16 +462,14 @@
                         show_forms = false;
                     }
 
-                    //loanType
-                    var index = data['LoanType'].findIndex(function(item, i){
-                        return item.type === loanType;
-                    });
-
+                        {// Get the index of the loanType 
+                        var index = data['LoanType'].findIndex(function(item, i){ return item.type === loanType; });}
+                
                     var cards = [];
                     $.each(data["Forms"], function(key, form) {
-                        if(!data['LoanType'][index]['forms'].includes(form['id'])) {
-                            return;
-                        }
+
+                        // use index to get the list of forms for the loan type
+                        if(!data['LoanType'][index]['forms'].includes(form['id'])) { return; }
 
                         if (show_forms) {
                             if ($.inArray(form["id"], show_forms) < 0) {

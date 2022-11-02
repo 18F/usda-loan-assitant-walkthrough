@@ -1,3 +1,6 @@
+// steps - the step in th elegibility and loan discovery tools wizard-content.json
+// currentLoan
+
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -18,18 +21,6 @@ function getCookie(cname) {
         }
     }
     return "";
-}
-
-function checkCookie() {
-    let user = getCookie("username");
-    if (user != "") {
-        alert("Welcome again " + user);
-    } else {
-        user = prompt("Please enter your name:", "");
-        if (user != "" && user != null) {
-        setCookie("username", user, 365);
-        }
-    }
 }
 
 function userState() {

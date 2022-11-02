@@ -435,8 +435,11 @@
                         show_forms = form_ids.split(",");
                     }
                     $('#show_forms').val(form_ids);
-                    $('#walkthrough-link').attr("href", `/walkthrough.html?show_forms=${form_ids}`);
-                } else {
+                    
+                    // 
+                    // $('#walkthrough-link').attr("href", `/walkthrough.html?show_forms=${form_ids}`);
+                }
+                else {
                     show_forms = false;
                 }
 
@@ -449,7 +452,6 @@
 
                 $.each(form_data.parts, function (part_index, part) {
                     // console.log(part_index, part)
-
                     new_part = `<div class="accordion-item">
                                     <h2 class="accordion-header" id="part-header-wrapper-${part_index}">
                                       <button id="part-header-content-${part_index}" class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#part-content-wrapper-${part_index}" aria-expanded="false" aria-controls="part-content-wrapper-${part_index}" data-parent="#form_walkthrough">

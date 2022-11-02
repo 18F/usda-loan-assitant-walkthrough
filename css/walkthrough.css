@@ -17307,6 +17307,8 @@ h6#related-resources {
 .warning-container {
     background-color: #F8EDC7;
     width: 100%;
+    height: fit-content;
+    margin: initial;
     display: grid;
     grid-template-columns: 1rem auto 1fr;
 }
@@ -17317,39 +17319,32 @@ h6#related-resources {
         padding: .5rem;
     }
     .warning-icon {
-        width: 100%;
-        padding: 2rem;
+        display: grid;
+        padding: 1rem;
     }
     .warning-message {
         width: 100%;
-        padding: 2rem;
-        display: grid;
-        grid-template-rows: 2rem 1fr;
+        display: flex;
+        margin: 0%;
+        padding: 1rem;
     }
         .warning-message-title {
             font-style: normal;
             font-weight: 700;
             font-size: 22px;
             line-height: 120%;
-            height: 3rem;
-        }
-        .warning-message-description {
-            font-style: normal;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 150%;
-            padding: 2rem 0 0;
+            align-self: flex-end;
         }
 
 /* info text */
 .info-container {
-    background-color: paleturquoise;
+    background-color: #E7F6F8;
     width: 100%;
     display: grid;
     grid-template-columns: 1rem auto 1fr;
 }
     .info-left-bar {
-        background-color: darkblue;
+        background-color: #00BDE3;
         width: 100%;
         height: 100%;
         padding: .5rem;

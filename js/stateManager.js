@@ -1,5 +1,5 @@
 // steps - the step in th elegibility and loan discovery tools wizard-content.json
-// currentLoan
+// currentLoanType - the current loan type being viewed.
 
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
@@ -30,8 +30,7 @@ function userState() {
     // 2 = returing need to Continue loan discovery 
 
     if (getCookie("steps") != "") {
-        console.log("Welcome back");
-        
+        console.log("Welcome back");   
         var largest = Math.max.apply(Math, getCookie("steps").split(","));
 
         if (largest < 35) {
@@ -51,4 +50,5 @@ function userState() {
 
 function deleteCookies() {
     setCookie("steps", '', -1);
+    setCookie("currentLoanType", '', -1);
 }

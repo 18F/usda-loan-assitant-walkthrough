@@ -17326,14 +17326,14 @@ h6#related-resources {
         display: grid;
         grid-template-rows: 2rem 1fr;
     }
-        .warning-message-bold {
+        .warning-message-title {
             font-style: normal;
             font-weight: 700;
             font-size: 22px;
             line-height: 120%;
             height: 3rem;
         }
-        .warning-message-message {
+        .warning-message-description {
             font-style: normal;
             font-weight: 400;
             font-size: 16px;
@@ -17341,10 +17341,52 @@ h6#related-resources {
             padding: 2rem 0 0;
         }
 
+/* info text */
+.info-container {
+    background-color: paleturquoise;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1rem auto 1fr;
+}
+    .info-left-bar {
+        background-color: darkblue;
+        width: 100%;
+        height: 100%;
+        padding: .5rem;
+    }
+    .info-icon {
+        width: 100%;
+        padding: 2rem;
+    }
+    .info-message {
+        width: 100%;
+        padding: 2rem;
+        display: grid;
+        grid-template-rows: 2rem 1fr;
+    }
+        .info-message-title {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 120%;
+            height: 3rem;
+        }
+        .info-message-description {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            padding: 2rem 0 0;
+        }
+        .info-button-container {
+            width: fit-content;
+        }
+
+
 /* Cards */
 .loantype-card-container {
     display: grid;
-    grid-template-rows: auto 3rem 16rem 3rem;
+    grid-template-rows: auto 3rem 1fr 3rem;
 }
     .loantype-card-image {
         width: 324;
@@ -17358,12 +17400,9 @@ h6#related-resources {
     }
 
     .loantype-card-description {
-    
+
     }
 
     .loantype-card-button-container {
-    
-    }
-        .loantype-card-button {
         
-        }
+    }

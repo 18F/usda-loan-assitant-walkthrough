@@ -25,9 +25,7 @@
 </head>
 
 <body>
-
     <!-- ======= Header ======= -->
-
     <header class="main-header" role="banner" aria-label="Page Header">
         <!--wrapper for main header used to hide on print-->
         <div class="head-main">
@@ -223,12 +221,9 @@
             </div>
         </div>
     </header>
-    
-    
     <!-- End Header -->
     
     <main id="main-content">
-
         <div class="container">
             <div class="row">
                 <div class="primary-region medium-12">
@@ -256,9 +251,7 @@
         </div>
 
         <div class="container">
-
             <div class="row" style="margin-bottom:15px;">
-
                 <div class="col-md-3">
                     <div class="content-card accent-top h-100">
                         <div class="accordion" id="form_walkthrough"></div>
@@ -278,9 +271,7 @@
             </div>
 
         </div>
-
     </main>
-
 
     <!-- End Container Page -->
     <!-- ======= Footer ======= -->
@@ -411,8 +402,6 @@
     </footer>
     <!-- End Footer -->
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
@@ -421,26 +410,27 @@
     <script src="js/moz_viewer_controller.js"></script>
     <script src="js/farmers.min.js"></script>
 
+    <!-- manage state -->
+    <script type = "text/javascript" src="./js/stateManager.js"></script> 
 
     <script>
         (function () {
-
             // Show Forms Grid
             $.getJSON("/forms/forms.json", function (data) {
                 const form_ids = getQueryVar(name = "show_forms");
                 if (form_ids) {
                     if (form_ids == "null") {
-                        show_forms = false;
-                    } else {
+                        $('#walkthrough-link').attr("href", `/walkthrough.html?${getCookie("currentLoanType")}`);
+                    }
+                    else {
                         show_forms = form_ids.split(",");
                     }
                     $('#show_forms').val(form_ids);
-                    
-                    // 
+                                        
                     // $('#walkthrough-link').attr("href", `/walkthrough.html?show_forms=${form_ids}`);
                 }
                 else {
-                    show_forms = false;
+                    $('#walkthrough-link').attr("href", `/walkthrough.html?${getCookie("currentLoanType")}`);
                 }
 
                 const key = getQueryVar("key");
@@ -448,6 +438,7 @@
                 showPDF(form_data.file_name);
                 $('#form-name').html(form_data.name)
                 $('#form-description').html(form_data.description)
+                $('#form-footer').html(`Click here to <a href="/forms/${form_data.file_name}" download>download the form</a> to fill it with <a href="https://get.adobe.com/reader/" target=_BLANK>Adobe Acrobat Reader</a>`);
                 $('#form-footer').html(`Click here to <a href="/forms/${form_data.file_name}" download>download the form</a> to fill it with <a href="https://get.adobe.com/reader/" target=_BLANK>Adobe Acrobat Reader</a>`);
 
                 $.each(form_data.parts, function (part_index, part) {
@@ -468,8 +459,6 @@
                                 </div>`;
 
                     $('#form_walkthrough').append(new_part);
-
-
 
                     $.each(part.items, function (item_index, item) {
                         new_item = `<div class="accordion-item">
@@ -494,7 +483,11 @@
                 })
             });
 
+            // Load Form iFrame after the document is loaded. and set the url to return to correct catagory
             $(document).ready(function () {
+                // Set url to the current loan type
+                $('#walkthrough-link').attr("href", `/walkthrough.html?${getCookie("currentLoanType")}`);
+
                 $("iframe").on("load", function () {
                     $(this).contents().on("mousedown, mouseup, click", function (e) {
                         if(e.target.id !=""){
@@ -507,16 +500,13 @@
                                     if($(ele).attr("aria-expanded")=="true") $(ele).click();  
                                 })
                             }
-                            if(item.attr("aria-expanded")=="false") item.click();
+                            if(item.attr("aria-expanded")=="false") { item.click(); }
                         }
                     });                    
                 });               
             });
-
         })();
-
     </script>
-
 </body>
-
 </html>
+

@@ -241,30 +241,25 @@
         <div class="container">
             <div class="farmers-landing-page row">
                 <div class="primary-region medium-12">
-                    <div class="primary-region__header" id="header-holder">
+                    <div class="primary-region__header">
+                        <div  id="header-holder"> </div>
                         <p>
-                            Using the Form Support module, you can walk through each FSA form field by field and get instructions on how to complete it. To begin the form walkthrough process, please select one of the below forms. 
-                        </p>
-                        <p>
-                            For a list of the forms required for your loan type, please refer to the checklist for your loan type from the Loan Discovery module.
-                        </p>
-                        <p>
-                            Forms can be filled out online and downloaded to a local machine for printing. However, please note:
+                            Below are the forms used to apply for for an annual operating farm loan. You may needs to fill many of them to complete your application. Please select a form to start the walk tough process. You may comeplete the form as you go though this process. You may download the each form to your computers at any point to save your progress and resume working on it later. Please note:
                         </p>
                         <ul>
-                            <li>It is not possible to save your work online. Currently, you are only able to save forms by downloading them to your local machine as PDFs;</li>
-                            <li>This process does not save or submit any information online; and</li>
-                            <li>Completed applications must be printed out and sent to your <a href="https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa" target="_blank">Local Service Center</a> if you have any further questions or concerns.</li>
+                            <li>The forms can only be saved to your computer;</li>
+                            <li>At no point in this process is any information saved to, or shared with USDA staff or systems; and</li>
+                            <li>You care encouraged to reach out to your Local Service Center if you have any further questions or concerns.</li>
                         </ul>
                         <p>
-                            Any further questions or concerns should be directed to your  <a href="https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa" target="_blank">Local Service Center</a>.
+                            <a href="/walkthrough.html" class="page-link" data-label="/walkthrough.html" aria-label="Go to Form Support Page" data-category="Loans">Return to Form Support page</a>
                         </p>
 
                         <!-- Yellow warning --> 
                         <div class="warning-container">
                             <div class="warning-left-bar"> </div>
                             <div class="warning-icon">
-                                <img src="./images\alerts\warning.png" alt="warning icon" height="32" width="32">
+                                <img src="./images/alerts/warning.png" alt="warning icon" height="32" width="32">
                             </div>
                             <div class="warning-message">
                                 <div class="warning-message-title">
@@ -277,7 +272,7 @@
                         <div class="info-container" id="info-container-id">
                             <div class="info-left-bar"> </div>
                             <div class="info-icon">
-                                <img src="./images\alerts\info.png" alt="alert icon" height="32" width="32">
+                                <img src="./images/alerts/info.png" alt="alert icon" height="32" width="32">
                             </div>
                             <div class="info-message">
                                 <div class="info-message-title">
@@ -653,8 +648,10 @@
         // After DOM is loaded
         $(document).ready(function () {
             // Hide info if Eligibility Self-Assessment not complete
-            if(userState() === 2) {
-               document.getElementById('info-container-id').style.display = 'none';  
+            console.log(userState());
+            if(userState() != 2) {
+                
+                document.getElementById('info-container-id').style.display = 'grid';  
             }
         });
     </script>

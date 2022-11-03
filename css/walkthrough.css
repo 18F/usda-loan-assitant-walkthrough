@@ -17340,7 +17340,7 @@ h6#related-resources {
 .info-container {
     background-color: #E7F6F8;
     width: 100%;
-    display: grid;
+    display: none;
     grid-template-columns: 1rem auto 1fr;
 }
     .info-left-bar {

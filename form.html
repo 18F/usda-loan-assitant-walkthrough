@@ -241,6 +241,7 @@
                         <p id="form-description"></p>
                         <div class="divider-dot"></div>
                         <p id="form-footer"></p>
+                        <p id="return-form-suport"></p>
                     </div>
                 </div>
             </div>
@@ -439,7 +440,8 @@
                 $('#form-name').html(form_data.name)
                 $('#form-description').html(form_data.description)
                 $('#form-footer').html(`Click here to <a href="/forms/${form_data.file_name}" download>download the form</a> to fill it with <a href="https://get.adobe.com/reader/" target=_BLANK>Adobe Acrobat Reader</a>`);
-                $('#form-footer').html(`Click here to <a href="/forms/${form_data.file_name}" download>download the form</a> to fill it with <a href="https://get.adobe.com/reader/" target=_BLANK>Adobe Acrobat Reader</a>`);
+                $('#return-form-suport').html(`<a href="/walkthrough.html?${getCookie('currentLoanType')}"> Return to ${getCookie('currentLoanType')} Form Support page </a>`);
+
 
                 $.each(form_data.parts, function (part_index, part) {
                     // console.log(part_index, part)

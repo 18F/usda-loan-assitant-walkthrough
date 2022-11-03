@@ -17380,24 +17380,62 @@ h6#related-resources {
 
 /* Cards */
 .loantype-card-container {
+    -webkit-box-shadow: 0px 1px 4px 0px #BBBBBB; 
+    box-shadow: 0px 1px 4px 0px #BBBBBB;
+
+    width: 342px;
+    height:fit-content;
     display: grid;
-    grid-template-rows: auto 3rem 1fr 3rem;
+    grid-template-rows: auto auto auto auto auto;
 }
     .loantype-card-image {
-        width: 324;
-        height: 162;
+        width: 342px;
         display: grid;
-        padding: 0%;
     }
 
     .loantype-card-title {
-    
+        padding-top: 24px;
+        padding-left: 24px;
+        padding-bottom: 8px;
     }
 
     .loantype-card-description {
+        padding: 8px 24px;
+    }
 
+    .loantype-card-spacer {
+        padding: 12px;
     }
 
     .loantype-card-button-container {
-        
+        padding: 24px;
     }
+        .loantype-card-button {
+            
+        }
+
+.loantype-title {
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+    .loantype-title-back {
+        max-width:100%;
+        max-height:100%;
+        vertical-align: middle;
+    }
+    .loantype-title-name {
+        display: flex;
+        justify-content:space-around;
+        padding: 0 1rem;
+    }
+
+/* Helpers */
+.image-flip {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.image-center-div {
+    padding:auto;
+}

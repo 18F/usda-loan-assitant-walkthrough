@@ -251,8 +251,8 @@
                             <li>At no point in this process is any information saved to, or shared with USDA staff or systems; and</li>
                             <li>You care encouraged to reach out to your Local Service Center if you have any further questions or concerns.</li>
                         </ul>
-                        <p>
-                            <a href="/walkthrough.html" class="page-link" data-label="/walkthrough.html" aria-label="Go to Form Support Page" data-category="Loans">Return to Form Support page</a>
+                        <p id="return-form-suport">
+                            
                         </p>
 
                         <!-- Yellow warning --> 
@@ -287,7 +287,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -456,15 +455,21 @@
 
     <script>
         (function() {
-            // Show loand specific Forms
+            // Show loan specific Forms
             // Check if specific loan has been picked "?" indicates a specific loan has been picked.  Otherwise show all loans on a grid
             if(location.search.includes("?")){
+                //  get loanType
                 var loanType = location.search.replace("?",'');
-                
+
                 // Show Forms Grid with forms for specific loan type
                 $.getJSON("/forms/forms.json", function(data) {
                     show_count = 0;
                     total_count = 0;
+
+                    // Get the index of the loanType 
+                    var index = data['LoanType'].findIndex(function(item, i){ return item.type === loanType; });
+                    // Get the loan name
+                    var loanName = data['LoanType'][index]['name'];
 
                     // Get search query 
                     let q = getQueryVar(name = "query");
@@ -490,11 +495,19 @@
                         show_forms = false;
                     }
                 
-                    // Get the index of the loanType 
-                    var index = data['LoanType'].findIndex(function(item, i){ return item.type === loanType; });
-                    
                     // Title of support page
-                    var titleText = `<div class="col"> ${data['LoanType'][index]['name']} Form Support </div>`;
+                    var titleText = `<div class="col">
+                                        <div class="loantype-title">    
+                                            <div class="">
+                                                <a href="/walkthrough.html" data-label="/walkthrough.html" aria-label="Go to Form Support Page" data-category="Loans">
+                                                    <img class="loantype-title-back image-flip" src="./images/arrow-right.png" alt="Back arrow" width="32">
+                                                </a>
+                                            </div>
+                                            <div class="loantype-title-name">
+                                                <div>${loanName} Form Support</div>
+                                            </div>
+                                        </div>
+                                    </div>`;
                     document.getElementById('title-holder').innerHTML = titleText;
                     // Description of support page
                     var descriptioText =    `<div class="col"> ${data['LoanType'][index]['description']} </div>`;
@@ -503,7 +516,6 @@
                     // The cards for the individual forms
                     var cards = [];
                     $.each(data["Forms"], function(key, form) {
-
                         // use index to get the list of forms for the loan type
                         // if not in the loan's form list reeturn without building card
                         if(!data['LoanType'][index]['forms'].includes(form['id'])) { return; }
@@ -521,7 +533,7 @@
                             }
                         }
                         
-                        var new_card = `<div class="col">
+                        var new_card =  `<div class="col">
                                             <div class="content-card accent-top form-card h-100">
                                                 <div class="headline">
                                                     <h3><a class="text-link" href="/form.html?key=${key}&show_forms=${form_ids}">${form.name}</a></h3>
@@ -537,12 +549,13 @@
                                         </div>`;
                         
                         cards.push(new_card);
-                        
                         total_count += 1;
                         show_count += 1;;
                     });
 
                     $("#forms-holder").append(cards.join(""));
+
+                    $('#return-form-suport').html(`<a href="/walkthrough.html" class="page-link" data-label="/walkthrough.html" aria-label="Go to Form Support Page" data-category="Loans">Back to all loan types</a>`);
 
                     if (search_val) {
                         $('#show_count').html(show_count);
@@ -606,21 +619,22 @@
                         
                         // Card for each loan type
                         var new_card = `<div class="col">
-                                            <div class="loantype-card-container content-card accent-top form-card h-100">
+                                            <div class="loantype-card-container">
                                                 <div class="loantype-card-image-container">
                                                     <img class="loantype-card-image-container" src="./images/loantypes/${type["image"]}" alt="${type["imageAltText"]}">
                                                 </div>
-                                                <div class="loantype-card-title headline">
+                                                <div class="loantype-card-title">
                                                     <h3> ${type["name"]} </h3>
                                                 </div>
-                                                <div class="loantype-card-description content">
+                                                <div class="loantype-card-description">
                                                     <p> ${type["description"]} </p>
+                                                </div>
+                                                <div class="loantype-card-spacer">
+                                                    <p>  </p>
                                                 </div> 
                                                 <div class="loantype-card-button-container">
-                                                    <div class="loantype-card-button link" onclick= "setCookie('currentLoanType', '${type["type"]}', 1);">
-                                                        <a id=${type["type"]} href="/walkthrough.html?${type["type"]}" class="text-link" data-label="/walkthrough.html?${type["type"]}"  aria-label="Go to the ${type["type"]} Loan Details" data-category=${type["type"]}>
-                                                            ACCESS FORMS
-                                                        </a>
+                                                    <div class="loantype-card-button">
+                                                        <button class="btn lg-btn" onclick="setCookie('currentLoanType', '${type["type"]}', 1);window.location.assign('/walkthrough.html?${type["type"]}')" aria-label="Go to the ${type["type"]}" data-category="${type["type"]}"> ACCESS FORMS </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -640,7 +654,6 @@
                     } else {
                         $('#search-status').hide();
                     }
-
                 });
             }
         })();
@@ -648,14 +661,10 @@
         // After DOM is loaded
         $(document).ready(function () {
             // Hide info if Eligibility Self-Assessment not complete
-            console.log(userState());
             if(userState() != 2) {
-                
                 document.getElementById('info-container-id').style.display = 'grid';  
             }
         });
     </script>
-
-
 </body>
 </html>

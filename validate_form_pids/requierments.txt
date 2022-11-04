@@ -1,0 +1,6 @@
+pdfminer>=20191125
+requests
+requests_html
+selenium
+webdriver_manager
+packaging

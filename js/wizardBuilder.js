@@ -355,9 +355,9 @@ var WizardBuilder = window.WizardBuilder || {};
                 buttonElement.onclick = function(_) {
                     // push steps array into cookie when user click button
                     if(button.nextStepId==2)
-                        setCookie("steps", "2", 365);
+                        setCookie("steps", 2, 365);
                     else
-                        setCookie("steps", getCookie("steps")+","+button.nextStepId, 365);
+                        setCookie("steps", getCookie("steps")+","+parseInt(button.nextStepId), 365);
                     WizardBuilder.addStep(wizardElementId, button.nextStepId);
                     WizardBuilder.goToStep(wizardElementId, button.nextStepId);
                 }

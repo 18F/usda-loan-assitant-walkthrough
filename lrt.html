@@ -436,10 +436,9 @@
 
                     $.each(answeredQuestions, function(key, item) {
                         let value = Math.max(...answeredQuestions);
-                        console.log(value);
 
                         let id = parseInt(item);
-                        if(value < 36) { id = 36; }
+                        if( value < 36 ) { id = 36; }
                         WizardBuilder.addStep("lrt-stepper", id);
                         WizardBuilder.goToStep("lrt-stepper", id);
                     })

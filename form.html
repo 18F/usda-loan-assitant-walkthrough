@@ -441,11 +441,9 @@
                 $('#form-description').html(form_data.description)
                 $('#form-footer').html(`Click here to <a href="/forms/${form_data.file_name}" download>download the form</a> to fill it with <a href="https://get.adobe.com/reader/" target=_BLANK>Adobe Acrobat Reader</a>`);
 
-                console.log(data['LoanType']);
                 var loanType = getCookie('currentLoanType');
                 // Get the index of the loanType 
                 var index = data['LoanType'].findIndex(function(item, i){ return item.type === loanType; });
-                console.log(index);
 
                 // Get the loan name
                 var loanName = data['LoanType'][index]['name'];

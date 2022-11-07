@@ -17382,17 +17382,18 @@ h6#related-resources {
 .loantype-card-container {
     -webkit-box-shadow: 0px 1px 4px 0px #BBBBBB; 
     box-shadow: 0px 1px 4px 0px #BBBBBB;
-
-    width: 342px;
     height:fit-content;
     display: grid;
     grid-template-rows: auto auto auto auto auto;
 }
-    .loantype-card-image {
-        width: 342px;
-        display: grid;
+    .loantype-card-image-container {
+        width: 100%;
     }
-
+        .loantype-card-image {
+            object-fit: cover;
+            width: 99%;
+            max-height: 100%;
+        }
     .loantype-card-title {
         padding-top: 24px;
         padding-left: 24px;

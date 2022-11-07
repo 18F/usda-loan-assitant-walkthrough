@@ -485,7 +485,8 @@
                     if (form_ids) {
                         if (form_ids == "null") {
                             show_forms = false;
-                        } else {
+                        }
+                        else {
                             show_forms = form_ids.split(",");
                         }
                         $('#show_forms').val(form_ids);
@@ -622,7 +623,7 @@
                         var new_card = `<div class="col">
                                             <div class="loantype-card-container">
                                                 <div class="loantype-card-image-container">
-                                                    <img class="loantype-card-image-container" src="./images/loantypes/${type["image"]}" alt="${type["imageAltText"]}">
+                                                    <img class="loantype-card-image" src="./images/loantypes/${type["image"]}" alt="${type["imageAltText"]}">
                                                 </div>
                                                 <div class="loantype-card-title">
                                                     <h3> ${type["name"]} </h3>

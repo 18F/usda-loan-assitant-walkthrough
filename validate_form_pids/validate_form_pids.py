@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 from webdriver_manager.chrome import ChromeDriverManager
 
 from pprint import pprint 
@@ -35,17 +36,29 @@ def load_fields(field):
             return (field.get('T'), resolve1(field.get('V')))
     else:
         return None
-def pdf_as_html(file_name):
+
+def pdf_input_attrs(file_name):
     url = "http://127.0.0.1:8080/js/pdfjs/web/viewer.html?file=/forms/"+file_name
+    INPUT_ATTR = ["id", "type","data-name", "aria-label"]
     print(url)
 
     chrome_options = Options()
-    chrome_options.add_argument("--headless")
+    # chrome_options.add_argument("--headless")
     driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
     driver.get(url)
-    element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div.annotationLayer")))
+    try:
+        WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, "section.textWidgetAnnotation")))
+    except TimeoutException:
+        WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input.xfaTextfield")))
 
-    return driver
+    elements = driver.find_elements(By.CSS_SELECTOR, 'input, textarea')
+    out = {}
+    for el in elements:
+        key = el.get_attribute('data-name') or el.get_attribute('aria-label')
+        pid = el.get_attribute('id')
+        if (key) and pid.endswith('R'):
+            out[key] = {attr: el.get_attribute(attr) for attr in INPUT_ATTR}
+    return out
 
 
 def main(forms_json = '../forms/forms.json'):
@@ -55,11 +68,11 @@ def main(forms_json = '../forms/forms.json'):
 
     for form_data in forms_data['Forms']:
         print(form_data["file_name"])
-        form = pdf_as_html(form_data["file_name"])
+        form = pdf_input_attrs(form_data["file_name"])
         # form = load_form("../forms/"+form_data["file_name"])
-        print(len(form.find_elements(By.CSS_SELECTOR, 'input')))
-        # inputs = form.html.find('input')
-        # pprint([(i.attrs.get("id"), i.attrs.get('data-name'), i.attrs.get('role')) for i in inputs])
+        
+
+        
         
 
 

@@ -410,7 +410,8 @@
     <script>
         (function() {
             var questions = [];
-            var steps = getCookie("steps").split(",");
+            // Get a JSON array of steps from js/stateManager.js
+            var steps = returnStepsJSON();
             $.getJSON("./wizard-content.json", function(data) {
                 $.each(data["steps"], function(key, step) {
                     var buttonText = step["buttons"][0].buttonText;
@@ -422,9 +423,9 @@
                 });
 
                 let answeredQuestions = [];
-                steps.forEach((key, item)=>{
-                    if(questions.includes(parseInt(key))) {
-                        answeredQuestions.push(parseInt(key));
+                steps.forEach((key)=>{
+                    if(questions.includes(parseInt(key['q']))) {
+                        answeredQuestions.push(parseInt(key['q']));
                     }
                 })
 
@@ -455,11 +456,16 @@
                         })    
                     }
                     else {
-                        setCookie("steps", "2", 365);
+                        setStep(1,"Start");
+                        //setCookie("steps", "1", 365);
                     }
                 }
             });
         })();
+        
+        $(document).keyup(function(e){
+            debugTools(location.hostname, e);
+        });
     </script>
 </body>
 

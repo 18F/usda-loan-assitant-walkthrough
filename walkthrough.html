@@ -227,7 +227,7 @@
     </header>
     
     <!-- End Header -->
-    <main id="main-content">
+    <main id="main-content" id="body">
         <div class="container">
             <div class="row">
                 <div class="primary-region medium-12">
@@ -307,6 +307,17 @@
         </div>
         <div class="divider-dot"></div>
     </div>
+
+    <!-- Modal content -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Some text in the Modal..</p>
+        </div>
+      
+      </div>
 
     <div class="container">
         <div class="row row-cols-1 row-cols-md-3 g-4" id="forms-holder"></div>
@@ -508,8 +519,8 @@
                                             </div>
                                         </div>
                                     </div>`;
-
                     document.getElementById('title-holder').innerHTML = titleText;
+                    
                     // Description of support page
                     var descriptioText =    `<div class="col"> ${data['LoanType'][index]['description']} </div>`;
                     document.getElementById('header-holder').innerHTML = descriptioText;
@@ -665,6 +676,11 @@
             if(userState() != 2) {
                 document.getElementById('info-container-id').style.display = 'grid';  
             }
+        });
+
+        // Debug stuff
+        $(document).keyup(function(e){
+            debugTools(location.hostname, e);
         });
     </script>
 </body>

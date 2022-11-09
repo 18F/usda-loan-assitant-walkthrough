@@ -36,8 +36,10 @@ def pdf_input_attrs(file_name):
         driver.get(url)
 
         try:
+            # Adobe acrobat 
             WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, "section.textWidgetAnnotation")))
         except TimeoutException:
+            #What ever else
             WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input.xfaTextfield")))
 
         elements = driver.find_elements(By.CSS_SELECTOR, 'input, textarea')
@@ -114,7 +116,11 @@ def process_forms_spreadsheet(source_filename, form_count, field_count, update_p
                             print(f'     **  Processing item {item_row}: {field_name}')
 
                         if update_pids:
-                            matches = find_matches(field_name, pdf_labels, verbose)
+                            match = find_matches(field_name, pdf_labels, verbose)
+                            if match and verbose:
+                                print( "          --  ", form_inputs[match])
+                                new_pid = form_inputs[match]['id']
+                                items_sheet["G"+str(item_row)].value = new_pid
 
                         item_id = items_sheet["C"+str(item_row)].value or ""
                         item_dict = {

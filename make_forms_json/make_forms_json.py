@@ -17,14 +17,20 @@ from selenium.webdriver.chrome.service import Service
 
 from pprint import pprint
 
-def find_matches(field_title, pdf_labels):
-    print(process.extractOne(field_title, pdf_labels))
+def find_matches(field_title, pdf_labels, verbose = False):
+    match, rate = process.extractOne(field_title, pdf_labels)
+    if verbose and rate >= 75:
+        print("        --  match: ", match, rate)
+
+    if rate >= 75:
+        return match
+    else:
+        return None
 
 
 def pdf_input_attrs(file_name):
         url = "http://127.0.0.1:8080/js/pdfjs/web/viewer.html?file=/forms/"+file_name
         INPUT_ATTR = ["id", "type","data-name", "aria-label"]
-        print(url)
 
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         driver.get(url)
@@ -104,12 +110,11 @@ def process_forms_spreadsheet(source_filename, form_count, field_count, update_p
 
                         field_name = items_sheet["D"+str(item_row)].value or ''
 
-
                         if verbose:
                             print(f'     **  Processing item {item_row}: {field_name}')
 
                         if update_pids:
-                            matches = find_matches(field_name, pdf_labels)
+                            matches = find_matches(field_name, pdf_labels, verbose)
 
                         item_id = items_sheet["C"+str(item_row)].value or ""
                         item_dict = {

@@ -6,7 +6,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta ver="1.0.5+">
 
-
     <title>Loan Assistance Tool / Home </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -24,45 +23,17 @@
 <body>
     <!-- ======= Header ======= -->
     <header class="main-header" role="banner" aria-label="Page Header" id="header">
-        <!-- loaded in script see below: $('#header').html(addHeader()); -->
+        <!-- loaded in script see below: $("#main-header").load("/components/landingpage.html") -->
     </header>
     <!-- End Header -->
 
-    <main id="main-content" class="backgroundHero" >
-        <div class="homecard"> 
-            <div class="container">
-                <div class="row">
-                    <div class="primary-region medium-12">
-                        <h1 class="primary-region__title">
-                            Loan Assistance Tool
-                        </h1>
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="col-md-12">
-                        <div class="content-card accent-top">
-                            <h3 class="card-title">Are you ready to apply for a farm loan?</h3>
-                            <div class="card-body">
-                                <ul>
-                                    <li>Am I eligible for a FSA Farm Loan?</li>
-                                    <li>Which loans are right for me?</li>
-                                    <li>Where can I get  help completing the loan application forms?</li>
-                                </ul>
-                            </div>
-                            <button class="btn lg-btn" onclick="window.location.assign('/lrt.html')">
-                                Get Started
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>  
-        <div class="spacer">&nbsp;</div>
+    <main id="main-content">
+        <!-- loaded context ually through script see below -->
     </main>
 
     <!-- ======= Footer ======= -->
-    <footer id="footer">
-
+    <footer id="main-footer">
+         <!-- loaded through script see below: $("#main-footer").load("/components/footer.html") -->
     </footer>
     <!-- End Footer -->
 
@@ -74,26 +45,40 @@
     <!-- manage state -->
     <script src="js/stateManager.js"></script>
 
-    <!-- Add component scripts -->
-    <script src="js/components/header.js"></script>
-    <script src="js/components/footer.js"></script>
-
     <script>
+        // Initialize page
         (function() {
-            // load from js/components/header.js
-            $('#header').html(addHeader());
+            // Load from html component header
+            $('#header').load("/components/header.html");
             
-            // load content based on url
-
-            // load from js/components/footer.js
-            $('#footer').html(addFooter());
+            // load landing page
+            $("#main-content").load("/components/landingpage.html");
+            
+            // Load from html component footer
+            $('#footer').load("/components/footer.html");
             
             // Debug stuff
             $(document).keyup(function(e){
                 debugTools(location.hostname, e);
             });
         })();
-        
+
+        // Called from onClick in header.html
+        function SetContent(page) { 
+            switch(page) {
+                case "home":
+                    $("#main-content").load("/components/landingpage.html");
+                    break;
+                case "guides":
+                    $("#main-content").load("/components/guides.html");
+                    break;
+                case "support":
+                    console.log("walkthrough "+location.search);
+                    $("#main-content").load("/components/walkthrough.html");
+                    break;
+                default:
+            }
+        }
     </script>
 </body>
 </html>

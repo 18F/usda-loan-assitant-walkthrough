@@ -48,36 +48,30 @@
     <script>
         // Initialize page
         (function() {
+            // Scroll page to top on refresh
+            history.scrollRestoration = "manual";
+            window.onbeforeunload = function () { window.scrollTo(0,0); };
+
             // Load from html component header
             $('#header').load("/components/header.html");
             
-            // load landing page
-            $("#main-content").load("/components/landingpage.html");
+            // load home page on first load SetContent
+            $("#main-content").load("/components/home.html");
             
-            // Load from html component footer
-            $('#footer').load("/components/footer.html");
+            // Load from html component footer.html
+            $('#main-footer').load("/components/footer.html");
             
-            // Debug stuff
+            // Catch keyup event
             $(document).keyup(function(e){
+                // Debug hotkeys: 0= reset cookies, 1= show question and answers, 2= show user state
                 debugTools(location.hostname, e);
             });
         })();
 
-        // Called from onClick in header.html
-        function SetContent(page) { 
-            switch(page) {
-                case "home":
-                    $("#main-content").load("/components/landingpage.html");
-                    break;
-                case "guides":
-                    $("#main-content").load("/components/guides.html");
-                    break;
-                case "support":
-                    console.log("walkthrough "+location.search);
-                    $("#main-content").load("/components/walkthrough.html");
-                    break;
-                default:
-            }
+        // Called from onClick in header.html links
+        function SetContent(pageName) {
+            // loads component based on passed in name 
+            $("#main-content").load("/components/" + pageName + ".html");
         }
     </script>
 </body>

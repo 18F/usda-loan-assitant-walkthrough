@@ -45,6 +45,8 @@
     <!-- manage state -->
     <script src="js/stateManager.js"></script>
 
+    <script src="js/farmers.min.js"></script>
+
     <script>
         // Initialize page
         (function() {
@@ -56,7 +58,7 @@
             $('#header').load("/components/header.html");
             
             // load home page on first load SetContent
-            $("#main-content").load("/components/home.html");
+            $("#main-content").load("/components/support.html");
             
             // Load from html component footer.html
             $('#main-footer').load("/components/footer.html");
@@ -69,7 +71,7 @@
         })();
 
         // Called from onClick in header.html links
-        function SetContent(pageName) {
+        function setContent(pageName, formID) {
             // loads component based on passed in name 
             $("#main-content").load("/components/" + pageName + ".html");
         }

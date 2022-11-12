@@ -43,12 +43,12 @@ setupMenu = function(hov=false){
   forms.forEach(form => {
     // console.log(form, hov);
     if (hov==true){
-      li = '<li><a href="/form.html?q='+i+'&hov=true"><i class="bi bi-circle"></i><span>'+form.name+'</span></a></li>';
+      li = '<li><a href="/?q='+i+'&hov=true"><i class="bi bi-circle"></i><span>'+form.name+'</span></a></li>';
     }else{
-      li = '<li><a href="/form.html?q='+i+'&hov=false"><i class="bi bi-circle"></i><span>'+form.name+'</span></a></li>';
+      li = '<li><a href="/?q='+i+'&hov=false"><i class="bi bi-circle"></i><span>'+form.name+'</span></a></li>';
     }
     $("#forms-nav").append(li);
-    i=i+1;
+    i=i++;
   });
 }
 

@@ -1,5 +1,6 @@
 // steps - the step in th elegibility and loan discovery tools wizard-content.json
 // currentLoanType - the current loan type being viewed.
+// currentFormType - the current form type being viewed.
 
 function setStep(question, answer) {
     // Create object for question  and ansers pairs
@@ -16,12 +17,28 @@ function setStep(question, answer) {
     }    
 }
 
+// Get and Set Loan Type
+function setloanType(loanType) {
+    setCookie('currentLoanType', loanType, 1);
+}
+function getloanType() {
+    getCookie('currentLoanType');
+}
+
+// Get and Set Form Type
+function setFormType(formType) {
+    setCookie('currentFormType', formType, 1);
+}
+function getFormType() {
+    getCookie('currentFormType');
+}
+
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     let expires = "expires="+d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    //console.log(JSON.parse(getCookie("steps")));
+    console.log(getCookie(cname));
 }
   
 function getCookie(cname) {
@@ -72,6 +89,7 @@ function returnStepsJSON() {
 function resetCookies() {
     setCookie("steps", '', -1);
     setCookie("currentLoanType", '', -1);
+    setCookie("currentFormType", '', -1);
     console.log("Cookies Reset");
 }
 
@@ -80,21 +98,21 @@ function debugTools(hostname, e) {
         hostname === "127.0.0.1" || 
         hostname === "192.168.0.106") 
     {
-        // press 1 key to reset cookies 
+        // press 0 key to reset cookies 
         if (e.which == 48 || e.keyCode == 48 || window.event.keyCode == 48) {
             e.preventDefault();
             /// From: js/stateManager.js
             resetCookies();
         };
 
-        // press 2 key to show questions and answers 
+        // press 1 key to show questions and answers 
         if (e.which == 49 || e.keyCode == 49 || window.event.keyCode == 49) {
             e.preventDefault();
             /// From: js/stateManager.js
             console.log(returnStepsJSON());
         };
 
-        // press 3 key to show user stste 
+        // press 2 key to show user stste 
         if (e.which == 50 || e.keyCode == 50 || window.event.keyCode == 50) {
             e.preventDefault();
             /// From: js/stateManager.js

@@ -57,8 +57,15 @@
             // Load from html component header
             $('#header').load("/components/header.html");
             
+            // Get the current page
+            var pageName = getCurrentPage();
+            
             // load home page on first load SetContent
-            $("#main-content").load("/components/support.html");
+            if(pageName === undefined || pageName === "") {
+                pageName = 'home';
+            }
+
+            setContent(pageName);
             
             // Load from html component footer.html
             $('#main-footer').load("/components/footer.html");
@@ -71,9 +78,23 @@
         })();
 
         // Called from onClick in header.html links
-        function setContent(pageName, formID) {
+        function setContent(pageName) {
             // loads component based on passed in name 
             $("#main-content").load("/components/" + pageName + ".html");
+            // Save current page so refresh can show th ecurrent page
+            setCurrentPage(pageName);
+
+            // set link highlight
+            $(document).ready(function () {
+                $.each(getPageList(), function(key) {
+                    if(getPageList()[key] == pageName || getPageList()[key] === 'form') {
+                        document.getElementById(getPageList()[key]).className = "active-trail page-link mm-active";
+                    }
+                    else {
+                        document.getElementById(getPageList()[key]).className = "page-link";
+                    }
+                });
+            });
         }
     </script>
 </body>

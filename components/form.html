@@ -56,7 +56,7 @@
     (function () {
         // Show Forms Grid
         $.getJSON("/forms/forms.json", function (data) {
-            var index = data['Forms'].findIndex(function(item, i){ return item.type === getFormType(); });
+            var index = data['Forms'].findIndex(function(item, i){ return item.id === getFormType(); });
             form_data = data["Forms"][index];
 
             showPDF(form_data.file_name);
@@ -73,9 +73,8 @@
             
             $('#return-form-suport').html(`<a href="/walkthrough.html?${loanType}"> Return to ${loanName} Form Support page </a>`);
 
-
             $.each(form_data.parts, function (part_index, part) {
-                 console.log(part_index, part)
+                // console.log(part_index, part)
                 new_part = `<div class="accordion-item">
                                 <h2 class="accordion-header" id="part-header-wrapper-${part_index}">
                                     <button id="part-header-content-${part_index}" class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#part-content-wrapper-${part_index}" aria-expanded="false" aria-controls="part-content-wrapper-${part_index}" data-parent="#form_walkthrough">

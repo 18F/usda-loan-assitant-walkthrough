@@ -72,6 +72,22 @@
 
 <script>
     (function() {
+        // Get the current page
+        var loanType = getloanType();
+        
+        // load home page on first load SetContent
+        if(loanType === undefined || loanType === "" || loanType === "all") {
+            showAllLoans();
+        }
+        else {
+            showFormsList(loanType);
+        }
+    })();
+
+    // Draws cards for all loan types
+    function showAllLoans() {
+        setloanType("all");
+
         // Show all loan types
         $.getJSON("/forms/forms.json", function(data) {
             // Create a card for each loan type
@@ -98,7 +114,7 @@
                                         </div> 
                                         <div class="loantype-card-button-container">
                                             <div class="loantype-card-button">
-                                                <button class="btn lg-btn" onclick="setFormView('${type["type"]}')" aria-label="Go to the ${type["type"]}" data-category="${type["type"]}" id="${type["type"]}"> ACCESS FORMS </button>
+                                                <button class="btn lg-btn" onclick="showFormsList('${type["type"]}')" aria-label="Go to the ${type["type"]}" data-category="${type["type"]}" id="${type["type"]}"> ACCESS FORMS </button>
                                             </div>
                                         </div>
                                     </div>
@@ -106,18 +122,24 @@
                 cards.push(new_card);
             });
 
+            $("#forms-holder").empty();
             $("#forms-holder").append(cards.join(""));
-        });
-    })();
 
-    function setFormView(loanType) {
+            // Remove back link
+            $('#return-form-suport').empty();
+        });
+    }
+
+    // Draw Forms for loan type
+    function showFormsList(loanType) {
         // Save seleted loan type cookie
         setloanType(loanType);
 
         // Show Forms Grid with forms for specific loan type
         $.getJSON("/forms/forms.json", function(data) {
             // Get the index of the loanType 
-            var index = data['LoanType'].findIndex(function(item, i){ return item.type === loanType; });
+            var index = data['LoanType'].findIndex(function(item, i){ console.log(item.type);return item.type === loanType; });
+            console.log(loanType);
             // Get the loan name
             var loanName = data['LoanType'][index]['name'];
 
@@ -125,7 +147,7 @@
             var titleText = `<div class="col">
                                 <div class="loantype-title">    
                                     <div class="">
-                                        <a href="" onclick="setContent('support');return false;" data-label="/walkthrough.html" aria-label="Go to Form Support Page" data-category="Loans">
+                                        <a href="" onclick="showAllLoans();return false;" data-label="/walkthrough.html" aria-label="Go to Form Support Page" data-category="Loans">
                                             <img class="loantype-title-back image-flip" src="./images/arrow-right.png" alt="Back arrow" width="32">
                                         </a>
                                     </div>
@@ -174,8 +196,7 @@
             $("#forms-holder").empty();
             $("#forms-holder").append(cards.join(""));
 
-            $('#return-form-suport').html(`<a href="" onclick="setContent('support');return false;"  class="page-link" data-label="" aria-label="Go to Form Support Page" data-category="Loans">Back to all loan types</a>`);
-
+            $('#return-form-suport').html(`<a href="" onclick="showAllLoans();return false;"  class="page-link" data-label="" aria-label="Go to Form Support Page" data-category="Loans">Back to all loan types</a>`);
         });
     }
 

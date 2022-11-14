@@ -1,4 +1,5 @@
 // steps - the step in th elegibility and loan discovery tools wizard-content.json
+// currentPage - the page the user is on
 // currentLoanType - the current loan type being viewed.
 // currentFormType - the current form type being viewed.
 
@@ -17,12 +18,25 @@ function setStep(question, answer) {
     }    
 }
 
+// Get and Set current page
+function setCurrentPage(currentPage) {
+    setCookie('currentPage', currentPage, 1);
+}
+function getCurrentPage() {
+    return getCookie('currentPage');
+}
+
+// Get list of pages
+function getPageList() {
+    return ["home","guides","eligibility","discovery","support"];
+}
+
 // Get and Set Loan Type
 function setloanType(loanType) {
     setCookie('currentLoanType', loanType, 1);
 }
 function getloanType() {
-    getCookie('currentLoanType');
+    return getCookie('currentLoanType');
 }
 
 // Get and Set Form Type
@@ -30,7 +44,7 @@ function setFormType(formType) {
     setCookie('currentFormType', formType, 1);
 }
 function getFormType() {
-    getCookie('currentFormType');
+    return getCookie('currentFormType');
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -38,7 +52,6 @@ function setCookie(cname, cvalue, exdays) {
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     let expires = "expires="+d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    console.log(getCookie(cname));
 }
   
 function getCookie(cname) {
@@ -90,6 +103,7 @@ function resetCookies() {
     setCookie("steps", '', -1);
     setCookie("currentLoanType", '', -1);
     setCookie("currentFormType", '', -1);
+    setCookie("currentPage", '', -1);
     console.log("Cookies Reset");
 }
 

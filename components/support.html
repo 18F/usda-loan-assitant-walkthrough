@@ -200,9 +200,17 @@
         });
     }
 
+    // Load specific form
     function loadForm(formType) {
         setContent('form');
         setFormType(formType);
     }
 
+    // After DOM is loaded
+    $(document).ready(function () {
+        // Hide info if Eligibility Self-Assessment not complete
+        if(userState() != 2) {
+            document.getElementById('info-container-id').style.display = 'grid';  
+        }
+    });
 </script>

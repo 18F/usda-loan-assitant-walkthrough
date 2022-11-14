@@ -43,26 +43,19 @@
                         answeredQuestions.push(parseInt(key['q']));
                     }
                 })
-                
-                if (steps != "") {
-                    answeredQuestions.forEach((item)=>{  
-                        let id = parseInt(item)
 
-                        if(item>2){                        
-                            WizardBuilder.addStep("lrt-stepper", id);
-                            WizardBuilder.goToStep("lrt-stepper", id);
-                        }
-                    })    
-                }
-                else {
-                    setStep(1,"Start");
-                }
-                
+                $.each(answeredQuestions, function(key, item) {
+                    let value = Math.max(...answeredQuestions);
+
+                    let id = parseInt(item);
+                    if( value < 36 ) { id = 36; }
+                    WizardBuilder.addStep("lrt-stepper", id);
+                    WizardBuilder.goToStep("lrt-stepper", id);
+                });
             });
         })();
-        
-        $(document).ready(function () {
-            WizardBuilder.initialize("lrt-stepper", "../wizard-content.json");
-            gsap.registerPlugin(ScrollToPlugin);
-        });
+            $(document).ready(function () {
+                WizardBuilder.initialize("lrt-stepper", "../wizard-content.json");
+                gsap.registerPlugin(ScrollToPlugin);
+            });
     </script>

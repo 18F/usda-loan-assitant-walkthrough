@@ -86,7 +86,14 @@
                 // Debug hotkeys: 0= reset cookies, 1= show question and answers, 2= show user state
                 debugTools(location.hostname, e);
             });
+
+            // set link highlight
+            $(document).ready(function () {
+                highlightLink(pageName);
+            })
         })();
+
+
 
         // Called from onClick in header.html links
         function setContent(pageName) {
@@ -94,17 +101,21 @@
             $("#main-content").load("/components/" + pageName + ".html");
             // Save current page so refresh can show th ecurrent page
             setCurrentPage(pageName);
+            highlightLink(pageName);
+        };
 
-            // set link highlight
-            $(document).ready(function () {
-                $.each(getPageList(), function(key) {
-                    if(getPageList()[key] == pageName || getPageList()[key] === 'form') {
-                        document.getElementById(getPageList()[key]).className = "active-trail page-link mm-active";
-                    }
-                    else {
-                        document.getElementById(getPageList()[key]).className = "page-link";
-                    }
-                });
+        function highlightLink(pageName) {
+
+            $.each(getPageList(), function(key) {
+                // return if element doesn' exist
+                if(document.getElementById(getPageList()[key]) === null) { return; }
+
+                if(getPageList()[key] === pageName || getPageList()[key] === 'form') {
+                    document.getElementById(getPageList()[key]).className = "active-trail page-link mm-active";
+                }
+                else {
+                    document.getElementById(getPageList()[key]).className = "page-link";
+                }
             });
         }
     </script>

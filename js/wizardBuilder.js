@@ -391,7 +391,7 @@ var WizardBuilder = window.WizardBuilder || {};
             // The button jumps back to the given step whose ID equals "resetToStepId"
             resetButtonElement.onclick = function(_) {
                 // reset steps into cookie When user click "Start Over" button
-                setCookie("steps", resetToStepId, 365);
+                // setCookie("steps", resetToStepId, 365);
                 WizardBuilder.addStep(wizardElementId, resetToStepId);
 				WizardBuilder.goToStep(wizardElementId, resetToStepId);
             }
@@ -506,7 +506,7 @@ var WizardBuilder = window.WizardBuilder || {};
             return;
         }
 
-        const stepper = document.getElementById(wizardElementId);
+        var stepper = document.getElementById(wizardElementId);
 
         // Create new step
         const newStep = _createWizardStepElement(wizardElementId, targetStep);

@@ -1985,7 +1985,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?show_forms=FSA-2301,AD-1026"
+                    "url": "/walkthrough.html?youth"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2022,7 +2022,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2302,FSA-2309,FSA-2310,FSA-2370,AD-1026,"
+                    "url": "/walkthrough.html?emergency"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2059,7 +2059,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?show_forms=FSA-2330,AD-1026,FSA-2014,FSA-2037"
+                    "url": "/walkthrough.html?microloan"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2096,7 +2096,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2150,FSA-2302,FSA-2370,FSA-851,AD-1026"
+                    "url": "/walkthrough.html?ownership"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2133,7 +2133,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2150,FSA-2302,FSA-2370,FSA-851,AD-1026"
+                    "url": "/walkthrough.html?ownership"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2170,7 +2170,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2150,FSA-2302,FSA-2370,FSA-851,AD-1026"
+                    "url": "/walkthrough.html?ownership"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2207,7 +2207,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2302,FSA-2370,AD-1026"
+                    "url": "/walkthrough.html?term"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2244,7 +2244,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?show_forms=FSA-2001,FSA-2002,FSA-2003,FSA-2004,FSA-2005,FSA-2006,FSA-2007,FSA-2014,FSA-2015,FSA-2037,FSA-2038,FSA-2302,FSA-2370,AD-1026"
+                    "url": "/walkthrough.html?annual"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",

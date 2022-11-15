@@ -111,7 +111,11 @@
                 // return if element doesn' exist
                 if(document.getElementById(getPageList()[key]) === null) { return; }
 
+                // if(getPageList()[key] === pageName || pageName === "form") {
+                //     if(pageName === "form") { key = "support"; }
+
                 if(getPageList()[key] === pageName) {
+                    console.log(pageName);
                     document.getElementById(getPageList()[key]).className = "active-trail page-link mm-active";
                 }
                 else {

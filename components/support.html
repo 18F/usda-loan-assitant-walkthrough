@@ -183,7 +183,7 @@
                                             <p> ${form["description"]} </p>
                                         </div>
                                         <div class="link">
-                                            <a class="text-link" href="/form.html?key=${form.id}&show_forms=">Get assistance completing this form</a>
+                                            <a class="text-link" href="" onclick="loadForm('${form.id}');return false;">Get assistance completing this form</a>
                                             <a class="text-link" href="/forms/${form["file_name"]}" download>Download</a>
                                         </div>
                                     </div>

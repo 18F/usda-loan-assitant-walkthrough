@@ -71,7 +71,7 @@
             // Get the loan name
             var loanName = data['LoanType'][index]['name'];
             
-            $('#return-form-suport').html(`<a href="/walkthrough.html?${loanType}"> Return to ${loanName} Form Support page </a>`);
+            $('#return-form-suport').html(`<a href="/" id="support" onclick="setContent('support');return false;"> Return to ${loanName} Form Support page </a>`);
 
             $.each(form_data.parts, function (part_index, part) {
                 // console.log(part_index, part)

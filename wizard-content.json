@@ -1985,7 +1985,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?youth"
+                    "url": "/walkthrough.html?loan_type=youth"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2022,7 +2022,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?emergency"
+                    "url": "/walkthrough.html?loan_type=emergency"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2059,7 +2059,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?microloan"
+                    "url": "/walkthrough.html?loan_type=microloan"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2096,7 +2096,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?ownership"
+                    "url": "/walkthrough.html?loan_type=ownership"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2133,7 +2133,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?ownership"
+                    "url": "/walkthrough.html?loan_type=ownership"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2170,7 +2170,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?ownership"
+                    "url": "/walkthrough.html?loan_type=ownership"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2207,7 +2207,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?term"
+                    "url": "/walkthrough.html?loan_type=term"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",
@@ -2244,7 +2244,7 @@
                     "buttonText": "Access Instructions for Completing the Loan Forms",
                     "color": "white",
                     "textColor": "#094785",
-                    "url": "/walkthrough.html?annual"
+                    "url": "/walkthrough.html?loan_type=annual"
                 },
                 {
                     "buttonText": "Find your local Farm Loan Manager",

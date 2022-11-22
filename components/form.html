@@ -1,0 +1,141 @@
+﻿<div>
+    <div class="container">
+        <div class="row">
+            <div class="primary-region medium-12">
+                <h1 class="primary-region__title" id="form-name">
+                    ...
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="farmers-landing-page row">
+            <div class="primary-region medium-12">
+                <div class="primary-region__header">
+                    <p id="form-description"></p>
+                    <div class="divider-dot"></div>
+                    <p id="form-footer"></p>
+                    <p id="return-form-suport"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="divider-line"></div>
+    </div>
+
+    <div class="container">
+        <div class="row" style="margin-bottom:15px;">
+            <div class="col-md-3">
+                <div class="content-card accent-top h-100">
+                    <div class="accordion" id="form_walkthrough"></div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="content-card accent-top sticky-top">
+                    <div class="content pdf-main-container">
+                        <iframe id="mozViewerFrame" src="" width="100%" height="700px">
+                            Loading Files
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="js/moz_viewer_controller.js"></script>
+<script src="js/farmers.min.js"></script>
+
+<script>
+    (function () {
+        // Show Forms Grid
+        $.getJSON("/forms/forms.json", function (data) {
+            var index = data['Forms'].findIndex(function(item, i){ return item.id === getFormType(); });
+            form_data = data["Forms"][index];
+
+            showPDF(form_data.file_name);
+            $('#form-name').html(form_data.name)
+            $('#form-description').html(form_data.description)
+            $('#form-footer').html(`Click here to <a href="/forms/${form_data.file_name}" download>download the form</a> to fill it with <a href="https://get.adobe.com/reader/" target=_BLANK>Adobe Acrobat Reader</a>`);
+
+            var loanType = getCookie('currentLoanType');
+            // Get the index of the loanType 
+            var index = data['LoanType'].findIndex(function(item, i){ return item.type === loanType; });
+
+            // Get the loan name
+            var loanName = data['LoanType'][index]['name'];
+            
+            $('#return-form-suport').html(`<a href="/" id="support" onclick="setContent('support');return false;"> Return to ${loanName} Form Support page </a>`);
+
+            $.each(form_data.parts, function (part_index, part) {
+                // console.log(part_index, part)
+                new_part = `<div class="accordion-item">
+                                <h2 class="accordion-header" id="part-header-wrapper-${part_index}">
+                                    <button id="part-header-content-${part_index}" class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#part-content-wrapper-${part_index}" aria-expanded="false" aria-controls="part-content-wrapper-${part_index}" data-parent="#form_walkthrough">
+                                    ${part.name}
+                                    </button>
+                                </h2>
+                                <div id="part-content-wrapper-${part_index}" class="collapse" aria-labelledby="part-header-content-${part_index}" data-parent="#form_walkthrough">
+                                    <div class="accordion-body" id="part-content-${part_index}">
+                                    <h3>${part.title}</h3>
+                                    <div class = "subheading">${part.description}</div>
+                                    <div class="accordion accordion-flush" id="part-inner-accordion-${part_index}"></div>
+                                    </div>
+                                </div>
+                            </div>`;
+
+                $('#form_walkthrough').append(new_part);
+
+                $.each(part.items, function (item_index, item) {
+                    new_item = `<div class="accordion-item">
+                                    <h2 class="accordion-header" id="part-${part_index}-header-wrapper-${item_index}">
+                                    <button class="inner-accordion-button inner-${item.id} index-${item_index} collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-id="${item.id}" data-bs-name="${item.name}" data-bs-target="#part-${part_index}-content-wrapper-${item_index}" aria-expanded="false" aria-controls="part-${part_index}-content-wrapper-${item_index}" data-parent="#part-inner-accordion-${part_index}" pid="${item.pid}" partid="part-header-content-${part_index}">
+                                        <a href="#${item.id}" style="color:#212121;text-decoration:none;" class="inner-link"> ${item.id} - ${item.name}</a>
+                                    </button>
+                                    </h2>
+                                    <div id="part-${part_index}-content-wrapper-${item_index}" class="accordion-collapse collapse" aria-labelledby="part-${part_index}-header-wrapper-${item_index}" data-bs-parent="#part-inner-accordion-${part_index}">
+                                    <div class="inner-accordion-body">${item.comment}</div>
+                                    </div>
+                                </div>`;
+                    $(`#part-inner-accordion-${part_index}`).append(new_item);
+                });
+
+            });
+
+            $(".inner-accordion-button").click(function (e) {
+                var pid=$(this).attr("pid");
+                if(pid!="")
+                    $("iframe").contents().find("#"+pid).focus();
+            })
+        });
+
+        // Load Form iFrame after the document is loaded. and set the url to return to correct catagory
+        $(document).ready(function () {
+            // Set url to the current loan type
+            //$('#walkthrough-link').attr("href", `/walkthrough.html?${getCookie("currentLoanType")}`);
+
+            $("iframe").on("load", function () {
+                $(this).contents().on("mousedown, mouseup, click", function (e) {
+                    if(e.target.id !=""){
+                        var item=$("button[pid='"+e.target.id+"']");
+                        var part=$("#"+item.attr("partid"));
+                        if(part.attr("aria-expanded")=="false") {
+                            part.click();  
+                            var parts=document.querySelectorAll(".accordion-button");
+                            parts.forEach((ele)=>{
+                                if($(ele).attr("aria-expanded")=="true") $(ele).click();  
+                            })
+                        }
+                        if(item.attr("aria-expanded")=="false") { item.click(); }
+                    }
+                });                    
+            });               
+        });
+    })();
+</script>

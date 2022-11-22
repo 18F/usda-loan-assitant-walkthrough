@@ -1,0 +1,190 @@
+<style>
+input[type=checkbox] {
+  transform: scale(1);
+}
+
+input[type=checkbox] {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 17px;
+  visibility: hidden;
+}
+
+input[type=checkbox]:after,
+input[type=checkbox]::after {
+  content: " ";
+  display: inline-block;
+  margin-left: 10px;
+  padding-bottom: 5px;
+  color: #49A564;
+  width: 32px;
+  height: 32px;
+  visibility: visible;
+  border: 2px solid #49A564;
+  padding-left: 3px;
+  border-radius: 5px;
+}
+
+input[type=checkbox]:checked:after,
+input[type=checkbox]:checked::after {
+  content: "\2714";
+  padding: -5px;
+  font-weight: bold;
+}
+
+    .quiz-container {
+      max-height: fit-content;
+    }
+    .quiz-title-text{
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 26px;
+        color: #212121;
+    }
+
+    .quiz-paragraph-text {
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        color: #212121;
+    }
+    .quiz-multiselect-container {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: auto auto;
+        gap: 2rem;
+    }
+
+    .quiz-multiselect-card-container {
+        box-sizing: border-box;
+        width: 100%;
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+        padding: 2rem;
+    }
+
+    .quiz-multiselect-card-check-container {
+        color: antiquewhite;
+        float:right;
+        clear:both;
+    }
+</style>
+
+<div class="fit-content">
+    <div class="container">
+        <div class="quiz-container" id="quiz-container">
+        
+        </div>   
+    </div>
+</div>
+
+<script>
+    (function() {
+        $.getJSON("../quiz.json", function(data) {
+            
+            $.each(data["steps"], function(key, step) {
+                switch (step["type"]) {
+                    case 'information':
+                        // _createInformationCard(step);
+                        break;
+                    case 'multiselect':
+                        _createMultiselctCard(step);
+                        break;
+                    default:
+                        console.log(`not a valid type`);
+                }
+            });
+        });
+    })();
+
+    function _createInformationCard(step) {
+        $('#quiz-container').append(_createTitle(step['content']['title']));
+        $('#quiz-container').append(_createParagraphs(step['content']['paragraphs']));
+        $('#quiz-container').append(_createNextStepLink(step['nextStepId']));
+    }
+
+    function _createMultiselctCard(step) {
+        $('#quiz-container').append(_createTitle(step['content']['title']));
+        $('#quiz-container').append(_createParagraphs(step['content']['paragraphs']));
+        $('#quiz-container').append(_createMultiselectItems(step['options']));
+        $('#quiz-container').append(_createNextStepLink(step['nextStepId']));
+    }
+
+    function _createTitle(title) {
+        let titleDiv = document.createElement("div");
+        titleDiv.classList.add("quiz-title-text");
+        titleDiv.textContent = title
+        return titleDiv;
+    }
+
+    function _createParagraphs(paragraphs) {
+        let gridDiv = document.createElement("div");
+        gridDiv.classList.add("quiz-paragraph-text");
+        for (var i = 0; i < paragraphs.length; i++) {
+            let paragraph = paragraphs[i];
+            let paragraphText = paragraph.paragraphText;
+            // For each paragraph, check if it's a string or an object 
+            if (paragraphText !== null && paragraphText !== undefined) {
+                // If it's a string, then create a simple paragraph element
+                if (typeof paragraphText === 'string' || paragraphText instanceof String) {
+                    var paragraphElement = _createParagraphElement(paragraphText);
+                    // If it's an object, then it should represent a bulleted list, so create that instead
+                } else if (typeof paragraphText === 'object' && !Array.isArray(paragraphText)) {
+                    var paragraphElement = _createBulletedListElement(paragraphText.bullets, paragraphText.type);
+                } else {
+                    alert("Unrecognized paragraphText element detected: " + paragraphText.toString());
+                }
+            }
+            // Append the paragraph to the parent div
+            gridDiv.appendChild(paragraphElement);
+        }
+
+        return gridDiv;
+    }
+
+    function _createParagraphElement(paragraphText) {
+        let paragraphElement = document.createElement("p");
+        paragraphElement.appendChild(document.createTextNode(paragraphText));
+        return paragraphElement;
+    }
+
+    function _createNextStepLink(nextStepId) {
+        return _convertStringToHTML("<div>" + "Save and continue " + nextStepId + "</div>")
+    }
+
+    /////
+    // A collection of selections
+    function _createMultiselectItems (options) {
+        console.log(options)
+        let gridDiv = document.createElement("div");
+        gridDiv.classList.add("quiz-multiselect-container");
+        for (var i = 0; i < options.length; i++) {
+            gridDiv.append(_createMultiselectCard(options[i]));
+        }
+        return gridDiv;
+    }
+
+    function _createMultiselectCard (option) {
+        console.log(option)
+        let gridDiv = document.createElement("div");
+        gridDiv.classList.add("quiz-multiselect-card-container");
+        gridDiv.append(_createTitle(option['title']));
+        gridDiv.append(_createParagraphs(option['paragraphs']));
+        gridDiv.append(_convertStringToHTML("<div class='quiz-multiselect-card-check-container'><input type='checkbox'></div>"));
+        return gridDiv;
+    }
+
+    // Helper to convert string to HTML element
+    function _convertStringToHTML(str) {
+        const template =document.createElement("template");
+
+        template.innerHTML = str.trim()
+        return template.content.firstElementChild;
+    };
+</script>

@@ -1,0 +1,60 @@
+<div class="fit-content">
+    <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="mdl-stepper">
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--12-col">
+                                <!-- markup -->
+                                <ul id="wizzard-stepper">
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../js/wizardBuilder.js" type="text/javascript"></script>
+
+    <script>
+        (function() {
+            WizardBuilder.initialize("wizzard-stepper", "./wizard-content.json");
+            var questions = [];
+            // Get a JSON array of steps from js/stateManager.js
+            var steps = returnStepsJSON();
+            $.getJSON("../wizard-content.json", function(data) {
+                $.each(data["steps"], function(key, step) {
+                    var buttonText = step["buttons"][0].buttonText;
+
+                    if( !buttonText.includes("Start Eligibility<br>Self-Assessment") &&
+                        !buttonText.includes("Acknowledge & Continue") &&
+                        !buttonText.includes("Return to Question")) { 
+                            questions.push(step["id"]); 
+                        }
+                });
+
+                let answeredQuestions = [];
+                steps.forEach((key)=>{
+                    if(questions.includes(parseInt(key['q']))) {
+                        answeredQuestions.push(parseInt(key['q']));
+                    }
+                })
+                
+                if (steps != "") {
+                    answeredQuestions.forEach((item)=>{  
+                        if(item>2){                        
+                            WizardBuilder.addStep("wizzard-stepper", parseInt(item));
+                            WizardBuilder.goToStep("wizzard-stepper", parseInt(item));
+                        }
+                    });
+                }
+                else {
+                    setStep(1,"Start");
+                }
+            });
+        })();
+    </script>

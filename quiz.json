@@ -1,0 +1,94 @@
+{
+    "steps": [
+        {
+            "id": 0,
+            "nextStepId":1,
+            "progressBarStage": "start",
+            "type": "information",
+            "content": {
+                "title": "The bold part",
+                "paragraphs": [
+                    {
+                        "paragraphText": "Text 1"
+                        
+                    },
+                    {
+                        "paragraphText": "Text 2"
+                        
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "id": 0,
+                    "value": 0,
+                    "title": "The bold part",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "paragraph 1"
+                        },
+                        {
+                            "paragraphText": "paragraph 2"
+                        }
+                    ]
+                }
+            ]
+            },
+        {
+            "id": 1,
+            "nextStepId":2,
+            "progressBarStage": "elgibility",
+            "type": "multiselect",
+            "content": {
+                "title": "Multiselect Question",
+                "paragraphs": [
+                    {
+                        "paragraphText": "Select all that apply"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "id": 0,
+                    "value": 0,
+                    "title": "Question 1",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 1 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "id": 1,
+                    "value": 0,
+                    "title": "Question 2",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 2 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "value": 0,
+                    "title": "Question 3",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 3 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "value": 0,
+                    "title": "Question 4",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 4 paragraph 1"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

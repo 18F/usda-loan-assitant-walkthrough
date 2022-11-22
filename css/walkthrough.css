@@ -17439,3 +17439,7 @@ h6#related-resources {
 .image-center-div {
     padding:auto;
 }
+
+.fit-content {
+    height:fit-content;
+}

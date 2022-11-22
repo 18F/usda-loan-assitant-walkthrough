@@ -1,0 +1,53 @@
+    <div class="fit-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="mdl-stepper">
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--12-col">
+                                <!-- markup -->
+                                <ul id="lrt-stepper">
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/wizardBuilder.js" type="text/javascript"></script>
+
+    <script>
+        (function() {
+            WizardBuilder.initialize("lrt-stepper", "../wizard-content.json");
+            var questions = [];
+            // Get a JSON array of steps from js/stateManager.js
+            var steps = returnStepsJSON();
+            $.getJSON("../wizard-content.json", function(data) {
+                $.each(data["steps"], function(key, step) {
+                    var buttonText = step["buttons"][0].buttonText;
+
+                    if( !buttonText.includes("Start Eligibility<br>Self-Assessment") &&
+                        !buttonText.includes("Acknowledge & Continue") &&
+                        !buttonText.includes("Return to Question")) { 
+                            questions.push(step["id"]); 
+                        }
+                });
+
+                let answeredQuestions = [];
+                steps.forEach((key)=>{
+                    if(questions.includes(parseInt(key['q']))) {
+                        answeredQuestions.push(parseInt(key['q']));
+                    }
+                })
+
+                $.each(answeredQuestions, function(key, item) {
+                    if( item < 36 ) { return; }
+                    WizardBuilder.addStep("lrt-stepper", parseInt(item));
+                    WizardBuilder.goToStep("lrt-stepper", parseInt(item));
+                });
+            });
+        })();
+    </script>

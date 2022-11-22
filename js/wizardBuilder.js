@@ -354,10 +354,11 @@ var WizardBuilder = window.WizardBuilder || {};
                 // If the button indicates a "nextStepId", then the onclick should add the next step and navigate to it
                 buttonElement.onclick = function(_) {
                     // push steps array into cookie when user click button
-                    if(button.nextStepId==2)
-                        setCookie("steps", 2, 365);
-                    else
-                        setCookie("steps", getCookie("steps")+","+parseInt(button.nextStepId), 365);
+                    // if(button.nextStepId==2)
+                    //     setCookie("steps", 2, 365);
+                    // else
+                    setStep(parseInt(button.nextStepId),button.buttonText);
+                        //setCookie("steps", getCookie("steps")+","+"{question:"+parseInt(button.nextStepId)+", answer:"+button.buttonText+"}", 365);
                     WizardBuilder.addStep(wizardElementId, button.nextStepId);
                     WizardBuilder.goToStep(wizardElementId, button.nextStepId);
                 }
@@ -390,7 +391,7 @@ var WizardBuilder = window.WizardBuilder || {};
             // The button jumps back to the given step whose ID equals "resetToStepId"
             resetButtonElement.onclick = function(_) {
                 // reset steps into cookie When user click "Start Over" button
-                setCookie("steps", resetToStepId, 365);
+                // setCookie("steps", resetToStepId, 365);
                 WizardBuilder.addStep(wizardElementId, resetToStepId);
 				WizardBuilder.goToStep(wizardElementId, resetToStepId);
             }
@@ -505,7 +506,7 @@ var WizardBuilder = window.WizardBuilder || {};
             return;
         }
 
-        const stepper = document.getElementById(wizardElementId);
+        var stepper = document.getElementById(wizardElementId);
 
         // Create new step
         const newStep = _createWizardStepElement(wizardElementId, targetStep);

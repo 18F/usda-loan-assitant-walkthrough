@@ -33,13 +33,190 @@
                     ]
                 }
             ]
-            },
+        },
         {
             "id": 1,
             "progressBarStage": "elgibility",
             "type": "multiselect",
             "content": {
                 "title": "Multiselect Question",
+                "paragraphs": [
+                    {
+                        "paragraphText": "Select all that apply"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "id": 0,
+                    "value": 1,
+                    "nextStepId": 3,
+                    "title": "Question 1",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 1 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "id": 1,
+                    "value": 2,
+                    "nextStepId": 2,
+                    "title": "Question 2",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 2 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "value": 3,
+                    "nextStepId": 2,
+                    "title": "Question 3",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 3 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "value": 4,
+                    "nextStepId": 99,
+                    "title": "Youth",
+                    "paragraphs": [
+                        {
+                            "paragraphText": " YouthQuestion 4 paragraph 1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "progressBarStage": "elgibility",
+            "type": "multiselect",
+            "content": {
+                "title": "Question 2",
+                "paragraphs": [
+                    {
+                        "paragraphText": "Select all that apply"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "id": 0,
+                    "value": 1,
+                    "nextStepId": 3,
+                    "title": "Question 1",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 1 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "id": 1,
+                    "value": 2,
+                    "nextStepId": 2,
+                    "title": "Question 2",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 2 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "value": 3,
+                    "nextStepId": 2,
+                    "title": "Question 3",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 3 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "value": 4,
+                    "nextStepId": 99,
+                    "title": "Youth",
+                    "paragraphs": [
+                        {
+                            "paragraphText": " YouthQuestion 4 paragraph 1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "progressBarStage": "elgibility",
+            "type": "multiselect",
+            "content": {
+                "title": "Question 3",
+                "paragraphs": [
+                    {
+                        "paragraphText": "Select all that apply"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "id": 0,
+                    "value": 1,
+                    "nextStepId": 3,
+                    "title": "Question 1",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 1 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "id": 1,
+                    "value": 2,
+                    "nextStepId": 2,
+                    "title": "Question 2",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 2 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "value": 3,
+                    "nextStepId": 2,
+                    "title": "Question 3",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 3 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "value": 4,
+                    "nextStepId": 99,
+                    "title": "Youth",
+                    "paragraphs": [
+                        {
+                            "paragraphText": " YouthQuestion 4 paragraph 1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 99,
+            "progressBarStage": "elgibility",
+            "type": "multiselect",
+            "content": {
+                "title": "Youth",
                 "paragraphs": [
                     {
                         "paragraphText": "Select all that apply"

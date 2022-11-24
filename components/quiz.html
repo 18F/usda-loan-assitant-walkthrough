@@ -139,7 +139,7 @@ input[type=checkbox]:checked::after {
 
     let answeredQuestions = [];
     let currentQuestion = 0;
-    let nextStepId = 0;
+    let nextStepId = -1;
     let multiselectAnswers = [];
 
     (function() {
@@ -174,7 +174,7 @@ input[type=checkbox]:checked::after {
     }
     
     function _saveAndNext() {
-        _showQuestion(questionId);
+        _showQuestion(nextStepId);
     }
 
     // Creates an information question
@@ -191,6 +191,7 @@ input[type=checkbox]:checked::after {
 
     // Creates a multiselect question as a grid of cards with checkmars
     function _createMultiselctQuestion(step) {
+        multiselectAnswers = [];
         let question = document.createElement("div");
         question.classList.add("quiz-question");
         question.append(_createTitle(step['content']['title']));
@@ -246,7 +247,7 @@ input[type=checkbox]:checked::after {
         let div = document.createElement('div');
         div.classList.add("quiz-next");
         let nextLink = document.createElement('a');
-        nextLink.onclick = function() { _showQuestion(nextStepId); };
+        nextLink.onclick = function() { _saveAndNext(); };
         nextLink.innerHTML = "Save and continue"
         div.appendChild(nextLink);
         return div;
@@ -267,9 +268,9 @@ input[type=checkbox]:checked::after {
         $('#quiz-back').append(previoousLink);
     }
 
-    //////////////////
-    // Multi-selection
-    //////////////////
+    ///////////////////////////
+    // Multi-selection elements
+    ///////////////////////////
     function _createMultiselectItems (options) {
         let gridDiv = document.createElement("div");
         gridDiv.classList.add("quiz-multiselect-container");
@@ -300,9 +301,9 @@ input[type=checkbox]:checked::after {
         checkbox.name = option['value'];
         checkbox.value = option['nextStepId'];
 
-        $(checkbox).off().on('click', displayCheck.bind(this, option, checkbox));
+        $(checkbox).off().on('click', setMultiselectAnswers.bind(this, option, checkbox));
         $(checkbox).on('click',function() {
-            displayCheck.bind(this, option, checkbox);
+            setMultiselectAnswers.bind(this, option, checkbox);
             $(this).off('click');
         });
 
@@ -310,46 +311,26 @@ input[type=checkbox]:checked::after {
         return checkboxDiv;  
     }
 
-    function displayCheck(option, checkbox) {
+    function setMultiselectAnswers (option, checkbox) {
         let answer = {value: option['value'], nextStepId: option['nextStepId']};
         $(checkbox).change(function() {
             if(this.checked) {
                 multiselectAnswers.push(answer);
-                console.log(multiselectAnswers);
             }
             else
             {
                 let index = multiselectAnswers.findIndex(x => x.value === option['value']);
-                multiselectAnswers.splice(index,1)
-                console.log("uncheck",index);
-                console.log("index",multiselectAnswers);
+                multiselectAnswers.splice(index, 1);
             }
-        });
-
-
-
-        // 
-        // if(multiselectAnswers.length===0) {
-        //     
-        // }
-        // else { 
-        //     $.each(multiselectAnswers, function(key, value) {
-        //         if(value['value'] === option['value'] && value['nextStepId'] === option['nextStepId']) {
-        //             multiselectAnswers=multiselectAnswers.splice(key, 1);
-        //         }
-        //         else  multiselectAnswers.push(answer);
-        //     });
-        // }
         
+            highestValue = Math.max.apply(null, multiselectAnswers.map(object => { return object.value; }));
+
+            nextStepId = multiselectAnswers.find(x => x.value === highestValue).nextStepId;
+            if(nextStepId === -Infinity) { nextStepId = -1}
+        });
     }
+    
     ///////////////////
     // Helper Functions
     ///////////////////  
-    // Helper to convert string to HTML element
-    function _convertStringToHTML(str) {
-        const template =document.createElement("template");
-
-        template.innerHTML = str.trim()
-        return template.content.firstElementChild;
-    };
 </script>

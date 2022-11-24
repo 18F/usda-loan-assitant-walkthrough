@@ -2,7 +2,6 @@
     "steps": [
         {
             "id": 0,
-            "nextStepId":1,
             "progressBarStage": "start",
             "type": "information",
             "content": {
@@ -22,6 +21,7 @@
                 {
                     "id": 0,
                     "value": 0,
+                    "nextStepId": 1,
                     "title": "The bold part",
                     "paragraphs": [
                         {
@@ -36,7 +36,6 @@
             },
         {
             "id": 1,
-            "nextStepId":2,
             "progressBarStage": "elgibility",
             "type": "multiselect",
             "content": {
@@ -50,7 +49,8 @@
             "options": [
                 {
                     "id": 0,
-                    "value": 0,
+                    "value": 1,
+                    "nextStepId": 3,
                     "title": "Question 1",
                     "paragraphs": [
                         {
@@ -60,7 +60,8 @@
                 },
                 {
                     "id": 1,
-                    "value": 0,
+                    "value": 2,
+                    "nextStepId": 2,
                     "title": "Question 2",
                     "paragraphs": [
                         {
@@ -70,7 +71,8 @@
                 },
                 {
                     "id": 2,
-                    "value": 0,
+                    "value": 3,
+                    "nextStepId": 2,
                     "title": "Question 3",
                     "paragraphs": [
                         {
@@ -80,11 +82,12 @@
                 },
                 {
                     "id": 3,
-                    "value": 0,
-                    "title": "Question 4",
+                    "value": 4,
+                    "nextStepId": 99,
+                    "title": "Youth",
                     "paragraphs": [
                         {
-                            "paragraphText": "Question 4 paragraph 1"
+                            "paragraphText": " YouthQuestion 4 paragraph 1"
                         }
                     ]
                 }

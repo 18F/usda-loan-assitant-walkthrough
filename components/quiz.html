@@ -136,12 +136,14 @@ input[type=checkbox]:checked::after {
 </div>
 
 <script>
+
     let answeredQuestions = [];
     let currentQuestion = 0;
-    let steps = [];
+    let nextStepId = 0;
+    let multiselectAnswers = [];
 
     (function() {
-        let startQuestion = 0;
+        let startQuestion = 1;
         _showQuestion(startQuestion);
     })();
 
@@ -150,9 +152,9 @@ input[type=checkbox]:checked::after {
             $('#quiz-back').hide();
         }
         else $('#quiz-back').show();
+        
         currentQuestion = questionId;
         $.getJSON("../quiz.json", function(data) {
-            steps = data;
             $.each(data["steps"], function(key, step) {
                 if(step['id']===questionId){
                     switch (step["type"]) {
@@ -170,21 +172,24 @@ input[type=checkbox]:checked::after {
         });
         _createBackStepLink();
     }
-
+    
     function _saveAndNext() {
         _showQuestion(questionId);
     }
 
+    // Creates an information question
     function _createInformationCard(step) {
         let question = document.createElement("div");
         question.classList.add("quiz-question");
         question.append(_createTitle(step['content']['title']));
         question.append(_createParagraphs(step['content']['paragraphs']));
-        question.append(_createNextStepLink(step['nextStepId']));
+        nextStepId = step['options'][0]['nextStepId'];
+        question.append(_createNextStepLink(nextStepId));
         $('#quiz-questions-container').empty();
         $('#quiz-questions-container').append(question);
     }
 
+    // Creates a multiselect question as a grid of cards with checkmars
     function _createMultiselctQuestion(step) {
         let question = document.createElement("div");
         question.classList.add("quiz-question");
@@ -273,8 +278,7 @@ input[type=checkbox]:checked::after {
             cardDiv.classList.add("quiz-multiselect-card-container");
             cardDiv.append(_createMultiselctCardTitle(options[i]['title']));
             cardDiv.append(_createParagraphs(options[i]['paragraphs']));
-            cardDiv.append(_convertStringToHTML("<div class='quiz-multiselect-card-check-container'><input type='checkbox'></div>"));
-
+            cardDiv.append(_createMultiselctCardCheckbox(options[i]));
             gridDiv.append(cardDiv);
         }
         return gridDiv;
@@ -286,7 +290,58 @@ input[type=checkbox]:checked::after {
         titleDiv.textContent = title;
         return titleDiv;  
     }
-    
+
+    function _createMultiselctCardCheckbox(option) {
+        let checkboxDiv = document.createElement("div");
+        checkboxDiv.classList.add("quiz-multiselect-card-check-container");        
+        
+        var checkbox = document.createElement("INPUT");
+        checkbox.setAttribute("type", "checkbox");
+        checkbox.name = option['value'];
+        checkbox.value = option['nextStepId'];
+
+        $(checkbox).off().on('click', displayCheck.bind(this, option, checkbox));
+        $(checkbox).on('click',function() {
+            displayCheck.bind(this, option, checkbox);
+            $(this).off('click');
+        });
+
+        checkboxDiv.appendChild(checkbox);
+        return checkboxDiv;  
+    }
+
+    function displayCheck(option, checkbox) {
+        let answer = {value: option['value'], nextStepId: option['nextStepId']};
+        $(checkbox).change(function() {
+            if(this.checked) {
+                multiselectAnswers.push(answer);
+                console.log(multiselectAnswers);
+            }
+            else
+            {
+                let index = multiselectAnswers.findIndex(x => x.value === option['value']);
+                multiselectAnswers.splice(index,1)
+                console.log("uncheck",index);
+                console.log("index",multiselectAnswers);
+            }
+        });
+
+
+
+        // 
+        // if(multiselectAnswers.length===0) {
+        //     
+        // }
+        // else { 
+        //     $.each(multiselectAnswers, function(key, value) {
+        //         if(value['value'] === option['value'] && value['nextStepId'] === option['nextStepId']) {
+        //             multiselectAnswers=multiselectAnswers.splice(key, 1);
+        //         }
+        //         else  multiselectAnswers.push(answer);
+        //     });
+        // }
+        
+    }
     ///////////////////
     // Helper Functions
     ///////////////////  

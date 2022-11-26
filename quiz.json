@@ -1,218 +1,207 @@
 {
-    "steps": [
+    "questions": [
         {
-            "id": 0,
+            "questionId": 1,
+            "progressBarStage": "elgibility",
+            "type": "multiselect",
+            "content": {
+                "title": "multiselect Question",
+                "paragraphs": [
+                    {
+                        "paragraphText": "Select all that apply"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "optionId": 0,
+                    "value": 1,
+                    "nextQuestionId": 3,
+                    "title": "Question 1",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 1 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "optionId": 1,
+                    "value": 2,
+                    "nextQuestionId": 2,
+                    "title": "Question 2",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 2 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "optionId": 2,
+                    "value": 3,
+                    "nextQuestionId": 2,
+                    "title": "Question 3",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 3 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "optionId": 3,
+                    "value": 4,
+                    "nextQuestionId": 99,
+                    "title": "Youth",
+                    "paragraphs": [
+                        {
+                            "paragraphText": " YouthQuestion 4 paragraph 1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "questionId": 2,
+            "progressBarStage": "elgibility",
+            "type": "singlesselect",
+            "content": {
+                "title": "Are you planning to apply for a loan below or above $50,000 to help operate your farm?",
+                "paragraphs": [
+                    {
+                        "paragraphText": "Microloans are designed to fit the needs of small farms, beginning farmers, niche and non-traditional farm operations, hydroponic, aquaponic, organic, and vertical growing methods."
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "optionId": 0,
+                    "value": 1,
+                    "nextQuestionId": 3,
+                    "title": "$50,000 or less ",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        }
+                    ]
+                },
+                {
+                    "optionId": 1,
+                    "value": 2,
+                    "nextQuestionId": 3,
+                    "title": "More than $50,000",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "questionId": 3,
+            "progressBarStage": "elgibility",
+            "type": "singlesselect",
+            "content": {
+                "title": "How many years of experience do you have farming?",
+                "paragraphs": [
+                    {
+                        "paragraphText": "Farming experience varies by loan type. Knowing how many years of farming experience you have under your belt helps your Farm Loan Officer ask applicable followup questions."
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "optionId": 0,
+                    "value": 1,
+                    "nextQuestionId": 4,
+                    "title": "Ten years or less",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        }
+                    ]
+                },
+                {
+                    "optionId": 1,
+                    "value": 2,
+                    "nextQuestionId": 5,
+                    "title": "More than ten years",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "questionId": 4,
+            "progressBarStage": "elgibility",
+            "type": "yesno",
+            "content": {
+                "title": "Have you previously completed the FSA management training?",
+                "paragraphs": [
+                    {
+                        "paragraphText": "This needs something?. Have you previously completed the FSA management training?"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "optionId": 0,
+                    "value": 1,
+                    "nextQuestionId": 5,
+                    "title": "Yes",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        }
+                    ]
+                },
+                {
+                    "optionId": 1,
+                    "value": 2,
+                    "nextQuestionId": 5,
+                    "title": "No",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "questionId": 0,
             "progressBarStage": "start",
             "type": "information",
             "content": {
-                "title": "The bold part",
+                "title": "Great we have some financing options that might work for you!",
                 "paragraphs": [
                     {
-                        "paragraphText": "Text 1"
-                        
-                    },
-                    {
-                        "paragraphText": "Text 2"
+                        "paragraphText": "Let’s take a look at your eligibility. "
                         
                     }
                 ]
             },
             "options": [
                 {
-                    "id": 0,
+                    "optionId": 0,
                     "value": 0,
-                    "nextStepId": 1,
-                    "title": "The bold part",
+                    "nextQuestionId": 1,
+                    "title": "Continue",
                     "paragraphs": [
                         {
-                            "paragraphText": "paragraph 1"
+                            "paragraphText": ""
                         },
                         {
-                            "paragraphText": "paragraph 2"
+                            "paragraphText": ""
                         }
                     ]
                 }
             ]
         },
         {
-            "id": 1,
-            "progressBarStage": "elgibility",
-            "type": "multiselect",
-            "content": {
-                "title": "Multiselect Question",
-                "paragraphs": [
-                    {
-                        "paragraphText": "Select all that apply"
-                    }
-                ]
-            },
-            "options": [
-                {
-                    "id": 0,
-                    "value": 1,
-                    "nextStepId": 3,
-                    "title": "Question 1",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 1 paragraph 1"
-                        }
-                    ]
-                },
-                {
-                    "id": 1,
-                    "value": 2,
-                    "nextStepId": 2,
-                    "title": "Question 2",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 2 paragraph 1"
-                        }
-                    ]
-                },
-                {
-                    "id": 2,
-                    "value": 3,
-                    "nextStepId": 2,
-                    "title": "Question 3",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 3 paragraph 1"
-                        }
-                    ]
-                },
-                {
-                    "id": 3,
-                    "value": 4,
-                    "nextStepId": 99,
-                    "title": "Youth",
-                    "paragraphs": [
-                        {
-                            "paragraphText": " YouthQuestion 4 paragraph 1"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "progressBarStage": "elgibility",
-            "type": "multiselect",
-            "content": {
-                "title": "Question 2",
-                "paragraphs": [
-                    {
-                        "paragraphText": "Select all that apply"
-                    }
-                ]
-            },
-            "options": [
-                {
-                    "id": 0,
-                    "value": 1,
-                    "nextStepId": 3,
-                    "title": "Question 1",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 1 paragraph 1"
-                        }
-                    ]
-                },
-                {
-                    "id": 1,
-                    "value": 2,
-                    "nextStepId": 2,
-                    "title": "Question 2",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 2 paragraph 1"
-                        }
-                    ]
-                },
-                {
-                    "id": 2,
-                    "value": 3,
-                    "nextStepId": 2,
-                    "title": "Question 3",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 3 paragraph 1"
-                        }
-                    ]
-                },
-                {
-                    "id": 3,
-                    "value": 4,
-                    "nextStepId": 99,
-                    "title": "Youth",
-                    "paragraphs": [
-                        {
-                            "paragraphText": " YouthQuestion 4 paragraph 1"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "progressBarStage": "elgibility",
-            "type": "multiselect",
-            "content": {
-                "title": "Question 3",
-                "paragraphs": [
-                    {
-                        "paragraphText": "Select all that apply"
-                    }
-                ]
-            },
-            "options": [
-                {
-                    "id": 0,
-                    "value": 1,
-                    "nextStepId": 3,
-                    "title": "Question 1",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 1 paragraph 1"
-                        }
-                    ]
-                },
-                {
-                    "id": 1,
-                    "value": 2,
-                    "nextStepId": 2,
-                    "title": "Question 2",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 2 paragraph 1"
-                        }
-                    ]
-                },
-                {
-                    "id": 2,
-                    "value": 3,
-                    "nextStepId": 2,
-                    "title": "Question 3",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 3 paragraph 1"
-                        }
-                    ]
-                },
-                {
-                    "id": 3,
-                    "value": 4,
-                    "nextStepId": 99,
-                    "title": "Youth",
-                    "paragraphs": [
-                        {
-                            "paragraphText": " YouthQuestion 4 paragraph 1"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 99,
+            "questionId": 99,
             "progressBarStage": "elgibility",
             "type": "multiselect",
             "content": {
@@ -225,9 +214,9 @@
             },
             "options": [
                 {
-                    "id": 0,
+                    "optionId": 0,
                     "value": 1,
-                    "nextStepId": 3,
+                    "nextQuestionId": 3,
                     "title": "Question 1",
                     "paragraphs": [
                         {
@@ -236,9 +225,9 @@
                     ]
                 },
                 {
-                    "id": 1,
+                    "optionId": 1,
                     "value": 2,
-                    "nextStepId": 2,
+                    "nextQuestionId": 2,
                     "title": "Question 2",
                     "paragraphs": [
                         {
@@ -247,9 +236,9 @@
                     ]
                 },
                 {
-                    "id": 2,
+                    "optionId": 2,
                     "value": 3,
-                    "nextStepId": 2,
+                    "nextQuestionId": 2,
                     "title": "Question 3",
                     "paragraphs": [
                         {
@@ -258,9 +247,9 @@
                     ]
                 },
                 {
-                    "id": 3,
+                    "optionId": 3,
                     "value": 4,
-                    "nextStepId": 99,
+                    "nextQuestionId": 99,
                     "title": "Youth",
                     "paragraphs": [
                         {

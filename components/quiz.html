@@ -34,6 +34,7 @@ input[type=checkbox]:checked::after {
 }
 
     .quiz-container {
+        min-height: 50vh;;
         box-sizing: border-box;
         display: grid;
         grid-template-areas: "back questions"
@@ -56,10 +57,21 @@ input[type=checkbox]:checked::after {
         }
 
         .quiz-next {
+            font-size: x-large;
             grid-area: next;
             text-align: center;
             margin: auto;
             padding: 2rem;
+            color: blue;
+        }
+
+        .quiz-next-inactive {
+            font-size: x-large;
+            grid-area: next;
+            text-align: center;
+            margin: auto;
+            padding: 2rem;
+            color: gray;
         }
 
     .quiz-title-text {
@@ -80,14 +92,14 @@ input[type=checkbox]:checked::after {
         color: #212121;
     }
 
-    .quiz-multiselect-container {
+    .quiz-MultiSelect-container {
         display: grid;
         grid-template-rows: auto auto;
         grid-template-columns: auto auto;
         gap: 2rem;
     }
 
-    .quiz-multiselect-card-container {
+    .quiz-MultiSelect-card-container {
         width: 100%;
         border-style: solid;
         border-color: #212121;
@@ -95,7 +107,7 @@ input[type=checkbox]:checked::after {
         padding: 2rem;
     }
 
-    .quiz-multiselect-card-title-text {
+    .quiz-MultiSelect-card-title-text {
         font-family: 'Public Sans';
         font-style: normal;
         font-weight: 400;
@@ -104,7 +116,7 @@ input[type=checkbox]:checked::after {
         color: #212121;
     }
 
-    .quiz-multiselect-card-paragraph-text {
+    .quiz-MultiSelect-card-paragraph-text {
         font-family: 'Public Sans';
         font-style: normal;
         font-weight: 400;
@@ -113,7 +125,7 @@ input[type=checkbox]:checked::after {
         color: #212121;
     }
 
-    .quiz-multiselect-card-check-container {
+    .quiz-MultiSelect-card-check-container {
         color: antiquewhite;
         float: right;
         clear: both;
@@ -130,39 +142,44 @@ input[type=checkbox]:checked::after {
                 </div>
             </div> 
             <div class="quiz-questions-container" id="quiz-questions-container"></div>
-            <div class="quiz-next" id="quiz-next"></div>
         </div>   
     </div>
 </div>
 
 <script>
-
-    let answeredQuestions = [];
-    let currentQuestion = 0;
-    let nextStepId = -1;
-    let multiselectAnswers = [];
+    var questionHistory = []; // List of nextQuestionId values
+    var currentQuestion = -1;
+    var nextQuestionId = -1;
+    var multiSelectAnswers = [];
 
     (function() {
-        let startQuestion = 1;
-        _showQuestion(startQuestion);
+        var startQuestion = 0;
+        showQuestion(startQuestion);
     })();
 
-    function _showQuestion(questionId) {
-        if(questionId === 0) {
-            $('#quiz-back').hide();
-        }
-        else $('#quiz-back').show();
-        
-        currentQuestion = questionId;
+    //////////////////
+    // Quiz Logic
+    //////////////////
+    // Shows question
+    function showQuestion(questionId) {        
         $.getJSON("../quiz.json", function(data) {
-            $.each(data["steps"], function(key, step) {
-                if(step['id']===questionId){
-                    switch (step["type"]) {
+            $.each(data["questions"], function(key, questionData) {
+                if(questionData['questionId'] === questionId){
+                    currentQuestion = questionId;
+                    multiSelectAnswers = [];
+                    nextQuestionId = -1;
+                    switch (questionData["type"]) {
                         case 'information':
-                            _createInformationCard(step);
+                            _createInformationCard(questionData);
                             break;
                         case 'multiselect':
-                            _createMultiselctQuestion(step);
+                            _createMultiselctQuestion(questionData);
+                            break;
+                        case 'singlesselect':
+                            _createSingleSelectQuestion(questionData);
+                            break;
+                        case 'yesno':
+                            _createYesNoQuestion(questionData);
                             break;
                         default:
                             console.log(`not a valid type`);
@@ -173,59 +190,320 @@ input[type=checkbox]:checked::after {
         _createBackStepLink();
     }
     
+    // Saves answer and shows next question
     function _saveAndNext() {
-        _showQuestion(nextStepId);
+        questionHistory.push(currentQuestion);
+        showQuestion(nextQuestionId);
+    }
+    
+    // Creates a link to the next question.  If next step is based on user choice the link wil be inactive until choice is made
+    function _createNextStepLink() {
+        var parent = document.createElement('div');
+        
+        // Add inactive link
+        var div = document.createElement('div');
+        div.classList.add("quiz-next-inactive");
+        div.id = 'quiz-next-inactive';
+        var nextLink = document.createElement('a');
+        nextLink.innerHTML = "Save and continue"
+        nextLink.onclick = function() { null };
+        div.appendChild(nextLink);
+        parent.appendChild(div);
+        
+        // Add active link
+        div = document.createElement('div');
+        div.classList.add("quiz-next");
+        div.id = 'quiz-next-active';
+
+        nextLink = document.createElement('a');
+        nextLink.innerHTML = "Save and continue"
+        nextLink.onclick = function() { _saveAndNext(); };
+        div.appendChild(nextLink);
+        parent.appendChild(div);
+        return parent;
     }
 
-    // Creates an information question
-    function _createInformationCard(step) {
-        let question = document.createElement("div");
+    function setNextLinkValues() {
+        $('#quiz-next-inactive').hide();
+        $('#quiz-next-active').hide();
+
+        if(nextQuestionId >= 0 ) {
+            $('#quiz-next-active').show();
+        }
+        else {
+            $('#quiz-next-inactive').show();
+        }
+    }
+
+    function _createBackStepLink() {
+        if(questionHistory.length === 0) {
+            $('#quiz-back').hide();
+        }
+        else $('#quiz-back').show();
+        var image = document.createElement("img");
+        image.setAttribute("src", "./images/arrow-left.png");
+        image.setAttribute("height", "32");
+        image.setAttribute("width", "32");
+        image.setAttribute("alt", "Back Arrow");
+
+        var previoousLink = document.createElement('a');
+        previoousLink.onclick = function() { 
+            showQuestion(questionHistory.at(-1)); 
+            questionHistory.pop();
+            if(questionHistory.length === 0) {
+                $('#quiz-back').hide();
+            }
+        }
+        previoousLink.appendChild(image);
+        $('#quiz-back').empty();
+        $('#quiz-back').append(previoousLink);
+    }
+
+    ///////////////////
+    // Information Card
+    ///////////////////
+    // Creates an information question card: Text and a continue button
+    function _createInformationCard(questionData) {
+        nextQuestionId = questionData['options'][0]['nextQuestionId'];
+        var question = document.createElement("div");
         question.classList.add("quiz-question");
-        question.append(_createTitle(step['content']['title']));
-        question.append(_createParagraphs(step['content']['paragraphs']));
-        nextStepId = step['options'][0]['nextStepId'];
-        question.append(_createNextStepLink(nextStepId));
+        question.append(_createTitle(questionData['content']['title']));
+        question.append(_createParagraphs(questionData['content']['paragraphs']));
+        question.append(_createInformationButtons(questionData['options']));
         $('#quiz-questions-container').empty();
         $('#quiz-questions-container').append(question);
     }
+    
+    function _createInformationButtons(options) {
+        var buttonDiv = document.createElement("div");
+        for ( var i = 0; i < options.length; i++ ) {
+            var button = document.createElement("button");
+            button.type = "button";
+            button.classList.add("btn");
+            button.classList.add("btn-default");
+            button.textContent = options[i]['title'];
+            $(button).off().on('click', setInformationLinks.bind(this, options[i], button));
+            $(button).on('click',function() {
+                setInformationLinks.bind(this, options[i], button);
+                $(this).off('click');
+            });
+            buttonDiv.append(button);
+            
+        }
+        return buttonDiv;
+    }
 
-    // Creates a multiselect question as a grid of cards with checkmars
-    function _createMultiselctQuestion(step) {
-        multiselectAnswers = [];
-        let question = document.createElement("div");
+    function setInformationLinks(option) {
+        nextQuestionId = option.nextQuestionId;
+        _saveAndNext();
+    }
+
+    ///////////////////////////
+    // Multi-selection Question
+    ///////////////////////////
+    // Creates a MultiSelect question card: a grid of cards with checkboxes.  One or more must be selected to continue
+    function _createMultiselctQuestion(questionData) {
+        var question = document.createElement("div");
         question.classList.add("quiz-question");
-        question.append(_createTitle(step['content']['title']));
-        question.append(_createParagraphs(step['content']['paragraphs']));
-        question.append(_createMultiselectItems(step['options']));
-        question.append(_createNextStepLink(step['nextStepId']));
+        question.append(_createTitle(questionData['content']['title']));
+        question.append(_createParagraphs(questionData['content']['paragraphs']));
+        question.append(_createMultiSelectItems(questionData['options']));
+        question.append(_createNextStepLink());
         $('#quiz-questions-container').empty();
         $('#quiz-questions-container').append(question);
+        setNextLinkValues();
+    }
+
+    function _createMultiSelectItems(options) {
+        var gridDiv = document.createElement("div");
+        gridDiv.classList.add("quiz-MultiSelect-container");
+        for (var i = 0; i < options.length; i++) {
+            var cardDiv = document.createElement("div");
+            cardDiv.classList.add("quiz-MultiSelect-card-container");
+            cardDiv.append(_createMultiselctCardTitle(options[i]['title']));
+            cardDiv.append(_createParagraphs(options[i]['paragraphs']));
+            cardDiv.append(_createMultiselctCardCheckbox(options[i]));
+            gridDiv.append(cardDiv);
+        }
+        return gridDiv;
+    }
+
+    function _createMultiselctCardTitle(title) {
+        var titleDiv = document.createElement("div");
+        titleDiv.classList.add("quiz-MultiSelect-card-title-text");
+        titleDiv.textContent = title;
+        return titleDiv;  
+    }
+
+    function _createMultiselctCardCheckbox(option) {
+        var checkboxDiv = document.createElement("div");
+        checkboxDiv.classList.add("quiz-MultiSelect-card-check-container");        
+        
+        var checkbox = document.createElement("INPUT");
+        checkbox.setAttribute("type", "checkbox");
+        checkbox.name = option['value'];
+        checkbox.value = option['nextQuestionId'];
+
+        $(checkbox).off().on('click', setmultiSelectAnswers.bind(this, option, checkbox));
+        $(checkbox).on('click',function() {
+            setmultiSelectAnswers.bind(this, option, checkbox);
+            $(this).off('click');
+        });
+
+        checkboxDiv.appendChild(checkbox);
+        return checkboxDiv;  
+    }
+
+    function setmultiSelectAnswers(option, checkbox) {
+        var answer = {value: option['value'], nextQuestionId: option['nextQuestionId']};
+        $(checkbox).change(function() {
+            if(this.checked) {
+                multiSelectAnswers.push(answer);
+            }
+            else
+            {
+                var index = multiSelectAnswers.findIndex(x => x.value === option['value']);
+                multiSelectAnswers.splice(index, 1);
+            }
+        
+            highestValue = Math.max.apply(null, multiSelectAnswers.map(object => { return object.value; }));
+
+            if (multiSelectAnswers.length !== 0 ) {
+                nextQuestionId = multiSelectAnswers.find(x => x.value === highestValue).nextQuestionId;
+                if ( nextQuestionId === -Infinity ) { nextQuestionId = -1; }
+            }
+            else {
+                nextQuestionId = -1;
+            }
+            setNextLinkValues();
+        });
+    }
+
+    ////////////////////////////
+    // Single-selection elements
+    ////////////////////////////
+    // Creates a single select question card: two or more radio buttons
+    function _createSingleSelectQuestion(questionData) {
+        var question = document.createElement("div");
+        question.classList.add("quiz-question");
+        question.append(_createTitle(questionData['content']['title']));
+        question.append(_createParagraphs(questionData['content']['paragraphs']));
+        question.append(_createSingleSelectItems(questionData['options']));
+        question.append(_createNextStepLink());
+        $('#quiz-questions-container').empty();
+        $('#quiz-questions-container').append(question);
+        setNextLinkValues();
+    }
+
+    function _createSingleSelectItems(options) {
+        var gridDiv = document.createElement("div");
+        //gridDiv.classList.add("");
+        for ( var i = 0; i < options.length; i++ ) {
+            var cardDiv = document.createElement("div");
+            cardDiv.append(_createRadioButtons(options[i]));
+            gridDiv.append(cardDiv);
+        }
+        return gridDiv;
+    }
+
+    function _createRadioButtons(option) {
+        var div = document.createElement("label");
+        var label = document.createElement("label");
+        var radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "radio";
+        radio.value = option.value;
+
+        $(radio).off().on('click', setSingleSelectAnswers.bind(this, option, radio));
+        $(radio).on('click',function() {
+            setSingleSelectAnswers.bind(this, option, radio);
+            $(this).off('click');
+        });
+        
+        label.textContent = option.title
+        div.appendChild(radio);
+        div.appendChild(label);
+
+        return div;
+    }
+
+    function setSingleSelectAnswers(option) {
+        nextQuestionId = option.nextQuestionId;
+        setNextLinkValues();
+    }
+
+    //////////////////
+    // Yes/No elements
+    //////////////////
+    // Creates a single select question card: two or more radio buttons
+    function _createYesNoQuestion(questionData) {
+        var question = document.createElement("div");
+        question.classList.add("quiz-question");
+        question.append(_createTitle(questionData['content']['title']));
+        question.append(_createParagraphs(questionData['content']['paragraphs']));
+        question.append(_createYesNoItems(questionData['options']));
+        question.append(_createNextStepLink());
+        $('#quiz-questions-container').empty();
+        $('#quiz-questions-container').append(question);
+        setNextLinkValues();
+    }
+
+    function _createYesNoItems(options) {
+        var buttonDiv = document.createElement("div");
+        buttonDiv.classList.add("btn-group");
+
+        for ( var i = 0; i < options.length; i++ ) {
+            buttonDiv.append(_createYesNoButtons(options[i]));
+        }
+        return buttonDiv;
+    }
+
+    function _createYesNoButtons(option) {
+        var button = document.createElement("button");
+        button.type = "button";
+        button.classList.add("btn");
+        button.classList.add("btn-default");
+        button.textContent = option.title;
+        $(button).off().on('click', setYesNoAnswers.bind(this, option, button));
+        $(button).on('click',function() {
+            setYesNoAnswers.bind(this, option, button);
+            $(this).off('click');
+        });
+ 
+        return button;
+    }
+
+    function setYesNoAnswers(option) {
+        nextQuestionId = option.nextQuestionId;
+        setNextLinkValues();
     }
 
     //////////////////
     // Common Elements
     //////////////////
+    // Creates a bold title
     function _createTitle(title) {
-        let titleDiv = document.createElement("div");
+        var titleDiv = document.createElement("div");
         titleDiv.classList.add("quiz-title-text");
         titleDiv.textContent = title
         return titleDiv;
     }
 
+    // Creates one or more paragraphs
     function _createParagraphs(paragraphs) {
-        let gridDiv = document.createElement("div");
+        var gridDiv = document.createElement("div");
         gridDiv.classList.add("quiz-paragraph-text");
         for (var i = 0; i < paragraphs.length; i++) {
-            let paragraph = paragraphs[i];
-            let paragraphText = paragraph.paragraphText;
+            var paragraph = paragraphs[i];
+            var paragraphText = paragraph.paragraphText;
             // For each paragraph, check if it's a string or an object 
             if (paragraphText !== null && paragraphText !== undefined) {
                 // If it's a string, then create a simple paragraph element
                 if (typeof paragraphText === 'string' || paragraphText instanceof String) {
                     var paragraphElement = _createParagraphElement(paragraphText);
-                    // If it's an object, then it should represent a bulleted list, so create that instead
+                    // If it's an object, then it should represent a bulvared list, so create that instead
                 } else if (typeof paragraphText === 'object' && !Array.isArray(paragraphText)) {
-                    var paragraphElement = _createBulletedListElement(paragraphText.bullets, paragraphText.type);
+                    var paragraphElement = _createBulvaredListElement(paragraphText.bulvars, paragraphText.type);
                 } else {
                     alert("Unrecognized paragraphText element detected: " + paragraphText.toString());
                 }
@@ -237,100 +515,11 @@ input[type=checkbox]:checked::after {
         return gridDiv;
     }
 
+    // Creates each paragraph text
     function _createParagraphElement(paragraphText) {
-        let paragraphElement = document.createElement("p");
+        var paragraphElement = document.createElement("p");
         paragraphElement.appendChild(document.createTextNode(paragraphText));
         return paragraphElement;
     }
 
-    function _createNextStepLink(nextStepId) {
-        let div = document.createElement('div');
-        div.classList.add("quiz-next");
-        let nextLink = document.createElement('a');
-        nextLink.onclick = function() { _saveAndNext(); };
-        nextLink.innerHTML = "Save and continue"
-        div.appendChild(nextLink);
-        return div;
-    }
-
-    function _createBackStepLink() {
-        let previoousLinkId = 0;
-        var image = document.createElement("img");
-        image.setAttribute("src", "./images/arrow-left.png");
-        image.setAttribute("height", "32");
-        image.setAttribute("width", "32");
-        image.setAttribute("alt", "Back Arrow");
-
-        let previoousLink = document.createElement('a');
-        previoousLink.onclick = function() { _showQuestion(previoousLinkId); };
-        previoousLink.appendChild(image);
-        $('#quiz-back').empty();
-        $('#quiz-back').append(previoousLink);
-    }
-
-    ///////////////////////////
-    // Multi-selection elements
-    ///////////////////////////
-    function _createMultiselectItems (options) {
-        let gridDiv = document.createElement("div");
-        gridDiv.classList.add("quiz-multiselect-container");
-        for (var i = 0; i < options.length; i++) {
-            let cardDiv = document.createElement("div");
-            cardDiv.classList.add("quiz-multiselect-card-container");
-            cardDiv.append(_createMultiselctCardTitle(options[i]['title']));
-            cardDiv.append(_createParagraphs(options[i]['paragraphs']));
-            cardDiv.append(_createMultiselctCardCheckbox(options[i]));
-            gridDiv.append(cardDiv);
-        }
-        return gridDiv;
-    }
-
-    function _createMultiselctCardTitle(title) {
-        let titleDiv = document.createElement("div");
-        titleDiv.classList.add("quiz-multiselect-card-title-text");
-        titleDiv.textContent = title;
-        return titleDiv;  
-    }
-
-    function _createMultiselctCardCheckbox(option) {
-        let checkboxDiv = document.createElement("div");
-        checkboxDiv.classList.add("quiz-multiselect-card-check-container");        
-        
-        var checkbox = document.createElement("INPUT");
-        checkbox.setAttribute("type", "checkbox");
-        checkbox.name = option['value'];
-        checkbox.value = option['nextStepId'];
-
-        $(checkbox).off().on('click', setMultiselectAnswers.bind(this, option, checkbox));
-        $(checkbox).on('click',function() {
-            setMultiselectAnswers.bind(this, option, checkbox);
-            $(this).off('click');
-        });
-
-        checkboxDiv.appendChild(checkbox);
-        return checkboxDiv;  
-    }
-
-    function setMultiselectAnswers (option, checkbox) {
-        let answer = {value: option['value'], nextStepId: option['nextStepId']};
-        $(checkbox).change(function() {
-            if(this.checked) {
-                multiselectAnswers.push(answer);
-            }
-            else
-            {
-                let index = multiselectAnswers.findIndex(x => x.value === option['value']);
-                multiselectAnswers.splice(index, 1);
-            }
-        
-            highestValue = Math.max.apply(null, multiselectAnswers.map(object => { return object.value; }));
-
-            nextStepId = multiselectAnswers.find(x => x.value === highestValue).nextStepId;
-            if(nextStepId === -Infinity) { nextStepId = -1}
-        });
-    }
-    
-    ///////////////////
-    // Helper Functions
-    ///////////////////  
 </script>

@@ -1,6 +1,36 @@
 {
     "questions": [
         {
+            "questionId": 0,
+            "progressBarStage": "start",
+            "type": "information",
+            "content": {
+                "title": "Great we have some financing options that might work for you!",
+                "paragraphs": [
+                    {
+                        "paragraphText": "Let’s take a look at your eligibility. "
+                        
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "optionId": 0,
+                    "value": 0,
+                    "nextQuestionId": 1,
+                    "title": "Continue",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "questionId": 1,
             "progressBarStage": "elgibility",
             "type": "multiselect",
@@ -149,7 +179,7 @@
                 {
                     "optionId": 0,
                     "value": 1,
-                    "nextQuestionId": 5,
+                    "nextQuestionId": 6,
                     "title": "Yes",
                     "paragraphs": [
                         {
@@ -160,7 +190,7 @@
                 {
                     "optionId": 1,
                     "value": 2,
-                    "nextQuestionId": 5,
+                    "nextQuestionId": 6,
                     "title": "No",
                     "paragraphs": [
                         {
@@ -171,30 +201,59 @@
             ]
         },
         {
-            "questionId": 0,
-            "progressBarStage": "start",
-            "type": "information",
+            "questionId": 6,
+            "progressBarStage": "elgibility",
+            "type": "singleselectcards",
             "content": {
-                "title": "Great we have some financing options that might work for you!",
+                "title": "Youth",
                 "paragraphs": [
                     {
-                        "paragraphText": "Let’s take a look at your eligibility. "
-                        
+                        "paragraphText": "Select all that apply"
                     }
                 ]
             },
             "options": [
                 {
                     "optionId": 0,
-                    "value": 0,
+                    "value": 1,
                     "nextQuestionId": 1,
-                    "title": "Continue",
+                    "title": "",
                     "paragraphs": [
                         {
-                            "paragraphText": ""
-                        },
+                            "paragraphText": "Question 1 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "optionId": 1,
+                    "value": 2,
+                    "nextQuestionId": 2,
+                    "title": "",
+                    "paragraphs": [
                         {
-                            "paragraphText": ""
+                            "paragraphText": "Question 2 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "optionId": 2,
+                    "value": 3,
+                    "nextQuestionId": 3,
+                    "title": "",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "Question 3 paragraph 1"
+                        }
+                    ]
+                },
+                {
+                    "optionId": 3,
+                    "value": 4,
+                    "nextQuestionId": 4,
+                    "title": "",
+                    "paragraphs": [
+                        {
+                            "paragraphText": "YouthQuestion 4 paragraph 1"
                         }
                     ]
                 }

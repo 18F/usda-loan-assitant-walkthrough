@@ -92,14 +92,14 @@ input[type=checkbox]:checked::after {
         color: #212121;
     }
 
-    .quiz-MultiSelect-container {
+    .quiz-multiSelect-container {
         display: grid;
         grid-template-rows: auto auto;
         grid-template-columns: auto auto;
         gap: 2rem;
     }
 
-    .quiz-MultiSelect-card-container {
+    .quiz-multiSelect-card-container {
         width: 100%;
         border-style: solid;
         border-color: #212121;
@@ -107,7 +107,7 @@ input[type=checkbox]:checked::after {
         padding: 2rem;
     }
 
-    .quiz-MultiSelect-card-title-text {
+    .quiz-multiSelect-card-title-text {
         font-family: 'Public Sans';
         font-style: normal;
         font-weight: 400;
@@ -116,7 +116,7 @@ input[type=checkbox]:checked::after {
         color: #212121;
     }
 
-    .quiz-MultiSelect-card-paragraph-text {
+    .quiz-multiSelect-card-paragraph-text {
         font-family: 'Public Sans';
         font-style: normal;
         font-weight: 400;
@@ -125,7 +125,7 @@ input[type=checkbox]:checked::after {
         color: #212121;
     }
 
-    .quiz-MultiSelect-card-check-container {
+    .quiz-multiSelect-card-check-container {
         color: antiquewhite;
         float: right;
         clear: both;
@@ -180,6 +180,9 @@ input[type=checkbox]:checked::after {
                             break;
                         case 'yesno':
                             _createYesNoQuestion(questionData);
+                            break;
+                        case 'singleselectcards':
+                            _createSingleSelectCardQuestion(questionData);
                             break;
                         default:
                             console.log(`not a valid type`);
@@ -316,10 +319,10 @@ input[type=checkbox]:checked::after {
 
     function _createMultiSelectItems(options) {
         var gridDiv = document.createElement("div");
-        gridDiv.classList.add("quiz-MultiSelect-container");
+        gridDiv.classList.add("quiz-multiSelect-container");
         for (var i = 0; i < options.length; i++) {
             var cardDiv = document.createElement("div");
-            cardDiv.classList.add("quiz-MultiSelect-card-container");
+            cardDiv.classList.add("quiz-multiSelect-card-container");
             cardDiv.append(_createMultiselctCardTitle(options[i]['title']));
             cardDiv.append(_createParagraphs(options[i]['paragraphs']));
             cardDiv.append(_createMultiselctCardCheckbox(options[i]));
@@ -344,9 +347,9 @@ input[type=checkbox]:checked::after {
         checkbox.name = option['value'];
         checkbox.value = option['nextQuestionId'];
 
-        $(checkbox).off().on('click', setmultiSelectAnswers.bind(this, option, checkbox));
+        $(checkbox).off().on('click', setMultiSelectAnswers.bind(this, option, checkbox));
         $(checkbox).on('click',function() {
-            setmultiSelectAnswers.bind(this, option, checkbox);
+            setMultiSelectAnswers.bind(this, option, checkbox);
             $(this).off('click');
         });
 
@@ -354,7 +357,7 @@ input[type=checkbox]:checked::after {
         return checkboxDiv;  
     }
 
-    function setmultiSelectAnswers(option, checkbox) {
+    function setMultiSelectAnswers(option, checkbox) {
         var answer = {value: option['value'], nextQuestionId: option['nextQuestionId']};
         $(checkbox).change(function() {
             if(this.checked) {
@@ -377,6 +380,63 @@ input[type=checkbox]:checked::after {
             }
             setNextLinkValues();
         });
+    }
+
+    ////////////////////////////
+    // Single-select cards elements
+    ////////////////////////////
+    // Creates cards with radio buttons
+    function _createSingleSelectCardQuestion(questionData) {
+        var question = document.createElement("div");
+        question.classList.add("quiz-question");
+        question.append(_createTitle(questionData['content']['title']));
+        question.append(_createParagraphs(questionData['content']['paragraphs']));
+        question.append(_createSingleSelectCardItems(questionData['options']));
+        question.append(_createNextStepLink());
+        $('#quiz-questions-container').empty();
+        $('#quiz-questions-container').append(question);
+        setNextLinkValues();
+    }
+
+    function _createSingleSelectCardItems(options) {
+        var gridDiv = document.createElement("div");
+        gridDiv.classList.add("quiz-multiSelect-container");
+        for (var i = 0; i < options.length; i++) {
+            var cardDiv = document.createElement("div");
+            cardDiv.classList.add("quiz-multiSelect-card-container");
+            cardDiv.append(_createMultiselctCardTitle(options[i]['title']));
+            cardDiv.append(_createParagraphs(options[i]['paragraphs']));
+            cardDiv.append(_createSingleSelectCardRadioButtons(options[i]));
+            gridDiv.append(cardDiv);
+        }
+        return gridDiv;
+    }
+
+    function _createSingleSelectCardRadioButtons(option) {
+        var div = document.createElement("div");
+        div.classList.add("quiz-multiSelect-card-container");
+        var label = document.createElement("label");
+        var radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "radio";
+        radio.value = option.value;
+
+        $(radio).off().on('click', setSingleSelectCardAnswers.bind(this, option, radio));
+        $(radio).on('click',function() {
+            setSingleSelectCardAnswers.bind(this, option, radio);
+            $(this).off('click');
+        });
+        
+        label.textContent = option.title
+        div.appendChild(radio);
+        div.appendChild(label);
+
+        return div;
+    }
+
+    function setSingleSelectCardAnswers(option) {
+        nextQuestionId = option.nextQuestionId;
+        setNextLinkValues();
     }
 
     ////////////////////////////
@@ -431,6 +491,7 @@ input[type=checkbox]:checked::after {
         nextQuestionId = option.nextQuestionId;
         setNextLinkValues();
     }
+
 
     //////////////////
     // Yes/No elements

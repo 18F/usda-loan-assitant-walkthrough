@@ -1,11 +1,13 @@
 import json
+import shutil
+import os
 #from pprint import pprint
 from datetime import datetime
 from pathlib import Path
 from math import isnan
 import click
 from fuzzywuzzy import process
-from openpyxl import load_workbook
+#from openpyxl import load_workbook
 import pandas as pd
 
 import nltk
@@ -38,7 +40,7 @@ def find_matches( field_title, pdf_labels, verbose = False ):
     return None
 
 
-def Scrape_PDF_Input_Attrs(file_name):
+def Scrape_PDF_Input_Attrs( file_name, verbose=True ):
     """Requires the web server to be running locally.
     Install Node.JS, then run `npm install http-server -g`, then cd into top level
     directory of this repo "usda-loan-assitant-walkthrough" and runn the command
@@ -66,7 +68,10 @@ def Scrape_PDF_Input_Attrs(file_name):
     all_pdf_form_inputs = driver.find_elements( By.CSS_SELECTOR, 'input, textarea' )
     descrip_to_pid_dict = {}
 
-    print( "In", file_name, "found", len( all_pdf_form_inputs ), "elements:" )
+    if verbose:
+        # At the form level
+        # indent level = 2
+        print( f'  In file "{file_name}" found {len( all_pdf_form_inputs )} elements:' )
 
     for input_element in all_pdf_form_inputs:
 
@@ -107,14 +112,23 @@ def process_forms_spreadsheet(
 
     input_excel_path_obj = Path( source_filename )
 
-    output_excel_filepath = \
-        input_excel_path_obj.stem + \
-        "_updated_" + \
-        datetime.strftime( datetime.now(), '%Y-%m-%d_%H:%M:%S' ) + \
-        input_excel_path_obj.suffix
+    if not input_excel_path_obj.exists():
+        raise ValueError( f' File "{source_filename}" does not exist in curr working directory "{os.getcwd()}"' )
 
-    if verbose:
-        print(f"Will write to output excel file { output_excel_filepath }")
+    if update_pids:
+        output_excel_filepath = \
+            input_excel_path_obj.stem + \
+            "_updated_" + \
+            datetime.strftime( datetime.now(), '%Y-%m-%d_%H:%M:%S' ) + \
+            input_excel_path_obj.suffix
+
+        # Make a copy of the file upon which to "overlay" new pids
+        shutil.copy( input_excel_path_obj, output_excel_filepath )
+
+        writer = pd.ExcelWriter( output_excel_filepath, mode='a', if_sheet_exists="overlay" )
+
+        if verbose:
+            print(f"Will write to output excel file { output_excel_filepath }")
 
     data = {}
     data["Forms"] = []
@@ -154,17 +168,28 @@ def process_forms_spreadsheet(
         #form_id = inventory_sheet["B" + str(row)].value
         if specific_form_request is not None and form_id != specific_form_request:
             continue
+
+        if verbose:
+            # indent level = 2
+            print(f'  **  Processing form {form_id}')
+
         #file_name = inventory_sheet["C" + str(row)].value
         #items_sheet  = wb[form_id]
         items_sheet_df = pd.read_excel( io=source_filename, sheet_name=form_id )
         #last_items_row = len(list(items_sheet.rows))
 
+        items_sheet_df[ 'Field Label' ] = items_sheet_df[ 'Field Label' ].fillna( "" ).astype( str )
+
+        # We will be updating this possibly empty float64 column with text
+        # by creating views into this data frame and writing into those.
+        # Override pandas default behavior which is to create a copy of the df if the
+        # object being written (here, strings) is not the same type as the column
+        # again, float64 if empty:
+        items_sheet_df[ 'Input ID' ] = items_sheet_df[ 'Input ID' ].astype( str ).replace( 'nan', "" )
+
         items_sheet_df[ 'Field Label' ].apply(
             lambda desc: " ".join( [ _ for _ in word_tokenize( desc ) if _ not in stopwords ] )
             )
-        if verbose:
-            # indent level = 2
-            print(f' **  Processing form {form_id}')
 
         if update_pids:
             form_inputs = Scrape_PDF_Input_Attrs( form_file_name )
@@ -188,7 +213,7 @@ def process_forms_spreadsheet(
 
             if verbose:
                 # Indent level = 4
-                print(f'   **  Processing part {part_name}')
+                print(f'    **  Processing part {part_name}')
 
             part_dict = {
                 "name": part_name,
@@ -202,6 +227,7 @@ def process_forms_spreadsheet(
             #    for item_row in range(2, last_items_row + 1):
 
             #        if part_name == items_sheet["B"+str(item_row)].value:
+            # Grab a view into this sheet:
             items_in_this_part_df = items_sheet_df[
                 items_sheet_df[ 'Part' ] == part_name
             ]
@@ -236,15 +262,15 @@ def process_forms_spreadsheet(
 
             items_list = []
             # Iterate over all the input elements in this part:
-            for (
-                field_number,
-                field_name,
-                preexisting_pid,
-                new_instructions_text,
-                page_number,
-                field_left_px,
-                field_top_px
-            ) in items_in_this_part_df[ wanted_columns ].values:
+            for index, (
+                field_number, # Field #
+                field_name,   # Field Label
+                preexisting_pid, # Input ID
+                new_instructions_text, # Recommended Field Instructions
+                page_number, # Page #
+                field_left_px, # Field Left (px)
+                field_top_px # Field Top (px)
+            ) in zip( items_in_this_part_df.index, items_in_this_part_df[ wanted_columns ].values ):
 
                 running_field_count += 1
                 if running_field_count > field_count:
@@ -252,7 +278,11 @@ def process_forms_spreadsheet(
 
                 if verbose:
                     # Indent level = 6
-                    print(f'     **  Processing form {form_id}, {part_name}, field {field_number}')
+                    print(f'      **  Processing form="{form_id}", part="{part_name}", field #="{field_number}", index="{index}"' )
+
+                # Skip if the field label is blank, as in Form 2015, Part A Field 4
+                if field_name == "":
+                    continue
 
                 new_pid = ''
                 if update_pids:
@@ -263,6 +293,9 @@ def process_forms_spreadsheet(
                     )
                     if match:
                         new_pid = form_inputs[ match ][ 'id' ]
+                        # Write it back into the sheet
+                        items_sheet_df.loc[ index, "Input ID" ] = new_pid
+                        print( " " * 8, f'new pid for index {index}={new_pid}' )
 
                 pid_list.append( new_pid )
 
@@ -279,11 +312,13 @@ def process_forms_spreadsheet(
                 }
                 items_list.append(item_dict)
 
-            # END iterating over items in this part
+                # END of loop iterating over items in this part
+
             part_dict['items'] = items_list
             parts_list.append( part_dict )
 
-        # END iterating over all the parts
+            # END of loop iterating over all the parts in this form
+
         data["Forms"].append({
             "name": form_name or "",
             "id": form_id or "",
@@ -293,19 +328,47 @@ def process_forms_spreadsheet(
             "parts": parts_list
         })
 
+        if update_pids:
+
+            outgoing_pid_series = items_sheet_df[ "Input ID" ]
+            if verbose:
+                print( f'  Count of all pids={ ( outgoing_pid_series != "" ).sum() }, Count of UNIQUE pids={ len( set( outgoing_pid_series ) ) }' )
+            outgoing_pid_series.to_frame().to_excel(
+                writer,
+                sheet_name = form_id,
+                # Input ID column is column G, the 6th if counting from 0:
+                startcol = 6
+            )
+
+        if verbose:
+            # indent level = 2
+            print(f'  **  FINISHED processing form {form_id}\n', "*"*50, "\n" )
+
     #wb.save( output_excel_filepath )
     #wb.close()
+    if update_pids:
+        if verbose:
+            print( f'Updating file "{output_excel_filepath}" with new pids.' )
+        writer.close()
     return data
 
 @click.command()
 @click.option('--filename', '-f', type=click.Path(exists=True), show_default=True, default='FSA Forms Analysis.xlsx')
 @click.option('--updatepids', '-u', is_flag=True, show_default=True, default=False)
-@click.option('--verbose', '-v', is_flag=True, show_default=True, default=False)
-@click.option('--debug', '-d', is_flag=True, show_default=True, default=False)
+@click.option('--verbose', '-v', is_flag=True, show_default=True, default=True)
+@click.option('--debug', '-d', is_flag=True, show_default=True, default=True)
 @click.option('--form', '-F', show_default=None, default=None)
 @click.option('--form_count', '-o', show_default=False, default=99999)
 @click.option('--field_count', '-i', show_default=False, default=99999)
 def main(filename, updatepids, verbose, debug, form_count, field_count, form ):
+
+    print( "filename =", filename)
+    print( "updatepids =", updatepids )
+    print( "verbose =", verbose )
+    print( "debug =", debug )
+    print( "form_count =", form_count )
+    print( "field_count =", field_count )
+    print( "form =", form )
 
     if verbose and form:
         print( "*" * 50, '\n', "only processing form with id =", form, "\n", "*" * 50 )

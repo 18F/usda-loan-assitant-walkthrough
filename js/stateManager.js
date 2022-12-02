@@ -1,4 +1,5 @@
-// steps - the step in th elegibility and loan discovery tools wizard-content.json
+// steps - Deprecated with the MDL Stepper:the step in th elegibility and loan discovery tools wizard-content.json
+// answers - the users progress with answers
 // currentPage - the page the user is on
 // currentLoanType - the current loan type being viewed.
 // currentFormType - the current form type being viewed.
@@ -101,6 +102,7 @@ function returnStepsJSON() {
 
 function resetCookies() {
     setCookie("steps", '', -1);
+    setCookie("answers", '', -1);
     setCookie("currentLoanType", '', -1);
     setCookie("currentFormType", '', -1);
     setCookie("currentPage", '', -1);

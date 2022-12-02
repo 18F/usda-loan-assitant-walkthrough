@@ -1,36 +1,78 @@
 <style>
-input[type=checkbox] {
-  transform: scale(1);
+:root {
+  --control-color-green: #49A564;
 }
 
 input[type=checkbox] {
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  font-size: 17px;
-  visibility: hidden;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    transform: scale(1);
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    font-size: 17px;
+    visibility: hidden;
 }
 
 input[type=checkbox]:after,
 input[type=checkbox]::after {
-  content: " ";
-  display: inline-block;
-  margin-left: 10px;
-  padding-bottom: 5px;
-  color: #49A564;
-  width: 32px;
-  height: 32px;
-  visibility: visible;
-  border: 2px solid #49A564;
-  padding-left: 3px;
-  border-radius: 5px;
+    content: " ";
+    display: inline-block;
+
+    min-width: 3rem;
+    min-height: 3rem;
+    visibility: visible;
+    border: 2px solid var(--control-color-green);
+    border-radius: 5px;
 }
 
+input[type=checkbox]:checked {
+    color: #fff;
+}
 input[type=checkbox]:checked:after,
 input[type=checkbox]:checked::after {
-  content: "\2714";
-  padding: -5px;
-  font-weight: bold;
+    content: "\2713";
+    font-weight: bold;
+    background-color: var(--control-color-green);
+    padding: 0px 25%;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+
+  font: inherit;
+  color: var(--control-color-green);
+  min-width: 3rem;
+  min-height: 3rem;
+  border: 0.2rem solid var(--control-color-green);
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  transform: scale(0);
+  box-shadow: inset 2rem 2rem var(--control-color-green);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+  background-color: var(--control-color-green);
+}
+
+input[type="radio"]:focus {
+  outline: max(1px, 2px) solid var(--control-color-green);;
+  outline-offset: max(0px, 2px);
+  background-color: var(--control-color-green);
 }
 
     .quiz-container {
@@ -98,12 +140,20 @@ input[type=checkbox]:checked::after {
         grid-template-columns: auto auto;
         gap: 2rem;
     }
-
+    
     .quiz-multiSelect-card-container {
-        width: 100%;
-        border-style: solid;
-        border-color: #212121;
-        border-width: 2px;
+        display: inline-block;
+        min-width: 100%;
+        min-height: fit-content;
+        border: 2px solid #212121;
+        padding: 2rem;
+    }
+
+    .quiz-multiSelect-card-container-selected {
+        display: inline-block;
+        min-width: 100%;
+        min-height: fit-content;
+        border: 0.2rem solid var(--control-color-green);
         padding: 2rem;
     }
 
@@ -126,9 +176,18 @@ input[type=checkbox]:checked::after {
     }
 
     .quiz-multiSelect-card-check-container {
-        color: antiquewhite;
+        min-width: 3rem;
+        min-height: 3rem;
         float: right;
-        clear: both;
+    }
+
+    .form-control:focus-within {
+        color: var(--control-color-green);;
+    }
+
+    .quiz-singleSelectRadio-container {
+        display: flex;
+        flex-direction: row-reverse;
     }
 
 </style>
@@ -137,9 +196,7 @@ input[type=checkbox]:checked::after {
     <div class="container">
         <div class="quiz-container">
             <div class="quiz-back-container">
-                <div class="quiz-back" id="quiz-back">
-
-                </div>
+                <div class="quiz-back" id="quiz-back"></div>
             </div> 
             <div class="quiz-questions-container" id="quiz-questions-container"></div>
         </div>   
@@ -150,11 +207,17 @@ input[type=checkbox]:checked::after {
     var questionHistory = []; // List of nextQuestionId values
     var currentQuestion = -1;
     var nextQuestionId = -1;
-    var multiSelectAnswers = [];
+    var answers = [];
 
     (function() {
-        var startQuestion = 0;
-        showQuestion(startQuestion);
+        currentQuestion = 0;
+        if(geAnswers() !== ""){
+            questionHistory = JSON.parse(geAnswers());
+            // Set the current question based on last unanswered question
+            currentQuestion = Math.max.apply(null, questionHistory.map(object => { return object.nextQuestionId; }));
+        }
+
+        showQuestion(currentQuestion);
     })();
 
     //////////////////
@@ -166,7 +229,7 @@ input[type=checkbox]:checked::after {
             $.each(data["questions"], function(key, questionData) {
                 if(questionData['questionId'] === questionId){
                     currentQuestion = questionId;
-                    multiSelectAnswers = [];
+                    answers = [];
                     nextQuestionId = -1;
                     switch (questionData["type"]) {
                         case 'information':
@@ -187,15 +250,40 @@ input[type=checkbox]:checked::after {
                         default:
                             console.log(`not a valid type`);
                     };
+                    _createBackStepLink();
                 }
             });
         });
-        _createBackStepLink();
     }
     
     // Saves answer and shows next question
-    function _saveAndNext() {
-        questionHistory.push(currentQuestion);
+    function saveAndNext() {
+        // Get list of answers  from the multi select mnswers
+        var index = answers.findIndex(x => x.value >= 0 );
+        if(index >= 0) {
+            multiAnswers = [];
+            for ( var i = 0; i < answers.length; i++ ) { 
+                multiAnswers.push(answers[i]['value']);
+            }
+            answers = [...multiAnswers];
+        }
+
+        var answer = {
+            "question": currentQuestion,
+            "answer": answers,
+            "nextQuestionId": nextQuestionId
+        }
+
+        // has question been answered
+        var alreadyAnswered = questionHistory.findIndex(x => x.question === currentQuestion);
+        if(alreadyAnswered >= 0) {
+            // delete if answered
+            // questionHistory.pop();
+        }
+        
+        // add answer to array
+        questionHistory.push(answer);
+        updateAnswers();
         showQuestion(nextQuestionId);
     }
     
@@ -220,7 +308,7 @@ input[type=checkbox]:checked::after {
 
         nextLink = document.createElement('a');
         nextLink.innerHTML = "Save and continue"
-        nextLink.onclick = function() { _saveAndNext(); };
+        nextLink.onclick = function() { saveAndNext(); };
         div.appendChild(nextLink);
         parent.appendChild(div);
         return parent;
@@ -239,27 +327,31 @@ input[type=checkbox]:checked::after {
     }
 
     function _createBackStepLink() {
-        if(questionHistory.length === 0) {
-            $('#quiz-back').hide();
-        }
-        else $('#quiz-back').show();
-        var image = document.createElement("img");
-        image.setAttribute("src", "./images/arrow-left.png");
-        image.setAttribute("height", "32");
-        image.setAttribute("width", "32");
-        image.setAttribute("alt", "Back Arrow");
+        $('#quiz-back').hide();
 
-        var previoousLink = document.createElement('a');
-        previoousLink.onclick = function() { 
-            showQuestion(questionHistory.at(-1)); 
-            questionHistory.pop();
-            if(questionHistory.length === 0) {
-                $('#quiz-back').hide();
+        if(questionHistory.length === 0) { return; }
+        if(questionHistory[0]['question'] !== currentQuestion) {
+            $('#quiz-back').show();
+            var image = document.createElement("img");
+            image.setAttribute("src", "./images/arrow-left.png");
+            image.setAttribute("height", "32");
+            image.setAttribute("width", "32");
+            image.setAttribute("alt", "Back Arrow");
+
+            var previoousLink = document.createElement('a');
+
+            previoousLink.onclick = function() { 
+                var id = questionHistory.findIndex(x => x.question === currentQuestion)
+                showQuestion(questionHistory.at(-1)['question']);
+                questionHistory.pop();
+                if(id === 0) {
+                    $('#quiz-back').hide();
+                }
             }
+            previoousLink.appendChild(image);
+            $('#quiz-back').empty();
+            $('#quiz-back').append(previoousLink);
         }
-        previoousLink.appendChild(image);
-        $('#quiz-back').empty();
-        $('#quiz-back').append(previoousLink);
     }
 
     ///////////////////
@@ -298,7 +390,7 @@ input[type=checkbox]:checked::after {
 
     function setInformationLinks(option) {
         nextQuestionId = option.nextQuestionId;
-        _saveAndNext();
+        saveAndNext();
     }
 
     ///////////////////////////
@@ -314,6 +406,14 @@ input[type=checkbox]:checked::after {
         question.append(_createNextStepLink());
         $('#quiz-questions-container').empty();
         $('#quiz-questions-container').append(question);
+        
+        let data = questionHistory.find(x => x.value === currentQuestion);
+        console.log(data);
+        console.log(currentQuestion);
+        if(data !== undefined){
+            console.log(data);
+        }
+
         setNextLinkValues();
     }
 
@@ -340,7 +440,7 @@ input[type=checkbox]:checked::after {
 
     function _createMultiselctCardCheckbox(option) {
         var checkboxDiv = document.createElement("div");
-        checkboxDiv.classList.add("quiz-MultiSelect-card-check-container");        
+        checkboxDiv.classList.add("quiz-multiSelect-card-check-container");        
         
         var checkbox = document.createElement("INPUT");
         checkbox.setAttribute("type", "checkbox");
@@ -358,21 +458,29 @@ input[type=checkbox]:checked::after {
     }
 
     function setMultiSelectAnswers(option, checkbox) {
-        var answer = {value: option['value'], nextQuestionId: option['nextQuestionId']};
+        var answer = { value: option['value'], nextQuestionId: option['nextQuestionId'] };
+
         $(checkbox).change(function() {
             if(this.checked) {
-                multiSelectAnswers.push(answer);
+                answers.push(answer);
+                var selectedCheckbox = checkbox.closest(".quiz-multiSelect-card-container");
+                selectedCheckbox.classList.remove("quiz-multiSelect-card-container");
+                selectedCheckbox.classList.add("quiz-multiSelect-card-container-selected");
+
             }
             else
             {
-                var index = multiSelectAnswers.findIndex(x => x.value === option['value']);
-                multiSelectAnswers.splice(index, 1);
+                var selectedCheckbox = checkbox.closest(".quiz-multiSelect-card-container-selected");
+                selectedCheckbox.classList.remove("quiz-multiSelect-card-container-selected");
+                selectedCheckbox.classList.add("quiz-multiSelect-card-container");
+                var index = answers.findIndex(x => x.value === option['value']);
+                answers.splice(index, 1);
             }
         
-            highestValue = Math.max.apply(null, multiSelectAnswers.map(object => { return object.value; }));
+            highestValue = Math.max.apply(null, answers.map(object => { return object.value; }));
 
-            if (multiSelectAnswers.length !== 0 ) {
-                nextQuestionId = multiSelectAnswers.find(x => x.value === highestValue).nextQuestionId;
+            if (answers.length !== 0 ) {
+                nextQuestionId = answers.find(x => x.value === highestValue).nextQuestionId;
                 if ( nextQuestionId === -Infinity ) { nextQuestionId = -1; }
             }
             else {
@@ -414,16 +522,16 @@ input[type=checkbox]:checked::after {
 
     function _createSingleSelectCardRadioButtons(option) {
         var div = document.createElement("div");
-        div.classList.add("quiz-multiSelect-card-container");
+        div.classList.add("quiz-singleSelectRadio-container");
         var label = document.createElement("label");
         var radio = document.createElement("input");
         radio.type = "radio";
         radio.name = "radio";
         radio.value = option.value;
 
-        $(radio).off().on('click', setSingleSelectCardAnswers.bind(this, option, radio));
+        $(radio).off().on('click', setSingleSelectCardAnswer.bind(this, option, radio));
         $(radio).on('click',function() {
-            setSingleSelectCardAnswers.bind(this, option, radio);
+            setSingleSelectCardAnswer.bind(this, option, radio);
             $(this).off('click');
         });
         
@@ -434,7 +542,8 @@ input[type=checkbox]:checked::after {
         return div;
     }
 
-    function setSingleSelectCardAnswers(option) {
+    function setSingleSelectCardAnswer(option) {
+        answers.push(option.optionId);
         nextQuestionId = option.nextQuestionId;
         setNextLinkValues();
     }
@@ -488,10 +597,10 @@ input[type=checkbox]:checked::after {
     }
 
     function setSingleSelectAnswers(option) {
+        answers.push(option.optionId);
         nextQuestionId = option.nextQuestionId;
         setNextLinkValues();
     }
-
 
     //////////////////
     // Yes/No elements
@@ -535,6 +644,7 @@ input[type=checkbox]:checked::after {
     }
 
     function setYesNoAnswers(option) {
+        answers.push(option.optionId);
         nextQuestionId = option.nextQuestionId;
         setNextLinkValues();
     }
@@ -583,4 +693,16 @@ input[type=checkbox]:checked::after {
         return paragraphElement;
     }
 
+    //////////////////////////
+    // Load and save questions
+    //////////////////////////
+    //
+    function updateAnswers() {
+        setCookie("answers", JSON.stringify(questionHistory), 365);
+        //console.log(geAnswers());
+    }
+
+    function geAnswers() {
+        return getCookie('answers');
+}
 </script>

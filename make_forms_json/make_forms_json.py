@@ -28,19 +28,17 @@ from webdriver_manager.chrome import ChromeDriverManager
 def find_matches( field_title, pdf_labels, verbose = False ):
     """Tries to match PDF-embedded form input instructions with
     LAT-enhanced instructions"""
-    if verbose:
-        print( f'        --  QUERY: "{field_title}"' )
     retval = process.extractOne( field_title, pdf_labels )
     if retval is not None:
         match, rate = retval
         if verbose:
-            print( f'        --  closest match ({rate}%): "{match}"')
+            print( f'        --  closest match in PDF ({rate}%): "{match}"')
         if rate >= 75:
             return match
     return None
 
 
-def Scrape_PDF_Input_Attrs( file_name, verbose=True ):
+def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
     """Requires the web server to be running locally.
     Install Node.JS, then run `npm install http-server -g`, then cd into top level
     directory of this repo "usda-loan-assitant-walkthrough" and runn the command
@@ -73,6 +71,10 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True ):
         # indent level = 2
         print( f'  In file "{file_name}" found {len( all_pdf_form_inputs )} elements:' )
 
+    if debug:
+        from collections import defaultdict
+        data = defaultdict( list )
+
     for input_element in all_pdf_form_inputs:
 
         data_name_text = input_element.get_attribute('data-name')
@@ -83,16 +85,33 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True ):
         if not( raw_description_text and pid.endswith('R') ):
             continue
 
+        elem_type = input_element.get_attribute( 'type' )
+        elem_rect =  { k : int( round( v ) ) for k,v in input_element.rect.items() }
         stripped_description_text = \
             " ".join( [ _ for _ in word_tokenize( raw_description_text ) if _ not in stopwords ] )
 
         descrip_to_pid_dict[ stripped_description_text ] = {
             "id" : pid,
-            "type" : input_element.get_attribute( 'type' ),
+            "type" : elem_type,
             "data-name" : data_name_text,
             "aria-label" : aria_label_text,
-            "raw_description_text" : raw_description_text
+            "raw_description_text" : raw_description_text,
+            "rect" : elem_rect
         }
+        if debug:
+            data['id'].append( pid )
+            data['type'].append( elem_type )
+            data['raw_desc_text'].append( raw_description_text )
+            data['stripped_desc_text'].append( stripped_description_text )
+            data['rect'].append( elem_rect )
+
+    if debug:
+        output_debug_data_filepath = str( Path( file_name ).stem ) + "_scraped_input_elems.xlsx"
+        df = pd.DataFrame( data )
+        new_col_names = [ 'height', 'width', 'x', 'y' ]
+        df[ new_col_names ] = pd.json_normalize( df['rect'] )
+        df = df.drop( columns=['rect'] )
+        df.to_excel( output_debug_data_filepath )
 
     return descrip_to_pid_dict
 
@@ -179,6 +198,7 @@ def process_forms_spreadsheet(
         #last_items_row = len(list(items_sheet.rows))
 
         items_sheet_df[ 'Field Label' ] = items_sheet_df[ 'Field Label' ].fillna( "" ).astype( str )
+        items_sheet_df[ 'Field #' ] = items_sheet_df[ 'Field #' ].fillna( "" ).astype( str )
 
         # We will be updating this possibly empty float64 column with text
         # by creating views into this data frame and writing into those.
@@ -276,16 +296,21 @@ def process_forms_spreadsheet(
                 if running_field_count > field_count:
                     break
 
+                # Skip if the field label is blank, as in Form 2015, Part A Field
+                # or if the Excel spreadsheet is missing any of these items:4
+                if field_number == "" or field_name == "" or isnan( field_left_px ) or isnan( field_top_px ):
+                    if verbose:
+                        print(f'      **  Skipping form="{form_id}", row item={index+1}, Part "{part_name}"' )
+                    continue
+
                 if verbose:
                     # Indent level = 6
-                    print(f'      **  Processing form="{form_id}", part="{part_name}", field #="{field_number}", index="{index}"' )
-
-                # Skip if the field label is blank, as in Form 2015, Part A Field 4
-                if field_name == "":
-                    continue
+                    print(f'      **  Processing Excel spreadsheet form="{form_id}", row item={index+1}, part="{part_name}", field #="{field_number}", PDF page={int(page_number)}, top={int(field_top_px)}px, left={int(field_left_px)}' )
 
                 new_pid = ''
                 if update_pids:
+                    if verbose:
+                        print( f'        --  Text as listed in Excel: "{field_name}"' )
                     match = find_matches(
                         field_name,
                         new_pdf_input_descriptions,
@@ -295,7 +320,7 @@ def process_forms_spreadsheet(
                         new_pid = form_inputs[ match ][ 'id' ]
                         # Write it back into the sheet
                         items_sheet_df.loc[ index, "Input ID" ] = new_pid
-                        print( " " * 8, f'new pid for index {index}={new_pid}' )
+                        print( " " * 8, "match in PDF has rect =", form_inputs[ match ]['rect'] )
 
                 pid_list.append( new_pid )
 

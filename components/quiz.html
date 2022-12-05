@@ -202,9 +202,11 @@ input[type="radio"]:focus {
         </div>   
     </div>
 </div>
-
+<script src="../js/stateManager.js"></script>
 <script>
     var questionHistory = []; // List of nextQuestionId values
+    var questionHistoryIndex = -1;
+    var questionType = ";"
     var currentQuestion = -1;
     var nextQuestionId = -1;
     var answers = [];
@@ -228,10 +230,31 @@ input[type="radio"]:focus {
         $.getJSON("../quiz.json", function(data) {
             $.each(data["questions"], function(key, questionData) {
                 if(questionData['questionId'] === questionId){
+                    
                     currentQuestion = questionId;
                     answers = [];
-                    nextQuestionId = -1;
-                    switch (questionData["type"]) {
+
+                    var index = questionHistory.findIndex(x => x.question === currentQuestion);
+                    questionHistoryIndex = index;
+                    if(index === -1)
+                    {
+                        
+                        nextQuestionId = -1;
+                        var answer = {
+                            "question": currentQuestion,
+                            "answer": answers,
+                            "nextQuestionId": nextQuestionId
+                        }
+                        questionHistoryIndex = questionHistory.length;
+                        questionHistory[questionHistoryIndex] = answer;
+                    }
+                    else {
+                        answers = questionHistory[index]['answer'];
+                        nextQuestionId = questionHistory[index]['nextQuestionId'];
+                    }
+                    
+                    questionType = questionData["type"];
+                    switch (questionType) {
                         case 'information':
                             _createInformationCard(questionData);
                             break;
@@ -258,31 +281,29 @@ input[type="radio"]:focus {
     
     // Saves answer and shows next question
     function saveAndNext() {
-        // Get list of answers  from the multi select mnswers
-        var index = answers.findIndex(x => x.value >= 0 );
-        if(index >= 0) {
-            multiAnswers = [];
-            for ( var i = 0; i < answers.length; i++ ) { 
-                multiAnswers.push(answers[i]['value']);
-            }
-            answers = [...multiAnswers];
-        }
+        // Get list of answers from the multi select mnswers
+        console.log(answers)
 
-        var answer = {
+        if(questionType == "multiselect") {
+            if(answers.findIndex(x => x.question !== -1) > -1) {
+            var multiAnswers = [];
+                for ( var i = 0; i < answers.length; i++ ) { 
+                    multiAnswers.push(answers[i]['value']);
+                }
+                answers = [...multiAnswers];
+            }
+        }
+        var answerToSave = {
             "question": currentQuestion,
             "answer": answers,
             "nextQuestionId": nextQuestionId
         }
 
-        // has question been answered
-        var alreadyAnswered = questionHistory.findIndex(x => x.question === currentQuestion);
-        if(alreadyAnswered >= 0) {
-            // delete if answered
-            // questionHistory.pop();
-        }
         
         // add answer to array
-        questionHistory.push(answer);
+        var index  = questionHistory.findIndex(x => x.question === currentQuestion);
+
+        questionHistory[index] = answerToSave;
         updateAnswers();
         showQuestion(nextQuestionId);
     }
@@ -341,11 +362,13 @@ input[type="radio"]:focus {
             var previoousLink = document.createElement('a');
 
             previoousLink.onclick = function() { 
-                var id = questionHistory.findIndex(x => x.question === currentQuestion)
-                showQuestion(questionHistory.at(-1)['question']);
-                questionHistory.pop();
+                var id = questionHistory.findIndex(x => x.question === currentQuestion) -1;
+                showQuestion(questionHistory.at(id)['question']);
                 if(id === 0) {
                     $('#quiz-back').hide();
+                }
+                if(nextQuestionId === -1) {
+                    questionHistory.pop();
                 }
             }
             previoousLink.appendChild(image);
@@ -390,6 +413,7 @@ input[type="radio"]:focus {
 
     function setInformationLinks(option) {
         nextQuestionId = option.nextQuestionId;
+        answers.push(option.value);
         saveAndNext();
     }
 
@@ -406,12 +430,23 @@ input[type="radio"]:focus {
         question.append(_createNextStepLink());
         $('#quiz-questions-container').empty();
         $('#quiz-questions-container').append(question);
+   
+        let data = questionHistory.find(x => x.question === currentQuestion);
+        var checkboxesAll = [];
+        checkboxesAll = [...question.querySelectorAll('input[type="checkbox"]')];        
         
-        let data = questionHistory.find(x => x.value === currentQuestion);
-        console.log(data);
-        console.log(currentQuestion);
-        if(data !== undefined){
-            console.log(data);
+        var tempArray = [];
+        for ( var i = 0; i < data.answer.length; i++ ) { 
+            var option = questionData['options'].find(x => x.value == data.answer[i]);
+            var checkbox = checkboxesAll.find(x => x.name == data.answer[i]);
+            if(checkbox !== undefined) {
+                var answer = { value: option['value'], nextQuestionId: option['nextQuestionId'] };
+                tempArray.push(answer);
+                checkbox.classList.remove("quiz-multiSelect-card-container");
+                checkbox.classList.add("quiz-multiSelect-card-container-selected");
+                $(checkbox).prop('checked', true);
+            }
+            answers = [...tempArray]
         }
 
         setNextLinkValues();
@@ -503,6 +538,18 @@ input[type="radio"]:focus {
         question.append(_createNextStepLink());
         $('#quiz-questions-container').empty();
         $('#quiz-questions-container').append(question);
+
+        let data = questionHistory.find(x => x.question === currentQuestion);
+        var radios = [];
+        radios = [...question.querySelectorAll('input[type="radio"]')];        
+
+        for ( var i = 0; i < data.answer.length; i++ ) { 
+            var radio = radios.find(x => x.name == data.answer[i]);
+            if(radio !== undefined) {
+                answers[0] = data.answer[i];
+                $(radio).prop('click', true);
+            }
+        }
         setNextLinkValues();
     }
 
@@ -526,8 +573,8 @@ input[type="radio"]:focus {
         var label = document.createElement("label");
         var radio = document.createElement("input");
         radio.type = "radio";
-        radio.name = "radio";
-        radio.value = option.value;
+        radio.name = option['value'];
+        radio.value = option['nextQuestionId'];
 
         $(radio).off().on('click', setSingleSelectCardAnswer.bind(this, option, radio));
         $(radio).on('click',function() {
@@ -561,12 +608,26 @@ input[type="radio"]:focus {
         question.append(_createNextStepLink());
         $('#quiz-questions-container').empty();
         $('#quiz-questions-container').append(question);
+
+
+        let data = questionHistory.find(x => x.question === currentQuestion);
+        var radios = [];
+        radios = [...question.querySelectorAll('input[type="radio"]')];        
+        console.log(data)
+
+        for ( var i = 0; i < data.answer.length; i++ ) { 
+            var radio = radios.find(x => x.id == data.answer[i]);
+
+        if(radio !== undefined) {
+                answers[0] = data.answer[i];
+                $(radio).prop('checked', true);
+            }
+        }
         setNextLinkValues();
     }
 
     function _createSingleSelectItems(options) {
         var gridDiv = document.createElement("div");
-        //gridDiv.classList.add("");
         for ( var i = 0; i < options.length; i++ ) {
             var cardDiv = document.createElement("div");
             cardDiv.append(_createRadioButtons(options[i]));
@@ -581,7 +642,8 @@ input[type="radio"]:focus {
         var radio = document.createElement("input");
         radio.type = "radio";
         radio.name = "radio";
-        radio.value = option.value;
+        radio.id = option['value'];
+        radio.value = option['nextQuestionId'];
 
         $(radio).off().on('click', setSingleSelectAnswers.bind(this, option, radio));
         $(radio).on('click',function() {
@@ -597,7 +659,8 @@ input[type="radio"]:focus {
     }
 
     function setSingleSelectAnswers(option) {
-        answers.push(option.optionId);
+        answers = [];
+        answers.push(option.value);
         nextQuestionId = option.nextQuestionId;
         setNextLinkValues();
     }
@@ -699,7 +762,6 @@ input[type="radio"]:focus {
     //
     function updateAnswers() {
         setCookie("answers", JSON.stringify(questionHistory), 365);
-        //console.log(geAnswers());
     }
 
     function geAnswers() {

@@ -1,6 +1,7 @@
 import json
 import shutil
 import os
+from time import sleep
 #from pprint import pprint
 from datetime import datetime
 from pathlib import Path
@@ -55,6 +56,14 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
     # This isn't working right now:
     #driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
+    sleep_time = 30 # seconds
+    print( "*"*80)
+    print( "*"*80 )
+    print( f"SLEEPING FOR {sleep_time} seconds, please scroll through open Selenium window TO EACH PAGE to ensure all the elements have been rendered, THEN scroll back to the top." )
+    print( "*"*80)
+    print( "*"*80 )
+    sleep( sleep_time )
+
     try:
         # If input PDF document was created/edited using Adobe acrobat
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "section.textWidgetAnnotation")))
@@ -63,55 +72,84 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
         # client, perhaps microsoft word
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input.xfaTextfield")))
 
-    all_pdf_form_inputs = driver.find_elements( By.CSS_SELECTOR, 'input, textarea' )
     descrip_to_pid_dict = {}
-
-    if verbose:
-        # At the form level
-        # indent level = 2
-        print( f'  In file "{file_name}" found {len( all_pdf_form_inputs )} elements:' )
 
     if debug:
         from collections import defaultdict
         data = defaultdict( list )
 
-    for input_element in all_pdf_form_inputs:
+    # Step 1: grab all div's with class=page
+    all_pdf_pages = driver.find_elements( By.CSS_SELECTOR, '.page' )
 
-        data_name_text = input_element.get_attribute('data-name')
-        aria_label_text = input_element.get_attribute('aria-label')
-        raw_description_text = data_name_text or aria_label_text
-        pid = input_element.get_attribute('id')
+    if verbose:
+        # At the form level
+        # indent level = 2
+        print( f'  In file "{file_name}" found {len( all_pdf_pages )} pages:' )
 
-        if not( raw_description_text and pid.endswith('R') ):
-            continue
+    for page_element in all_pdf_pages:
 
-        elem_type = input_element.get_attribute( 'type' )
-        elem_rect =  { k : int( round( v ) ) for k,v in input_element.rect.items() }
-        stripped_description_text = \
-            " ".join( [ _ for _ in word_tokenize( raw_description_text ) if _ not in stopwords ] )
+        page_number = page_element.get_attribute('data-page-number')
+        # Page style contains the basic dimensions in pixels for width and height
+        page_style = page_element.get_attribute('style')
+        page_label = page_element.get_attribute('aria-label') or page_element.get_attribute('data-name')
+        page_loaded = page_element.get_attribute('data-loaded')
 
-        descrip_to_pid_dict[ stripped_description_text ] = {
-            "id" : pid,
-            "type" : elem_type,
-            "data-name" : data_name_text,
-            "aria-label" : aria_label_text,
-            "raw_description_text" : raw_description_text,
-            "rect" : elem_rect
-        }
-        if debug:
-            data['id'].append( pid )
-            data['type'].append( elem_type )
-            data['raw_desc_text'].append( raw_description_text )
-            data['stripped_desc_text'].append( stripped_description_text )
-            data['rect'].append( elem_rect )
+        inputs_on_this_page = page_element.find_elements( By.CSS_SELECTOR, 'input, textarea' )
+
+        if verbose:
+            # At the page level
+            # indent level = 4
+            print( f'    On page {page_number} found {len( inputs_on_this_page )} elements:' )
+
+        for input_element in inputs_on_this_page:
+
+            data_name_text = input_element.get_attribute('data-name')
+            aria_label_text = input_element.get_attribute('aria-label')
+            raw_description_text = data_name_text or aria_label_text
+            pid = input_element.get_attribute('id')
+
+            if not( raw_description_text and pid.endswith('R') ):
+                continue
+
+            elem_name = input_element.get_attribute( 'name' )
+            elem_type = input_element.get_attribute( 'type' )
+            elem_rect =  { k : int( round( v ) ) for k,v in input_element.rect.items() }
+
+            stripped_description_text = \
+                " ".join( [ _ for _ in word_tokenize( raw_description_text ) if _ not in stopwords ] )
+
+            descrip_to_pid_dict[ stripped_description_text ] = {
+                "id" : pid,
+                "type" : elem_type,
+                "data-name" : data_name_text,
+                "aria-label" : aria_label_text,
+                "raw_description_text" : raw_description_text,
+                "rect" : elem_rect,
+                "name" : elem_name
+            }
+            if debug:
+                data['page_number'].append( page_number )
+                data['page_style'].append( page_style )
+                data['page_label'].append( page_label )
+                data['page_loaded'].append( page_loaded )
+                data['id'].append( pid )
+                data['name'].append( elem_name )
+                data['type'].append( elem_type )
+                data['raw_desc_text'].append( raw_description_text )
+                data['stripped_desc_text'].append( stripped_description_text )
+                data['rect'].append( elem_rect )
 
     if debug:
         output_debug_data_filepath = str( Path( file_name ).stem ) + "_scraped_input_elems.xlsx"
         df = pd.DataFrame( data )
-        new_col_names = [ 'height', 'width', 'x', 'y' ]
-        df[ new_col_names ] = pd.json_normalize( df['rect'] )
-        df = df.drop( columns=['rect'] )
-        df.to_excel( output_debug_data_filepath )
+        if len( df ) > 0:
+            new_col_names = [ 'height', 'width', 'x', 'y' ]
+            df[ new_col_names ] = pd.json_normalize( df['rect'] )
+            df = df.drop( columns=['rect'] )
+            df[ 'page_width' ] = df['page_style'].str.extract( r'width: (\d+)px;')
+            df[ 'page_height' ] = df['page_style'].str.extract( r'height: (\d+)px;')
+            df = df.drop( columns=['page_style'] )
+            df.to_excel( output_debug_data_filepath )
 
     return descrip_to_pid_dict
 

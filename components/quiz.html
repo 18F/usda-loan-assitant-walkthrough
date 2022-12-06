@@ -395,18 +395,20 @@ input[type="radio"]:focus {
     function _createInformationButtons(options) {
         var buttonDiv = document.createElement("div");
         for ( var i = 0; i < options.length; i++ ) {
-            var button = document.createElement("button");
-            button.type = "button";
-            button.classList.add("btn");
-            button.classList.add("btn-default");
-            button.textContent = options[i]['title'];
-            $(button).off().on('click', setInformationLinks.bind(this, options[i], button));
-            $(button).on('click',function() {
-                setInformationLinks.bind(this, options[i], button);
-                $(this).off('click');
-            });
-            buttonDiv.append(button);
-            
+            console.log((options[i]['title']) )
+            if(options[i]['title'] !== "") { 
+                var button = document.createElement("button");
+                button.type = "button";
+                button.classList.add("btn");
+                button.classList.add("btn-default");
+                button.textContent = options[i]['title'];
+                $(button).off().on('click', setInformationLinks.bind(this, options[i], button));
+                $(button).on('click',function() {
+                    setInformationLinks.bind(this, options[i], button);
+                    $(this).off('click');
+                });
+                buttonDiv.append(button);
+            }
         }
         return buttonDiv;
     }
@@ -526,7 +528,7 @@ input[type="radio"]:focus {
     }
 
     ////////////////////////////
-    // Single-select cards elements
+    // Single-select card elements
     ////////////////////////////
     // Creates cards with radio buttons
     function _createSingleSelectCardQuestion(questionData) {
@@ -557,12 +559,14 @@ input[type="radio"]:focus {
         var gridDiv = document.createElement("div");
         gridDiv.classList.add("quiz-multiSelect-container");
         for (var i = 0; i < options.length; i++) {
-            var cardDiv = document.createElement("div");
-            cardDiv.classList.add("quiz-multiSelect-card-container");
-            cardDiv.append(_createMultiselctCardTitle(options[i]['title']));
-            cardDiv.append(_createParagraphs(options[i]['paragraphs']));
-            cardDiv.append(_createSingleSelectCardRadioButtons(options[i]));
-            gridDiv.append(cardDiv);
+            if((options[i]['title']) != "") {
+                var cardDiv = document.createElement("div");
+                cardDiv.classList.add("quiz-multiSelect-card-container");
+                cardDiv.append(_createMultiselctCardTitle(options[i]['title']));
+                cardDiv.append(_createParagraphs(options[i]['paragraphs']));
+                cardDiv.append(_createSingleSelectCardRadioButtons(options[i]));
+                gridDiv.append(cardDiv);
+            }
         }
         return gridDiv;
     }
@@ -629,9 +633,11 @@ input[type="radio"]:focus {
     function _createSingleSelectItems(options) {
         var gridDiv = document.createElement("div");
         for ( var i = 0; i < options.length; i++ ) {
-            var cardDiv = document.createElement("div");
-            cardDiv.append(_createRadioButtons(options[i]));
-            gridDiv.append(cardDiv);
+            if((options[i]) != "") {
+                var cardDiv = document.createElement("div");
+                cardDiv.append(_createRadioButtons(options[i]));
+                gridDiv.append(cardDiv);
+            }
         }
         return gridDiv;
     }
@@ -686,7 +692,9 @@ input[type="radio"]:focus {
         buttonDiv.classList.add("btn-group");
 
         for ( var i = 0; i < options.length; i++ ) {
-            buttonDiv.append(_createYesNoButtons(options[i]));
+            if(options[i] !== "") { 
+                buttonDiv.append(_createYesNoButtons(options[i]));
+            }
         }
         return buttonDiv;
     }
@@ -717,6 +725,7 @@ input[type="radio"]:focus {
     //////////////////
     // Creates a bold title
     function _createTitle(title) {
+        if(title == "") { return }
         var titleDiv = document.createElement("div");
         titleDiv.classList.add("quiz-title-text");
         titleDiv.textContent = title
@@ -725,6 +734,8 @@ input[type="radio"]:focus {
 
     // Creates one or more paragraphs
     function _createParagraphs(paragraphs) {
+        if(paragraphs == "") { return }
+
         var gridDiv = document.createElement("div");
         gridDiv.classList.add("quiz-paragraph-text");
         for (var i = 0; i < paragraphs.length; i++) {
@@ -766,5 +777,5 @@ input[type="radio"]:focus {
 
     function geAnswers() {
         return getCookie('answers');
-}
+    }
 </script>

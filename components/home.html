@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="primary-region medium-12">
                     <h1 class="primary-region__title">
-                        Loan Assistance Tool
+                        Are you ready to apply for a farm loan? 
                     </h1>
                 </div>
             </div>
@@ -13,16 +13,14 @@
             <div class="row ">
                 <div class="col-md-12">
                     <div class="content-card accent-top">
-                        <h3 class="card-title">Are you ready to apply for a farm loan?</h3>
+                        <h3 class="card-title">Start your journey with FSA</h3>
                         <div class="card-body">
-                            <ul>
-                                <li>Am I eligible for a FSA Farm Loan?</li>
-                                <li>Which loans are right for me?</li>
-                                <li>Where can I get  help completing the loan application forms?</li>
-                            </ul>
+                            <div id="checkbox">
+
+                            </div>
                         </div>
                         <button class="btn lg-btn" onclick="window.location.assign('/lrt.html')">
-                            Get Started
+                            TAKE FARM LOAN QUIZ
                         </button>
                     </div>
                 </div>
@@ -30,3 +28,43 @@
         </div>
     </div>  
 </div>
+
+<script>
+    (function() {
+        $('#checkbox').empty();
+        $('#checkbox').append(_createCheckbox());
+    })();
+
+    function _createCheckbox() {
+        var checkboxDiv = document.createElement("div");
+        //checkboxDiv.classList.add("quiz-multiSelect-card-check-container");        
+        var label = document.createElement("Label");
+
+        var checkbox = document.createElement("INPUT");
+        checkbox.setAttribute("type", "checkbox");
+        // checkbox.name = option['value'];
+        // checkbox.value = option['nextQuestionId'];
+
+        $(checkbox).off().on('click', toggleButtonActive.bind(this, checkbox));
+        $(checkbox).on('click',function() {
+            toggleButtonActive.bind(this, checkbox);
+            $(this).off('click');
+        });
+        var text = document.createElement("p");
+        text.textContent = "By checking this box you acknowledge that you (or anyone signing on your behalf) are legally competent to enter into a loan agreement.";
+        label.appendChild(checkbox);
+        label.appendChild(text);
+        checkboxDiv.appendChild(label);
+        return checkboxDiv;  
+    }
+
+    // <label for="vehicle1"><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"> 
+    //                                 
+    //                             </label> <br>
+
+
+    function toggleButtonActive () {
+    
+    }
+
+</script>

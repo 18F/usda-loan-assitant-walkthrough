@@ -238,17 +238,12 @@ input[type="radio"]:focus {
                     questionHistoryIndex = index;
                     if(index === -1)
                     {
-                        
                         nextQuestionId = -1;
-                        var answer = {
-                            "question": currentQuestion,
-                            "answer": answers,
-                            "nextQuestionId": nextQuestionId
-                        }
                         questionHistoryIndex = questionHistory.length;
-                        questionHistory[questionHistoryIndex] = answer;
+                        questionHistory[questionHistoryIndex] = answer();
                     }
                     else {
+
                         answers = questionHistory[index]['answer'];
                         nextQuestionId = questionHistory[index]['nextQuestionId'];
                     }
@@ -282,28 +277,20 @@ input[type="radio"]:focus {
     // Saves answer and shows next question
     function saveAndNext() {
         // Get list of answers from the multi select mnswers
-        console.log(answers)
-
         if(questionType == "multiselect") {
             if(answers.findIndex(x => x.question !== -1) > -1) {
-            var multiAnswers = [];
+                var multiAnswers = [];
                 for ( var i = 0; i < answers.length; i++ ) { 
                     multiAnswers.push(answers[i]['value']);
                 }
                 answers = [...multiAnswers];
             }
         }
-        var answerToSave = {
-            "question": currentQuestion,
-            "answer": answers,
-            "nextQuestionId": nextQuestionId
-        }
 
-        
         // add answer to array
         var index  = questionHistory.findIndex(x => x.question === currentQuestion);
 
-        questionHistory[index] = answerToSave;
+        questionHistory[index] = answer();
         updateAnswers();
         showQuestion(nextQuestionId);
     }
@@ -395,7 +382,6 @@ input[type="radio"]:focus {
     function _createInformationButtons(options) {
         var buttonDiv = document.createElement("div");
         for ( var i = 0; i < options.length; i++ ) {
-            console.log((options[i]['title']) )
             if(options[i]['title'] !== "") { 
                 var button = document.createElement("button");
                 button.type = "button";
@@ -617,7 +603,6 @@ input[type="radio"]:focus {
         let data = questionHistory.find(x => x.question === currentQuestion);
         var radios = [];
         radios = [...question.querySelectorAll('input[type="radio"]')];        
-        console.log(data)
 
         for ( var i = 0; i < data.answer.length; i++ ) { 
             var radio = radios.find(x => x.id == data.answer[i]);
@@ -768,7 +753,7 @@ input[type="radio"]:focus {
     }
 
     //////////////////////////
-    // Load and save questions
+    // Load and save answered questions
     //////////////////////////
     //
     function updateAnswers() {
@@ -777,5 +762,13 @@ input[type="radio"]:focus {
 
     function geAnswers() {
         return getCookie('answers');
+    }
+
+    function answer() {
+        return {
+            "question": currentQuestion,
+            "answer": answers,
+            "nextQuestionId": nextQuestionId
+        }
     }
 </script>

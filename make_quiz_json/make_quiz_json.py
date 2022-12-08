@@ -23,7 +23,7 @@ for row in range(3, step_sheet.max_row + 1):
 
     try:
         step = {
-            "questionId": step_sheet[f"A{row}"].value or "",
+            "questionId": int(step_sheet[f"A{row}"].value) or "",
             "type": step_sheet[f"C{row}"].value or "",
             "progressBarStage": step_sheet[f"D{row}"].value or "",
             "notificationType": step_sheet[f"AS{row}"].value or "",
@@ -45,9 +45,9 @@ for row in range(3, step_sheet.max_row + 1):
     step["options"] = []
 
     option1 = {
-        "optionId": step_sheet[f"I{row}"].value or "",
-        "value": step_sheet[f"J{row}"].value or "",
-        "nextQuestionId": step_sheet[f"K{row}"].value or "",
+        "optionId": int(step_sheet[f"I{row}"].value) or "",
+        "value": int(step_sheet[f"J{row}"].value) or "",
+        "nextQuestionId": int(step_sheet[f"K{row}"].value) or "",
         "title": step_sheet[f"L{row}"].value or "",
         "url": step_sheet[f"Q{row}"].value or ""
     }
@@ -60,9 +60,9 @@ for row in range(3, step_sheet.max_row + 1):
     step["options"].append(option1)
 
     option2 = {
-        "optionId": step_sheet[f"R{row}"].value or "",
-        "value": step_sheet[f"S{row}"].value or "",
-        "nextQuestionId": step_sheet[f"T{row}"].value or "",
+        "optionId": int(step_sheet[f"R{row}"].value) or "",
+        "value": int(step_sheet[f"S{row}"].value) or "",
+        "nextQuestionId": int(step_sheet[f"T{row}"].value) or "",
         "title": step_sheet[f"U{row}"].value or "",
         "url": step_sheet[f"Z{row}"].value or "",
     }
@@ -75,9 +75,9 @@ for row in range(3, step_sheet.max_row + 1):
     step["options"].append(option2)
 
     option3 = {
-        "optionId": step_sheet[f"AA{row}"].value or "",
-        "value": step_sheet[f"AB{row}"].value or "",
-        "nextQuestionId": step_sheet[f"AC{row}"].value or "",
+        "optionId": int(step_sheet[f"AA{row}"].value) or "",
+        "value": int(step_sheet[f"AB{row}"].value) or "",
+        "nextQuestionId": int(step_sheet[f"AC{row}"].value) or "",
         "title": step_sheet[f"AD{row}"].value or "",
         "url": step_sheet[f"AI{row}"].value or ""
     }
@@ -90,9 +90,9 @@ for row in range(3, step_sheet.max_row + 1):
     step["options"].append(option3)
 
     option4 = {
-        "optionId": step_sheet[f"AJ{row}"].value or "",
-        "value": step_sheet[f"AK{row}"].value or "",
-        "nextQuestionId": step_sheet[f"AL{row}"].value or "",
+        "optionId": int(step_sheet[f"AJ{row}"].value) or "",
+        "value": int(step_sheet[f"AK{row}"].value) or "",
+        "nextQuestionId": int(step_sheet[f"AL{row}"].value) or "",
         "title": step_sheet[f"AM{row}"].value or "",
         "url": step_sheet[f"AR{row}"].value or ""
     }

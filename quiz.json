@@ -1,322 +1,1448 @@
 {
     "questions": [
         {
-            "questionId": 0,
-            "progressBarStage": "start",
-            "type": "information",
             "content": {
-                "title": "Great we have some financing options that might work for you!",
                 "paragraphs": [
                     {
-                        "paragraphText": "Let’s take a look at your eligibility. "
-                        
+                        "paragraphText": "Select all that apply"
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
                     }
-                ]
+                ],
+                "title": "How can the Farm Service Agency (FSA) assist your farm?"
             },
+            "notificationMessge": "",
+            "notificationTitle": "",
+            "notificationType": "",
             "options": [
                 {
-                    "optionId": 0,
-                    "value": 0,
                     "nextQuestionId": 1,
-                    "title": "Continue",
+                    "optionId": 0,
                     "paragraphs": [
+                        {
+                            "paragraphText": "Purchase equipment, supplies, feed, make minor real estate repairs, refinancing farm debt"
+                        },
+                        {
+                            "paragraphText": ""
+                        },
                         {
                             "paragraphText": ""
                         },
                         {
                             "paragraphText": ""
                         }
-                    ]
-                }
-            ]
-        },
-        {
-            "questionId": 1,
-            "progressBarStage": "elgibility",
-            "type": "multiselect",
-            "content": {
-                "title": "multiselect Question",
-                "paragraphs": [
-                    {
-                        "paragraphText": "Select all that apply"
-                    }
-                ]
-            },
-            "options": [
-                {
-                    "optionId": 0,
-                    "value": 1,
-                    "nextQuestionId": 3,
-                    "title": "Question 1",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 1 paragraph 1"
-                        }
-                    ]
+                    ],
+                    "title": "I need financing to assist with operating costs",
+                    "url": "",
+                    "value": 1
                 },
                 {
+                    "nextQuestionId": 2,
                     "optionId": 1,
-                    "value": 2,
-                    "nextQuestionId": 2,
-                    "title": "Question 2",
                     "paragraphs": [
                         {
-                            "paragraphText": "Question 2 paragraph 1"
+                            "paragraphText": "Buy or expand a farm, construct or improve farm buildings, pay closing costs, or promote soil and water protection"
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
                         }
-                    ]
+                    ],
+                    "title": "I need financial assistance to buy a farm or expand my farm",
+                    "url": "",
+                    "value": 2
                 },
                 {
+                    "nextQuestionId": 3,
                     "optionId": 2,
-                    "value": 3,
-                    "nextQuestionId": 2,
-                    "title": "Question 3",
                     "paragraphs": [
                         {
-                            "paragraphText": "Question 3 paragraph 1"
+                            "paragraphText": "Losses directly caused by a natural disaster declared or designated \nas a primary disaster"
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
                         }
-                    ]
+                    ],
+                    "title": "I have an emergency on my farm",
+                    "url": "",
+                    "value": 3
                 },
                 {
+                    "nextQuestionId": -1,
                     "optionId": 3,
-                    "value": 4,
-                    "nextQuestionId": 99,
-                    "title": "Youth",
                     "paragraphs": [
                         {
-                            "paragraphText": " YouthQuestion 4 paragraph 1"
+                            "paragraphText": "4-H, FFA, Tribal Youth groups, or similar youth organization. Must \nbe between 10 and 20 years old"
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
                         }
-                    ]
+                    ],
+                    "title": "I am participating in a youth educational farming program",
+                    "url": "https://www.fsa.usda.gov/programs-and-services/farm-loan-programs/youth-loans/index",
+                    "value": 4
                 }
-            ]
+            ],
+            "progressBarStage": "",
+            "questionId": 0,
+            "type": "multiselect",
+            "conditionals": "1&2:12,1&3:1,2&3:2"
         },
         {
-            "questionId": 2,
-            "progressBarStage": "elgibility",
-            "type": "singlesselect",
             "content": {
-                "title": "Are you planning to apply for a loan below or above $50,000 to help operate your farm?",
                 "paragraphs": [
                     {
-                        "paragraphText": "Microloans are designed to fit the needs of small farms, beginning farmers, niche and non-traditional farm operations, hydroponic, aquaponic, organic, and vertical growing methods."
+                        "paragraphText": "Microloans are $50,000 or less and designed to fit the needs of small farms, beginning farmers, hydroponic, aquaponic, organic, vertical growing methods, and niche and non-traditional farm operations (i.e. truck farms or direct marketing farm participation like CSAs)."
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
                     }
-                ]
+                ],
+                "title": "Are you planning to apply for a loan below or above $50,000 to help OPERATE your farm?"
             },
+            "notificationMessge": "",
+            "notificationTitle": "",
+            "notificationType": "",
             "options": [
                 {
-                    "optionId": 0,
-                    "value": 1,
                     "nextQuestionId": 3,
+                    "optionId": 0,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
                     "title": "$50,000 or less ",
+                    "url": "",
+                    "value": 1
+                },
+                {
+                    "nextQuestionId": 3,
+                    "optionId": 1,
                     "paragraphs": [
                         {
                             "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
                         }
-                    ]
-                },
-                {
-                    "optionId": 1,
-                    "value": 2,
-                    "nextQuestionId": 3,
+                    ],
                     "title": "More than $50,000",
+                    "url": "",
+                    "value": 2
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
                     "paragraphs": [
                         {
                             "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
                         }
-                    ]
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
                 }
-            ]
+            ],
+            "progressBarStage": "",
+            "questionId": 1,
+            "type": "singlesselect"
         },
         {
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphText": "Microloans are $50,000 or less and designed to fit the needs of small farms, beginning farmers, hydroponic, aquaponic, organic, vertical growing methods, and niche and non-traditional farm operations (i.e. truck farms or direct marketing farm participation like CSAs)."
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    }
+                ],
+                "title": "Are you planning to apply for a loan below or above $50,000 to help finance BUYING OR EXPANDING your farm?"
+            },
+            "notificationMessge": "",
+            "notificationTitle": "",
+            "notificationType": "",
+            "options": [
+                {
+                    "nextQuestionId": 3,
+                    "optionId": "",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "$50,000 or less ",
+                    "url": "",
+                    "value": 1
+                },
+                {
+                    "nextQuestionId": 3,
+                    "optionId": 1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "More than $50,000",
+                    "url": "",
+                    "value": 2
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                }
+            ],
+            "progressBarStage": "",
+            "questionId": 2,
+            "type": "singlesselect"
+        },
+        {
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphText": "Farming experience includes managing and operating a farm, but can also be a combination of working with a farming mentor, earning a relevant degree or certification related to farming operation, owning a business, or having a military veteran status. "
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    }
+                ],
+                "title": "Have you spent at least three of the last ten years gaining farming experience?"
+            },
+            "notificationMessge": "Farming experience requirements vary by loan type and can combine a variety of experiences to meet these requirements. Discuss with you loan officer to find out if your farming experience meets FSA requirements. ",
+            "notificationTitle": "You stated that you have not spent at least three of the last ten years gaining farming experience which may impact your eligibility for an FSA loan.",
+            "notificationType": "warning",
+            "options": [
+                {
+                    "nextQuestionId": 4,
+                    "optionId": "",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "YES",
+                    "url": "",
+                    "value": 1
+                },
+                {
+                    "nextQuestionId": 4,
+                    "optionId": 1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "NO",
+                    "url": "",
+                    "value": 2
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                }
+            ],
+            "progressBarStage": "",
             "questionId": 3,
-            "progressBarStage": "elgibility",
-            "type": "singlesselect",
+            "type": "yesno"
+        },
+        {
             "content": {
-                "title": "How many years of experience do you have farming?",
                 "paragraphs": [
                     {
-                        "paragraphText": "Farming experience varies by loan type. Knowing how many years of farming experience you have under your belt helps your Farm Loan Officer ask applicable followup questions."
+                        "paragraphText": "For-profit farms can include family farms or small farms that tax-identify as an LLC or corporation. The FSA cannot fund loans for non-profit farms and organizations. "
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
                     }
-                ]
+                ],
+                "title": "Are you applying as a for-profit farm?"
             },
+            "notificationMessge": "The FSA only funds loans for for-profit farms and cannot fund loans for non-profit farms. ",
+            "notificationTitle": "You stated this loan would be used for something other than a for-profit farm which makes it ineligble for an FSA loan.",
+            "notificationType": "alert",
             "options": [
                 {
-                    "optionId": 0,
-                    "value": 1,
-                    "nextQuestionId": 4,
-                    "title": "Ten years or less",
-                    "paragraphs": [
-                        {
-                            "paragraphText": ""
-                        }
-                    ]
-                },
-                {
-                    "optionId": 1,
-                    "value": 2,
                     "nextQuestionId": 5,
-                    "title": "More than ten years",
+                    "optionId": "",
                     "paragraphs": [
                         {
                             "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
                         }
-                    ]
+                    ],
+                    "title": "YES",
+                    "url": "",
+                    "value": 1
+                },
+                {
+                    "nextQuestionId": 5,
+                    "optionId": 1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "NO",
+                    "url": "",
+                    "value": 2
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
                 }
-            ]
-        },
-        {
+            ],
+            "progressBarStage": "",
             "questionId": 4,
-            "progressBarStage": "elgibility",
-            "type": "yesno",
-            "content": {
-                "title": "Have you previously completed the FSA management training?",
-                "paragraphs": [
-                    {
-                        "paragraphText": "This needs something?. Have you previously completed the FSA management training?"
-                    }
-                ]
-            },
-            "options": [
-                {
-                    "optionId": 0,
-                    "value": 1,
-                    "nextQuestionId": 6,
-                    "title": "Yes",
-                    "paragraphs": [
-                        {
-                            "paragraphText": ""
-                        }
-                    ]
-                },
-                {
-                    "optionId": 1,
-                    "value": 2,
-                    "nextQuestionId": 6,
-                    "title": "No",
-                    "paragraphs": [
-                        {
-                            "paragraphText": ""
-                        }
-                    ]
-                }
-            ]
+            "type": "yesno"
         },
         {
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphText": "Applicants must make the management and operating decisions for the farm (not a third-party entity) to be eligible for an FSA loan."
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    }
+                ],
+                "title": "Would you consider yourself to be the day-to-day decision-maker of the farm?"
+            },
+            "notificationMessge": "The FSA only funds loans for applicants who are the decision-maker of the farm. Please have a member of the farm management come back and complete this process.",
+            "notificationTitle": "You stated you are not the day-to-day decision-maker of this farm which makes your application ineligible for an FSA loan.",
+            "notificationType": "alert",
+            "options": [
+                {
+                    "nextQuestionId": 6,
+                    "optionId": "",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "YES",
+                    "url": "",
+                    "value": 1
+                },
+                {
+                    "nextQuestionId": 6,
+                    "optionId": 1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "NO",
+                    "url": "",
+                    "value": 2
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                }
+            ],
+            "progressBarStage": "",
+            "questionId": 5,
+            "type": "yesno"
+        },
+        {
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphText": "U.S. Citizen\nU.S. non-citizen national\nQualified alien under appliacable federal immigration laws"
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    }
+                ],
+                "title": "Do you fall under one of the following citizenship statuses?"
+            },
+            "notificationMessge": "Applicants must be a U.S. citizen, U.S. non-citizen national, or a qualified alien under applicable federal immigration laws when applying for an FSA loan. Contact your local loan officer if you are unsure what qualifies.",
+            "notificationTitle": "You stated you are not one of the qualifying citizenship statuses which may impact your eligibility for an FSA loan.",
+            "notificationType": "warning",
+            "options": [
+                {
+                    "nextQuestionId": 7,
+                    "optionId": "",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "YES",
+                    "url": "",
+                    "value": 1
+                },
+                {
+                    "nextQuestionId": 7,
+                    "optionId": 1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "NO",
+                    "url": "",
+                    "value": 2
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                }
+            ],
+            "progressBarStage": "",
             "questionId": 6,
-            "progressBarStage": "elgibility",
-            "type": "singleselectcards",
-            "content": {
-                "title": "Youth",
-                "paragraphs": [
-                    {
-                        "paragraphText": "Select all that apply"
-                    }
-                ]
-            },
-            "options": [
-                {
-                    "optionId": 0,
-                    "value": 1,
-                    "nextQuestionId": 1,
-                    "title": "",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 1 paragraph 1"
-                        }
-                    ]
-                },
-                {
-                    "optionId": 1,
-                    "value": 2,
-                    "nextQuestionId": 2,
-                    "title": "",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 2 paragraph 1"
-                        }
-                    ]
-                },
-                {
-                    "optionId": 2,
-                    "value": 3,
-                    "nextQuestionId": 3,
-                    "title": "",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "Question 3 paragraph 1"
-                        }
-                    ]
-                },
-                {
-                    "optionId": 3,
-                    "value": 4,
-                    "nextQuestionId": 4,
-                    "title": "",
-                    "paragraphs": [
-                        {
-                            "paragraphText": "YouthQuestion 4 paragraph 1"
-                        }
-                    ]
-                }
-            ]
+            "type": "yesno"
         },
         {
-            "questionId": 99,
-            "progressBarStage": "elgibility",
-            "type": "multiselect",
             "content": {
-                "title": "Youth",
                 "paragraphs": [
                     {
-                        "paragraphText": "Select all that apply"
+                        "paragraphText": "The FSA cannot lend to applicants who have a drug conviction in the last four years pertaining to planting, cultivating, growing, producing, harvesting, storing, trafficking, or posessing, controlled substances."
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
                     }
-                ]
+                ],
+                "title": "Have you had any drug convictions in the last four years? "
             },
+            "notificationMessge": "The FSA cannot fund farm loans to applicants with drug convictions in the last four years. If your drug conviction was less than four years ago, you will be required to provide documentation proving this to your loan officer and you may be eligible.",
+            "notificationTitle": "You stated you have had a drug conviction in the last four years which makes you ineligible for an FSA loan.",
+            "notificationType": "alert",
             "options": [
                 {
-                    "optionId": 0,
-                    "value": 1,
-                    "nextQuestionId": 3,
-                    "title": "Question 1",
+                    "nextQuestionId": 8,
+                    "optionId": "",
                     "paragraphs": [
                         {
-                            "paragraphText": "Question 1 paragraph 1"
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
                         }
-                    ]
+                    ],
+                    "title": "YES",
+                    "url": "",
+                    "value": 1
                 },
                 {
+                    "nextQuestionId": 8,
                     "optionId": 1,
-                    "value": 2,
-                    "nextQuestionId": 2,
-                    "title": "Question 2",
                     "paragraphs": [
                         {
-                            "paragraphText": "Question 2 paragraph 1"
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
                         }
-                    ]
+                    ],
+                    "title": "NO",
+                    "url": "",
+                    "value": 2
                 },
                 {
-                    "optionId": 2,
-                    "value": 3,
-                    "nextQuestionId": 2,
-                    "title": "Question 3",
+                    "nextQuestionId": -1,
+                    "optionId": -1,
                     "paragraphs": [
                         {
-                            "paragraphText": "Question 3 paragraph 1"
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
                         }
-                    ]
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
                 },
                 {
-                    "optionId": 3,
-                    "value": 4,
-                    "nextQuestionId": 99,
-                    "title": "Youth",
+                    "nextQuestionId": -1,
+                    "optionId": -1,
                     "paragraphs": [
                         {
-                            "paragraphText": " YouthQuestion 4 paragraph 1"
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
                         }
-                    ]
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
                 }
-            ]
+            ],
+            "progressBarStage": "",
+            "questionId": 7,
+            "type": "yesno"
+        },
+        {
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphText": "Applicants who willfully and intentionally provide false or inaccurate information to FCIC (Federal Crop Insurance Corporation) or to any approved insurance provider with respect to a policy or plan will be ineligible."
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    }
+                ],
+                "title": "Have you ever been convicted of a federal crop insurance violation?"
+            },
+            "notificationMessge": "A federal crop insurance violation may make you ineligible for an FSA loan. Discuss with your farm loan officer regarding this violation prior to submitting your application.",
+            "notificationTitle": "You stated you have been convicted of a federal crop insurance violation.",
+            "notificationType": "warning",
+            "options": [
+                {
+                    "nextQuestionId": 9,
+                    "optionId": "",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "YES",
+                    "url": "",
+                    "value": 1
+                },
+                {
+                    "nextQuestionId": 9,
+                    "optionId": 1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "NO",
+                    "url": "",
+                    "value": 2
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                }
+            ],
+            "progressBarStage": "",
+            "questionId": 8,
+            "type": "yesno"
+        },
+        {
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphText": "While the FSA does not take credit scores into consideration, understanding your payment history helps to evaluate your eligibility. For reference, credit reports go back up to seven years. "
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    }
+                ],
+                "title": "Does your credit history demonstrate on-time payments?"
+            },
+            "notificationMessge": "Credit history is a common reasons applicants are denied. We recommend reviewing your situation with a loan officer before applying.",
+            "notificationTitle": "You stated that your payment history could be better.",
+            "notificationType": "warning",
+            "options": [
+                {
+                    "nextQuestionId": 10,
+                    "optionId": "",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "YES",
+                    "url": "",
+                    "value": 1
+                },
+                {
+                    "nextQuestionId": 10,
+                    "optionId": 1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "IT COULD BE BETTER",
+                    "url": "",
+                    "value": 2
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                }
+            ],
+            "progressBarStage": "",
+            "questionId": 9,
+            "type": "yesno"
+        },
+        {
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphText": "This does not include IRS tax debt."
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    }
+                ],
+                "title": "Do you currently have any delinquent federal debts or unpaid federal judgements?"
+            },
+            "notificationMessge": "This may impact your eligibility for an FSA loan, however applicants may become eligible if they are able to pay in full or resolve before loan closing. Be sure to bring this up with your farm loan officer to determine next steps.",
+            "notificationTitle": "You stated you have outstanding federal debts or judgements.",
+            "notificationType": "warning",
+            "options": [
+                {
+                    "nextQuestionId": 11,
+                    "optionId": "",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "YES",
+                    "url": "",
+                    "value": 1
+                },
+                {
+                    "nextQuestionId": 11,
+                    "optionId": 1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "NO",
+                    "url": "",
+                    "value": 2
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                }
+            ],
+            "progressBarStage": "",
+            "questionId": 10,
+            "type": "yesno"
+        },
+        {
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphText": "Applicants who have been forgiven of a past FSA loan will be considered ineligible for Direct Loan Assistance, with the exception of Annual Operating Loans, unless they have extenuating circumstances such as:"
+                    },
+                    {
+                        "paragraphText": "Received a debt reduction through a conservation easement or contract\nHad a debt written off as a part of the resolution for a discrimination complaint against the Farm Service Agency\nHad a prior debt forgiven that has been repaid entirely\nHad a debt forgiven on a Youth Loan for circumstances beyond the applicant\u2019s control"
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    }
+                ],
+                "title": "Have you ever recieved debt forgiveness from the Farm Service Agency (FSA)?"
+            },
+            "notificationMessge": "This may impact your eligibility to qualify for a Farm Loan unless the debt forgiveness is due to extenuating circumstances. Be sure to bring this up with your farm loan officer to determine next steps. Extenuating circumstances can include:\nReceived a debt reduction through a conservation easement or contract\nHad a debt written off as a part of the resolution for a discrimination complaint against the Farm Service Agency\nHad a prior debt forgiven that has been repaid entirely\nHad a debt forgiven on a Youth Loan for circumstances beyond the applicant\u2019s control",
+            "notificationTitle": "You stated you have previously received debt forgiveness from the FSA.",
+            "notificationType": "warning",
+            "options": [
+                {
+                    "nextQuestionId": -1,
+                    "optionId": "",
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "YES",
+                    "url": "Summary page",
+                    "value": 1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": 1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "NO",
+                    "url": "Summary Page",
+                    "value": 2
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                }
+            ],
+            "progressBarStage": "",
+            "questionId": 11,
+            "type": "yesno"
+        },
+        {
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphText": "Microloans are $50,000 or less and designed to fit the needs of small farms, beginning farmers, hydroponic, aquaponic, organic, vertical growing methods, and niche and non-traditional farm operations (i.e. truck farms or direct marketing farm participation like CSAs)."
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    }
+                ],
+                "title": "Are you planning to apply for a loan below or above $50,000 to help OPERATE your farm?"
+            },
+            "notificationMessge": "",
+            "notificationTitle": "",
+            "notificationType": "",
+            "options": [
+                {
+                    "nextQuestionId": 2,
+                    "optionId": 0,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "$50,000 or less ",
+                    "url": "",
+                    "value": 1
+                },
+                {
+                    "nextQuestionId": 2,
+                    "optionId": 1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "More than $50,000",
+                    "url": "",
+                    "value": 2
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                }
+            ],
+            "progressBarStage": "",
+            "questionId": 12,
+            "type": "singlesselect"
         }
     ]
 }

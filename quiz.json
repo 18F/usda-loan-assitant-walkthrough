@@ -86,7 +86,7 @@
                     "value": 3
                 },
                 {
-                    "nextQuestionId": -1,
+                    "nextQuestionId": 9999,
                     "optionId": 3,
                     "paragraphs": [
                         {
@@ -103,7 +103,7 @@
                         }
                     ],
                     "title": "I am participating in a youth educational farming program",
-                    "url": "https://www.fsa.usda.gov/programs-and-services/farm-loan-programs/youth-loans/index",
+                    "url": "",
                     "value": 4
                 }
             ],
@@ -247,7 +247,7 @@
             "options": [
                 {
                     "nextQuestionId": 3,
-                    "optionId": "",
+                    "optionId": 0,
                     "paragraphs": [
                         {
                             "paragraphText": ""
@@ -358,7 +358,7 @@
             "options": [
                 {
                     "nextQuestionId": 4,
-                    "optionId": "",
+                    "optionId": 0,
                     "paragraphs": [
                         {
                             "paragraphText": ""
@@ -469,7 +469,7 @@
             "options": [
                 {
                     "nextQuestionId": 5,
-                    "optionId": "",
+                    "optionId": 0,
                     "paragraphs": [
                         {
                             "paragraphText": ""
@@ -580,7 +580,7 @@
             "options": [
                 {
                     "nextQuestionId": 6,
-                    "optionId": "",
+                    "optionId": 0,
                     "paragraphs": [
                         {
                             "paragraphText": ""
@@ -691,7 +691,7 @@
             "options": [
                 {
                     "nextQuestionId": 7,
-                    "optionId": "",
+                    "optionId": 0,
                     "paragraphs": [
                         {
                             "paragraphText": ""
@@ -802,7 +802,7 @@
             "options": [
                 {
                     "nextQuestionId": 8,
-                    "optionId": "",
+                    "optionId": 0,
                     "paragraphs": [
                         {
                             "paragraphText": ""
@@ -913,7 +913,7 @@
             "options": [
                 {
                     "nextQuestionId": 9,
-                    "optionId": "",
+                    "optionId": 1,
                     "paragraphs": [
                         {
                             "paragraphText": ""
@@ -930,7 +930,7 @@
                     ],
                     "title": "YES",
                     "url": "",
-                    "value": 1
+                    "value": 2
                 },
                 {
                     "nextQuestionId": 9,
@@ -1024,7 +1024,7 @@
             "options": [
                 {
                     "nextQuestionId": 10,
-                    "optionId": "",
+                    "optionId": 0,
                     "paragraphs": [
                         {
                             "paragraphText": ""
@@ -1135,7 +1135,7 @@
             "options": [
                 {
                     "nextQuestionId": 11,
-                    "optionId": "",
+                    "optionId": 0,
                     "paragraphs": [
                         {
                             "paragraphText": ""
@@ -1245,8 +1245,8 @@
             "notificationType": "warning",
             "options": [
                 {
-                    "nextQuestionId": -1,
-                    "optionId": "",
+                    "nextQuestionId": 9999,
+                    "optionId": 0,
                     "paragraphs": [
                         {
                             "paragraphText": ""
@@ -1266,7 +1266,7 @@
                     "value": 1
                 },
                 {
-                    "nextQuestionId": -1,
+                    "nextQuestionId": 9999,
                     "optionId": 1,
                     "paragraphs": [
                         {

@@ -100,6 +100,10 @@ function returnStepsJSON() {
     return JSON.parse("[" + getCookie("steps") + "]")
 }
 
+function returnQuizJSON() {
+    return JSON.parse("[" + getCookie("answers") + "]")
+}
+
 function resetCookies() {
     setCookie("steps", '', -1);
     setCookie("answers", '', -1);
@@ -117,21 +121,24 @@ function debugTools(hostname, e) {
         // press 0 key to reset cookies 
         if (e.which == 48 || e.keyCode == 48 || window.event.keyCode == 48) {
             e.preventDefault();
-            /// From: js/stateManager.js
             resetCookies();
         };
 
         // press 1 key to show questions and answers 
         if (e.which == 49 || e.keyCode == 49 || window.event.keyCode == 49) {
             e.preventDefault();
-            /// From: js/stateManager.js
             console.log(returnStepsJSON());
         };
 
         // press 2 key to show user stste 
         if (e.which == 50 || e.keyCode == 50 || window.event.keyCode == 50) {
             e.preventDefault();
-            /// From: js/stateManager.js
+            console.log(returnQuizJSON());
+        };
+
+        // press 3 key to show user stste 
+        if (e.which == 51 || e.keyCode == 51 || window.event.keyCode == 51) {
+            e.preventDefault();
             userState();
         };
     }

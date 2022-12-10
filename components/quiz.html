@@ -1,6 +1,54 @@
 <style>
 :root {
-  --control-color-green: #49A564;
+    --control-color-green: #49A564;
+    --button-color-blue: #1A6AD3;
+    --color-white: #FFFFFF;
+    --color-black: #0000;
+}
+
+.button {
+  float: left;
+  margin: 0 2rem 0 0;
+  width: 200px;
+  height: 40px;
+  position: relative;
+}
+
+.button label,
+.button input {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    
+    border-radius: 4px;
+    border: 3px solid var(--button-color-blue);
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: var(--button-color-blue);
+}
+
+.button input[type="radio"] {
+  opacity: 0.011;
+  z-index: 100;
+}
+
+.button input[type="radio"]:checked + label {
+  background: var(--button-color-blue);
+  color: var(--color-white);
+}
+
+.button label {
+  cursor: pointer;
+  z-index: 90;
+  line-height: 1.8em;
 }
 
 input[type=checkbox] {
@@ -28,7 +76,7 @@ input[type=checkbox]::after {
 }
 
 input[type=checkbox]:checked {
-    color: #fff;
+    color: var(--color-white);
 }
 input[type=checkbox]:checked:after,
 input[type=checkbox]:checked::after {
@@ -181,27 +229,21 @@ input[type="radio"]:focus {
         float: right;
     }
 
-    .form-control:focus-within {
-        color: var(--control-color-green);;
-    }
-
     .quiz-singleSelectRadio-container {
         display: flex;
         flex-direction: row-reverse;
     }
 
+    .quiz-summary {
+        background-color: #49A564;
+    }
+
 </style>
 
 <div class="fit-content">
-    <div class="container">
-        <div class="quiz-container">
-            <div class="quiz-back-container">
-                <div class="quiz-back" id="quiz-back"></div>
-            </div> 
-            <div class="quiz-questions-container" id="quiz-questions-container"></div>
-        </div>   
-    </div>
+    <div class="container" id="container"></div>
 </div>
+
 <script src="../js/stateManager.js"></script>
 <script>
     var questionHistory = []; // List of nextQuestionId values
@@ -225,64 +267,123 @@ input[type="radio"]:focus {
             }
         }
 
-        showQuestion(currentQuestion);
+        // Open a URLA
+        if(isNaN(currentQuestion)) {
+            window.open(nextQuestionId);
+            return;
+        }
+
+        else if(nextQuestionId === 9999 || currentQuestion === 9999) {
+            console.log("Summery")
+            _createSummary();
+            return;
+        }
+
+        else {
+            showQuestion(currentQuestion);
+        }
     })();
 
     //////////////////
     // Quiz Logic
     //////////////////
     // Shows question
-    function showQuestion(questionId) {      
-        console.log(questionHistory)
-        if(isNaN(nextQuestionId)) {
-            window.open(nextQuestionId);
-        }       
-        $.getJSON("../quiz.json", function(data) {
-            $.each(data["questions"], function(key, questionData) {
-                if(questionData['questionId'] === questionId){
-                    
-                    currentQuestion = questionId;
-                    answers = [];
+    function showQuestion(questionId) {     
+        if(nextQuestionId === 9999 || currentQuestion === 9999) {
+            console.log("Summery")
+            _createSummary();
+            return;
+        }
+        else {
+            $.getJSON("../quiz.json", function(data) {
+                _createQuestionContainer();
+                $.each(data["questions"], function(key, questionData) {
+                    if(questionData['questionId'] === questionId){
+                        
+                        currentQuestion = questionId;
+                        answers = [];
 
-                    var index = questionHistory.findIndex(x => x.question === currentQuestion);
-                    questionHistoryIndex = index;
-                    if(index === -1)
-                    {
-                        nextQuestionId = -1;
-                        questionHistoryIndex = questionHistory.length;
-                        questionHistory[questionHistoryIndex] = answer();
+                        var index = questionHistory.findIndex(x => x.question === currentQuestion);
+                        questionHistoryIndex = index;
+                        if(index === -1)
+                        {
+                            nextQuestionId = -1;
+                            questionHistoryIndex = questionHistory.length;
+                            questionHistory[questionHistoryIndex] = answer();
+                        }
+                        else {
+                            answers = questionHistory[index]['answer'];
+                            nextQuestionId = questionHistory[index]['nextQuestionId'];
+                        }
+                        
+                        questionType = questionData["type"];
+                        switch (questionType) {
+                            case 'information':
+                                _createInformationCard(questionData);
+                                break;
+                            case 'multiselect':
+                                _createMultiselctQuestion(questionData);
+                                break;
+                            case 'singlesselect':
+                                _createSingleSelectQuestion(questionData);
+                                break;
+                            case 'yesno':
+                                _createYesNoQuestion(questionData);
+                                break;
+                            case 'singleselectcards':
+                                _createSingleSelectCardQuestion(questionData);
+                                break;
+                            default:
+                                console.log(`not a valid type`);
+                        };
+                        _createBackStepLink();
                     }
-                    else {
-                        answers = questionHistory[index]['answer'];
-                        nextQuestionId = questionHistory[index]['nextQuestionId'];
-                    }
-                    
-                    questionType = questionData["type"];
-                    switch (questionType) {
-                        case 'information':
-                            _createInformationCard(questionData);
-                            break;
-                        case 'multiselect':
-                            _createMultiselctQuestion(questionData);
-                            break;
-                        case 'singlesselect':
-                            _createSingleSelectQuestion(questionData);
-                            break;
-                        case 'yesno':
-                            _createYesNoQuestion(questionData);
-                            break;
-                        case 'singleselectcards':
-                            _createSingleSelectCardQuestion(questionData);
-                            break;
-                        default:
-                            console.log(`not a valid type`);
-                    };
-                    _createBackStepLink();
-                }
+                });
             });
-        });
+        }
+        
     }
     
+    function _createQuestionContainer() {
+        var container = document.createElement("div");
+        container.classList.add("quiz-container");
+        
+        var backArrowContainer = document.createElement("div");
+        backArrowContainer.classList.add("quiz-back-container");
+        
+        var backArrow = document.createElement("div");
+        backArrow.classList.add("quiz-back");
+        backArrow.id = "quiz-back";
+
+        backArrowContainer.append(backArrow);
+
+        var question = document.createElement("div");
+        question.classList.add("quiz-questions-container");
+        question.id = "quiz-questions-container";
+
+        container.append(backArrow);
+        container.append(question);
+
+        $('#container').empty();
+        $('#container').append(container);
+        
+        // <div class="quiz-container">
+        //         <div class="quiz-back-container">
+        //             <div class="quiz-back" id="quiz-back"></div>
+        //         </div> 
+        //         <div class="quiz-questions-container" id="quiz-questions-container"></div>
+    }
+
+    function _createSummary() {
+        var sumarry = document.createElement("div");
+        sumarry.classList.add("quiz-summary");
+        sumarry.append(_createTitle("Test"));
+
+        $('#container').empty();
+        $('#container').append(sumarry);
+    }
+
+
     // Saves answer and shows next question
     function saveAndNext() {
         // Get list of answers from the multi select mnswers
@@ -645,19 +746,7 @@ input[type="radio"]:focus {
         $('#quiz-questions-container').empty();
         $('#quiz-questions-container').append(question);
 
-
-        let data = questionHistory.find(x => x.question === currentQuestion);
-        var radios = [];
-        radios = [...question.querySelectorAll('input[type="radio"]')];        
-
-        for ( var i = 0; i < data.answer.length; i++ ) { 
-            var radio = radios.find(x => x.id == data.answer[i]);
-
-        if(radio !== undefined) {
-                answers[0] = data.answer[i];
-                $(radio).prop('checked', true);
-            }
-        }
+        SetAnsweredRadioState(question);
         setNextLinkValues();
     }
 
@@ -716,6 +805,8 @@ input[type="radio"]:focus {
         question.append(_createNextStepLink());
         $('#quiz-questions-container').empty();
         $('#quiz-questions-container').append(question);
+        
+        SetAnsweredRadioState(question);
         setNextLinkValues();
     }
 
@@ -731,11 +822,24 @@ input[type="radio"]:focus {
     }
 
     function _createYesNoButtons(option) {
-        var button = document.createElement("button");
-        button.type = "button";
-        button.classList.add("btn");
-        button.classList.add("btn-default");
-        button.textContent = option.title;
+        var button = document.createElement("div");
+        button.classList.add("button");
+        
+        var radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "choices";
+        console.log(option);
+        radio.id = option['value'];
+        radio.value = option['nextQuestionId'];
+
+        var label = document.createElement("label");
+        label.classList.add(".btn");
+        label.classList.add(".btn-default");
+        label.textContent = option.title;
+
+        button.append(radio);
+        button.append(label);
+
         $(button).off().on('click', setYesNoAnswers.bind(this, option, button));
         $(button).on('click',function() {
             setYesNoAnswers.bind(this, option, button);
@@ -746,7 +850,8 @@ input[type="radio"]:focus {
     }
 
     function setYesNoAnswers(option) {
-        answers.push(option.optionId);
+        answers = [];
+        answers.push(option.value);
         nextQuestionId = option.nextQuestionId;
         setNextLinkValues();
     }
@@ -798,6 +903,7 @@ input[type="radio"]:focus {
         return paragraphElement;
     }
 
+
     //////////////////////////
     // Load and save answered questions
     //////////////////////////
@@ -817,4 +923,20 @@ input[type="radio"]:focus {
             "nextQuestionId": nextQuestionId
         }
     }
+
+    function SetAnsweredRadioState(question) {
+        let data = questionHistory.find(x => x.question === currentQuestion);
+        var radios = [];
+        radios = [...question.querySelectorAll('input[type="radio"]')];        
+
+        for ( var i = 0; i < data.answer.length; i++ ) { 
+            var radio = radios.find(x => x.id == data.answer[i]);
+
+        if(radio !== undefined) {
+                answers[0] = data.answer[i];
+                $(radio).prop('checked', true);
+            }
+        }
+    }
+    
 </script>

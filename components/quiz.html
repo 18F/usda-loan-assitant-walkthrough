@@ -123,46 +123,51 @@ input[type="radio"]:focus {
   background-color: var(--control-color-green);
 }
 
-    .quiz-container {
-        min-height: 50vh;;
-        box-sizing: border-box;
-        display: grid;
-        grid-template-areas: "back questions"
-                             "next next";
-        grid-template-rows: auto 1fr;
-        grid-template-columns: 1fr 5fr;
+.quiz-container {
+    min-height: 50vh;;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-areas:"progressBar progressBar" 
+                        "back questions"
+                        "next next";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 5fr;
+}
+    .quiz-progress-bar {
+        grid-area: progressBar;
+        background-color: aqua;
     }
-        .quiz-back-container {
-            grid-area: back;
-            display:grid;
-        }
+    .quiz-back-container {
+        grid-area: back;
+        display:grid;
+    }
 
         .quiz-back {
             width: 2rem;
             display:grid;
         }
 
-        .quiz-questions-container {
-            grid-area: questions;
-        }
+    .quiz-questions-container {
+        grid-area: questions;
+    }
 
-        .quiz-next {
-            font-size: x-large;
-            grid-area: next;
-            text-align: center;
-            margin: auto;
-            padding: 2rem;
-            color: blue;
-        }
+    .quiz-next {
+        font-size: x-large;
+        grid-area: next;
+        text-align: center;
+        margin: auto;
+        padding: 2rem;
+        color: blue;
+    }
 
-        .quiz-next-inactive {
-            font-size: x-large;
-            grid-area: next;
-            text-align: center;
-            margin: auto;
-            padding: 2rem;
-            color: gray;
-        }
+    .quiz-next-inactive {
+        font-size: x-large;
+        grid-area: next;
+        text-align: center;
+        margin: auto;
+        padding: 2rem;
+        color: gray;
+    }
 
     .quiz-title-text {
         font-family: 'Public Sans';
@@ -233,11 +238,73 @@ input[type="radio"]:focus {
         display: flex;
         flex-direction: row-reverse;
     }
-
+    
+    /* Summary */
     .quiz-summary {
-        background-color: #49A564;
-    }
 
+    }
+        .recomended-loans-container {
+            min-height: 12rem;
+            border: 3px solid black;
+        }
+
+        
+    .summary-step {
+        display:grid;
+        grid-template-areas:"header header"
+                            "iconholder step-text"
+                            "step-full-report step-full-report";
+        grid-template-columns: 4rem 1fr;
+    }
+        .summary-step-header {
+            grid-area: header;
+        }
+        .summary-step-iconholder {
+            grid-area: iconholder;
+            background-color: #49A564;         
+        }
+        .summary-step-text {
+            grid-area: step-text;
+            grid-template-rows: 3rem 3rem 1fr;
+        }
+            .summary-step-text-title {
+                background-color: #a466;                
+            }
+            .summary-step-text-message {
+                background-color: #abcd;
+            }
+            .summary-step-text-button {
+                background-color: #5655;
+            }
+
+        .full-report-container {
+            grid-area: step-full-report;
+            border: 2px solid black;
+        }
+
+        .quiz-summary-flag {
+            display:grid;
+            grid-template-columns: 0.5rem 3rem 1fr;
+        }
+            .quiz-summary-flag-leftbar {
+                
+            }
+            .quiz-summary-flag-iconholder {
+                background-color: aqua;
+                padding:1rem;
+            }
+            .quiz-summary-flag-text {
+                display:grid;
+                grid-template-rows: 3rem 1fr;
+            }
+                .quiz-summary-flag-text-title {
+                    background-color: #1A6AD3;
+                    padding:1rem;
+                }
+                .quiz-summary-flag-text-message {
+                    background-color: #afff;
+                    padding:1rem;
+                }
 </style>
 
 <div class="fit-content">
@@ -246,7 +313,8 @@ input[type="radio"]:focus {
 
 <script src="../js/stateManager.js"></script>
 <script>
-    var questionHistory = []; // List of nextQuestionId values
+    var questions = []; // LIst of questions
+    var questionHistory = []; // List of answered questions
     var questionHistoryIndex = -1;
     var questionType = ""
     var currentQuestion = -1;
@@ -267,87 +335,106 @@ input[type="radio"]:focus {
             }
         }
 
-        // Open a URLA
-        if(isNaN(currentQuestion)) {
-            window.open(nextQuestionId);
-            return;
-        }
+        // Get list of questions
+        $.getJSON("../quiz.json", function(data) {
+            questions = data["questions"];
+            // Clean up assigned values
+            for ( var i = 0; i < questions.length; i++ ) {
+                // remove options
+                var arr = questions[i].options.filter(function(x) {
+                    return x.optionId !== -1;
+                });
+                questions[i].options = arr;
+                // remove option paragraphs
+                for ( var j = 0; j < questions[i].options.length; j++ ) {
+                    arr = questions[i].options[j].paragraphs.filter(function(x) {
+                        return x.paragraphText !== "";
+                    });
+                    questions[i].options[j].paragraphs = arr;
+                }
+                // remove content paragraphs
+                arr = questions[i].content.paragraphs.filter(function(x) {
+                    return x.paragraphText !== "";
+                });
+                questions[i].content.paragraphs = arr;
+            }
 
-        else if(nextQuestionId === 9999 || currentQuestion === 9999) {
-            console.log("Summery")
-            _createSummary();
-            return;
-        }
-
-        else {
-            showQuestion(currentQuestion);
-        }
+            // Decide what to show
+            // Open a URL or show quiz
+            if(isNaN(currentQuestion)) {
+                window.open(nextQuestionId);
+                return;
+            }
+            else {
+                showQuestion(currentQuestion);
+            }
+        });
     })();
 
     //////////////////
     // Quiz Logic
     //////////////////
     // Shows question
-    function showQuestion(questionId) {     
+    function showQuestion(questionId) {
+        // check the summary page should be loaded
         if(nextQuestionId === 9999 || currentQuestion === 9999) {
-            console.log("Summery")
             _createSummary();
-            return;
         }
         else {
-            $.getJSON("../quiz.json", function(data) {
-                _createQuestionContainer();
-                $.each(data["questions"], function(key, questionData) {
-                    if(questionData['questionId'] === questionId){
-                        
-                        currentQuestion = questionId;
-                        answers = [];
+            _createQuestionContainer();
+            $.each(questions, function(key, questionData) {
+                if(questionData.questionId === questionId){
+                    
+                    currentQuestion = questionId;
+                    answers = [];
 
-                        var index = questionHistory.findIndex(x => x.question === currentQuestion);
-                        questionHistoryIndex = index;
-                        if(index === -1)
-                        {
-                            nextQuestionId = -1;
-                            questionHistoryIndex = questionHistory.length;
-                            questionHistory[questionHistoryIndex] = answer();
-                        }
-                        else {
-                            answers = questionHistory[index]['answer'];
-                            nextQuestionId = questionHistory[index]['nextQuestionId'];
-                        }
-                        
-                        questionType = questionData["type"];
-                        switch (questionType) {
-                            case 'information':
-                                _createInformationCard(questionData);
-                                break;
-                            case 'multiselect':
-                                _createMultiselctQuestion(questionData);
-                                break;
-                            case 'singlesselect':
-                                _createSingleSelectQuestion(questionData);
-                                break;
-                            case 'yesno':
-                                _createYesNoQuestion(questionData);
-                                break;
-                            case 'singleselectcards':
-                                _createSingleSelectCardQuestion(questionData);
-                                break;
-                            default:
-                                console.log(`not a valid type`);
-                        };
-                        _createBackStepLink();
+                    var index = questionHistory.findIndex(x => x.question === currentQuestion);
+                    questionHistoryIndex = index;
+                    if(index === -1)
+                    {
+                        nextQuestionId = -1;
+                        questionHistoryIndex = questionHistory.length;
+                        questionHistory[questionHistoryIndex] = answer();
                     }
-                });
+                    else {
+                        answers = questionHistory[index]['answer'];
+                        nextQuestionId = questionHistory[index]['nextQuestionId'];
+                    }
+                    
+                    questionType = questionData["type"];
+                    switch (questionType) {
+                        case 'information':
+                            _createInformationCard(questionData);
+                            break;
+                        case 'multiselect':
+                            _createMultiselctQuestion(questionData);
+                            break;
+                        case 'singlesselect':
+                            _createSingleSelectQuestion(questionData);
+                            break;
+                        case 'yesno':
+                            _createYesNoQuestion(questionData);
+                            break;
+                        case 'singleselectcards':
+                            _createSingleSelectCardQuestion(questionData);
+                            break;
+                        default:
+                            console.log(`not a valid type`);
+                    };
+                    _createBackStepLink();
+                }
             });
         }
-        
     }
     
     function _createQuestionContainer() {
         var container = document.createElement("div");
         container.classList.add("quiz-container");
-        
+
+        var progressBar = document.createElement("div");
+        progressBar.classList.add("quiz-progress-bar");
+        progressBar.textContent = "Progressbar";
+
         var backArrowContainer = document.createElement("div");
         backArrowContainer.classList.add("quiz-back-container");
         
@@ -361,28 +448,236 @@ input[type="radio"]:focus {
         question.classList.add("quiz-questions-container");
         question.id = "quiz-questions-container";
 
-        container.append(backArrow);
+        container.append(progressBar);
+        container.append(backArrowContainer);
         container.append(question);
 
         $('#container').empty();
         $('#container').append(container);
-        
-        // <div class="quiz-container">
-        //         <div class="quiz-back-container">
-        //             <div class="quiz-back" id="quiz-back"></div>
-        //         </div> 
-        //         <div class="quiz-questions-container" id="quiz-questions-container"></div>
     }
 
     function _createSummary() {
         var sumarry = document.createElement("div");
         sumarry.classList.add("quiz-summary");
-        sumarry.append(_createTitle("Test"));
+        
+        // Title
+        var text = "FSA Farm Loan Quiz Results";
+        sumarry.append(_createTitle(text));
+        //Description
+        text = "Based on your answers to the Farm Loan Quiz, we have matched you with a farm loan that will best fit your financing needs. Review the loan details and start your application process by completing the steps outline below.";
+        sumarry.append(_createParagraphElement(text));
+
+        // Image
+        var image = document.createElement("img");
+        image.src = './images/loantypes/term.jpg';
+        sumarry.append(image);
+
+        // recomended loan
+        // TODO: Logic to know whic
+        // Loan Title
+        text = "Farm Operating Loan";
+        sumarry.append(_createTitle(text));
+        // Description
+        text = "Based on your responses we think you’re best suited for the FSA Farm Operating Loan. ";
+        sumarry.append(_createParagraphElement(text));
+        text = "This loan may be used for normal operating expenses, machinery and equipment, minor real estate repairs or improvements, and refinancing debt. There are two types of Operating Loans to choose from, the main difference being the repayment terms.";
+        sumarry.append(_createParagraphElement(text));
+
+        // recomended loan cards
+        var recomended = document.createElement("div");
+        recomended.classList.add("recomended-loans-container");
+        sumarry.append(recomended);
+        
+
+
+        // Flags
+        text = "Below are the things we’ve flagged and recommend talking to your loan officer about.";
+        sumarry.append(_createParagraphElement(text));
+        sumarry.append(_createFlagMessage());
+        
+        var stepInof = {
+            "header": "",
+            "text": "test",
+            "mesage": "mesage",
+            "buttons": [ {
+                    "buttonText": "button text 1",
+                    "buttonURL": "button URL",
+                },
+                {
+                    "buttonText": "button text 2",
+                    "buttonURL": "button URL",
+                }
+            ],
+            "hasFulleReport": false,
+        }
+        sumarry.append(_createSummaryStep(stepInof));
+
+        stepInof = {
+            "header": "",
+            "text": "test",
+            "mesage": "mesage",
+            "buttons": [ {
+                    "buttonText": "button text 1",
+                    "buttonURL": "button URL",
+                },
+                {
+                    "buttonText": "button text 2",
+                    "buttonURL": "button URL",
+                }
+            ],
+            "hasFulleReport": false,
+        }
+        sumarry.append(_createSummaryStep(stepInof));
+        
+        stepInof = {
+            "header": "",
+            "text": "test",
+            "mesage": "mesage",
+            "buttons": [ {
+                    "buttonText": "button text 1",
+                    "buttonURL": "button URL",
+                },
+                {
+                    "buttonText": "button text 2",
+                    "buttonURL": "button URL",
+                }
+            ],
+            "hasFulleReport": true,
+        }
+        sumarry.append(_createSummaryStep(stepInof));
+
+        stepInof = {
+            "header": "header",
+            "text": "test",
+            "mesage": "mesage",
+            "buttons": [ {
+                    "buttonText": "button text 1",
+                    "buttonURL": "button URL",
+                },
+                {
+                    "buttonText": "button text 2",
+                    "buttonURL": "button URL",
+                }
+            ],
+            "hasFulleReport": false,
+        }
+        sumarry.append(_createSummaryStep(stepInof));
 
         $('#container').empty();
         $('#container').append(sumarry);
     }
 
+    function _createFlagMessage() {
+        var flag = document.createElement("div");
+        flag.classList.add("quiz-summary-flag");
+        
+        var div = document.createElement("div");
+        div.classList.add("quiz-summary-flag-leftbar");
+        flag.append(div);
+
+        div = document.createElement("div");
+        div.classList.add("quiz-summary-flag-iconholder");
+        flag.append(div);
+
+        var textHolder = document.createElement("div");
+        textHolder.classList.add("quiz-summary-flag-text");
+
+        div = document.createElement("div");
+        div.classList.add("quiz-summary-flag-text-title");
+        div.textContent = "TITLE TEXT"
+        textHolder.append(div);
+
+        div = document.createElement("div");
+        div.classList.add("quiz-summary-flag-text-message");
+        div.textContent = "Message TEXT"
+        textHolder.append(div);
+
+        flag.append(textHolder);
+
+        return flag;
+    }
+
+    function _createSummaryStep(stepInof) {
+        var step = document.createElement("div");
+        step.classList.add("summary-step");
+        
+        if(stepInof.header !== ""){
+            var header = document.createElement("div");
+            header.classList.add("summary-step-header");
+            header.textContent = stepInof.header;
+            step.append(header);
+        }
+        
+        var div = document.createElement("div");
+        div.classList.add("summary-step-iconholder");
+        step.append(div);
+
+        var textHolder = document.createElement("div");
+        textHolder.classList.add("summary-step-text");
+
+        div = document.createElement("div");
+        div.classList.add("summary-step-text-title");
+        div.textContent = stepInof.text;
+        textHolder.append(div);
+
+        div = document.createElement("div");
+        div.classList.add("summary-step-text-message");
+        div.textContent = stepInof.mesage
+        textHolder.append(div);
+
+        for (var i = 0; i < stepInof.buttons.length; i++) {
+            div = document.createElement("div");
+            div.classList.add("summary-step-text-button");
+            var button = document.createElement('button');
+            var text = document.createTextNode(stepInof.buttonText);
+            button.appendChild(text);
+            div.append(button);
+            textHolder.append(div);
+        }
+            
+        step.append(textHolder);
+        if(stepInof.hasFulleReport){
+            step.append(_createFullReport());
+        }
+
+        return step;
+    }
+
+    function _createFullReport() {
+        /////////////////
+        //  Full Report
+        var fullReport = document.createElement("div");
+        fullReport.classList.add("full-report-container");
+
+        text = "Full printable questionnaire";
+        fullReport.append(_createTitle(text));
+
+        text = "Print this out and bring it to your appointment with your loan officer to help guide your conversation.";
+        fullReport.append(_createParagraphElement(text));
+
+        // Questions with answers
+        for( var i = 0; i < questionHistory.length; i++ ) {
+            var answerInfo = questions.find(x => x.questionId === questionHistory[i].question)
+            var questionText = answerInfo['content'].title;
+            fullReport.append(_createTitle(questionText));
+
+            var answerTexts = [...questionHistory[i].answer];
+            var answerText;
+
+            if(answerTexts.length <= 1){
+                answerText = answerInfo.options.find(x => x.value === answerTexts[0]).title;
+                fullReport.append(_createParagraphElement(answerText));
+            }
+            else {
+                for ( var i = 0; i < answerTexts.length; i++ ) {
+                    answerText = answerInfo.options.find(x => x.value === answerTexts[i]).title;
+                    fullReport.append(_createParagraphElement(answerText));
+                }
+            }
+        }
+
+        return fullReport;
+    }
 
     // Saves answer and shows next question
     function saveAndNext() {
@@ -401,6 +696,7 @@ input[type="radio"]:focus {
         var index  = questionHistory.findIndex(x => x.question === currentQuestion);
 
         questionHistory[index] = answer();
+
         updateAnswers();
         showQuestion(nextQuestionId);
     }
@@ -828,7 +1124,6 @@ input[type="radio"]:focus {
         var radio = document.createElement("input");
         radio.type = "radio";
         radio.name = "choices";
-        console.log(option);
         radio.id = option['value'];
         radio.value = option['nextQuestionId'];
 

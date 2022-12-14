@@ -13,7 +13,7 @@
             <div class="row ">
                 <div class="col-md-12">
                     <div class="content-card accent-top">
-                        <h3 class="card-title">Start your journey with FSA</h3>
+                        <h3 class="card-title"> </h3>
                         <div class="card-body">
                             <div id="checkbox">
 
@@ -39,20 +39,8 @@
         var checkboxDiv = document.createElement("div");
         //checkboxDiv.classList.add("quiz-multiSelect-card-check-container");        
         var label = document.createElement("Label");
-
-        var checkbox = document.createElement("INPUT");
-        checkbox.setAttribute("type", "checkbox");
-        // checkbox.name = option['value'];
-        // checkbox.value = option['nextQuestionId'];
-
-        $(checkbox).off().on('click', toggleButtonActive.bind(this, checkbox));
-        $(checkbox).on('click',function() {
-            toggleButtonActive.bind(this, checkbox);
-            $(this).off('click');
-        });
         var text = document.createElement("p");
-        text.textContent = "By checking this box you acknowledge that you (or anyone signing on your behalf) are legally competent to enter into a loan agreement.";
-        label.appendChild(checkbox);
+        text.textContent = "Start your journey with FSA and find out which farm loan is right for you.";
         label.appendChild(text);
         checkboxDiv.appendChild(label);
         return checkboxDiv;  

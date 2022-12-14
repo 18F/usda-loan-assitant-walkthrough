@@ -29,7 +29,7 @@ function getCurrentPage() {
 
 // Get list of pages
 function getPageList() {
-    return ["home","guides","eligibility","discovery","support","form"];
+    return ["home","explore","loanforms","quiz","guides","eligibility","discovery","support","form"];
 }
 
 // Get and Set Loan Type

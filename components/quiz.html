@@ -1,5 +1,6 @@
 <style>
 :root {
+    font-size: 12px;
     --control-color-green: #49A564;
     --button-color-blue: #1A6AD3;
     --color-white: #FFFFFF;
@@ -133,10 +134,54 @@ input[type="radio"]:focus {
     grid-template-rows: auto 1fr;
     grid-template-columns: 1fr 5fr;
 }
-    .quiz-progress-bar {
+
+    /* 
+    Progressbar 
+    */
+    .quiz-progress-bar-container {
+        width: 100%;
         grid-area: progressBar;
-        background-color: aqua;
+        display: grid;
+        grid-template-rows: auto auto;
     }
+        .quiz-progress-bar-map-container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 3rem;
+        }
+            .quiz-progress-bar-map-bar {
+                background-color: var(--control-color-green);
+                max-width: 69%;
+                margin: 1rem 0;
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 1;
+            }
+            .quiz-progress-bar-map-bar-markers {
+                width: 100%;
+                height: 3rem;
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 1;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr; 
+            }
+                .quiz-progress-bar-map-bar-marker {
+                    width: 100%;
+                    height: 100%;
+                }
+                
+        .quiz-progress-bar-labels-container {
+            grid-row-start: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; 
+        }
+            .quiz-progress-bar-label {
+                 
+            }
+
+/* Back button */
     .quiz-back-container {
         grid-area: back;
         display:grid;
@@ -244,66 +289,124 @@ input[type="radio"]:focus {
 
     }
         .recomended-loans-container {
-            min-height: 12rem;
-            border: 3px solid black;
+            min-height: fit-content;
+            display: grid;
+            grid-template-columns: auto auto;
+            column-gap: 2rem;
         }
+            .recomended-loans-card {
+                min-height: fit-content;
+                border: 2px solid black;
+            }
 
-        
     .summary-step {
+        height: min-content;
         display:grid;
         grid-template-areas:"header header"
                             "iconholder step-text"
-                            "step-full-report step-full-report";
+                            "iconholder step-full-report";
         grid-template-columns: 4rem 1fr;
+        margin: 1rem 0;
     }
         .summary-step-header {
             grid-area: header;
         }
         .summary-step-iconholder {
             grid-area: iconholder;
-            background-color: #49A564;         
+            max-height: fit-content;
         }
+            .step-bullet-green-fill {
+                border-radius: 50%;
+                width: 38px;
+                height: 38px;
+                background: var(--control-color-green);
+                color: var(--color-white);
+                text-align: center;
+            }
+            .step-bullet-green-border {
+                min-width: 38px;
+                min-height: 38px;
+                border: 3px solid var(--control-color-green);
+                border-radius: 50%;
+                color: var(--control-color-green);
+                text-align: center;
+
+            }    
         .summary-step-text {
             grid-area: step-text;
-            grid-template-rows: 3rem 3rem 1fr;
+            grid-template-rows: auto auto auto;
+            margin-left: 1rem;
         }
             .summary-step-text-title {
-                background-color: #a466;                
+                height: fit-content;
             }
             .summary-step-text-message {
-                background-color: #abcd;
+                height: fit-content;
             }
-            .summary-step-text-button {
-                background-color: #5655;
-            }
-
-        .full-report-container {
-            grid-area: step-full-report;
-            border: 2px solid black;
-        }
-
-        .quiz-summary-flag {
-            display:grid;
-            grid-template-columns: 0.5rem 3rem 1fr;
-        }
-            .quiz-summary-flag-leftbar {
+            .summary-step-text-button-container {
+                min-width: fit-content;
+                min-height: fit-content;
                 
             }
+                .summary-step-text-button {
+                    background-color: var(--button-color-blue);
+                    color: var(--color-white);
+                }
+
+        /* Flags */
+        .quiz-summary-flag {
+            display: grid;
+            grid-template-columns: 8px 4rem 1fr;
+            margin: 1rem 0 0;
+        }
+        .quiz-summary-flag-alert-background { background-color: rgb(255,220,220); }
+        .quiz-summary-flag-warning-background { background-color: #F8EDC7; }
+            
+            .quiz-summary-flag-leftbar {
+                width: 100%;
+            }
+            .quiz-summary-flag-leftbar-alert-background { background-color: rgb(255,80,80); }
+            .quiz-summary-flag-leftbar-warning-background { background-color: #FFBE2E; }
+            
             .quiz-summary-flag-iconholder {
-                background-color: aqua;
-                padding:1rem;
+                padding: 10%;
             }
             .quiz-summary-flag-text {
                 display:grid;
-                grid-template-rows: 3rem 1fr;
+                grid-template-rows: auto auto;
             }
                 .quiz-summary-flag-text-title {
-                    background-color: #1A6AD3;
-                    padding:1rem;
+                    min-height: fit-content;
+                    padding: 0.5rem 1rem;
                 }
                 .quiz-summary-flag-text-message {
-                    background-color: #afff;
-                    padding:1rem;
+                    min-height: fit-content;
+                    padding: 0.5rem 1rem;
+                }
+
+        /* Full Report */
+        .full-report-container {
+            padding: 2rem;
+            border: 2px solid black;
+            grid-area: step-full-report;
+        }
+        .full-report-result-container {
+            margin: 1rem 0;
+            display: grid;
+            grid-template-columns: 4rem 1fr;
+        }
+            .full-report-result-bullet-container {
+                width: 100%;
+            }
+            .full-report-result-info {
+                display: grid;
+                grid-template-rows: auto auto auto;
+            }
+                .full-report-result-info-title {
+                }
+                .full-report-result-info-message {
+                }
+                .full-report-result-info-flag {
                 }
 </style>
 
@@ -427,29 +530,82 @@ input[type="radio"]:focus {
         }
     }
     
+    //////////////////
+    // Summary Page
+    //////////////////
+    function _createProgressbar() {
+        var progressBar = document.createElement("div");
+        progressBar.classList.add("quiz-progress-bar-container");
+        
+        var map = document.createElement("div");
+        map.classList.add("quiz-progress-bar-map-container");
+        progressBar.append(map);
+        
+        var bar = document.createElement("div");
+        bar.classList.add("quiz-progress-bar-map-bar");
+        map.append(bar);
+        
+        var markers = document.createElement("div");
+        markers.classList.add("quiz-progress-bar-map-bar-markers");
+        
+        var marker = document.createElement("div");
+        marker.classList.add("quiz-progress-bar-map-bar-marker");
+        marker.append(_createStepBullet(1, "fill-green"));
+        markers.append(marker);
+
+        marker = document.createElement("div");
+        marker.classList.add("quiz-progress-bar-map-bar-marker");
+        marker.append(_createStepBullet(2, "fill-green"));
+        markers.append(marker);
+
+        marker = document.createElement("div");
+        marker.classList.add("quiz-progress-bar-map-bar-marker");
+        marker.append(_createStepBullet(3, "fill-green"));
+        markers.append(marker);
+
+        map.append(markers);
+        progressBar.append(map);
+
+        var labels = document.createElement("div");
+        labels.classList.add("quiz-progress-bar-labels-container");
+
+        var label = document.createElement("div");
+        label.classList.add("quiz-progress-bar-label");
+        label.textContent= "You and your farm"
+        labels.append(label);
+
+        label = document.createElement("div");
+        label.classList.add("quiz-progress-bar-label");
+        label.textContent= "Loan eligibility"
+        labels.append(label);
+
+        label = document.createElement("div");
+        label.classList.add("quiz-progress-bar-label");
+        label.textContent= "Results"
+        labels.append(label);
+
+        progressBar.append(labels);
+
+        return progressBar;
+    }
+
     function _createQuestionContainer() {
         var container = document.createElement("div");
         container.classList.add("quiz-container");
 
-        var progressBar = document.createElement("div");
-        progressBar.classList.add("quiz-progress-bar");
-        progressBar.textContent = "Progressbar";
+        container.append(_createProgressbar());
 
         var backArrowContainer = document.createElement("div");
         backArrowContainer.classList.add("quiz-back-container");
-        
         var backArrow = document.createElement("div");
         backArrow.classList.add("quiz-back");
         backArrow.id = "quiz-back";
-
         backArrowContainer.append(backArrow);
+        container.append(backArrowContainer);
 
         var question = document.createElement("div");
         question.classList.add("quiz-questions-container");
         question.id = "quiz-questions-container";
-
-        container.append(progressBar);
-        container.append(backArrowContainer);
         container.append(question);
 
         $('#container').empty();
@@ -460,6 +616,8 @@ input[type="radio"]:focus {
         var sumarry = document.createElement("div");
         sumarry.classList.add("quiz-summary");
         
+        sumarry.append(_createProgressbar());
+        
         // Title
         var text = "FSA Farm Loan Quiz Results";
         sumarry.append(_createTitle(text));
@@ -467,116 +625,122 @@ input[type="radio"]:focus {
         text = "Based on your answers to the Farm Loan Quiz, we have matched you with a farm loan that will best fit your financing needs. Review the loan details and start your application process by completing the steps outline below.";
         sumarry.append(_createParagraphElement(text));
 
-        // Image
-        var image = document.createElement("img");
-        image.src = './images/loantypes/term.jpg';
-        sumarry.append(image);
-
         // recomended loan
-        // TODO: Logic to know whic
-        // Loan Title
-        text = "Farm Operating Loan";
-        sumarry.append(_createTitle(text));
-        // Description
-        text = "Based on your responses we think you’re best suited for the FSA Farm Operating Loan. ";
-        sumarry.append(_createParagraphElement(text));
-        text = "This loan may be used for normal operating expenses, machinery and equipment, minor real estate repairs or improvements, and refinancing debt. There are two types of Operating Loans to choose from, the main difference being the repayment terms.";
-        sumarry.append(_createParagraphElement(text));
-
-        // recomended loan cards
-        var recomended = document.createElement("div");
-        recomended.classList.add("recomended-loans-container");
-        sumarry.append(recomended);
+        sumarry.append(_createSugestedLoans());
         
-
-
         // Flags
         text = "Below are the things we’ve flagged and recommend talking to your loan officer about.";
         sumarry.append(_createParagraphElement(text));
-        sumarry.append(_createFlagMessage());
+        sumarry.append(_createFlagMessages());
         
-        var stepInof = {
-            "header": "",
-            "text": "test",
-            "mesage": "mesage",
-            "buttons": [ {
-                    "buttonText": "button text 1",
-                    "buttonURL": "button URL",
-                },
-                {
-                    "buttonText": "button text 2",
-                    "buttonURL": "button URL",
-                }
-            ],
-            "hasFulleReport": false,
-        }
-        sumarry.append(_createSummaryStep(stepInof));
-
-        stepInof = {
-            "header": "",
-            "text": "test",
-            "mesage": "mesage",
-            "buttons": [ {
-                    "buttonText": "button text 1",
-                    "buttonURL": "button URL",
-                },
-                {
-                    "buttonText": "button text 2",
-                    "buttonURL": "button URL",
-                }
-            ],
-            "hasFulleReport": false,
-        }
-        sumarry.append(_createSummaryStep(stepInof));
-        
-        stepInof = {
-            "header": "",
-            "text": "test",
-            "mesage": "mesage",
-            "buttons": [ {
-                    "buttonText": "button text 1",
-                    "buttonURL": "button URL",
-                },
-                {
-                    "buttonText": "button text 2",
-                    "buttonURL": "button URL",
-                }
-            ],
-            "hasFulleReport": true,
-        }
-        sumarry.append(_createSummaryStep(stepInof));
-
-        stepInof = {
-            "header": "header",
-            "text": "test",
-            "mesage": "mesage",
-            "buttons": [ {
-                    "buttonText": "button text 1",
-                    "buttonURL": "button URL",
-                },
-                {
-                    "buttonText": "button text 2",
-                    "buttonURL": "button URL",
-                }
-            ],
-            "hasFulleReport": false,
-        }
-        sumarry.append(_createSummaryStep(stepInof));
+        // Steps
+        sumarry.append(_createSummarySteps());
 
         $('#container').empty();
         $('#container').append(sumarry);
     }
 
-    function _createFlagMessage() {
+    function _createSugestedLoans() {
+        // Has a main loan and posible additioonal recomendations
+        var loans = document.createElement("div");
+        
+        // primary recomendation
+        var loan = document.createElement("div");
+        loans.append(loan);
+
+        // recomended loan cards
+        var recomended = document.createElement("div");
+        recomended.classList.add("recomended-loans-container");
+        loans.append(recomended);
+        
+        // add the loan details
+        $.getJSON("/forms/loantypes.json", function(data) {
+            questionHistory[0].answer.sort(function(a, b){return b-a});
+            for ( var i = 0; i < questionHistory[0].answer.length; i++ ) {
+                var loanInfo = data.find(x => x.loanId === questionHistory[0].answer[i])
+                _createSugestedLoanCards(loanInfo, i, loan, recomended);
+            }
+        });
+        return loans;
+    }
+
+    // shows a detailed view of the primary loan, and if available minimal details for other loan types
+    // loanInfo = details from JSON, index = index from array of sugeted loans
+    function _createSugestedLoanCards(loanInfo, index, loan, recomended) {
+        // Image
+        var image = document.createElement("img");
+        image.src = './images/loantypes/'+loanInfo.image;
+        loan.append(image);
+
+        loan.append(_createTitle(loanInfo.name));
+        // Description
+        text = "Based on your responses we think you’re best suited for the FSA "+loanInfo.name+".";
+        loan.append(_createParagraphElement(text));
+        loan.append(_createParagraphElement(loanInfo.description));
+
+        var loanHighlight = document.createElement("div");
+        loanHighlight.classList.add("recomended-loans-card");
+
+        // Name
+        loanHighlight.append(_createParagraphElement(loanInfo.name));
+        // Max dollar ammount description
+        loanHighlight.append(_createParagraphElement(loanInfo.maximumDollarAmountDescription));
+        // down payment description
+        loanHighlight.append(_createParagraphElement(loanInfo.downPaymentDescription));
+        // Max dollar ammount description
+        loanHighlight.append(_createParagraphElement(loanInfo.loanTermDescription));
+
+        loan.append(loanHighlight);
+        recomended.append(loan);
+    }
+
+    // Shows all flags in a list
+    function _createFlagMessages() {
+        var flagContainer = document.createElement("div");
+        
+        questions.sort((a, b) => a.notificationType.localeCompare(b.notificationType));
+
+        var flagsList = questionHistory.filter(x=> x.answer[0] === 0);
+        for (var i = 0; i < flagsList.length; i++) {
+            var flagMessage = questions.find(x=> x.questionId === flagsList[i].question);
+            flagContainer.append(_createFlag(flagMessage));
+        }
+        return flagContainer;
+    }
+
+    // The actual flag used in flag list and full report
+    function _createFlag(flagMessage) {
+        
         var flag = document.createElement("div");
+
         flag.classList.add("quiz-summary-flag");
+        if(flagMessage.notificationType == "alert") {
+            flag.classList.add("quiz-summary-flag-alert-background");
+        }
+        else {
+            flag.classList.add("quiz-summary-flag-warning-background");
+        }
         
         var div = document.createElement("div");
         div.classList.add("quiz-summary-flag-leftbar");
+        if(flagMessage.notificationType == "alert") {
+            div.classList.add("quiz-summary-flag-leftbar-alert-background");
+        }
+        else {
+            div.classList.add("quiz-summary-flag-leftbar-warning-background");
+        }
         flag.append(div);
 
         div = document.createElement("div");
         div.classList.add("quiz-summary-flag-iconholder");
+        var image = document.createElement("img");
+        if(flagMessage.notificationType == "alert"){
+            image.src = './images/alerts/error.png';
+        }
+        else {
+            image.src = './images/alerts/warning.png';
+        }
+        div.append(image);
         flag.append(div);
 
         var textHolder = document.createElement("div");
@@ -584,12 +748,12 @@ input[type="radio"]:focus {
 
         div = document.createElement("div");
         div.classList.add("quiz-summary-flag-text-title");
-        div.textContent = "TITLE TEXT"
+        div.append(_createTitle(flagMessage.notificationTitle));
         textHolder.append(div);
 
         div = document.createElement("div");
         div.classList.add("quiz-summary-flag-text-message");
-        div.textContent = "Message TEXT"
+        div.textContent = flagMessage.notificationMessge;
         textHolder.append(div);
 
         flag.append(textHolder);
@@ -597,52 +761,103 @@ input[type="radio"]:focus {
         return flag;
     }
 
-    function _createSummaryStep(stepInof) {
-        var step = document.createElement("div");
-        step.classList.add("summary-step");
-        
-        if(stepInof.header !== ""){
-            var header = document.createElement("div");
-            header.classList.add("summary-step-header");
-            header.textContent = stepInof.header;
-            step.append(header);
-        }
-        
-        var div = document.createElement("div");
-        div.classList.add("summary-step-iconholder");
-        step.append(div);
-
-        var textHolder = document.createElement("div");
-        textHolder.classList.add("summary-step-text");
-
-        div = document.createElement("div");
-        div.classList.add("summary-step-text-title");
-        div.textContent = stepInof.text;
-        textHolder.append(div);
-
-        div = document.createElement("div");
-        div.classList.add("summary-step-text-message");
-        div.textContent = stepInof.mesage
-        textHolder.append(div);
-
-        for (var i = 0; i < stepInof.buttons.length; i++) {
-            div = document.createElement("div");
-            div.classList.add("summary-step-text-button");
-            var button = document.createElement('button');
-            var text = document.createTextNode(stepInof.buttonText);
-            button.appendChild(text);
-            div.append(button);
-            textHolder.append(div);
-        }
+    // The steps to apply for a loan
+    function _createSummarySteps() {
+        var stepinfo = [];
+        stepinfo.push({
+            "text": "Complete the readiness checklist",
+            "message": "In addition to the quiz, you will need to bring a few other things to your meeting with your local loan officer.",
+            "buttons": [ {
+                    "buttonText": "DOWNLOAD READINESS CHECKLIST",
+                    "buttonURL": "data",
+                }
+            ],
+            "hasFulleReport": false,
+        });
+       
+        stepinfo.push({
+            "text": "Get help filling out the forms",
+            "message": "Complete and print each form pertaining to your matched loan to add to your application package. We provide step-by-step instructions on completing each loan application form.",
+            "buttons": [ {
+                    "buttonText": "ACCESS FORMS",
+                    "buttonURL": "data",
+                }
+            ],
+            "hasFulleReport": false,
+        });
+       
+        stepinfo.push({
+            "text": "Find your local farm loan office",
+            "message": "Find your local FSA Service Center and contact the Farm Loan Manager or the service center office.",
+            "buttons": [ {
+                    "buttonText": "FIND LOCAL FARM LOAN CENTER",
+                    "buttonURL": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa",
+                }
+            ],
+            "hasFulleReport": false,
+        });
+ 
+        stepinfo.push({
+            "text": "Download your quiz responses",
+            "message": "We recommend downloading and/or printing the quiz and discussing your answers with your local loan officer.",
+            "buttons": [ {
+                    "buttonText": "DOWNLOAD QUIZ",
+                    "buttonURL": "button URL",
+                },
+                {
+                    "buttonText": "PRINT QUIZ",
+                    "buttonURL": "button URL",
+                }
+            ],
+            "hasFulleReport": true,
+        });
+   
+        var steps = document.createElement("div");
+        for (var i = 0; i < stepinfo.length; i++) {
+            var step = document.createElement("div");
+            step.classList.add("summary-step");
             
-        step.append(textHolder);
-        if(stepInof.hasFulleReport){
-            step.append(_createFullReport());
-        }
+            var div = document.createElement("div");
+            div.classList.add("summary-step-iconholder");
+            div.append(_createStepBullet(i+1, 'fill-green'));
+            step.append(div);
 
-        return step;
+            var textHolder = document.createElement("div");
+            textHolder.classList.add("summary-step-text");
+
+            div = document.createElement("div");
+            div.classList.add("summary-step-text-title");
+            div.textContent = stepinfo[i].text;
+            textHolder.append(div);
+
+            div = document.createElement("div");
+            div.classList.add("summary-step-text-message");
+            div.textContent = stepinfo[i].message
+            textHolder.append(div);
+
+            for (var j = 0; j < stepinfo[i].buttons.length; j++) {
+                div = document.createElement("div");
+                div.classList.add("summary-step-text-button-container");
+                var button = document.createElement('button');
+                button.classList.add("summary-step-text-button");
+                var text = document.createTextNode(stepinfo[i].buttons[j].buttonText);
+                button.appendChild(text);
+                div.append(button);
+                textHolder.append(div);
+            }
+                
+            step.append(textHolder);
+            
+            if(stepinfo[i].hasFulleReport){
+                step.append(_createFullReport());
+            }
+        
+            steps.append(step);
+        }
+        return steps;
     }
 
+    // The list of questions and answers shown in step 6
     function _createFullReport() {
         /////////////////
         //  Full Report
@@ -655,30 +870,73 @@ input[type="radio"]:focus {
         text = "Print this out and bring it to your appointment with your loan officer to help guide your conversation.";
         fullReport.append(_createParagraphElement(text));
 
-        // Questions with answers
+        // Results
         for( var i = 0; i < questionHistory.length; i++ ) {
+            // Create a result container
+            var result = document.createElement("div");
+            result.classList.add("full-report-result-container");
+            
+            // Add a bullet
+            var bullet = document.createElement("div");
+            bullet.classList.add("full-report-result-bullet-container");
+            bullet.append(_createStepBullet(i+1, 'border-green'));
+            result.append(bullet);
+
+            // Add the info to hold all of the details
+            var info = document.createElement("div");
+            info.classList.add("full-report-result-info");
+            result.append(info);
+
+            // Add Question Text
             var answerInfo = questions.find(x => x.questionId === questionHistory[i].question)
             var questionText = answerInfo['content'].title;
-            fullReport.append(_createTitle(questionText));
+            var infoTitle = document.createElement("div");
+            infoTitle.classList.add("full-report-result-info-title");
+            infoTitle.append(_createTitle(questionText));
+            info.append(infoTitle);
 
+            //  Add Answer
             var answerTexts = [...questionHistory[i].answer];
-            var answerText;
-
-            if(answerTexts.length <= 1){
-                answerText = answerInfo.options.find(x => x.value === answerTexts[0]).title;
-                fullReport.append(_createParagraphElement(answerText));
-            }
-            else {
-                for ( var i = 0; i < answerTexts.length; i++ ) {
-                    answerText = answerInfo.options.find(x => x.value === answerTexts[i]).title;
-                    fullReport.append(_createParagraphElement(answerText));
+            for ( var j = 0; j < answerTexts.length; j++ ) {
+                var answerText = answerInfo.options.find(x => x.value === answerTexts[j]).title;
+                
+                var infoMessage = document.createElement("div");
+                infoMessage.classList.add("full-report-result-info-message");
+                infoMessage.append(_createParagraphElement(answerText));
+                info.append(infoMessage);
+                
+                var flagMessage = questions.find(x=> x.questionId === questionHistory[i].question);
+                if(flagMessage.notificationType !== '') {
+                    var flag = document.createElement("div");
+                    flag.classList.add("full-report-result-info-flag");
+                    flag.append(_createFlag(flagMessage)); 
+                    info.append(flag);
                 }
             }
+            fullReport.append(result); 
         }
 
         return fullReport;
     }
 
+    // The circle with a number to th eleft of steps and questions
+    function _createStepBullet(number, type) {
+        var bullet = document.createElement("div");
+        switch (type) {
+            case 'fill-green':
+                bullet.classList.add("step-bullet-green-fill");
+                break; 
+            case 'border-green':
+                bullet.classList.add("step-bullet-green-border");
+                break; 
+        }
+        bullet.textContent = number;
+        return bullet;
+    }
+    
+    ///////////////////////////////////////
+    // Save, Next and Back functions
+    ///////////////////////////////////////
     // Saves answer and shows next question
     function saveAndNext() {
         // Get list of answers from the multi select mnswers
@@ -1197,7 +1455,6 @@ input[type="radio"]:focus {
         paragraphElement.appendChild(document.createTextNode(paragraphText));
         return paragraphElement;
     }
-
 
     //////////////////////////
     // Load and save answered questions

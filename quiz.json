@@ -1,6 +1,7 @@
 {
     "questions": [
         {
+            "conditionals": "1&2:12,1&3:1,2&3:2",
             "content": {
                 "paragraphs": [
                     {
@@ -86,7 +87,7 @@
                     "value": 3
                 },
                 {
-                    "nextQuestionId": 9999,
+                    "nextQuestionId": -1,
                     "optionId": 3,
                     "paragraphs": [
                         {
@@ -103,16 +104,16 @@
                         }
                     ],
                     "title": "I am participating in a youth educational farming program",
-                    "url": "",
+                    "url": "Youth summary page",
                     "value": 4
                 }
             ],
             "progressBarStage": "",
             "questionId": 0,
-            "type": "multiselect",
-            "conditionals": "1&2:12,1&3:1,2&3:2"
+            "type": "multiselect"
         },
         {
+            "conditionals": "None",
             "content": {
                 "paragraphs": [
                     {
@@ -224,6 +225,7 @@
             "type": "singlesselect"
         },
         {
+            "conditionals": "None",
             "content": {
                 "paragraphs": [
                     {
@@ -335,6 +337,7 @@
             "type": "singlesselect"
         },
         {
+            "conditionals": "None",
             "content": {
                 "paragraphs": [
                     {
@@ -396,7 +399,7 @@
                     ],
                     "title": "NO",
                     "url": "",
-                    "value": 2
+                    "value": 0
                 },
                 {
                     "nextQuestionId": -1,
@@ -446,6 +449,7 @@
             "type": "yesno"
         },
         {
+            "conditionals": "None",
             "content": {
                 "paragraphs": [
                     {
@@ -507,7 +511,7 @@
                     ],
                     "title": "NO",
                     "url": "",
-                    "value": 2
+                    "value": 0
                 },
                 {
                     "nextQuestionId": -1,
@@ -557,6 +561,7 @@
             "type": "yesno"
         },
         {
+            "conditionals": "None",
             "content": {
                 "paragraphs": [
                     {
@@ -618,7 +623,7 @@
                     ],
                     "title": "NO",
                     "url": "",
-                    "value": 2
+                    "value": 0
                 },
                 {
                     "nextQuestionId": -1,
@@ -668,10 +673,11 @@
             "type": "yesno"
         },
         {
+            "conditionals": "None",
             "content": {
                 "paragraphs": [
                     {
-                        "paragraphText": "U.S. Citizen\nU.S. non-citizen national\nQualified alien under appliacable federal immigration laws"
+                        "paragraphText": "*U.S. Citizen\n*U.S. non-citizen national\n*Qualified alien under appliacable federal immigration laws"
                     },
                     {
                         "paragraphText": ""
@@ -729,7 +735,7 @@
                     ],
                     "title": "NO",
                     "url": "",
-                    "value": 2
+                    "value": 0
                 },
                 {
                     "nextQuestionId": -1,
@@ -779,6 +785,7 @@
             "type": "yesno"
         },
         {
+            "conditionals": "None",
             "content": {
                 "paragraphs": [
                     {
@@ -819,7 +826,7 @@
                     ],
                     "title": "YES",
                     "url": "",
-                    "value": 1
+                    "value": 0
                 },
                 {
                     "nextQuestionId": 8,
@@ -890,6 +897,7 @@
             "type": "yesno"
         },
         {
+            "conditionals": "None",
             "content": {
                 "paragraphs": [
                     {
@@ -913,7 +921,7 @@
             "options": [
                 {
                     "nextQuestionId": 9,
-                    "optionId": 1,
+                    "optionId": 0,
                     "paragraphs": [
                         {
                             "paragraphText": ""
@@ -930,7 +938,7 @@
                     ],
                     "title": "YES",
                     "url": "",
-                    "value": 2
+                    "value": 0
                 },
                 {
                     "nextQuestionId": 9,
@@ -1001,6 +1009,7 @@
             "type": "yesno"
         },
         {
+            "conditionals": "None",
             "content": {
                 "paragraphs": [
                     {
@@ -1062,7 +1071,7 @@
                     ],
                     "title": "IT COULD BE BETTER",
                     "url": "",
-                    "value": 2
+                    "value": 0
                 },
                 {
                     "nextQuestionId": -1,
@@ -1112,6 +1121,7 @@
             "type": "yesno"
         },
         {
+            "conditionals": "None",
             "content": {
                 "paragraphs": [
                     {
@@ -1152,7 +1162,7 @@
                     ],
                     "title": "YES",
                     "url": "",
-                    "value": 1
+                    "value": 0
                 },
                 {
                     "nextQuestionId": 11,
@@ -1223,13 +1233,14 @@
             "type": "yesno"
         },
         {
+            "conditionals": "None",
             "content": {
                 "paragraphs": [
                     {
                         "paragraphText": "Applicants who have been forgiven of a past FSA loan will be considered ineligible for Direct Loan Assistance, with the exception of Annual Operating Loans, unless they have extenuating circumstances such as:"
                     },
                     {
-                        "paragraphText": "Received a debt reduction through a conservation easement or contract\nHad a debt written off as a part of the resolution for a discrimination complaint against the Farm Service Agency\nHad a prior debt forgiven that has been repaid entirely\nHad a debt forgiven on a Youth Loan for circumstances beyond the applicant\u2019s control"
+                        "paragraphText": "*Received a debt reduction through a conservation easement or contract\n*Had a debt written off as a part of the resolution for a discrimination complaint against the Farm Service Agency\n*Had a prior debt forgiven that has been repaid entirely\n*Had a debt forgiven on a Youth Loan for circumstances beyond the applicant\u2019s control"
                     },
                     {
                         "paragraphText": ""
@@ -1238,9 +1249,9 @@
                         "paragraphText": ""
                     }
                 ],
-                "title": "Have you ever recieved debt forgiveness from the Farm Service Agency (FSA)?"
+                "title": "Have you ever received debt forgiveness from the Farm Service Agency (FSA)?"
             },
-            "notificationMessge": "This may impact your eligibility to qualify for a Farm Loan unless the debt forgiveness is due to extenuating circumstances. Be sure to bring this up with your farm loan officer to determine next steps. Extenuating circumstances can include:\nReceived a debt reduction through a conservation easement or contract\nHad a debt written off as a part of the resolution for a discrimination complaint against the Farm Service Agency\nHad a prior debt forgiven that has been repaid entirely\nHad a debt forgiven on a Youth Loan for circumstances beyond the applicant\u2019s control",
+            "notificationMessge": "This may impact your eligibility to qualify for a Farm Loan unless the debt forgiveness is due to extenuating circumstances. Be sure to bring this up with your farm loan officer to determine next steps. Extenuating circumstances can include:\n*Received a debt reduction through a conservation easement or contract\n*Had a debt written off as a part of the resolution for a discrimination complaint against the Farm Service Agency\n*Had a prior debt forgiven that has been repaid entirely\n*Had a debt forgiven on a Youth Loan for circumstances beyond the applicant\u2019s control",
             "notificationTitle": "You stated you have previously received debt forgiveness from the FSA.",
             "notificationType": "warning",
             "options": [
@@ -1263,10 +1274,10 @@
                     ],
                     "title": "YES",
                     "url": "Summary page",
-                    "value": 1
+                    "value": 0
                 },
                 {
-                    "nextQuestionId": 9999,
+                    "nextQuestionId": -1,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -1334,6 +1345,7 @@
             "type": "yesno"
         },
         {
+            "conditionals": "None",
             "content": {
                 "paragraphs": [
                     {
@@ -1377,7 +1389,7 @@
                     "value": 1
                 },
                 {
-                    "nextQuestionId": 2,
+                    "nextQuestionId": 3,
                     "optionId": 1,
                     "paragraphs": [
                         {

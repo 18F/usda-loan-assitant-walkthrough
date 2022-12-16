@@ -359,6 +359,8 @@ def process_forms_spreadsheet(
                         # Write it back into the sheet
                         items_sheet_df.loc[ index, "Input ID" ] = new_pid
                         print( " " * 8, "match in PDF has rect =", form_inputs[ match ]['rect'] )
+                else:
+                    new_pid = preexisting_pid
 
                 pid_list.append( new_pid )
 

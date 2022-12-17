@@ -92,7 +92,7 @@
         $.getJSON("/forms/loantypes.json", function(data) {
             // Create a card for each loan type
             var cards = [];
-            $.each(data, function(key, type) {
+            $.each(data['loanType'], function(key, type) {
                 // Title of support page
                 var titleText = `<div class="col"> Farm Loan Application Form Support </div>`
                 document.getElementById('title-holder').innerHTML = titleText;

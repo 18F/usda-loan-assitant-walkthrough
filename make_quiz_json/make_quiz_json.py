@@ -111,9 +111,6 @@ for row in range(3, step_sheet.max_row + 1):
 
 # pprint(data)
 
-# FSA2002 = next((item for item in data["Forms"] if item["id"] == "FSA-2002"), None)
-# pprint(FSA2002)
-
 wb.close()
 
 

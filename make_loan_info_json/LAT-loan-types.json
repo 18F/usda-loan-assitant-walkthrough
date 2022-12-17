@@ -15,13 +15,13 @@
         {
             "description": "This applies to land located in a county declared by the President as a disaster area or designated by the Secretary of Agriculture as a disaster area or quarantine area. The purposes of this loan includes (1) to restore or replace essential property, (2) pay all or part of production costs associated with the disaster year, (3) pay essential family living expenses, (4) reorganize the farming operation, and (5) refinance certain debts.",
             "hasMicroloan": false,
-            "note": "",
+            "note": -1.0,
             "type": "Emergency Loan"
         },
         {
             "description": "FSA makes loans to individuals ages 10-20 years-old to only be used to finance a modest, income-producing, agriculture-related, educational project while participating in 4-H,  FFA, Tribal youth organizations, or a similar organization. The project being financed with an FSA Youth Loan needs to provide an opportunity for the young person to acquire experience and education in agriculture-related skills.",
             "hasMicroloan": false,
-            "note": "",
+            "note": -1.0,
             "type": "Youth Loan"
         }
     ],

@@ -1,6 +1,7 @@
 <style>
 :root {
     font-size: 12px;
+    --control-color-grey: rgb(200,200,200);
     --control-color-green: #49A564;
     --button-color-blue: #1A6AD3;
     --color-white: #FFFFFF;
@@ -152,12 +153,21 @@ input[type="radio"]:focus {
         }
             .quiz-progress-bar-map-bar {
                 background-color: var(--control-color-green);
-                max-width: 69%;
+                margin: 1rem 0;
+                width: 0%;
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 1;
+            }
+            .quiz-progress-bar-map-bar-back {
+                background-color: var(--control-color-grey);
+                max-width: 70%;
                 margin: 1rem 0;
                 grid-column-start: 1;
                 grid-column-end: 2;
                 grid-row-start: 1;
             }
+            
             .quiz-progress-bar-map-bar-markers {
                 width: 100%;
                 height: 3rem;
@@ -315,23 +325,26 @@ input[type="radio"]:focus {
             grid-area: iconholder;
             max-height: fit-content;
         }
-            .step-bullet-green-fill {
+            .step-bullet {
                 border-radius: 50%;
                 width: 38px;
                 height: 38px;
-                background: var(--control-color-green);
-                color: var(--color-white);
                 text-align: center;
             }
-            .step-bullet-green-border {
-                min-width: 38px;
-                min-height: 38px;
-                border: 3px solid var(--control-color-green);
-                border-radius: 50%;
-                color: var(--control-color-green);
-                text-align: center;
+            .step-bullet-green-fill {
+                background: var(--control-color-green);
+                color: var(--color-white);
 
-            }    
+            }
+            .step-bullet-green-border {
+                border: 3px solid var(--control-color-green);
+                color: var(--control-color-green);
+            }
+            .step-bullet-grey-border {
+                border: 3px solid var(--control-color-grey);
+                color: var(--control-color-grey);
+                background: var(--color-white);
+            } 
         .summary-step-text {
             grid-area: step-text;
             grid-template-rows: auto auto auto;
@@ -414,6 +427,8 @@ input[type="radio"]:focus {
     <div class="container" id="container"></div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+
 <script src="../js/stateManager.js"></script>
 <script>
     var questions = []; // LIst of questions
@@ -424,6 +439,7 @@ input[type="radio"]:focus {
     var nextQuestionId = -1;
     var answers = [];
     var conditionals = [];
+    var progressBarStage = "You and your farm";
 
     (function() {
         currentQuestion = 0;
@@ -481,13 +497,16 @@ input[type="radio"]:focus {
     function showQuestion(questionId) {
         // check the summary page should be loaded
         if(nextQuestionId === 9999 || currentQuestion === 9999) {
+            progressBarStage = "Results";
             _createSummary();
         }
         else {
-            _createQuestionContainer();
+            
             $.each(questions, function(key, questionData) {
+                
                 if(questionData.questionId === questionId){
-                    
+                    progressBarStage = questionData['progressBarStage'];
+                    _createQuestionContainer();
                     currentQuestion = questionId;
                     answers = [];
 
@@ -503,7 +522,7 @@ input[type="radio"]:focus {
                         answers = questionHistory[index]['answer'];
                         nextQuestionId = questionHistory[index]['nextQuestionId'];
                     }
-                    
+
                     questionType = questionData["type"];
                     switch (questionType) {
                         case 'information':
@@ -536,11 +555,16 @@ input[type="radio"]:focus {
     function _createProgressbar() {
         var progressBar = document.createElement("div");
         progressBar.classList.add("quiz-progress-bar-container");
+        progressBar.setAttribute("id","progressbar"); 
         
         var map = document.createElement("div");
         map.classList.add("quiz-progress-bar-map-container");
         progressBar.append(map);
         
+        var bar = document.createElement("div");
+        bar.classList.add("quiz-progress-bar-map-bar-back");
+        map.append(bar);
+
         var bar = document.createElement("div");
         bar.classList.add("quiz-progress-bar-map-bar");
         map.append(bar);
@@ -555,12 +579,24 @@ input[type="radio"]:focus {
 
         marker = document.createElement("div");
         marker.classList.add("quiz-progress-bar-map-bar-marker");
-        marker.append(_createStepBullet(2, "fill-green"));
-        markers.append(marker);
+        var fill = "border-grey"
+        console.log(progressBarStage)
 
+        if(progressBarStage == "Loan Eligibility" || progressBarStage == "Results") {
+            fill = "fill-green"
+            bar.style.width = '35%';
+        }
+        marker.append(_createStepBullet(2, fill));
+        markers.append(marker);
+        
         marker = document.createElement("div");
         marker.classList.add("quiz-progress-bar-map-bar-marker");
-        marker.append(_createStepBullet(3, "fill-green"));
+        fill = "border-grey"
+        if(progressBarStage == "Results") {
+            fill = "fill-green"
+            bar.style.width = '70%';
+        }
+        marker.append(_createStepBullet(3, fill));
         markers.append(marker);
 
         map.append(markers);
@@ -576,7 +612,7 @@ input[type="radio"]:focus {
 
         label = document.createElement("div");
         label.classList.add("quiz-progress-bar-label");
-        label.textContent= "Loan eligibility"
+        label.textContent = "Loan eligibility"
         labels.append(label);
 
         label = document.createElement("div");
@@ -586,6 +622,7 @@ input[type="radio"]:focus {
 
         progressBar.append(labels);
 
+        $('#progressbar').empty();
         return progressBar;
     }
 
@@ -657,7 +694,7 @@ input[type="radio"]:focus {
         $.getJSON("/forms/loantypes.json", function(data) {
             questionHistory[0].answer.sort(function(a, b){return b-a});
             for ( var i = 0; i < questionHistory[0].answer.length; i++ ) {
-                var loanInfo = data.find(x => x.loanId === questionHistory[0].answer[i])
+                var loanInfo = data['loanType'].find(x => x.loanId === questionHistory[0].answer[i])
                 _createSugestedLoanCards(loanInfo, i, loan, recomended);
             }
         });
@@ -802,7 +839,7 @@ input[type="radio"]:focus {
             "message": "We recommend downloading and/or printing the quiz and discussing your answers with your local loan officer.",
             "buttons": [ {
                     "buttonText": "DOWNLOAD QUIZ",
-                    "buttonURL": "button URL",
+                    "buttonURL": "onclick=generatePDF",
                 },
                 {
                     "buttonText": "PRINT QUIZ",
@@ -842,6 +879,15 @@ input[type="radio"]:focus {
                 button.classList.add("summary-step-text-button");
                 var text = document.createTextNode(stepinfo[i].buttons[j].buttonText);
                 button.appendChild(text);
+                if(stepinfo[i].buttons[j].buttonURL.includes("onclick")){
+                    var func_name = stepinfo[i].buttons[j].buttonURL.split('=')[1];
+                    $(button).off().on('click', eval(func_name).bind(this));
+                    $(button).on('click',function() {
+                        eval(func_name).bind(this);
+                        $(this).off('click');
+                    });
+                }
+
                 div.append(button);
                 textHolder.append(div);
             }
@@ -922,12 +968,16 @@ input[type="radio"]:focus {
     // The circle with a number to th eleft of steps and questions
     function _createStepBullet(number, type) {
         var bullet = document.createElement("div");
+        bullet.classList.add("step-bullet");
         switch (type) {
             case 'fill-green':
                 bullet.classList.add("step-bullet-green-fill");
                 break; 
             case 'border-green':
                 bullet.classList.add("step-bullet-green-border");
+                break;
+            case 'border-grey':
+                bullet.classList.add("step-bullet-grey-border");
                 break; 
         }
         bullet.textContent = number;
@@ -1489,6 +1539,18 @@ input[type="radio"]:focus {
                 $(radio).prop('checked', true);
             }
         }
+    }
+
+    function generatePDF() {
+        var pdf = new jsPDF({
+            orientation: 'p',
+            unit: 'mm',
+            format: 'a5',
+            putOnlyUsedFonts:true
+            });
+        pdf.text("Generate a PDF with JavaScript", 20, 20);
+        pdf.text("published on APITemplate.io", 20, 30);
+        pdf.save('FSA Farm Loan Quiz Results.pdf');
     }
     
 </script>

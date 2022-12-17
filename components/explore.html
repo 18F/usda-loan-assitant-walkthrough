@@ -1,37 +1,409 @@
-<div class="fit-content">
-    <div class="container" id="container">
+<style>
+    .comparision-table-border {
+        border: 2px solid black;
+    }
+    .comparision-ccontainer {
+        width: 100%;
+        display: grid;
+        grid-auto-rows: repeat(auto);
+        row-gap: 2rem;
+    }
+    .category-ccontainer {
+        max-width: 100%;
+        padding: 3rem;
 
-    </div>
+    }
+        /*  Category Details */
+        .category-details {
+            width: 100%;
+        }
+            .category-details-title {
+
+            }
+            
+            .category-details-description {
+
+            }
+
+            .category-details-note {
+
+            }
+
+        /*  Table of details for each loan in the eategory */
+        .comparisonTable-container {
+            width: 100%;
+        }
+
+            /* Titles of loans in category*/
+            .comparisonTable-titles-container {
+                width: 100%;
+                display:flex;
+                flex-direction: row;
+            }
+                .comparisonTable-title {
+                    width: 100%;
+                }
+
+                /* Max Dollar */
+                .comparisonTable-maxDollar-container {
+                    
+                }
+                    .comparisonTable-maxDollarTitle {
+                        
+                    }
+                    .comparisonTable-maxDollarValue-container {
+                        width: 100%;
+                        display:flex;
+                        flex-direction: row;
+                    }
+                        .comparisonTable-maxDollarValue {
+                            
+                        }
+
+                    .comparisonTable-maxDollarNote {
+                        
+                    }
+
+    /* Interest Rate*/
+    .comparisonTable-interestRate-container {
+            
+        }
+        .comparisonTable-interestRateTitle {
+            
+        }
+
+        .comparisonTable-InterestRateValue {
+            
+        }
+
+    /* Loan Term */
+    .comparisonTable-loanTerm-container {
+
+    }
+
+        .comparisonTable-loanTermTitle {
+            
+        }
+        .comparisonTable-loanTermValue-container {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+            .comparisonTable-loanTermValue-info {
+                width: 100%;
+            }
+                .comparisonTable-loanTermValue {
+                    width: 100%
+                }
+
+                .comparisonTable-loanTermNote {
+                    width: 100%
+                }
+
+    .comparisonTable-loanTermNote {
+        
+    }
+
+    .comparisonTable-downPaymentTitle {
+        
+    }
+
+    .comparisonTable-downPaymentValue {
+               
+    }
+
+</style>
+
+<div class="fit-content">
+    <div class="container" id="container"></div>
 </div>
 
 <script>
     (function() {
         $.getJSON("/forms/loantypes.json", function(data) {
-            var container = document.createElement("div");
-            // recomended.classList.add("recomended-loans-container");
-            console.log(data)
-            for (var i = 0; i < data.length; i++) {
-                div = document.createElement("div");
-                var p = document.createElement("p");
-                p.textContent = data[i].name;
-                div.append(p);
-                p = document.createElement("p");
-                p.textContent = data[i].description;
-                div.append(p);
-                p = document.createElement("p");
-                p.textContent = data[i].name;
-                div.append(p);
-                p = document.createElement("p");
-                p.textContent = "Maximum Dollar Amount";
-                div.append(p);
-                p = document.createElement("p");
-                p.textContent = data[i].maximumDollarAmount;
-                div.append(p);
+            var categories = [...data['categories']];
+            var loanTypes = [...data['loanType']];
+            var definitions = data['definitions'];
+
+            /////////////////
+            // holds the comparison tables
+            var comparisionContainer = document.createElement("div");
+            comparisionContainer.classList.add("comparision-ccontainer");
+            for (var i = 0; i < categories.length; i++) {
+                // The loans belonging to each category
+                var categoryLoans = loanTypes.filter(x=> x.category === categories[i].type);
                 
-                //div.classList.add("summary-step-text-button-container");
-                container.append(div);
+                /////////////////
+                // Per-category table
+                var categoryCcontainer = document.createElement("div");
+                categoryCcontainer.classList.add("category-ccontainer");
+                categoryCcontainer.classList.add("comparision-table-border");
+                
+                /////////////////
+                // Div to hold cataegory specific info
+                var details = document.createElement("div");
+                details.classList.add("category-details");
+                categoryCcontainer.append(details);
+                // Title
+                var title = document.createElement("div");
+                title.classList.add("category-details-title");
+                title.textContent = categories[i].type;
+                details.append(title);
+                // Description
+                var description = document.createElement("div");
+                description.classList.add("category-details-description");
+                description.textContent = categories[i].description;
+                details.append(description);
+                // Note if available
+                if(categories[i].note !== "") {
+                    var note = document.createElement("div");
+                    note.classList.add("category-details-note");
+                    note.textContent = categories[i].note;
+                    details.append(note);
+                }
+
+                ////////////////////////
+                // Table of loan details
+                var comparisonTable = document.createElement("div");
+                comparisonTable.classList.add("comparisonTable-container");
+                comparisonTable.classList.add("comparision-table-border");
+                
+                // Holds all Titles in this category
+                var titles = document.createElement("div");
+                titles.classList.add("comparisonTable-titles-container");
+                for (var k = 0; k < categoryLoans.length; k++) {
+                    var title = document.createElement("div");
+                    title.classList.add("comparisonTable-title");
+                    title.classList.add("comparision-table-border");
+                    title.textContent = categoryLoans[k].name;
+                    titles.append(title);
+                }
+                comparisonTable.append(titles);
+
+                /////////////////////
+                // Max Dollar Ammount
+                var maxDollarContainer = document.createElement("div");
+                maxDollarContainer.classList.add("comparisonTable-maxDollar-container");
+                // Max Dollar Ammount Title
+                var maxDollarTitle = document.createElement("div");
+                maxDollarTitle.classList.add("comparisonTable-maxDollarTitle");
+                maxDollarTitle.classList.add("comparision-table-border");
+                maxDollarTitle.textContent = "Maximum Dollar Amount";
+                maxDollarContainer.append(maxDollarTitle);
+                
+                // Max Dollar Ammount Values
+                var maxDollarValue = document.createElement("div");
+                maxDollarValue.classList.add("comparisonTable-maxDollarValue-container");
+
+                var uniqueDollarAmmounts = [];
+                for (var c = 0; c < categoryLoans.length; c++) {
+                    var dollarammount = {
+                        "description": categoryLoans[c].maximumDollarAmountDescription,
+                        "note": categoryLoans[c].maximumDollarAmountNote
+                    }
+                    uniqueDollarAmmounts.push(dollarammount);
+                }
+                
+                uniqueDollarAmmounts = uniqueDollarAmmounts.filter((tag, index, array) => array.findIndex(t => t.description == tag.description && t.note == tag.note) == index);
+
+                for (var l = 0; l < uniqueDollarAmmounts.length; l++) {
+                    var maxDollar = document.createElement("div");
+                    maxDollar.classList.add("comparisonTable-maxDollarValue");
+                    maxDollar.textContent = uniqueDollarAmmounts[l].description;
+                    if(uniqueDollarAmmounts[l].note !== "") {
+                        var note = document.createElement("div");
+                        note.classList.add("comparisonTable-maxDollarNote");
+                        note.textContent = uniqueDollarAmmounts[l].note;
+                        maxDollar.append(note);
+                    }
+                    maxDollarValue.append(maxDollar);
+                }
+                maxDollarContainer.append(maxDollarValue);
+                comparisonTable.append(maxDollarContainer);
+
+                /////////////////
+                // Interest Rate
+                var interestRateContainer = document.createElement("div");
+                interestRateContainer.classList.add("comparisonTable-interestRate-container");
+
+                var interestRateTitle = document.createElement("div");
+                interestRateTitle.classList.add("comparisonTable-interestRateTitle");
+                interestRateTitle.classList.add("comparision-table-border");
+                interestRateTitle.textContent = "Interest Rate";
+                interestRateContainer.append(interestRateTitle);
+                
+                var uniqueInterestRates = [];
+                for (var c = 0; c < categoryLoans.length; c++) {
+                    var interestRate = {
+                        "description": categoryLoans[c].interestRate,
+                        "url": categoryLoans[c].interestRateURL
+                    }
+                    uniqueInterestRates.push(interestRate);
+                }
+                uniqueInterestRates = uniqueInterestRates.filter((tag, index, array) => array.findIndex(t => t.description == tag.description && t.url == tag.url) == index);
+
+                for (var l = 0; l < uniqueInterestRates.length; l++) {
+                    var interestRateValue = document.createElement("div");
+                    interestRateValue.classList.add("comparisonTable-interestRateValue");
+                    var text = uniqueInterestRates[l].description.split(".").pop();
+                    var urlText = text + " <a href=" + uniqueInterestRates[l].url+">View current rates</a>";
+                    interestRateValue.innerHTML = urlText;
+                    interestRateContainer.append(interestRateValue);
+                }
+                
+                comparisonTable.append(interestRateContainer);
+                
+                /////////////
+                // Loan Term
+                var loanTermContainer = document.createElement("div");
+                loanTermContainer.classList.add("comparisonTable-loanTerm-container");
+
+                var loanTermTitle = document.createElement("div");
+                loanTermTitle.classList.add("comparisonTable-loanTermTitle");
+                loanTermTitle.classList.add("comparision-table-border");
+                loanTermTitle.textContent = "Loan Term";
+                loanTermContainer.append(loanTermTitle);
+
+                // Loan Term Values
+                var loanTermValues = document.createElement("div");
+                loanTermValues.classList.add("comparisonTable-loanTermValue-container");
+
+                
+
+                var uniqueLoanTerms = [];
+                for (var c = 0; c < categoryLoans.length; c++) {
+                    var loanTerm = {
+                        "loanTerm": categoryLoans[c].loanTerm,
+                        "note": categoryLoans[c].loanTermNote
+                    }
+                    uniqueLoanTerms.push(loanTerm);
+                }
+                uniqueLoanTerms = uniqueLoanTerms.filter((tag, index, array) => array.findIndex(t => t.loanTerm == tag.loanTerm && t.loanTermNote == tag.loanTermNote) == index);
+                console.log(uniqueLoanTerms)
+
+                
+
+                for (var l = 0; l < uniqueLoanTerms.length; l++) {
+                    var infobox = document.createElement("div");
+                    infobox.classList.add("comparisonTable-loanTermValue-info");
+                    infobox.classList.add("comparision-table-border");
+
+                    var loanTerm = document.createElement("div");
+                    loanTerm.classList.add("comparisonTable-loanTermValue");
+                    loanTerm.textContent = uniqueLoanTerms[l].loanTerm;
+                    infobox.append(loanTerm);
+                    if(uniqueLoanTerms[l].note !== "") {
+                        var note = document.createElement("div");
+                        note.classList.add("comparisonTable-loanTermNote");
+                        note.textContent = uniqueLoanTerms[l].note;
+                        infobox.append(note);
+                    }
+                    
+                    loanTermValues.append(infobox);
+                }
+
+                loanTermContainer.append(loanTermValues);
+                comparisonTable.append(loanTermContainer);
+
+                // Down Payment
+                var downPaymentTitle = document.createElement("div");
+                downPaymentTitle.classList.add("comparisonTable-downPaymentTitle");
+                downPaymentTitle.classList.add("comparision-table-border");
+                downPaymentTitle.textContent = "Down Payment";
+                
+                comparisonTable.append(downPaymentTitle);
+
+                var downPaymentValue = document.createElement("div");
+                downPaymentValue.classList.add("comparisonTable-downPaymentValue");
+                comparisonTable.append(downPaymentValue);
+
+
+                // for (var j = 0; j < categoryLoans.length; j++) {
+                //     var div = document.createElement("div");
+                    
+                    
+                //     // category Info
+                //     var p = document.createElement("p");
+                //     p.textContent = categoryLoans[j].name;
+                //     div.append(p);
+                    
+                //     p = document.createElement("p");
+                //     p.textContent = categoryLoans[j].description;
+                //     div.append(p);
+                    
+                //     p = document.createElement("p");
+                //     p.textContent = categoryLoans[j].note;
+                //     div.append(p);
+                    
+                //     // Maximum Dollar Amount
+                //     p = document.createElement("p");
+                //     p.textContent = "Maximum Dollar Amount";
+                //     div.append(p);
+                    
+                //     p = document.createElement("p");
+                //     p.textContent = categoryLoans[j].maximumDollarAmount;
+                //     div.append(p);
+                    
+                //     // Interest rate
+                //     p = document.createElement("p");
+                //     p.textContent = "Interest Rate";
+                //     div.append(p);
+                    
+                //     p = document.createElement("p");
+                //     p.textContent = categoryLoans[j].interestRate;
+                //     div.append(p);
+
+                //     // Loan Term
+                //     p = document.createElement("p");
+                //     p.textContent = "Loan Term";
+                //     div.append(p);
+                    
+                //     p = document.createElement("p");
+                //     p.textContent = categoryLoans[j].loanTerm;
+                //     div.append(p);
+                    
+                //     p = document.createElement("p");
+                //     p.textContent = categoryLoans[j].loanTermNote;
+                //     div.append(p);
+
+                //     // Down Payment
+                //     p = document.createElement("p");
+                //     p.textContent = "Down Payment";
+                //     div.append(p);
+                    
+                //     p = document.createElement("p");
+                //     p.textContent = categoryLoans[j].downPayment;
+                //     div.append(p);
+
+                //     // Other Requirements
+                //     if(categoryLoans[j].otherRequirements !== "") {
+                //         p = document.createElement("p");
+                //         p.textContent = "Other Requirements";
+                //         div.append(p);
+                //         p = document.createElement("p");
+                //         p.textContent = categoryLoans[j].otherRequirements;
+                //         div.append(p);
+                //     }
+
+                //     // Notes
+                //     p = document.createElement("p");
+                //     p.textContent = definitions.maximumDollarAmount;
+                //     div.append(p);
+                //     p = document.createElement("p");
+                //     p.textContent = definitions.interestRate;
+                //     div.append(p);
+                //     p = document.createElement("p");
+                //     p.textContent = definitions.loanTerm;
+                //     div.append(p);                  
+
+                //     //div.classList.add("summary-step-text-button-container");
+                // }
+                categoryCcontainer.append(comparisonTable);
+                comparisionContainer.append(categoryCcontainer);
             }
+                        
             $('#container').empty();
-            $('#container').append(container);
+            $('#container').append(comparisionContainer);
         });
     })();
+</script>

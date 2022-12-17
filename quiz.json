@@ -1,7 +1,119 @@
 {
     "questions": [
         {
-            "conditionals": "1&2:12,1&3:1,2&3:2",
+            "conditionals": "None",
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphText": "Each applicant must have the authority to sign a legally binding contract."
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    },
+                    {
+                        "paragraphText": ""
+                    }
+                ],
+                "title": "Before we get started, can you acknowledge that you (or anyone signing on your behalf) are legally competent to enter into a loan agreement?"
+            },
+            "notificationMessge": "Your response to this question may impact your eligibility.",
+            "notificationTitle": "You indicated you are unable to sign a legally binding agreement.",
+            "notificationType": "warning",
+            "options": [
+                {
+                    "nextQuestionId": 1,
+                    "optionId": 0,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "YES",
+                    "url": "",
+                    "value": 1
+                },
+                {
+                    "nextQuestionId": 1,
+                    "optionId": 1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "NO",
+                    "url": "",
+                    "value": 2
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                },
+                {
+                    "nextQuestionId": -1,
+                    "optionId": -1,
+                    "paragraphs": [
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        },
+                        {
+                            "paragraphText": ""
+                        }
+                    ],
+                    "title": "",
+                    "url": "",
+                    "value": -1
+                }
+            ],
+            "progressBarStage": "You and Your Farm",
+            "questionId": 0,
+            "type": "yesno"
+        },
+        {
+            "conditionals": "1&2:13,1&3:2,2&3:3",
             "content": {
                 "paragraphs": [
                     {
@@ -24,7 +136,7 @@
             "notificationType": "",
             "options": [
                 {
-                    "nextQuestionId": 1,
+                    "nextQuestionId": 2,
                     "optionId": 0,
                     "paragraphs": [
                         {
@@ -45,7 +157,7 @@
                     "value": 1
                 },
                 {
-                    "nextQuestionId": 2,
+                    "nextQuestionId": 3,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -66,7 +178,7 @@
                     "value": 2
                 },
                 {
-                    "nextQuestionId": 3,
+                    "nextQuestionId": 4,
                     "optionId": 2,
                     "paragraphs": [
                         {
@@ -87,7 +199,7 @@
                     "value": 3
                 },
                 {
-                    "nextQuestionId": -1,
+                    "nextQuestionId": 9999,
                     "optionId": 3,
                     "paragraphs": [
                         {
@@ -108,8 +220,8 @@
                     "value": 4
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 0,
+            "progressBarStage": "You and Your Farm",
+            "questionId": 1,
             "type": "multiselect"
         },
         {
@@ -136,7 +248,7 @@
             "notificationType": "",
             "options": [
                 {
-                    "nextQuestionId": 3,
+                    "nextQuestionId": 4,
                     "optionId": 0,
                     "paragraphs": [
                         {
@@ -157,7 +269,7 @@
                     "value": 1
                 },
                 {
-                    "nextQuestionId": 3,
+                    "nextQuestionId": 4,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -220,8 +332,8 @@
                     "value": -1
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 1,
+            "progressBarStage": "You and Your Farm",
+            "questionId": 2,
             "type": "singlesselect"
         },
         {
@@ -248,7 +360,7 @@
             "notificationType": "",
             "options": [
                 {
-                    "nextQuestionId": 3,
+                    "nextQuestionId": 4,
                     "optionId": 0,
                     "paragraphs": [
                         {
@@ -269,7 +381,7 @@
                     "value": 1
                 },
                 {
-                    "nextQuestionId": 3,
+                    "nextQuestionId": 4,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -332,8 +444,8 @@
                     "value": -1
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 2,
+            "progressBarStage": "You and Your Farm",
+            "questionId": 3,
             "type": "singlesselect"
         },
         {
@@ -360,7 +472,7 @@
             "notificationType": "warning",
             "options": [
                 {
-                    "nextQuestionId": 4,
+                    "nextQuestionId": 5,
                     "optionId": 0,
                     "paragraphs": [
                         {
@@ -381,7 +493,7 @@
                     "value": 1
                 },
                 {
-                    "nextQuestionId": 4,
+                    "nextQuestionId": 5,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -444,8 +556,8 @@
                     "value": -1
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 3,
+            "progressBarStage": "You and Your Farm",
+            "questionId": 4,
             "type": "yesno"
         },
         {
@@ -472,7 +584,7 @@
             "notificationType": "alert",
             "options": [
                 {
-                    "nextQuestionId": 5,
+                    "nextQuestionId": 6,
                     "optionId": 0,
                     "paragraphs": [
                         {
@@ -493,7 +605,7 @@
                     "value": 1
                 },
                 {
-                    "nextQuestionId": 5,
+                    "nextQuestionId": 6,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -556,8 +668,8 @@
                     "value": -1
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 4,
+            "progressBarStage": "You and Your Farm",
+            "questionId": 5,
             "type": "yesno"
         },
         {
@@ -584,7 +696,7 @@
             "notificationType": "alert",
             "options": [
                 {
-                    "nextQuestionId": 6,
+                    "nextQuestionId": 7,
                     "optionId": 0,
                     "paragraphs": [
                         {
@@ -605,7 +717,7 @@
                     "value": 1
                 },
                 {
-                    "nextQuestionId": 6,
+                    "nextQuestionId": 7,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -668,8 +780,8 @@
                     "value": -1
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 5,
+            "progressBarStage": "You and Your Farm",
+            "questionId": 6,
             "type": "yesno"
         },
         {
@@ -696,7 +808,7 @@
             "notificationType": "warning",
             "options": [
                 {
-                    "nextQuestionId": 7,
+                    "nextQuestionId": 8,
                     "optionId": 0,
                     "paragraphs": [
                         {
@@ -717,7 +829,7 @@
                     "value": 1
                 },
                 {
-                    "nextQuestionId": 7,
+                    "nextQuestionId": 8,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -780,8 +892,8 @@
                     "value": -1
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 6,
+            "progressBarStage": "Loan Eligibility",
+            "questionId": 7,
             "type": "yesno"
         },
         {
@@ -808,7 +920,7 @@
             "notificationType": "alert",
             "options": [
                 {
-                    "nextQuestionId": 8,
+                    "nextQuestionId": 9,
                     "optionId": 0,
                     "paragraphs": [
                         {
@@ -829,7 +941,7 @@
                     "value": 0
                 },
                 {
-                    "nextQuestionId": 8,
+                    "nextQuestionId": 9,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -892,8 +1004,8 @@
                     "value": -1
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 7,
+            "progressBarStage": "Loan Eligibility",
+            "questionId": 8,
             "type": "yesno"
         },
         {
@@ -920,7 +1032,7 @@
             "notificationType": "warning",
             "options": [
                 {
-                    "nextQuestionId": 9,
+                    "nextQuestionId": 10,
                     "optionId": 0,
                     "paragraphs": [
                         {
@@ -941,7 +1053,7 @@
                     "value": 0
                 },
                 {
-                    "nextQuestionId": 9,
+                    "nextQuestionId": 10,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -1004,8 +1116,8 @@
                     "value": -1
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 8,
+            "progressBarStage": "Loan Eligibility",
+            "questionId": 9,
             "type": "yesno"
         },
         {
@@ -1032,7 +1144,7 @@
             "notificationType": "warning",
             "options": [
                 {
-                    "nextQuestionId": 10,
+                    "nextQuestionId": 11,
                     "optionId": 0,
                     "paragraphs": [
                         {
@@ -1053,7 +1165,7 @@
                     "value": 1
                 },
                 {
-                    "nextQuestionId": 10,
+                    "nextQuestionId": 11,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -1116,8 +1228,8 @@
                     "value": -1
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 9,
+            "progressBarStage": "Loan Eligibility",
+            "questionId": 10,
             "type": "yesno"
         },
         {
@@ -1144,7 +1256,7 @@
             "notificationType": "warning",
             "options": [
                 {
-                    "nextQuestionId": 11,
+                    "nextQuestionId": 12,
                     "optionId": 0,
                     "paragraphs": [
                         {
@@ -1165,7 +1277,7 @@
                     "value": 0
                 },
                 {
-                    "nextQuestionId": 11,
+                    "nextQuestionId": 12,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -1228,8 +1340,8 @@
                     "value": -1
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 10,
+            "progressBarStage": "Loan Eligibility",
+            "questionId": 11,
             "type": "yesno"
         },
         {
@@ -1277,7 +1389,7 @@
                     "value": 0
                 },
                 {
-                    "nextQuestionId": -1,
+                    "nextQuestionId": 9999,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -1340,8 +1452,8 @@
                     "value": -1
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 11,
+            "progressBarStage": "Loan Eligibility",
+            "questionId": 12,
             "type": "yesno"
         },
         {
@@ -1368,7 +1480,7 @@
             "notificationType": "",
             "options": [
                 {
-                    "nextQuestionId": 2,
+                    "nextQuestionId": 3,
                     "optionId": 0,
                     "paragraphs": [
                         {
@@ -1389,7 +1501,7 @@
                     "value": 1
                 },
                 {
-                    "nextQuestionId": 3,
+                    "nextQuestionId": 4,
                     "optionId": 1,
                     "paragraphs": [
                         {
@@ -1452,8 +1564,8 @@
                     "value": -1
                 }
             ],
-            "progressBarStage": "",
-            "questionId": 12,
+            "progressBarStage": "Loan Eligibility",
+            "questionId": 13,
             "type": "singlesselect"
         }
     ]

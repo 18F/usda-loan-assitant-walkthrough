@@ -94,6 +94,7 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
         page_label = page_element.get_attribute('aria-label') or page_element.get_attribute('data-name')
         page_loaded = page_element.get_attribute('data-loaded')
 
+        # Step 2: Now find all input and text areas wiithin the given page:
         inputs_on_this_page = page_element.find_elements( By.CSS_SELECTOR, 'input, textarea' )
 
         if verbose:
@@ -153,13 +154,14 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
 
     return descrip_to_pid_dict
 
-def process_forms_spreadsheet(
+def Process_Forms_Spreadsheet(
         source_filename,
         specific_form_request,
-        form_count,
-        field_count,
+        form_limit,
+        field_limit,
         update_pids=False,
-        verbose=False
+        verbose=False,
+        debug=False
 ):
 
     if verbose:
@@ -219,7 +221,7 @@ def process_forms_spreadsheet(
     ) in form_sheet_df[ wanted_form_cols ].values:
     #for row in range(2, last_forms_row + 1):
         running_form_count += 1
-        if running_form_count > form_count:
+        if running_form_count > form_limit:
             break
 
         #form_id = inventory_sheet["B" + str(row)].value
@@ -234,6 +236,10 @@ def process_forms_spreadsheet(
         #items_sheet  = wb[form_id]
         items_sheet_df = pd.read_excel( io=source_filename, sheet_name=form_id )
         #last_items_row = len(list(items_sheet.rows))
+
+        if verbose:
+            # indent level = 2
+            print(f'  **  Found {len(items_sheet_df)} row items on sheet "{form_id}" in file "{source_filename}"')
 
         items_sheet_df[ 'Field Label' ] = items_sheet_df[ 'Field Label' ].fillna( "" ).astype( str )
         items_sheet_df[ 'Field #' ] = items_sheet_df[ 'Field #' ].fillna( "" ).astype( str )
@@ -250,11 +256,18 @@ def process_forms_spreadsheet(
             )
 
         if update_pids:
-            form_inputs = Scrape_PDF_Input_Attrs( form_file_name )
+            form_inputs = Scrape_PDF_Input_Attrs( form_file_name, debug=debug )
             new_pdf_input_descriptions = form_inputs.keys()
 
         form_parts_df = parts_sheet_df[ parts_sheet_df['form_id'] == form_id ]
         #for part_row in range(2, last_parts_row + 1):
+
+        if verbose:
+            # indent level = 2
+            print(f'  **  Found {len(form_parts_df)} form parts corresponding fo form "{form_id}" on sheet "Parts Inventory" in file "{source_filename}"')
+
+        if len( form_parts_df ) == 0:
+            raise ValueError( f'Please add form parts for form "{form_id}" on sheet "Parts Inventory" in file "{source_filename}"' )
 
         parts_list = []
         wanted_parts_cols = [ 'name', 'title', 'description' ]
@@ -268,10 +281,6 @@ def process_forms_spreadsheet(
             #part_name = parts_sheet["B"+str(part_row)].value
 
             #if parts_sheet["A"+str(part_row)].value == form_id:
-
-            if verbose:
-                # Indent level = 4
-                print(f'    **  Processing part {part_name}')
 
             part_dict = {
                 "name": part_name,
@@ -290,6 +299,13 @@ def process_forms_spreadsheet(
                 items_sheet_df[ 'Part' ] == part_name
             ]
 
+            if verbose:
+                # Indent level = 4
+                print( (" "*4) +f'**  Found { len( items_in_this_part_df ) } rows corresponding to part {part_name} "{part_title}" on sheet "{form_id}" in file "{source_filename}"')
+
+            if len( items_in_this_part_df ) == 0:
+                raise ValueError( f'Please make sure any row items for part "{part_name}" on sheet "{form_id}" have the string "{part_name}" in the Part column (column B?), or delete the part on the "Part Inventory" sheet.' )
+
             #[('A', 'PART NAME'),
             # ('B', 'Part'),
             # ('C', 'Field #'),
@@ -300,7 +316,7 @@ def process_forms_spreadsheet(
             # ('H', 'Field Count'),
             # ('I', 'Validation'),
             # ('J', 'Length Limit'),
-            # ('K', 'Page #'),
+            # ('K', 'PDF Page #'),
             # ('L', 'Field Left (px)'),
             # ('M', 'Field Top (px)'),
             # ('N', 'Recommended field instructions'),
@@ -313,7 +329,7 @@ def process_forms_spreadsheet(
                 'Field Label', # Col D
                 'Input ID', # Col G
                 'Recommended field instructions', # Col N
-                'Page #', # Col K
+                'PDF Page #', # Col K
                 'Field Left (px)', # Col L
                 'Field Top (px)', # Col M
             ]
@@ -331,24 +347,39 @@ def process_forms_spreadsheet(
             ) in zip( items_in_this_part_df.index, items_in_this_part_df[ wanted_columns ].values ):
 
                 running_field_count += 1
-                if running_field_count > field_count:
+                if running_field_count > field_limit:
                     break
 
                 # Skip if the field label is blank, as in Form 2015, Part A Field
-                # or if the Excel spreadsheet is missing any of these items:4
-                if field_number == "" or field_name == "" or isnan( field_left_px ) or isnan( field_top_px ):
+                # or if the Excel spreadsheet is missing any of these items:
+                if field_number == "" or field_name == "":# or isnan( field_left_px ) or isnan( field_top_px ):
                     if verbose:
                         print(f'      **  Skipping form="{form_id}", row item={index+1}, Part "{part_name}"' )
                     continue
 
+                try:
+                    # break out these string interpolations so you can know which cell is causing the problem
+                    field_number_str = str( field_number )
+                    pdf_page_str = str( int( page_number ))
+                    label_str = str( field_name )
+
+                    output = f'      ** form="{form_id}", row item={index+1}, part="{part_name}", field #="{field_number}", PDF page={int(page_number)}, label="{field_name}"'
+                except Exception as e:
+                    print( "\n\n\n" + "*"*50 )
+                    print( "ERROR OCCURRED" )
+                    print( f' Error processing line {index+1} on sheet "{form_id}", please make sure all the boxes in the row like "page number" aren\'t blank (can just use placeholder if necessary) or leave "Field #" (column C?) blank to skip the row entirely.' )
+
+                    print( "\n\n\n" )
+                    raise
+                    #import sys
+                    #sys.exit( 1 )
+
                 if verbose:
                     # Indent level = 6
-                    print(f'      **  Processing Excel spreadsheet form="{form_id}", row item={index+1}, part="{part_name}", field #="{field_number}", PDF page={int(page_number)}, top={int(field_top_px)}px, left={int(field_left_px)}' )
+                    print( output )
 
                 new_pid = ''
                 if update_pids:
-                    if verbose:
-                        print( f'        --  Text as listed in Excel: "{field_name}"' )
                     match = find_matches(
                         field_name,
                         new_pdf_input_descriptions,
@@ -365,7 +396,7 @@ def process_forms_spreadsheet(
                 pid_list.append( new_pid )
 
                 # Field number is a text field anyway
-                item_id = "" if( isinstance( field_number, float) and isnan( field_number )) else str( field_number ),
+                item_id = "" if( isinstance( field_number, float) and isnan( field_number )) else str( field_number )
                 item_dict = {
                     "id": item_id,
                     "name": field_name,
@@ -421,23 +452,23 @@ def process_forms_spreadsheet(
 @click.option('--filename', '-f', type=click.Path(exists=True), show_default=True, default='FSA Forms Analysis.xlsx')
 @click.option('--updatepids', '-u', is_flag=True, show_default=True, default=False)
 @click.option('--verbose', '-v', is_flag=True, show_default=True, default=True)
-@click.option('--debug', '-d', is_flag=True, show_default=True, default=True)
+@click.option('--debug', '-d', is_flag=True, show_default=True, default=True, help="Generate debug output files saved to disk when scraping PDFs" )
 @click.option('--form', '-F', show_default=None, default=None)
-@click.option('--form_count', '-o', show_default=False, default=99999)
-@click.option('--field_count', '-i', show_default=False, default=99999)
-def main(filename, updatepids, verbose, debug, form_count, field_count, form ):
+@click.option('--form_limit', '-o', show_default=False, default=99999, help="(Deprecated) Run this script for only the first N forms listed in the spreadsheet" )
+@click.option('--field_limit', '-i', show_default=False, default=99999,  help="(Deprecated) Run this script for only the first N fields for listed in the spreadsheet" )
+def main(filename, updatepids, verbose, debug, form_limit, field_limit, form ):
 
     print( "filename =", filename)
     print( "updatepids =", updatepids )
     print( "verbose =", verbose )
     print( "debug =", debug )
-    print( "form_count =", form_count )
-    print( "field_count =", field_count )
+    print( "form_limit =", form_limit )
+    print( "field_limit =", field_limit )
     print( "form =", form )
 
     if verbose and form:
         print( "*" * 50, '\n', "only processing form with id =", form, "\n", "*" * 50 )
-    forms_data = process_forms_spreadsheet(filename, form, form_count, field_count, updatepids, verbose)
+    forms_data = Process_Forms_Spreadsheet( filename, form, form_limit, field_limit, updatepids, verbose, debug )
 
     print("Creating JSON file")
     json_data = json.dumps(forms_data, sort_keys=True, indent=4)

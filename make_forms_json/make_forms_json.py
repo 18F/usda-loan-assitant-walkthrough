@@ -17,7 +17,7 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords
 stopwords = set(stopwords.words('english'))
 from nltk.tokenize import word_tokenize
-#from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait

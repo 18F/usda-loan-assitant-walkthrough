@@ -5,3 +5,5 @@ click
 webdriver_manager
 packaging
 levenshtein
+pandas
+nltk

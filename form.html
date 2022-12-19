@@ -421,7 +421,7 @@
                 const form_ids = getQueryVar(name = "show_forms");
                 if (form_ids) {
                     if (form_ids == "null") {
-                        $('#walkthrough-link').attr("href", `/walkthrough.html?${getCookie("currentLoanType")}`);
+                        $('#walkthrough-link').attr("href", `/walkthrough.html?loan_type=${getCookie("currentLoanType")}`);
                     }
                     else {
                         show_forms = form_ids.split(",");
@@ -431,7 +431,7 @@
                     // $('#walkthrough-link').attr("href", `/walkthrough.html?show_forms=${form_ids}`);
                 }
                 else {
-                    $('#walkthrough-link').attr("href", `/walkthrough.html?${getCookie("currentLoanType")}`);
+                    $('#walkthrough-link').attr("href", `/walkthrough.html?loan_type=${getCookie("currentLoanType")}`);
                 }
 
                 const key = getQueryVar("key");
@@ -448,7 +448,7 @@
                 // Get the loan name
                 var loanName = data['LoanType'][index]['name'];
                 
-                $('#return-form-suport').html(`<a href="/walkthrough.html?${loanType}"> Return to ${loanName} Form Support page </a>`);
+                $('#return-form-suport').html(`<a href="/walkthrough.html?loan_type=${loanType}"> Return to ${loanName} Form Support page </a>`);
 
 
                 $.each(form_data.parts, function (part_index, part) {
@@ -496,7 +496,7 @@
             // Load Form iFrame after the document is loaded. and set the url to return to correct catagory
             $(document).ready(function () {
                 // Set url to the current loan type
-                $('#walkthrough-link').attr("href", `/walkthrough.html?${getCookie("currentLoanType")}`);
+                $('#walkthrough-link').attr("href", `/walkthrough.html?loan_type=${getCookie("currentLoanType")}`);
 
                 $("iframe").on("load", function () {
                     $(this).contents().on("mousedown, mouseup, click", function (e) {

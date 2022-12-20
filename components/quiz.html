@@ -432,9 +432,7 @@ input[type="radio"]:focus {
     <div class="container" id="container"></div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.0/jspdf.debug.js"></script>
 
 <script src="../js/stateManager.js"></script>
 <script>
@@ -1592,20 +1590,24 @@ input[type="radio"]:focus {
             });
 
         var textStart = 0;
+        var fontsize = 10;
         for ( var i = 0; i < pdfData.length; i++ ) {
-            var questionPosition = textStart + 10;
-            var answerPosition = questionPosition + 10;
+            fontsize = 10;
+            pdf.setFontSize(fontsize).setFontStyle("bold");
+            var question = pdf.splitTextToSize(pdfData[i].question, 120);
+            var questionPosition = textStart + 8;
+            var answerPosition = questionPosition + question.length*5;
             textStart = answerPosition;
-            pdf.text(i + ". " + pdfData[i].question, 20, questionPosition);
-            pdf.text(pdfData[i].answer, 20, answerPosition);
-            if(textStart > 160) {
+            console.log(textStart)
+            pdf.text(10, questionPosition, question);
+            pdf.setFontSize(8).setFontStyle("normal");
+            pdf.text(15, answerPosition, pdfData[i].answer);
+            if(textStart > 150) {
                 pdf.addPage();
                 textStart = 0;
             }
         }
         pdf.save('FSA Farm Loan Quiz Results.pdf');
-    
-        
     }
     
 </script>

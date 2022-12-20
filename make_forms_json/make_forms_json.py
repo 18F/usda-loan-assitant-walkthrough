@@ -10,6 +10,7 @@ import click
 from fuzzywuzzy import process
 #from openpyxl import load_workbook
 import pandas as pd
+import numpy as np
 
 import nltk
 nltk.download('punkt')
@@ -25,6 +26,65 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+
+
+
+LoanType = [
+        {
+            "type" : "annual",
+            "forms" : ["FSA-2001", "FSA-2002", "FSA-2003", "FSA-2004", "FSA-2005", "FSA-2006", "FSA-2007", "FSA-2014", "FSA-2015", "FSA-2037", "FSA-2038", "FSA-2150", "FSA-2302", "FSA-2370", "FSA-851", "AD-1026"],
+            "name": "Annual Operating Loans",
+            "description": "Used for regular operating expenses and repaid within 12 months or when the commodities produced are sold",
+            "image": "annual.jpg",
+            "imageAltText": "A farmer smiling at the camera with rows of crops in the background"
+        },
+    
+        {
+            "type": "term",
+            "forms": ["FSA-2001", "FSA-2002", "FSA-2003", "FSA-2004", "FSA-2005", "FSA-2006", "FSA-2007", "FSA-2014", "FSA-2015", "FSA-2037", "FSA-2038", "FSA-2150", "FSA-2302", "FSA-2370", "FSA-851", "AD-1026"],
+            "name": "Term Operating Loans",
+            "description": "Used to purchase livestock, seed, and equipment. Loan funds can also cover startup costs and family living expenses",
+            "image": "term.jpg",
+            "imageAltText": "A closeup on the face of a cow"
+        },
+    
+        {
+            "type": "ownership",
+            "forms": ["FSA-2001", "FSA-2002", "FSA-2003", "FSA-2004", "FSA-2005", "FSA-2006", "FSA-2007", "FSA-2014", "FSA-2015", "FSA-2037", "FSA-2038", "FSA-2150", "FSA-2302", "FSA-2370", "FSA-851", "AD-1026"],
+            "name": "Farm Ownership Loans",
+            "description": "Used to purchase or expand a farm or ranch. Loan funds can be used for closing costs, construction, or conservation",
+            "image": "ownership.jpg",
+            "imageAltText": "Farmland featuring a barn and rows of crops"
+        },
+    
+        {
+            "type": "microloan",
+            "forms": ["FSA-2330","AD-1026", "FSA-2014", "FSA-2037"],
+            "name": "Microloans",
+            "description": "Loans up to $50,000; used to meet the needs of small and beginning farmers or non-traditional specialty operations",
+            "image": "micro.jpg",
+            "imageAltText": "A farmer at a farmers market stall holding an OPEN for business sign"
+        },
+    
+        {
+            "type": "emergency",
+            "forms": ["FSA-2001", "FSA-2002", "FSA-2003", "FSA-2004", "FSA-2005", "FSA-2006", "FSA-2007", "FSA-2014","FSA-2015", "FSA-2037", "FSA-2038", "FSA-2302", "FSA-2309", "FSA-2310", "FSA-2370", "AD-1026"],
+            "name": "Emergency Loans",
+            "description": "Used to restore damaged property due to a natural disaster; can cover production costs and family living expenses",
+            "image": "emergency.jpg",
+            "imageAltText": "A farm house destroyed by a fallen tree"
+        },
+    
+        {
+            "type": "youth",
+            "forms": ["FSA-2301", "AD-1026"],
+            "name": "Youth Loans",
+            "description": "Used to help youth, ages 10 to 20, fund agricultural projects connected with educational programs like 4-H clubs or FFA",
+            "image": "youth.jpg",
+            "imageAltText": "A teenage girl on a farm holding a basket of produce"
+        }
+    ]
+
 
 def find_matches( field_title, pdf_labels, verbose = False ):
     """Tries to match PDF-embedded form input instructions with
@@ -285,9 +345,9 @@ def Process_Forms_Spreadsheet(
             part_dict = {
                 "name": part_name,
                 #"title": parts_sheet["C"+str(part_row)].value,
-                "title": part_title,
+                "title": "" if pd.isna(part_title) or not(part_title) else part_title,
                 #"description": parts_sheet["D"+str(part_row)].value,
-                "description": part_description
+                "description": "" if pd.isna(part_description) or not(part_description) else part_description
             }
 
             running_field_count = 0
@@ -400,12 +460,12 @@ def Process_Forms_Spreadsheet(
                 item_dict = {
                     "id": item_id,
                     "name": field_name,
-                    "comment": new_instructions_text,
-                    "page": page_number or 0,
-                    "left": field_left_px or 0,
-                    "top": field_top_px or 0,
-                    "pid": new_pid
-                }
+                    "comment": "" if pd.isna(new_instructions_text) or not(new_instructions_text) else new_instructions_text, 
+                    "page": 0 if pd.isna(page_number) or not(page_number) else page_number,
+                    "left": 0 if pd.isna(field_left_px) or not(field_left_px) else field_left_px,
+                    "top": 0 if pd.isna(field_top_px) or not(field_top_px) else field_top_px,
+                    "pid": "" if pd.isna(new_pid) or not(new_pid) else new_pid
+                    }
                 items_list.append(item_dict)
 
                 # END of loop iterating over items in this part
@@ -419,8 +479,8 @@ def Process_Forms_Spreadsheet(
             "name": form_name or "",
             "id": form_id or "",
             "file_name": form_file_name or '',
-            "url": form_url or "",
-            "description": form_description or "",
+            "url": "" if pd.isna(form_url) or not(form_url) else form_url,
+            "description": "" if pd.isna(form_description) or not(form_description) else form_description,
             "parts": parts_list
         })
 
@@ -471,6 +531,7 @@ def main(filename, updatepids, verbose, debug, form_limit, field_limit, form ):
     forms_data = Process_Forms_Spreadsheet( filename, form, form_limit, field_limit, updatepids, verbose, debug )
 
     print("Creating JSON file")
+    forms_data["LoanType"] = LoanType
     json_data = json.dumps(forms_data, sort_keys=True, indent=4)
     #if debug:
     #    pprint(json_data)

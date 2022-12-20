@@ -17,6 +17,63 @@ from selenium.webdriver.chrome.service import Service
 
 from pprint import pprint
 
+LoanType = [
+        {
+            "type" : "annual",
+            "forms" : ["FSA-2001", "FSA-2002", "FSA-2003", "FSA-2004", "FSA-2005", "FSA-2006", "FSA-2007", "FSA-2014", "FSA-2015", "FSA-2037", "FSA-2038", "FSA-2150", "FSA-2302", "FSA-2370", "FSA-851", "AD-1026"],
+            "name": "Annual Operating Loans",
+            "description": "Used for regular operating expenses and repaid within 12 months or when the commodities produced are sold",
+            "image": "annual.jpg",
+            "imageAltText": "A farmer smiling at the camera with rows of crops in the background"
+        },
+    
+        {
+            "type": "term",
+            "forms": ["FSA-2001", "FSA-2002", "FSA-2003", "FSA-2004", "FSA-2005", "FSA-2006", "FSA-2007", "FSA-2014", "FSA-2015", "FSA-2037", "FSA-2038", "FSA-2150", "FSA-2302", "FSA-2370", "FSA-851", "AD-1026"],
+            "name": "Term Operating Loans",
+            "description": "Used to purchase livestock, seed, and equipment. Loan funds can also cover startup costs and family living expenses",
+            "image": "term.jpg",
+            "imageAltText": "A closeup on the face of a cow"
+        },
+    
+        {
+            "type": "ownership",
+            "forms": ["FSA-2001", "FSA-2002", "FSA-2003", "FSA-2004", "FSA-2005", "FSA-2006", "FSA-2007", "FSA-2014", "FSA-2015", "FSA-2037", "FSA-2038", "FSA-2150", "FSA-2302", "FSA-2370", "FSA-851", "AD-1026"],
+            "name": "Farm Ownership Loans",
+            "description": "Used to purchase or expand a farm or ranch. Loan funds can be used for closing costs, construction, or conservation",
+            "image": "ownership.jpg",
+            "imageAltText": "Farmland featuring a barn and rows of crops"
+        },
+    
+        {
+            "type": "microloan",
+            "forms": ["FSA-2330","AD-1026", "FSA-2014", "FSA-2037"],
+            "name": "Microloans",
+            "description": "Loans up to $50,000; used to meet the needs of small and beginning farmers or non-traditional specialty operations",
+            "image": "micro.jpg",
+            "imageAltText": "A farmer at a farmers market stall holding an OPEN for business sign"
+        },
+    
+        {
+            "type": "emergency",
+            "forms": ["FSA-2001", "FSA-2002", "FSA-2003", "FSA-2004", "FSA-2005", "FSA-2006", "FSA-2007", "FSA-2014","FSA-2015", "FSA-2037", "FSA-2038", "FSA-2302", "FSA-2309", "FSA-2310", "FSA-2370", "AD-1026"],
+            "name": "Emergency Loans",
+            "description": "Used to restore damaged property due to a natural disaster; can cover production costs and family living expenses",
+            "image": "emergency.jpg",
+            "imageAltText": "A farm house destroyed by a fallen tree"
+        },
+    
+        {
+            "type": "youth",
+            "forms": ["FSA-2301", "AD-1026"],
+            "name": "Youth Loans",
+            "description": "Used to help youth, ages 10 to 20, fund agricultural projects connected with educational programs like 4-H clubs or FFA",
+            "image": "youth.jpg",
+            "imageAltText": "A teenage girl on a farm holding a basket of produce"
+        }
+    ]
+
+
 def find_matches(field_title, pdf_labels, verbose = False):
     match, rate = process.extractOne(field_title, pdf_labels)
     if verbose and rate >= 75:
@@ -81,6 +138,25 @@ def process_forms_spreadsheet(source_filename, form_count, field_count, update_p
         
         if verbose:
             print(f' **  Processing form {form_id}')
+        
+
+        #[('A', 'PART NAME'),
+        # ('B', 'Part'),
+        # ('C', 'Field #'),
+        # ('D', 'Field Label'),
+        # ('E', 'Original Field Instructions'),
+        # ('F', 'Field Type'),
+        # ('G', 'Input ID'),
+        # ('H', 'Field Count'),
+        # ('I', 'Validation'),
+        # ('J', 'Length Limit'),
+        # ('K', 'PDF Page #'),
+        # ('L', 'Field Left (px)'),
+        # ('M', 'Field Top (px)'),
+        # ('N', 'Recommended field instructions'),
+        # ('O', 'Recommended Validation Rule'),
+        # ('P', 'Error Message'),
+        # ('Q', 'Data Entry Software Application')]
 
         if update_pids:
             form_inputs = pdf_input_attrs(file_name)
@@ -96,9 +172,9 @@ def process_forms_spreadsheet(source_filename, form_count, field_count, update_p
                     print(f'   **  Processing part {part_name}')
 
                 part_dict = {
-                    "name": part_name,
-                    "title": parts_sheet["C"+str(part_row)].value,
-                    "description": parts_sheet["D"+str(part_row)].value,
+                    "name": part_name or "",
+                    "title": parts_sheet["C"+str(part_row)].value or "",
+                    "description": parts_sheet["D"+str(part_row)].value or "",
                 }
 
                 items_list = []
@@ -166,6 +242,8 @@ def main(filename, updatepids, verbose, debug, form_count, field_count):
     forms_data = process_forms_spreadsheet(filename, form_count, field_count, updatepids, verbose)
 
     print("Creating JSON file")
+    forms_data["LoanType"] = LoanType
+
     json_data = json.dumps(forms_data, sort_keys=True, indent=4)
     
     if debug:

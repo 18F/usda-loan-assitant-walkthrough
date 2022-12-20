@@ -75,10 +75,10 @@ for row in range(2, step_sheet.max_row + 1):
             "interestRate": step_sheet[f"P{row}"].value  or "",
             "interestRateDescription": step_sheet[f"Q{row}"].value or "",
             "interestRateURL": step_sheet[f"R{row}"].value or "",
-            "loanTerm": step_sheet[f"S{row}"].value  or "",
+            "loanTerm": step_sheet[f"S{row}"].value,
             "loanTermNote": step_sheet[f"T{row}"].value  or "",
             "loanTermDescription": step_sheet[f"U{row}"].value or "",
-            "downPayment": step_sheet[f"V{row}"].value  or "",
+            "downPayment": step_sheet[f"V{row}"].value,
             "downPaymentDescription": step_sheet[f"W{row}"].value or "",
             "otherRequirements": step_sheet[f"X{row}"].value  or "",
         }

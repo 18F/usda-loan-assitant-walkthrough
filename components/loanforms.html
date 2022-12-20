@@ -53,7 +53,7 @@
                             <div class="info-message-description">
                                 Not sure where to start? Complete the eligibility assessment to understand which loan application best suits your needs.
                             </div>
-                                <button class="btn lg-btn info-button-container" onclick="window.location.assign('/lrt.html')" aria-label="Go to the Loan Readiness Tool">
+                                <button class="btn lg-btn info-button-container" onclick="setContent('quiz')" aria-label="Go to the Loan Readiness Tool">
                                     Start Eligibility Self-Assessment
                                 </button>
                             </div>
@@ -135,68 +135,84 @@
         // Save seleted loan type cookie
         setloanType(loanType);
 
-        // Show Forms Grid with forms for specific loan type
-        $.getJSON("/forms/forms.json", function(data) {
-            // Get the index of the loanType 
-            var index = data['LoanType'].findIndex(function(item, i){ console.log(item.type);return item.type === loanType; });
-            console.log(loanType);
-            // Get the loan name
-            var loanName = data['LoanType'][index]['name'];
+        $.getJSON("/forms/loantypes.json", function(loantypesdata) {
+            // Show Forms Grid with forms for specific loan type
+            $.getJSON("/forms/forms.json", function(data) {
+                // Get the index of the loanType 
+                var index = loantypesdata['loanType'].findIndex(function(item, i){ return item.type === loanType; });
+                // Get the loan name
+                var loanName = loantypesdata['loanType'][index]['name'];
 
-            // Title of support page
-            var titleText = `<div class="col">
-                                <div class="loantype-title">    
-                                    <div class="">
-                                        <a href="" onclick="showAllLoans();return false;" data-label="/loanforms.html" aria-label="Go to Form Support Page" data-category="Loans">
-                                            <img class="loantype-title-back image-flip" src="./images/arrow-right.png" alt="Back arrow" width="32">
-                                        </a>
-                                    </div>
-                                    <div class="loantype-title-name">
-                                        <div>${loanName} Form Support</div>
-                                    </div>
-                                </div>
-                            </div>`;
-            document.getElementById('title-holder').innerHTML = titleText;
-            
-            // Description of support page
-            var descriptioText = `<div class="col"> ${data['LoanType'][index]['description']} </div>`;
-            document.getElementById('header-holder').innerHTML = descriptioText;
-            
-            // The cards for the individual forms
-            var cards = [];
-            var formIds = [];
-            $.each(data["Forms"], function(key, form) {
-                // use index to get the list of forms for the loan type
-                // if not in the loan's form list reeturn without building card
-                if(!data['LoanType'][index]['forms'].includes(form['id'])) { return; }
-
-                var new_card =  `<div class="col">
-                                    <div class="content-card accent-top form-card h-100"">
-                                        <div class="headline">
-                                            <h3> 
-                                                <a href="" onclick="loadForm('${form.id}');return false;" "class="text-link" id="${form.id}">
-                                                    ${form.name} 
-                                                </a>
-                                            </h3>
+                // Title of support page
+                var titleText = `<div class="col">
+                                    <div class="loantype-title">    
+                                        <div class="">
+                                            <a href="" onclick="showAllLoans();return false;" data-label="/loanforms.html" aria-label="Go to Form Support Page" data-category="Loans">
+                                                <img class="loantype-title-back image-flip" src="./images/arrow-right.png" alt="Back arrow" width="32">
+                                            </a>
                                         </div>
-                                        <div class="content">
-                                            <p> ${form["description"]} </p>
-                                        </div>
-                                        <div class="link">
-                                            <a class="text-link" href="" onclick="loadForm('${form.id}');return false;">Get assistance completing this form</a>
-                                            <a class="text-link" href="/forms/${form["file_name"]}" download>Download</a>
+                                        <div class="loantype-title-name">
+                                            <div>${loanName} Form Support</div>
                                         </div>
                                     </div>
                                 </div>`;
+                document.getElementById('title-holder').innerHTML = titleText;
                 
-                cards.push(new_card);
-                formIds.push(form.id);
+                // Description of support page
+                var descriptioText = `<div class="col"> ${loantypesdata['loanType'][index]['description']} </div>`;
+                document.getElementById('header-holder').innerHTML = descriptioText;
+                
+                // The cards for the individual forms
+                var cards = [];
+                var formIds = [];
+                $.each(data["Forms"], function(key, form) {
+                    // use index to get the list of forms for the loan type
+                    // if not in the loan's form list reeturn without building card
+                    console.log(form)
+
+                    if(!loantypesdata['loanType'][index]['formsRequired'].includes(form['id']) &&
+                    !loantypesdata['loanType'][index]['formsRecommended'].includes(form['id']) &&
+                    !loantypesdata['loanType'][index]['formsAdditional'].includes(form['id'])) { return; }
+
+                    var required;
+                    if(loantypesdata['loanType'][index]['formsRequired'].includes(form['id'])) { 
+                        required = "Required"; }
+
+                    if(loantypesdata['loanType'][index]['formsRecommended'].includes(form['id'])) { 
+                        required = "Recommended"; }
+                    
+                    if(loantypesdata['loanType'][index]['formsAdditional'].includes(form['id'])) { 
+                        required = "Additional"; }
+
+                    var new_card =  `<div class="col">
+                                        <div class="content-card accent-top form-card h-100"">
+                                            <div class="headline">
+                                                <h3> 
+                                                    <a href="" onclick="loadForm('${form.id}');return false;" "class="text-link" id="${form.id}">
+                                                        ${form.name} 
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div class="content">
+                                                <p> ${form["description"]} </p>
+                                                <p> ${required} </p>
+                                            </div>
+                                            <div class="link">
+                                                <a class="text-link" href="" onclick="loadForm('${form.id}');return false;">Get assistance completing this form</a>
+                                                <a class="text-link" href="/forms/${form["file_name"]}" download>Download</a>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                    
+                    cards.push(new_card);
+                    formIds.push(form.id);
+                });
+
+                $("#forms-holder").empty();
+                $("#forms-holder").append(cards.join(""));
+
+                $('#return-form-suport').html(`<a href="" onclick="showAllLoans();return false;"  class="page-link" data-label="" aria-label="Go to Form Support Page" data-category="Loans">Back to all loan types</a>`);
             });
-
-            $("#forms-holder").empty();
-            $("#forms-holder").append(cards.join(""));
-
-            $('#return-form-suport').html(`<a href="" onclick="showAllLoans();return false;"  class="page-link" data-label="" aria-label="Go to Form Support Page" data-category="Loans">Back to all loan types</a>`);
         });
     }
 

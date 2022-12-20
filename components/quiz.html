@@ -299,15 +299,20 @@ input[type="radio"]:focus {
 
     }
         .recomended-loans-container {
-            min-height: fit-content;
-            display: grid;
-            grid-template-columns: auto auto;
-            column-gap: 2rem;
+            
         }
+            .recomended-loan-card-holder {
+                display: flex;
+                flex-direction: row;
+            }
             .recomended-loans-card {
-                min-height: fit-content;
+                flex-grow: 1;
+                flex-basis: 0;
                 border: 2px solid black;
             }
+                .recomended-loans-card-title {
+                    
+                }
 
     .summary-step {
         height: min-content;
@@ -429,6 +434,8 @@ input[type="radio"]:focus {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+
 <script src="../js/stateManager.js"></script>
 <script>
     var questions = []; // LIst of questions
@@ -440,6 +447,7 @@ input[type="radio"]:focus {
     var answers = [];
     var conditionals = [];
     var progressBarStage = "You and your farm";
+    var pdfData = [];
 
     (function() {
         currentQuestion = 0;
@@ -580,7 +588,6 @@ input[type="radio"]:focus {
         marker = document.createElement("div");
         marker.classList.add("quiz-progress-bar-map-bar-marker");
         var fill = "border-grey"
-        console.log(progressBarStage)
 
         if(progressBarStage == "Loan Eligibility" || progressBarStage == "Results") {
             fill = "fill-green"
@@ -692,10 +699,16 @@ input[type="radio"]:focus {
         
         // add the loan details
         $.getJSON("/forms/loantypes.json", function(data) {
-            questionHistory[0].answer.sort(function(a, b){return b-a});
+            var loanTypes = [...data['loanType']];
+            var categories = [...data['categories']];
+            var loanInfo = data['loanType'].find(x => x.loanID == questionHistory[0].answer[i]);
+
+            questionHistory[0].answer.sort(function(a, b) {return b - a;} );
             for ( var i = 0; i < questionHistory[0].answer.length; i++ ) {
-                var loanInfo = data['loanType'].find(x => x.loanId === questionHistory[0].answer[i])
-                _createSugestedLoanCards(loanInfo, i, loan, recomended);
+                var loanInfo = loanTypes.find(x => x.loanID == questionHistory[0].answer[i]);
+                var category = categories.find(x => x.type == loanInfo.category);
+                var loansInCategory = loanTypes.filter(x => x.category == category.type);
+                recomended.append(_createSugestedLoanCards(category, loansInCategory, loanInfo, i, loan, recomended));
             }
         });
         return loans;
@@ -703,32 +716,58 @@ input[type="radio"]:focus {
 
     // shows a detailed view of the primary loan, and if available minimal details for other loan types
     // loanInfo = details from JSON, index = index from array of sugeted loans
-    function _createSugestedLoanCards(loanInfo, index, loan, recomended) {
+    function _createSugestedLoanCards(category, loansInCategory, loanInfo, index, loan, recomended) {
         // Image
         var image = document.createElement("img");
         image.src = './images/loantypes/'+loanInfo.image;
         loan.append(image);
 
-        loan.append(_createTitle(loanInfo.name));
+        loan.append(_createTitle(loanInfo.category));
         // Description
-        text = "Based on your responses we think you’re best suited for the FSA "+loanInfo.name+".";
+        text = "Based on your responses we think you’re best suited for the FSA "+loanInfo.category+".";
         loan.append(_createParagraphElement(text));
-        loan.append(_createParagraphElement(loanInfo.description));
+        loan.append(_createParagraphElement(category.description));
 
-        var loanHighlight = document.createElement("div");
-        loanHighlight.classList.add("recomended-loans-card");
+        var loanCardHolder = document.createElement("div");
+        loanCardHolder.classList.add("recomended-loan-card-holder");
+        for ( var i = 0; i < loansInCategory.length; i++ ) {
+            var loanCard = document.createElement("div");
+            loanCard.classList.add("recomended-loans-card");
+            // Name
+            var title = document.createElement("div");
+            title.classList.add("recomended-loans-card-title");
+            title.textContent = loansInCategory[i].name;
+            loanCard.append(title);
 
-        // Name
-        loanHighlight.append(_createParagraphElement(loanInfo.name));
-        // Max dollar ammount description
-        loanHighlight.append(_createParagraphElement(loanInfo.maximumDollarAmountDescription));
-        // down payment description
-        loanHighlight.append(_createParagraphElement(loanInfo.downPaymentDescription));
-        // Max dollar ammount description
-        loanHighlight.append(_createParagraphElement(loanInfo.loanTermDescription));
+            // List of details
+            var list = document.createElement("ul");
+            // Max dollar ammount description
+            let item = document.createElement("li");
+            item.innerHTML = loansInCategory[i].maximumDollarAmountDescription;
+            list.appendChild(item);
 
-        loan.append(loanHighlight);
-        recomended.append(loan);
+            // down payment description
+            item = document.createElement("li");
+            item.innerHTML = loansInCategory[i].downPaymentDescription;
+            list.appendChild(item);
+
+            // Loan term description
+            item = document.createElement("li");
+            item.innerHTML = loansInCategory[i].loanTermDescription;
+            list.appendChild(item);
+
+            // Loan term description
+            item = document.createElement("li");
+            item.innerHTML = loansInCategory[i].otherRequirements;
+            list.appendChild(item);
+
+            loanCard.append(list);
+
+            loanCardHolder.append(loanCard);
+        }
+        loan.append(loanCardHolder);
+
+        return loan;
     }
 
     // Shows all flags in a list
@@ -747,7 +786,6 @@ input[type="radio"]:focus {
 
     // The actual flag used in flag list and full report
     function _createFlag(flagMessage) {
-        
         var flag = document.createElement("div");
 
         flag.classList.add("quiz-summary-flag");
@@ -942,13 +980,14 @@ input[type="radio"]:focus {
             info.append(infoTitle);
 
             //  Add Answer
+            var answerText;
             var answerTexts = [...questionHistory[i].answer];
             for ( var j = 0; j < answerTexts.length; j++ ) {
-                var answerText = answerInfo.options.find(x => x.value === answerTexts[j]).title;
-                
+                var answer = answerInfo.options.find(x => x.value === answerTexts[j]).title;
+                answer = answer;
                 var infoMessage = document.createElement("div");
                 infoMessage.classList.add("full-report-result-info-message");
-                infoMessage.append(_createParagraphElement(answerText));
+                infoMessage.append(_createParagraphElement(answer));
                 info.append(infoMessage);
                 
                 var flagMessage = questions.find(x=> x.questionId === questionHistory[i].question);
@@ -959,9 +998,13 @@ input[type="radio"]:focus {
                     info.append(flag);
                 }
             }
+            var qaPair = {
+                "question": questionText,
+                "answer": answer,
+            }
+            pdfData.push(qaPair);
             fullReport.append(result); 
         }
-
         return fullReport;
     }
 
@@ -1509,7 +1552,6 @@ input[type="radio"]:focus {
     //////////////////////////
     // Load and save answered questions
     //////////////////////////
-    //
     function updateAnswers() {
         setCookie("answers", JSON.stringify(questionHistory), 365);
     }
@@ -1548,9 +1590,22 @@ input[type="radio"]:focus {
             format: 'a5',
             putOnlyUsedFonts:true
             });
-        pdf.text("Generate a PDF with JavaScript", 20, 20);
-        pdf.text("published on APITemplate.io", 20, 30);
+
+        var textStart = 0;
+        for ( var i = 0; i < pdfData.length; i++ ) {
+            var questionPosition = textStart + 10;
+            var answerPosition = questionPosition + 10;
+            textStart = answerPosition;
+            pdf.text(i + ". " + pdfData[i].question, 20, questionPosition);
+            pdf.text(pdfData[i].answer, 20, answerPosition);
+            if(textStart > 160) {
+                pdf.addPage();
+                textStart = 0;
+            }
+        }
         pdf.save('FSA Farm Loan Quiz Results.pdf');
+    
+        
     }
     
 </script>

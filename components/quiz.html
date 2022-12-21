@@ -943,7 +943,7 @@ input[type="radio"]:focus {
             "message": "In addition to the quiz, you will need to bring a few other things to your meeting with your local loan officer.",
             "buttons": [ {
                     "buttonText": "DOWNLOAD READINESS CHECKLIST",
-                    "buttonURL": "data",
+                    "buttonURL": "checklist",
                 }
             ],
             "hasFulleReport": false,
@@ -1014,10 +1014,12 @@ input[type="radio"]:focus {
             var buttonContainer = document.createElement("div");
             buttonContainer.classList.add("summary-step-text-button-container");
             for (var j = 0; j < stepinfo[i].buttons.length; j++) {
-                var button = document.createElement('button');
+                var button = null;
+                button = document.createElement('button');
                 button.classList.add("summary-step-text-button");
                 var text = document.createTextNode(stepinfo[i].buttons[j].buttonText);
                 button.appendChild(text);
+
                 if(stepinfo[i].buttons[j].buttonURL.includes("onclick")){
                     var func_name = stepinfo[i].buttons[j].buttonURL.split('=')[1];
                     $(button).off().on('click', eval(func_name).bind(this));
@@ -1026,6 +1028,19 @@ input[type="radio"]:focus {
                         $(this).off('click');
                     });
                 }
+                // else if(stepinfo[i].buttons[j].buttonURL == "checklist") {
+                //     $.getJSON("/forms/loantypes.json", function(data) {
+                //         var categories = [...data['categories']];
+                //         var url = categories.find(x=> x.type == loanInfoCategory).checklist.toString();
+                //         console.log(url)
+
+                //         $(button).off().on('click', openURL.bind(this, url));
+                //         $(button).on('click',function() {
+                //             openURL.bind(this, url);
+                //             $(this).off('click');
+                //         });     
+                //     })
+                // }
                 else {
                     $(button).off().on('click', openURL.bind(this, stepinfo[i].buttons[j].buttonURL));
                     $(button).on('click',function() {
@@ -1774,8 +1789,9 @@ input[type="radio"]:focus {
         setloanType(loanInfoCategory);
         setContent("loanforms");
     }
-    
+
     function openURL(url) {
+        console.log(url)
         window.location = url;
     }
 
@@ -1803,6 +1819,7 @@ input[type="radio"]:focus {
             pdf.save("Loan Quiz Summary.pdf");
         });
     }
+    
     function printPDF() {
         $(report).show();
         html2canvas(report).then((canvas) => {

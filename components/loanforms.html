@@ -238,12 +238,8 @@
                 var formIds = [];
                 $("#forms-holder").empty();
                 $.each(categoryForms['formsRequired'], function(key, formId) {
-
                     var form = data["Forms"].find((x)=> x.id == formId)
-                    
-
                     if(form !== undefined) {
-
                         $("#forms-holder").append(_createCard(form, "Required"));
                         formIds.push(formId);
                     }
@@ -287,7 +283,6 @@
         
         var headline = document.createElement("div");
         headline.classList.add("headline");
-        console.log(form)
         var h3 = document.createElement("h3");
         h3.innerHTML = `<a href="" onclick="loadForm('${form.id}');return false;" "class="text-link" id="${form.id}">${form.name} </a>`
         headline.append(h3);
@@ -311,15 +306,16 @@
         buttonAssistance.classList.add("button-blue"); // style in this file
         var t = document.createTextNode("FILL OUT FORMS");
         buttonAssistance.appendChild(t);   
-        buttonAssistance.onclick = function(){loadForm(form['id'])};  
+        buttonAssistance.onclick = function(){loadForm(form['id'])};
         buttonContainer.append(buttonAssistance);
 
         var buttonDownload = document.createElement("button");
         buttonDownload.classList.add("buttton-holder"); // style in this file
         buttonDownload.classList.add("button-white"); // style in this file
         var t = document.createTextNode("DOWNLOAD");
-        buttonDownload.appendChild(t);  
-        buttonDownload.innerHTMLs = `<a style="text-decoration:none" href="/forms/${form['file_name']}" download></a>`;
+        buttonDownload.appendChild(t);
+        buttonDownload.onclick = function(){downloadFile(`/forms/${form['file_name']}`, form['file_name'])};
+        
         buttonContainer.append(buttonDownload);
         
         contentHolder.append(buttonContainer);
@@ -331,6 +327,20 @@
         setContent('form');
         setFormType(formType);
     }
+
+    function downloadFile(url, fileName) {
+        fetch(url, { method: 'get', mode: 'no-cors', referrerPolicy: 'no-referrer' })
+        .then(res => res.blob())
+        .then(res => {
+        const aElement = document.createElement('a');
+        aElement.setAttribute('download', fileName);
+        const href = URL.createObjectURL(res);
+        aElement.href = href;
+        aElement.setAttribute('target', '_blank');
+        aElement.click();
+        URL.revokeObjectURL(href);
+        });
+    };
 
     // After DOM is loaded
     $(document).ready(function () {

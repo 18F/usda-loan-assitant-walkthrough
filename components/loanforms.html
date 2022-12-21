@@ -1,3 +1,44 @@
+<style>
+    .required {
+        background: #006546;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        align-items: center;
+        text-align: center;
+        color: #FFFFFF;
+    }
+
+    .buttton-container {
+        display: flex;
+        flex-direction: row;
+        column-gap: 2rem;
+    }
+        .buttton-holder {
+            border-radius: 4px;
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            max-width: 100%;
+            padding: 1rem;
+        }
+        .button-blue {
+            background: #1A6AD3;
+            color: #FFFFFF;
+        }
+        .button-white {
+            background-color: #FFFFFF;
+            border: 2px solid #1A6AD3;
+            color: #1A6AD3;
+        }
+
+</style>
+
 <div id="main-content" id="body"> 
     <!-- Tiles Text --> 
     <div class="container">
@@ -15,9 +56,7 @@
                 
                 <div class="primary-region__header">
                     <div id="header-holder"> </div>
-                    <p>
-                        Below are the forms used to apply for for an annual operating farm loan. You may needs to fill many of them to complete your application. Please select a form to start the walk tough process. You may comeplete the form as you go though this process. You may download the each form to your computers at any point to save your progress and resume working on it later. Please note:
-                    </p>
+                    <p id="header-note"></p>
                     <ul>
                         <li>The forms can only be saved to your computer;</li>
                         <li>At no point in this process is any information saved to, or shared with USDA staff or systems; and</li>
@@ -90,13 +129,16 @@
 
         // Show all loan types
         $.getJSON("/forms/loantypes.json", function(data) {
-            // Create a card for each loan type
+            var categories = [...data['categories']];
+            var loanTypes = [...data['loanType']];
+
+            // Create a card for each loan category
             var cards = [];
-            $.each(data['loanType'], function(key, type) {
+            $.each(categories, function(key, type) {
                 // Title of support page
                 var titleText = `<div class="col"> Farm Loan Application Form Support </div>`
                 document.getElementById('title-holder').innerHTML = titleText;
-                
+
                 // Card for each loan type
                 var new_card = `<div class="col">
                                     <div class="loantype-card-container">
@@ -104,10 +146,10 @@
                                             <img class="loantype-card-image-container" src="./images/loantypes/${type["image"]}" alt="${type["imageAltText"]}">
                                         </div>
                                         <div class="loantype-card-title">
-                                            <h3> ${type["name"]} </h3>
+                                            <h3> ${type["type"]} </h3>
                                         </div>
                                         <div class="loantype-card-description">
-                                            <p> ${type["description"]} </p>
+                                            <p> ${type["descriptionShort"]} </p>
                                         </div>
                                         <div class="loantype-card-spacer">
                                             <p></p>
@@ -131,17 +173,36 @@
     }
 
     // Draw Forms for loan type
-    function showFormsList(loanType) {
+    function showFormsList(category) {
         // Save seleted loan type cookie
-        setloanType(loanType);
+        setloanType(category);
+        var message = `Below are the forms used to apply for the ${category}. You may need to fill many of them to complete your application. Please select a form to start the walk tough process. You may comeplete the form as you go though this process. You may download the each form to your computers at any point to save your progress and resume working on it later. Please note:`;
+        
+        $("#header-note").append(message);
 
         $.getJSON("/forms/loantypes.json", function(loantypesdata) {
+            var categories = [...loantypesdata['categories']];
+            var loanTypes = [...loantypesdata['loanType']];
+
             // Show Forms Grid with forms for specific loan type
             $.getJSON("/forms/forms.json", function(data) {
-                // Get the index of the loanType 
-                var index = loantypesdata['loanType'].findIndex(function(item, i){ return item.type === loanType; });
+                // Get the the loan types for this category
+                var categoryLoans = loanTypes.filter(function(item, i){ return item.category === category; });
+                var categoryForms;
+                $.each(categoryLoans, function(key, loan) { 
+                    var formsRequired = loan['formsRequired'].split(", ");
+                    var formsRecommended = loan['formsRecommended'].split(", ");
+                    var formsAdditional = loan['formsAdditional'].split(", ");
+                    
+                    categoryForms = {
+                        formsRequired,
+                        formsRecommended,
+                        formsAdditional
+                    }
+                });
+                
                 // Get the loan name
-                var loanName = loantypesdata['loanType'][index]['name'];
+                var loanName = category;
 
                 // Title of support page
                 var titleText = `<div class="col">
@@ -159,61 +220,98 @@
                 document.getElementById('title-holder').innerHTML = titleText;
                 
                 // Description of support page
-                var descriptioText = `<div class="col"> ${loantypesdata['loanType'][index]['description']} </div>`;
+                var descriptioText = categories.find(x=> x.type === loanName).description;
+
+                descriptioText = `<div class="col"> ${descriptioText} </div>`;
                 document.getElementById('header-holder').innerHTML = descriptioText;
                 
                 // The cards for the individual forms
                 var cards = [];
                 var formIds = [];
-                $.each(data["Forms"], function(key, form) {
-                    // use index to get the list of forms for the loan type
-                    // if not in the loan's form list reeturn without building card
-                    console.log(form)
-
-                    if(!loantypesdata['loanType'][index]['formsRequired'].includes(form['id']) &&
-                    !loantypesdata['loanType'][index]['formsRecommended'].includes(form['id']) &&
-                    !loantypesdata['loanType'][index]['formsAdditional'].includes(form['id'])) { return; }
-
-                    var required;
-                    if(loantypesdata['loanType'][index]['formsRequired'].includes(form['id'])) { 
-                        required = "Required"; }
-
-                    if(loantypesdata['loanType'][index]['formsRecommended'].includes(form['id'])) { 
-                        required = "Recommended"; }
-                    
-                    if(loantypesdata['loanType'][index]['formsAdditional'].includes(form['id'])) { 
-                        required = "Additional"; }
-
-                    var new_card =  `<div class="col">
-                                        <div class="content-card accent-top form-card h-100"">
-                                            <div class="headline">
-                                                <h3> 
-                                                    <a href="" onclick="loadForm('${form.id}');return false;" "class="text-link" id="${form.id}">
-                                                        ${form.name} 
-                                                    </a>
-                                                </h3>
-                                            </div>
-                                            <div class="content">
-                                                <p> ${form["description"]} </p>
-                                                <p> ${required} </p>
-                                            </div>
-                                            <div class="link">
-                                                <a class="text-link" href="" onclick="loadForm('${form.id}');return false;">Get assistance completing this form</a>
-                                                <a class="text-link" href="/forms/${form["file_name"]}" download>Download</a>
-                                            </div>
-                                        </div>
-                                    </div>`;
-                    
-                    cards.push(new_card);
-                    formIds.push(form.id);
+                $("#forms-holder").empty();
+                $.each(categoryForms['formsRequired'], function(key, formId) {
+                    var form = data["Forms"].find(x=> x.id = formId)
+                    if(form !== undefined) {
+                        $("#forms-holder").append(_createCard(form, "Required"));
+                        formIds.push(form);
+                    }
                 });
 
-                $("#forms-holder").empty();
-                $("#forms-holder").append(cards.join(""));
+                $.each(categoryForms['formsRecommended'], function(key, formId) {
+                    var form = data["Forms"].find(x=> x.id = formId)
+                    if(form !== undefined) {
+                        $("#forms-holder").append(_createCard(form, "Recommended"));
+                        formIds.push(form);
+                    }
+                });
 
+                $.each(categoryForms['formsAdditional'], function(key, formId) {
+                    var form = data["Forms"].find(x=> x.id = formId)
+                    if(form !== undefined) {
+                        $("#forms-holder").append(_createCard(form, "Additional"));
+                        formIds.push(form);
+                    }
+                });
+                
                 $('#return-form-suport').html(`<a href="" onclick="showAllLoans();return false;"  class="page-link" data-label="" aria-label="Go to Form Support Page" data-category="Loans">Back to all loan types</a>`);
             });
         });
+    }
+
+    function _createCard(form, required) {
+        var new_card = document.createElement("div");
+        new_card.classList.add("col");
+
+        var contentHolder = document.createElement("div");
+        contentHolder.classList.add("content-card");
+        contentHolder.classList.add("accent-top");
+        contentHolder.classList.add("form-card");
+        contentHolder.classList.add("h-100");
+
+        var requirementType = document.createElement("div");
+        requirementType.classList.add("required"); // style in this file
+        requirementType.textContent = required
+        new_card.append(requirementType);
+        
+        var headline = document.createElement("div");
+        headline.classList.add("headline");
+        
+        var h3 = document.createElement("h3");
+        h3.innerHTML = `<a href="" onclick="loadForm('${form.id}');return false;" "class="text-link" id="${form.id}">${form.name} </a>`
+        headline.append(h3);
+
+        contentHolder.append(headline);        
+        new_card.append(contentHolder);        
+
+        var description = document.createElement("div");
+        description.classList.add("content");
+        contentHolder.append(description);
+
+        var descriptionText = document.createElement("p");
+        descriptionText.textContent = form["description"];
+        description.append(descriptionText);
+
+        var buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("buttton-container"); // style in this file
+
+        var buttonAssistance = document.createElement("button");
+        buttonAssistance.classList.add("buttton-holder"); // style in this file
+        buttonAssistance.classList.add("button-blue"); // style in this file
+        var t = document.createTextNode("FILL OUT FORMS");
+        buttonAssistance.appendChild(t);   
+        buttonAssistance.onclick = function(){loadForm(form['id'])};  
+        buttonContainer.append(buttonAssistance);
+
+        var buttonDownload = document.createElement("button");
+        buttonDownload.classList.add("buttton-holder"); // style in this file
+        buttonDownload.classList.add("button-white"); // style in this file
+        var t = document.createTextNode("DOWNLOAD");
+        buttonDownload.appendChild(t);  
+        buttonDownload.innerHTMLs = `<a style="text-decoration:none" href="/forms/${form['file_name']}" download></a>`;
+        buttonContainer.append(buttonDownload);
+        
+        contentHolder.append(buttonContainer);
+        return new_card;
     }
 
     // Load specific form

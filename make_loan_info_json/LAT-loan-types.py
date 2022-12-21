@@ -41,9 +41,12 @@ for row in range(2, step_sheet.max_row + 1):
     try:
         categories = {
             "type": step_sheet[f"A{row}"].value,
-            "description": step_sheet[f"B{row}"].value,
-            "note": step_sheet[f"C{row}"].value,
-            "hasMicroloan": step_sheet[f"D{row}"].value
+            "description": step_sheet[f"B{row}"].value or "",
+            "note": step_sheet[f"C{row}"].value or "",
+            "hasMicroloan": step_sheet[f"D{row}"].value or "",
+            "descriptionShort": step_sheet[f"E{row}"].value or "",
+            "image": step_sheet[f"F{row}"].value,
+            "imageAltText": step_sheet[f"G{row}"].value																							
         }
     except (AttributeError, TypeError) as e:
             print(e)
@@ -55,10 +58,10 @@ step_sheet = wb["loanType"]
 for row in range(2, step_sheet.max_row + 1):
     # if row > 8: break
     if not step_sheet[f"B{row}"].value: continue
-    try:
+    try:											
         loanType = {
-            "loanID": step_sheet[f"A{row}"].value  or "",
-            "type": step_sheet[f"B{row}"].value  or "",
+            "loanID": step_sheet[f"A{row}"].value or "",
+            "type": step_sheet[f"B{row}"].value or "",
             "category": step_sheet[f"C{row}"].value or "",
             "formsRequired": step_sheet[f"D{row}"].value  or "",
             "formsRecommended": step_sheet[f"E{row}"].value  or "",
@@ -67,20 +70,21 @@ for row in range(2, step_sheet.max_row + 1):
             "description": step_sheet[f"H{row}"].value  or "",
             "descriptionLong": step_sheet[f"I{row}"].value  or "",
             "descriptionLongNote": step_sheet[f"J{row}"].value  or "",
-            "image": step_sheet[f"K{row}"].value  or "",
-            "imageAltText": step_sheet[f"L{row}"].value  or "",
-            "maximumDollarAmount": step_sheet[f"M{row}"].value  or "",
-            "maximumDollarAmountDescription": step_sheet[f"N{row}"].value  or "",
-            "maximumDollarAmountNote": step_sheet[f"O{row}"].value or "",
-            "interestRate": step_sheet[f"P{row}"].value  or "",
-            "interestRateDescription": step_sheet[f"Q{row}"].value or "",
-            "interestRateURL": step_sheet[f"R{row}"].value or "",
-            "loanTerm": step_sheet[f"S{row}"].value,
-            "loanTermNote": step_sheet[f"T{row}"].value  or "",
-            "loanTermDescription": step_sheet[f"U{row}"].value or "",
-            "downPayment": step_sheet[f"V{row}"].value,
-            "downPaymentDescription": step_sheet[f"W{row}"].value or "",
-            "otherRequirements": step_sheet[f"X{row}"].value  or "",
+            "summaryDescription": step_sheet[f"K{row}"].value  or "",
+            "image": step_sheet[f"L{row}"].value  or "",
+            "imageAltText": step_sheet[f"M{row}"].value  or "",
+            "maximumDollarAmount": step_sheet[f"N{row}"].value  or "",
+            "maximumDollarAmountDescription": step_sheet[f"O{row}"].value  or "",
+            "maximumDollarAmountNote": step_sheet[f"P{row}"].value or "",
+            "interestRate": step_sheet[f"Q{row}"].value  or "",
+            "interestRateDescription": step_sheet[f"R{row}"].value or "",
+            "interestRateURL": step_sheet[f"S{row}"].value or "",
+            "loanTerm": step_sheet[f"T{row}"].value,
+            "loanTermNote": step_sheet[f"U{row}"].value  or "",
+            "loanTermDescription": step_sheet[f"V{row}"].value or "",
+            "downPayment": step_sheet[f"W{row}"].value,
+            "downPaymentDescription": step_sheet[f"X{row}"].value or "",
+            "otherRequirements": step_sheet[f"Y{row}"].value  or "",
         }
     except (AttributeError, TypeError) as e:
             print(e)
@@ -96,7 +100,7 @@ wb.close()
 
 json_data = json.dumps(data, sort_keys=True, indent=4)
 # print(json_data)
-filename = "LAT-loan-types.json."
+filename = "../forms/loantypes.json."
 print(f"Saving output to {filename}")
 with open(filename, "w") as output:
     output.write(json_data)

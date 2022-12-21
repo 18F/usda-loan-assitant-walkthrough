@@ -717,6 +717,8 @@ input[type="radio"]:focus {
     function _createSugestedLoanCards(category, loansInCategory, loanInfo, index, loan, recomended) {
         // Image
         var image = document.createElement("img");
+        console.log(loanInfo)
+
         image.src = './images/loantypes/'+loanInfo.image;
         loan.append(image);
 
@@ -754,10 +756,12 @@ input[type="radio"]:focus {
             item.innerHTML = loansInCategory[i].loanTermDescription;
             list.appendChild(item);
 
-            // Loan term description
-            item = document.createElement("li");
-            item.innerHTML = loansInCategory[i].otherRequirements;
-            list.appendChild(item);
+            // other requirements description
+            if(loansInCategory[i].otherRequirements !== "N/A") {
+                item = document.createElement("li");
+                item.innerHTML = loansInCategory[i].otherRequirements;
+                list.appendChild(item);
+            }
 
             loanCard.append(list);
 
@@ -1598,7 +1602,6 @@ input[type="radio"]:focus {
             var questionPosition = textStart + 8;
             var answerPosition = questionPosition + question.length*5;
             textStart = answerPosition;
-            console.log(textStart)
             pdf.text(10, questionPosition, question);
             pdf.setFontSize(8).setFontStyle("normal");
             pdf.text(15, answerPosition, pdfData[i].answer);

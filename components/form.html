@@ -59,61 +59,64 @@
             $.getJSON("/forms/forms.json", function (data) {
                 var index = data['Forms'].findIndex(function(item, i){ return item.id === getFormType(); });
                 form_data = data["Forms"][index];
+                if(form_data !== undefined) {  
+                    showPDF(form_data.file_name);
+                    $('#form-name').html(form_data.name)
+                    $('#form-description').html(form_data.description)
+                    $('#form-footer').html(`Click here to <a href="/forms/${form_data.file_name}" download>download the form</a> to fill it with <a href="https://get.adobe.com/reader/" target=_BLANK>Adobe Acrobat Reader</a>`);
 
-                showPDF(form_data.file_name);
-                $('#form-name').html(form_data.name)
-                $('#form-description').html(form_data.description)
-                $('#form-footer').html(`Click here to <a href="/forms/${form_data.file_name}" download>download the form</a> to fill it with <a href="https://get.adobe.com/reader/" target=_BLANK>Adobe Acrobat Reader</a>`);
+                    var loanType = getCookie('currentLoanType');
+                    // Get the index of the loanType 
+                    var index = loantypesdata['loanType'].findIndex(function(item, i){ return item.name === loanType; });
+                    console.log(loantypesdata['loanType'])
+                    console.log(loanType)
 
-                var loanType = getCookie('currentLoanType');
-                // Get the index of the loanType 
-                var index = loantypesdata['loanType'].findIndex(function(item, i){ return item.type === loanType; });
+                    // Get the loan name
+                    var loanName = loantypesdata['loanType'][index]['name'];
+                    
+                    $('#return-form-suport').html(`<a href="/" id="loanforms" onclick="setContent('loanforms');return false;"> Return to ${loanName} Form Support page </a>`);
 
-                // Get the loan name
-                var loanName = loantypesdata['loanType'][index]['name'];
-                
-                $('#return-form-suport').html(`<a href="/" id="loanforms" onclick="setContent('loanforms');return false;"> Return to ${loanName} Form Support page </a>`);
-
-                $.each(form_data.parts, function (part_index, part) {
-                    // console.log(part_index, part)
-                    new_part = `<div class="accordion-item">
-                                    <h2 class="accordion-header" id="part-header-wrapper-${part_index}">
-                                        <button id="part-header-content-${part_index}" class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#part-content-wrapper-${part_index}" aria-expanded="false" aria-controls="part-content-wrapper-${part_index}" data-parent="#form_walkthrough">
-                                        ${part.name}
-                                        </button>
-                                    </h2>
-                                    <div id="part-content-wrapper-${part_index}" class="collapse" aria-labelledby="part-header-content-${part_index}" data-parent="#form_walkthrough">
-                                        <div class="accordion-body" id="part-content-${part_index}">
-                                        <h3>${part.title}</h3>
-                                        <div class = "subheading">${part.description}</div>
-                                        <div class="accordion accordion-flush" id="part-inner-accordion-${part_index}"></div>
-                                        </div>
-                                    </div>
-                                </div>`;
-
-                    $('#form_walkthrough').append(new_part);
-
-                    $.each(part.items, function (item_index, item) {
-                        new_item = `<div class="accordion-item">
-                                        <h2 class="accordion-header" id="part-${part_index}-header-wrapper-${item_index}">
-                                        <button class="inner-accordion-button inner-${item.id} index-${item_index} collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-id="${item.id}" data-bs-name="${item.name}" data-bs-target="#part-${part_index}-content-wrapper-${item_index}" aria-expanded="false" aria-controls="part-${part_index}-content-wrapper-${item_index}" data-parent="#part-inner-accordion-${part_index}" pid="${item.pid}" partid="part-header-content-${part_index}">
-                                            <a href="#${item.id}" style="color:#212121;text-decoration:none;" class="inner-link"> ${item.id} - ${item.name}</a>
-                                        </button>
+                    $.each(form_data.parts, function (part_index, part) {
+                        // console.log(part_index, part)
+                        new_part = `<div class="accordion-item">
+                                        <h2 class="accordion-header" id="part-header-wrapper-${part_index}">
+                                            <button id="part-header-content-${part_index}" class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#part-content-wrapper-${part_index}" aria-expanded="false" aria-controls="part-content-wrapper-${part_index}" data-parent="#form_walkthrough">
+                                            ${part.name}
+                                            </button>
                                         </h2>
-                                        <div id="part-${part_index}-content-wrapper-${item_index}" class="accordion-collapse collapse" aria-labelledby="part-${part_index}-header-wrapper-${item_index}" data-bs-parent="#part-inner-accordion-${part_index}">
-                                        <div class="inner-accordion-body">${item.comment}</div>
+                                        <div id="part-content-wrapper-${part_index}" class="collapse" aria-labelledby="part-header-content-${part_index}" data-parent="#form_walkthrough">
+                                            <div class="accordion-body" id="part-content-${part_index}">
+                                            <h3>${part.title}</h3>
+                                            <div class = "subheading">${part.description}</div>
+                                            <div class="accordion accordion-flush" id="part-inner-accordion-${part_index}"></div>
+                                            </div>
                                         </div>
                                     </div>`;
-                        $(`#part-inner-accordion-${part_index}`).append(new_item);
+
+                        $('#form_walkthrough').append(new_part);
+
+                        $.each(part.items, function (item_index, item) {
+                            new_item = `<div class="accordion-item">
+                                            <h2 class="accordion-header" id="part-${part_index}-header-wrapper-${item_index}">
+                                            <button class="inner-accordion-button inner-${item.id} index-${item_index} collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-id="${item.id}" data-bs-name="${item.name}" data-bs-target="#part-${part_index}-content-wrapper-${item_index}" aria-expanded="false" aria-controls="part-${part_index}-content-wrapper-${item_index}" data-parent="#part-inner-accordion-${part_index}" pid="${item.pid}" partid="part-header-content-${part_index}">
+                                                <a href="#${item.id}" style="color:#212121;text-decoration:none;" class="inner-link"> ${item.id} - ${item.name}</a>
+                                            </button>
+                                            </h2>
+                                            <div id="part-${part_index}-content-wrapper-${item_index}" class="accordion-collapse collapse" aria-labelledby="part-${part_index}-header-wrapper-${item_index}" data-bs-parent="#part-inner-accordion-${part_index}">
+                                            <div class="inner-accordion-body">${item.comment}</div>
+                                            </div>
+                                        </div>`;
+                            $(`#part-inner-accordion-${part_index}`).append(new_item);
+                        });
+
                     });
 
-                });
-
-                $(".inner-accordion-button").click(function (e) {
-                    var pid=$(this).attr("pid");
-                    if(pid!="")
-                        $("iframe").contents().find("#"+pid).focus();
-                })
+                    $(".inner-accordion-button").click(function (e) {
+                        var pid=$(this).attr("pid");
+                        if(pid!="")
+                            $("iframe").contents().find("#"+pid).focus();
+                    })
+                }
             });
         });
 

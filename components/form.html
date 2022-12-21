@@ -68,7 +68,7 @@
                     var loanType = getCookie('currentLoanType');
                     // Get the index of the loanType 
                     var index = loantypesdata['loanType'].findIndex(function(item, i){ return item.category === loanType; });
-                    console.log(index)
+                    if(index == -1 ) {return; }
 
                     // Get the loan name
                     var loanName = loantypesdata['loanType'][index]['name'];

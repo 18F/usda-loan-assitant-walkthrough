@@ -46,7 +46,8 @@ for row in range(2, step_sheet.max_row + 1):
             "hasMicroloan": step_sheet[f"D{row}"].value or "",
             "descriptionShort": step_sheet[f"E{row}"].value or "",
             "image": step_sheet[f"F{row}"].value,
-            "imageAltText": step_sheet[f"G{row}"].value																							
+            "imageAltText": step_sheet[f"G{row}"].value,
+            "checklist": step_sheet[f"H{row}"].value  or ""
         }
     except (AttributeError, TypeError) as e:
             print(e)
@@ -84,7 +85,7 @@ for row in range(2, step_sheet.max_row + 1):
             "loanTermDescription": step_sheet[f"V{row}"].value or "",
             "downPayment": step_sheet[f"W{row}"].value,
             "downPaymentDescription": step_sheet[f"X{row}"].value or "",
-            "otherRequirements": step_sheet[f"Y{row}"].value  or "",
+            "otherRequirements": step_sheet[f"Y{row}"].value  or ""
         }
     except (AttributeError, TypeError) as e:
             print(e)

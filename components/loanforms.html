@@ -208,7 +208,7 @@
                         formsAdditional
                     }
                 });
-                
+
                 // Get the loan name
                 var loanName = category;
 
@@ -232,16 +232,20 @@
 
                 descriptioText = `<div class="col"> ${descriptioText} </div>`;
                 document.getElementById('header-holder').innerHTML = descriptioText;
-                
+
                 // The cards for the individual forms
                 var cards = [];
                 var formIds = [];
                 $("#forms-holder").empty();
                 $.each(categoryForms['formsRequired'], function(key, formId) {
-                    var form = data["Forms"].find(x=> x.id = formId)
+
+                    var form = data["Forms"].find((x)=> x.id == formId)
+                    
+
                     if(form !== undefined) {
+
                         $("#forms-holder").append(_createCard(form, "Required"));
-                        formIds.push(form);
+                        formIds.push(formId);
                     }
                 });
 
@@ -283,7 +287,7 @@
         
         var headline = document.createElement("div");
         headline.classList.add("headline");
-        
+        console.log(form)
         var h3 = document.createElement("h3");
         h3.innerHTML = `<a href="" onclick="loadForm('${form.id}');return false;" "class="text-link" id="${form.id}">${form.name} </a>`
         headline.append(h3);

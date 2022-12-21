@@ -443,16 +443,16 @@
 
                 var loanType = getCookie('currentLoanType');
                 // Get the index of the loanType 
-                var index = data['LoanType'].findIndex(function(item, i){ return item.type === loanType; });
+                // console.log(data['LoanType']);
+                var loanName = data['LoanType'].findIndex(function(item, i){ return item.type === loanType; });
 
                 // Get the loan name
-                var loanName = data['LoanType'][index]['name'];
+                //var loanName = data['LoanType'][index]['name'];
                 
                 $('#return-form-suport').html(`<a href="/walkthrough.html?loan_type=${loanType}"> Return to ${loanName} Form Support page </a>`);
 
 
                 $.each(form_data.parts, function (part_index, part) {
-                    // console.log(part_index, part)
                     new_part = `<div class="accordion-item">
                                     <h2 class="accordion-header" id="part-header-wrapper-${part_index}">
                                       <button id="part-header-content-${part_index}" class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#part-content-wrapper-${part_index}" aria-expanded="false" aria-controls="part-content-wrapper-${part_index}" data-parent="#form_walkthrough">

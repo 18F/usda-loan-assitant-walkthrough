@@ -1,4 +1,8 @@
 <style>
+    .container-spacer-bottom {
+        height:10rem;
+    }
+
     .required {
         background: #006546;
         font-family: 'Public Sans';
@@ -103,10 +107,15 @@
         </div>
     </div>
 
+    <div class="container">
+        <div class="divider-line"></div>
+    </div>
+
     <!-- Holds contents based on conditions -->
     <div class="container">
         <div class="row row-cols-1 row-cols-md-3 g-4" id="forms-holder"></div>
     </div>
+    <div class="container-spacer-bottom"></div>
 </div>
 
 <script>
@@ -126,7 +135,6 @@
     // Draws cards for all loan types
     function showAllLoans() {
         setloanType("all");
-
         // Show all loan types
         $.getJSON("/forms/loantypes.json", function(data) {
             var categories = [...data['categories']];
@@ -143,7 +151,7 @@
                 var new_card = `<div class="col">
                                     <div class="loantype-card-container">
                                         <div class="loantype-card-image-container">
-                                            <img class="loantype-card-image-container" src="./images/loantypes/${type["image"]}" alt="${type["imageAltText"]}">
+                                            <img class="loantype-card-image" src="./images/loantypes/${type["image"]}" alt="${type["imageAltText"]}">
                                         </div>
                                         <div class="loantype-card-title">
                                             <h3> ${type["type"]} </h3>
@@ -172,7 +180,7 @@
         });
     }
 
-    // Draw Forms for loan type
+    // Draw Forms for loan Category type
     function showFormsList(category) {
         // Save seleted loan type cookie
         setloanType(category);

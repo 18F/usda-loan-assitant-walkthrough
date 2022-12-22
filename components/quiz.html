@@ -795,9 +795,9 @@ input[type="radio"]:focus {
         // add the loan details
         var loanInfo = loanTypes.find(x => x.loanID == questionHistory[0].answer[i]);
 
-        questionHistory[0].answer.sort(function(a, b) {return b - a;} );
-        for ( var i = 0; i < questionHistory[0].answer.length; i++ ) {
-            var loanInfo = loanTypes.find(x => x.loanID == questionHistory[0].answer[i]);
+        questionHistory[1].answer.sort(function(a, b) {return b - a;} );
+        for ( var i = 0; i < questionHistory[1].answer.length; i++ ) {
+            var loanInfo = loanTypes.find(x => x.loanID == questionHistory[1].answer[i]);
             var category = categories.find(x => x.type == loanInfo.category);
             var loansInCategory = loanTypes.filter(x => x.category == category.type);
             recomended.append(_createSugestedLoanCards(category, loansInCategory, loanInfo, i, loan, recomended));

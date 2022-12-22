@@ -2,6 +2,7 @@ import json
 import shutil
 import os
 from time import sleep
+from collections import defaultdict
 #from pprint import pprint
 from datetime import datetime
 from pathlib import Path
@@ -105,6 +106,9 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
     directory of this repo "usda-loan-assitant-walkthrough" and runn the command
     `http-server` which will then make the following URL valid:"""
 
+    def Parse_CSS_Style( css_text : str ):
+        return dict( _.strip().split( ': ' ) for _ in css_text.split( ';' ) if _ )
+
     url = "http://127.0.0.1:8080/js/pdfjs/web/viewer.html?file=/forms/"+file_name
     # Relevant HTML tag attribute names
 
@@ -116,7 +120,7 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
     # This isn't working right now:
     #driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    sleep_time = 30 # seconds
+    sleep_time = 10 # seconds
     print( "*"*80)
     print( "*"*80 )
     print( f"SLEEPING FOR {sleep_time} seconds, please scroll through open Selenium window TO EACH PAGE to ensure all the elements have been rendered, THEN scroll back to the top." )
@@ -135,8 +139,10 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
     descrip_to_pid_dict = {}
 
     if debug:
-        from collections import defaultdict
-        data = defaultdict( list )
+        # PIDs aggregated across all PDF pages:
+        all_pid_data = defaultdict( list )
+        # Contains uncombined text label parts across all pages and multiple spans:
+        raw_text_data = defaultdict( list )
 
     # Step 1: grab all div's with class=page
     all_pdf_pages = driver.find_elements( By.CSS_SELECTOR, '.page' )
@@ -144,9 +150,15 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
     if verbose:
         # At the form level
         # indent level = 2
-        print( f'  In file "{file_name}" found {len( all_pdf_pages )} pages:' )
+        print( f'  In file "{file_name}" found {len( all_pdf_pages )} pages' )
 
-    for page_element in all_pdf_pages:
+    # Iterate over all pages
+    for page_index, page_element in enumerate( all_pdf_pages ):
+
+        if verbose:
+            # At the page level
+            # indent level = 4
+            print( f'    Processing PDF page {page_index +1}' )
 
         page_number = page_element.get_attribute('data-page-number')
         # Page style contains the basic dimensions in pixels for width and height
@@ -154,13 +166,98 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
         page_label = page_element.get_attribute('aria-label') or page_element.get_attribute('data-name')
         page_loaded = page_element.get_attribute('data-loaded')
 
-        # Step 2: Now find all input and text areas wiithin the given page:
+        if not page_loaded:
+            raise ValueError( f"Apparently, pdfJS did not load page {page_number}, did you get a chance to scroll to it in the Selenium browser window?" )
+
+        # Step 2: Get the text box annotations and their coordinates within the page
+        # Get the div element with class='textLayer'
+        text_layer_div = page_element.find_elements( By.CSS_SELECTOR, '.textLayer' )
+        if verbose:
+            print( f'    On page {page_number} found {len( text_layer_div )} <div class="textLayer">' )
+        if len( text_layer_div ) == 0:
+            print( f'Skipping page {page_number} due to lack of "textLayer" elements' )
+            continue
+
+        assert len( text_layer_div ) == 1
+
+        text_layer_div = text_layer_div[0]
+
+        # text is grouped by pdfJS as span-with-spans
+        # This happens when text has different font, italicized,
+        # or apperas across multiple lines. The text needs to be combined.
+        # This one houses the combined, curated text data
+        text_data_this_page = defaultdict( list )
+
+        markedContent_elements = text_layer_div.find_elements( By.XPATH, "span[@class='markedContent']" )
+        if verbose:
+            # At the page level
+            # indent level = 4
+            print( f'    On page {page_number} found {len( markedContent_elements )} <span class="markedContent">' )
+
+        if len( markedContent_elements ) == 0:
+            print( f'Skipping page {page_number} due to lack of "markedContent" elements' )
+            continue
+
+        for outer_span_element in markedContent_elements:
+
+            span_id = outer_span_element.get_attribute( 'id' )
+
+            presentation_elements = outer_span_element.find_elements( By.XPATH, "span[@role='presentation']" )
+            if len( presentation_elements ) == 0:
+                continue
+
+            #elem_rect = { k : int( round( v ) ) for k,v in outer_span_element.rect.items() }
+
+            if verbose:
+                #print( f'      On page {page_number} in span "{span_id}" within bounding rect={elem_rect} found {len( presentation_elements )} text spans' )
+                print( f'      On page {page_number} in span "{span_id}" found {len( presentation_elements )} text spans:' )
+
+            texts = [ _.text.strip() for _ in presentation_elements ]
+            text_lengths = [ len( _ ) for _ in texts ]
+            total_text_length = sum( text_lengths )
+            style_dicts = [ Parse_CSS_Style( _.get_attribute( 'style' ) ) for _ in presentation_elements ]
+            xs = [ float( _['left'].replace( 'px', '' ) ) for _ in style_dicts ]
+            ys = [ float( _['top'].replace( 'px', '' ) ) for _ in style_dicts ]
+
+            # Compute weighted sum centroid based on the amount of text in the span
+            centroid_x = int( round( sum( [ x * w for x, w in zip( xs, text_lengths ) ] ) / total_text_length ) )
+            centroid_y = int( round( sum( [ y * w for y, w in zip( ys, text_lengths ) ] ) / total_text_length ) )
+            combined_text = " ".join( texts )
+
+            if verbose:
+                print( f'        centroid=<x={centroid_x},y={centroid_y}>, combined text="{combined_text}"' )
+
+            if debug:
+                raw_text_data['page'].extend( [ page_number for i in range( len( texts ) ) ] )
+                raw_text_data['span_id'].extend( [ span_id for i in range( len( texts ) ) ] )
+                raw_text_data['centroid_x'].extend( [ centroid_x for i in range( len( texts ) ) ] )
+                raw_text_data['centroid_y'].extend( [ centroid_y for i in range( len( texts ) ) ] )
+                raw_text_data['x'].extend( xs )
+                raw_text_data['y'].extend( ys )
+                raw_text_data['text'].extend( texts )
+
+            text_data_this_page['span_id'].append( span_id )
+            text_data_this_page['x'].append( centroid_x )
+            text_data_this_page['y'].append( centroid_y )
+            text_data_this_page['text'].append( combined_text )
+
+        text_data_this_page = pd.DataFrame( text_data_this_page )
+
+        if len( text_data_this_page ) == 0:
+            print( "    No text labels found on page {page_number}" )
+            continue
+
+        # Convert location to complex number to facilitate vectorized distance calculation
+        # https://towardsdatascience.com/efficient-euclidean-distance-computation-in-pandas-66b472f6b0ba
+        text_data_this_page['xy'] = text_data_this_page['x'] + text_data_this_page['y'] * 1j
+
+        # Step 3: Now find all input and text areas wiithin the given page:
         inputs_on_this_page = page_element.find_elements( By.CSS_SELECTOR, 'input, textarea' )
 
         if verbose:
             # At the page level
             # indent level = 4
-            print( f'    On page {page_number} found {len( inputs_on_this_page )} elements:' )
+            print( f'    On page {page_number} found {len( inputs_on_this_page )} <input> and/or <textarea> elements' )
 
         for input_element in inputs_on_this_page:
 
@@ -174,7 +271,50 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
 
             elem_name = input_element.get_attribute( 'name' )
             elem_type = input_element.get_attribute( 'type' )
-            elem_rect =  { k : int( round( v ) ) for k,v in input_element.rect.items() }
+            elem_rect = { k : int( round( v ) ) for k,v in input_element.rect.items() }
+
+            # Distance calculation option 1 of 3: Use Selenium-provided bounding box
+            # Requires user to scroll back to the top and use modulus division
+            # subtract the height of previous pages
+            #x = elem_rect['x']
+            #y = elem_rect['y'] * 1j
+            # not implemented!
+
+            parent_section_element = input_element.find_elements( By.XPATH, ".." )
+            assert len( parent_section_element ) == 1
+            parent_section_element = parent_section_element[0]
+            assert parent_section_element.get_attribute( 'data-annotation-id' ) == pid
+
+            parent_style = parent_section_element.get_attribute( 'style' )
+            style_dict = Parse_CSS_Style( parent_style )
+
+            # Distance calculation option 2 of 3: grab top and left location from
+            # parent element's style attribute:
+            x = float( style_dict['left'].replace( 'px', '' ) )
+            y = float( style_dict['top'].replace( 'px', '' ) )
+            topleft_coords = x + y * 1j
+            topleft_distances = (text_data_this_page['xy'] - topleft_coords).abs()
+            wanted_index = topleft_distances.idxmin()
+            topleft_text_to_match = text_data_this_page.loc[ wanted_index, 'text' ]
+
+            # Distance calculation option 3 of 3: additionally grab width
+            # and height from parent style element and use it to find centroid of field
+            #w = float( style_dict['width'].replace( 'px', '' ) )
+            #h = float( style_dict['height'].replace( 'px', '' ) ) * 1j
+            #centroid_coords = topleft_coords + w + h
+            #centroid_distances = (text_data_this_page['xy'] - centroid_coords).abs()
+            #wanted_index = centroid_distances.idxmin()
+            #centroid_text_to_match = text_data_this_page.loc[ wanted_index, 'text' ]
+            x_matched = text_data_this_page.loc[ wanted_index, 'x' ]
+            y_matched = text_data_this_page.loc[ wanted_index, 'y' ]
+            matched_span_id = text_data_this_page.loc[ wanted_index, 'span_id' ]
+
+            #assert centroid_text_to_match == topleft_text_to_match, \
+            #        f'centroid method ("{centroid_text_to_match}") != topleft method ("{topleft_text_to_match}")'
+
+            if verbose:
+                print( f'      Annotation top-left coord <x={x},y={y}> text: "{raw_description_text}"' )
+                print( f'        Matched to coord <x={x_matched},y={y_matched}> span id="{matched_span_id}" text="{topleft_text_to_match}"' )
 
             stripped_description_text = \
                 " ".join( [ _ for _ in word_tokenize( raw_description_text ) if _ not in stopwords ] )
@@ -185,24 +325,28 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
                 "data-name" : data_name_text,
                 "aria-label" : aria_label_text,
                 "raw_description_text" : raw_description_text,
-                "rect" : elem_rect,
-                "name" : elem_name
+                "selenium_rect" : elem_rect,
+                "top" : y,
+                "left" : x,
+                "name" : elem_name,
+                "distance_method_matched_text" : topleft_text_to_match
             }
             if debug:
-                data['page_number'].append( page_number )
-                data['page_style'].append( page_style )
-                data['page_label'].append( page_label )
-                data['page_loaded'].append( page_loaded )
-                data['id'].append( pid )
-                data['name'].append( elem_name )
-                data['type'].append( elem_type )
-                data['raw_desc_text'].append( raw_description_text )
-                data['stripped_desc_text'].append( stripped_description_text )
-                data['rect'].append( elem_rect )
+                all_pid_data['page_number'].append( page_number )
+                all_pid_data['page_style'].append( page_style )
+                all_pid_data['page_label'].append( page_label )
+                all_pid_data['page_loaded'].append( page_loaded )
+                all_pid_data['id'].append( pid )
+                all_pid_data['name'].append( elem_name )
+                all_pid_data['type'].append( elem_type )
+                all_pid_data['raw_desc_text'].append( raw_description_text )
+                all_pid_data['stripped_desc_text'].append( stripped_description_text )
+                all_pid_data['rect'].append( elem_rect )
+                all_pid_data['distance_method_text'].append( topleft_text_to_match )
 
     if debug:
         output_debug_data_filepath = str( Path( file_name ).stem ) + "_scraped_input_elems.xlsx"
-        df = pd.DataFrame( data )
+        df = pd.DataFrame( all_pid_data )
         if len( df ) > 0:
             new_col_names = [ 'height', 'width', 'x', 'y' ]
             df[ new_col_names ] = pd.json_normalize( df['rect'] )
@@ -210,6 +354,11 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
             df[ 'page_width' ] = df['page_style'].str.extract( r'width: (\d+)px;')
             df[ 'page_height' ] = df['page_style'].str.extract( r'height: (\d+)px;')
             df = df.drop( columns=['page_style'] )
+            df.to_excel( output_debug_data_filepath )
+
+        output_debug_data_filepath = str( Path( file_name ).stem ) + "_scraped_text_annotation_locations.xlsx"
+        df = pd.DataFrame( raw_text_data )
+        if len( df ) > 0:
             df.to_excel( output_debug_data_filepath )
 
     return descrip_to_pid_dict
@@ -449,7 +598,7 @@ def Process_Forms_Spreadsheet(
                         new_pid = form_inputs[ match ][ 'id' ]
                         # Write it back into the sheet
                         items_sheet_df.loc[ index, "Input ID" ] = new_pid
-                        print( " " * 8, "match in PDF has rect =", form_inputs[ match ]['rect'] )
+                        print( " " * 8, f'match in PDF has left={form_inputs[ match ]["left"]} top={form_inputs[ match ]["top"]}' )
                 else:
                     new_pid = preexisting_pid
 

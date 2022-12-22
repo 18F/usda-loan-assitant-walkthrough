@@ -1502,24 +1502,18 @@ input[type="radio"]:focus {
     }
 
     function checkConditionals() {
-        console.log(answers)
-        console.log(conditionals)
         if(conditionals.length !==0) {
             for ( var i = 0; i < conditionals.length; i++ ) { 
                 var hasValue1 = answers.some( x => x.value == parseInt(conditionals[i]['value1']));
                 var hasValue2 = answers.some( x => x.value == parseInt(conditionals[i]['value2']));
-
+                console.log(nextQuestionId);
                 if(hasValue1 && hasValue2) {
                     nextQuestionId = parseInt(conditionals[i]['nextQuestionId']);
+                    console.log(nextQuestionId);
+                    return;
                 }
             }
-            var index = answers.findIndex(x => isNaN(x.nextQuestionId));
-
-            if (index >= 0) {
-                nextQuestionId = parseInt(answers[index]['nextQuestionId']);
-            }
         }
-        console.log(nextQuestionId)
     }
     
     ////////////////////////////

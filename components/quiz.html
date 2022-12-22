@@ -800,6 +800,9 @@ input[type="radio"]:focus {
             var loanInfo = loanTypes.find(x => x.loanID == questionHistory[1].answer[i]);
             var category = categories.find(x => x.type == loanInfo.category);
             var loansInCategory = loanTypes.filter(x => x.category == category.type);
+            if(questionHistory[2].answer[0] == 1 || questionHistory[3].answer[0] == 1) {
+                console.log("questionHistory[2].answer[0]")
+            }
             recomended.append(_createSugestedLoanCards(category, loansInCategory, loanInfo, i, loan, recomended));
         }
         return loans;
@@ -1103,7 +1106,7 @@ input[type="radio"]:focus {
             result.append(info);
 
             // Add Question Text
-            var answerInfo = questions.find(x => x.questionId === questionHistory[i].question)
+            var answerInfo = questions.find(x => x.questionId == questionHistory[i].question)
             var questionText = answerInfo['content'].title;
             var infoTitle = document.createElement("div");
             infoTitle.classList.add("full-report-result-info-title");
@@ -1114,15 +1117,15 @@ input[type="radio"]:focus {
             var answerText;
             var answerTexts = [...questionHistory[i].answer];
             for ( var j = 0; j < answerTexts.length; j++ ) {
-                var answer = answerInfo.options.find(x => x.value === answerTexts[j]).title;
-                answer = answer;
+                var answer = answerInfo.options.find(x => x.value == answerTexts[j]).title;
                 var infoMessage = document.createElement("div");
                 infoMessage.classList.add("full-report-result-info-message");
                 infoMessage.append(_createParagraphElement(answer));
                 info.append(infoMessage);
                 
-                var flagMessage = questions.find(x=> x.questionId === questionHistory[i].question);
-                if(flagMessage.notificationType !== '') {
+                var flagMessage = questions.find(x=> x.questionId == questionHistory[i].question);
+
+                if(questionHistory[i].answer == 0) {
                     var flag = document.createElement("div");
                     flag.classList.add("full-report-result-info-flag");
                     flag.append(_createFlag(flagMessage)); 

@@ -443,6 +443,7 @@ input[type="radio"]:focus {
     
     /* Full Report */
     .result-container {
+        max-width: 720px;
         padding: 3rem;
     }
         .result-image-container {
@@ -538,7 +539,7 @@ input[type="radio"]:focus {
     report.classList.add("result-container");
     report.setAttribute("id","report-container");
     $('#main-content').append(report);
-    //$(report).hide();
+    $(report).hide();
 
     (function() {
         currentQuestion = 0;
@@ -868,7 +869,6 @@ input[type="radio"]:focus {
             loanCardHolder.append(loanCard);
         }
         loan.append(loanCardHolder);
-        _createSaveableReport();
         return loan;
     }
 
@@ -878,9 +878,9 @@ input[type="radio"]:focus {
         
         questions.sort((a, b) => a.notificationType.localeCompare(b.notificationType));
 
-        var flagsList = questionHistory.filter(x=> x.answer[0] === 0);
+        var flagsList = questionHistory.filter(x=> x.answer[0] == 0);
         for (var i = 0; i < flagsList.length; i++) {
-            var flagMessage = questions.find(x=> x.questionId === flagsList[i].question);
+            var flagMessage = questions.find(x=> x.questionId == flagsList[i].question);
             flagContainer.append(_createFlag(flagMessage));
         }
         return flagContainer;
@@ -1136,6 +1136,7 @@ input[type="radio"]:focus {
             pdfData.push(qaPair);
             fullReport.append(result); 
         }
+        _createSaveableReport();
         return fullReport;
     }
     
@@ -1189,12 +1190,13 @@ input[type="radio"]:focus {
         fullQuizSubText.textContent = "Below are all of the questions and answers to the quiz. We recommend you review these with your loan officer. ";
         report.append(fullQuizSubText);
 
+
         var resultContainer = document.createElement("div");
         resultContainer.classList.add("result-tile-container");
         for ( var i = 0; i < pdfData.length; i++ ) {
             var resultTile = document.createElement("div");
             resultTile.classList.add("result-tile");
-            
+
             var resultNumber = document.createElement("div");
             resultNumber.classList.add("result-number");
             resultNumber.textContent = i + 1 +".";
@@ -1209,7 +1211,7 @@ input[type="radio"]:focus {
             resultAnswer.classList.add("result-answer");
             resultAnswer.textContent = pdfData[i].answer;
             resultTile.append(resultAnswer);
-            
+
             resultContainer.append(resultTile);
         }
         report.append(resultContainer);
@@ -1799,7 +1801,6 @@ input[type="radio"]:focus {
     }
 
     function openURL(url) {
-        console.log(url)
         window.location = url;
     }
 
@@ -1832,10 +1833,11 @@ input[type="radio"]:focus {
         $(report).show();
         html2canvas(report).then((canvas) => {
             var myImage = canvas.toDataURL("image/png");
-            var tWindow = window.open("");
-            $(tWindow.document.body).html("<img id='Image' src=" + myImage + " 'style='max-width:50%;'></img>").ready(function() {
+            var tWindow = window.open("");     
+            $(tWindow.document.body).html("<img id='Image' src=" + myImage + " 'style='width:720px;'></img>").ready(function() {
                 tWindow.focus();
                 tWindow.print();
+                tWindow.close();
             });
         });
         $(report).hide();

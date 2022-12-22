@@ -531,6 +531,8 @@ input[type="radio"]:focus {
     var bestMatchDescription;
     var bestMatchNote;
     var loanInfoCategory;
+    var categories;
+    var loanTypes;
     
     var report = document.createElement("div");
     report.classList.add("result-container");
@@ -551,39 +553,44 @@ input[type="radio"]:focus {
             }
         }
 
-        // Get list of questions
-        $.getJSON("../quiz.json", function(data) {
-            questions = data["questions"];
-            // Clean up assigned values
-            for ( var i = 0; i < questions.length; i++ ) {
-                // remove options
-                var arr = questions[i].options.filter(function(x) {
-                    return x.optionId !== -1;
-                });
-                questions[i].options = arr;
-                // remove option paragraphs
-                for ( var j = 0; j < questions[i].options.length; j++ ) {
-                    arr = questions[i].options[j].paragraphs.filter(function(x) {
+        $.getJSON("/forms/loantypes.json", function(data) {
+            categories = [...data['categories']];
+            loanTypes = [...data['loanType']];
+
+            // Get list of questions
+            $.getJSON("../quiz.json", function(data) {
+                questions = data["questions"];
+                // Clean up assigned values
+                for ( var i = 0; i < questions.length; i++ ) {
+                    // remove options
+                    var arr = questions[i].options.filter(function(x) {
+                        return x.optionId !== -1;
+                    });
+                    questions[i].options = arr;
+                    // remove option paragraphs
+                    for ( var j = 0; j < questions[i].options.length; j++ ) {
+                        arr = questions[i].options[j].paragraphs.filter(function(x) {
+                            return x.paragraphText !== "";
+                        });
+                        questions[i].options[j].paragraphs = arr;
+                    }
+                    // remove content paragraphs
+                    arr = questions[i].content.paragraphs.filter(function(x) {
                         return x.paragraphText !== "";
                     });
-                    questions[i].options[j].paragraphs = arr;
+                    questions[i].content.paragraphs = arr;
                 }
-                // remove content paragraphs
-                arr = questions[i].content.paragraphs.filter(function(x) {
-                    return x.paragraphText !== "";
-                });
-                questions[i].content.paragraphs = arr;
-            }
 
-            // Decide what to show
-            // Open a URL or show quiz
-            if(isNaN(currentQuestion)) {
-                window.open(nextQuestionId);
-                return;
-            }
-            else {
-                showQuestion(currentQuestion);
-            }
+                // Decide what to show
+                // Open a URL or show quiz
+                if(isNaN(currentQuestion)) {
+                    window.open(nextQuestionId);
+                    return;
+                }
+                else {
+                    showQuestion(currentQuestion);
+                }
+            });
         });
     })();
 
@@ -785,19 +792,15 @@ input[type="radio"]:focus {
         loans.append(recomended);
         
         // add the loan details
-        $.getJSON("/forms/loantypes.json", function(data) {
-            var loanTypes = [...data['loanType']];
-            var categories = [...data['categories']];
-            var loanInfo = data['loanType'].find(x => x.loanID == questionHistory[0].answer[i]);
+        var loanInfo = loanTypes.find(x => x.loanID == questionHistory[0].answer[i]);
 
-            questionHistory[0].answer.sort(function(a, b) {return b - a;} );
-            for ( var i = 0; i < questionHistory[0].answer.length; i++ ) {
-                var loanInfo = loanTypes.find(x => x.loanID == questionHistory[0].answer[i]);
-                var category = categories.find(x => x.type == loanInfo.category);
-                var loansInCategory = loanTypes.filter(x => x.category == category.type);
-                recomended.append(_createSugestedLoanCards(category, loansInCategory, loanInfo, i, loan, recomended));
-            }
-        });
+        questionHistory[0].answer.sort(function(a, b) {return b - a;} );
+        for ( var i = 0; i < questionHistory[0].answer.length; i++ ) {
+            var loanInfo = loanTypes.find(x => x.loanID == questionHistory[0].answer[i]);
+            var category = categories.find(x => x.type == loanInfo.category);
+            var loansInCategory = loanTypes.filter(x => x.category == category.type);
+            recomended.append(_createSugestedLoanCards(category, loansInCategory, loanInfo, i, loan, recomended));
+        }
         return loans;
     }
 
@@ -1014,13 +1017,13 @@ input[type="radio"]:focus {
             var buttonContainer = document.createElement("div");
             buttonContainer.classList.add("summary-step-text-button-container");
             for (var j = 0; j < stepinfo[i].buttons.length; j++) {
-                var button = null;
-                button = document.createElement('button');
-                button.classList.add("summary-step-text-button");
-                var text = document.createTextNode(stepinfo[i].buttons[j].buttonText);
-                button.appendChild(text);
 
                 if(stepinfo[i].buttons[j].buttonURL.includes("onclick")){
+                    var button = document.createElement('button');
+                    button.classList.add("summary-step-text-button");
+                    var text = document.createTextNode(stepinfo[i].buttons[j].buttonText);
+                    button.appendChild(text);
+
                     var func_name = stepinfo[i].buttons[j].buttonURL.split('=')[1];
                     $(button).off().on('click', eval(func_name).bind(this));
                     $(button).on('click',function() {
@@ -1028,20 +1031,25 @@ input[type="radio"]:focus {
                         $(this).off('click');
                     });
                 }
-                // else if(stepinfo[i].buttons[j].buttonURL == "checklist") {
-                //     $.getJSON("/forms/loantypes.json", function(data) {
-                //         var categories = [...data['categories']];
-                //         var url = categories.find(x=> x.type == loanInfoCategory).checklist.toString();
-                //         console.log(url)
+                if(stepinfo[i].buttons[j].buttonURL.includes("checklist")) {
+                    var button = document.createElement('button');
+                    button.classList.add("summary-step-text-button");
+                    var text = document.createTextNode(stepinfo[i].buttons[j].buttonText);
+                    button.appendChild(text);
 
-                //         $(button).off().on('click', openURL.bind(this, url));
-                //         $(button).on('click',function() {
-                //             openURL.bind(this, url);
-                //             $(this).off('click');
-                //         });     
-                //     })
-                // }
-                else {
+                    var url = categories.find(x=> x.type == loanInfoCategory).checklist.toString();
+                    $(button).off().on('click', openURL.bind(this, url));
+                    $(button).on('click',function() {
+                        openURL.bind(this, url);
+                        $(this).off('click');
+                    });     
+                }
+                if(stepinfo[i].buttons[j].buttonURL.includes("http")) {
+                    var button = document.createElement('button');
+                    button.classList.add("summary-step-text-button");
+                    var text = document.createTextNode(stepinfo[i].buttons[j].buttonText);
+                    button.appendChild(text);
+
                     $(button).off().on('click', openURL.bind(this, stepinfo[i].buttons[j].buttonURL));
                     $(button).on('click',function() {
                         openURL.bind(this, stepinfo[i].buttons[j].buttonURL);

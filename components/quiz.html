@@ -801,7 +801,7 @@ input[type="radio"]:focus {
             var category = categories.find(x => x.type == loanInfo.category);
             var loansInCategory = loanTypes.filter(x => x.category == category.type);
             if(questionHistory[2].answer[0] == 1 || questionHistory[3].answer[0] == 1) {
-                console.log("questionHistory[2].answer[0]")
+                //console.log("questionHistory[2].answer[0]")
             }
             recomended.append(_createSugestedLoanCards(category, loansInCategory, loanInfo, i, loan, recomended));
         }
@@ -1502,6 +1502,8 @@ input[type="radio"]:focus {
     }
 
     function checkConditionals() {
+        console.log(answers)
+        console.log(conditionals)
         if(conditionals.length !==0) {
             for ( var i = 0; i < conditionals.length; i++ ) { 
                 var hasValue1 = answers.some( x => x.value == parseInt(conditionals[i]['value1']));
@@ -1517,6 +1519,7 @@ input[type="radio"]:focus {
                 nextQuestionId = parseInt(answers[index]['nextQuestionId']);
             }
         }
+        console.log(nextQuestionId)
     }
     
     ////////////////////////////

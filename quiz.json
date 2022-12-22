@@ -63,7 +63,7 @@
                     ],
                     "title": "NO",
                     "url": "",
-                    "value": 2
+                    "value": 0
                 },
                 {
                     "nextQuestionId": -1,
@@ -216,7 +216,7 @@
                         }
                     ],
                     "title": "I am participating in a youth educational farming program",
-                    "url": "Youth summary page",
+                    "url": "",
                     "value": 4
                 }
             ],
@@ -789,7 +789,7 @@
             "content": {
                 "paragraphs": [
                     {
-                        "paragraphText": "*U.S. Citizen\n*U.S. non-citizen national\n*Qualified alien under appliacable federal immigration laws"
+                        "paragraphText": "*U.S. Citizen\n*U.S. non-citizen national\n*Qualified alien under applicable federal immigration laws"
                     },
                     {
                         "paragraphText": ""
@@ -959,7 +959,7 @@
                     ],
                     "title": "NO",
                     "url": "",
-                    "value": 2
+                    "value": 1
                 },
                 {
                     "nextQuestionId": -1,
@@ -1071,7 +1071,7 @@
                     ],
                     "title": "NO",
                     "url": "",
-                    "value": 2
+                    "value": 1
                 },
                 {
                     "nextQuestionId": -1,
@@ -1139,7 +1139,7 @@
                 ],
                 "title": "Does your credit history demonstrate on-time payments?"
             },
-            "notificationMessge": "Credit history is a common reasons applicants are denied. We recommend reviewing your situation with a loan officer before applying.",
+            "notificationMessge": "Credit history is a common reason applicants are denied. We recommend reviewing your situation with a loan officer before applying.",
             "notificationTitle": "You stated that your payment history could be better.",
             "notificationType": "warning",
             "options": [
@@ -1295,7 +1295,7 @@
                     ],
                     "title": "NO",
                     "url": "",
-                    "value": 2
+                    "value": 1
                 },
                 {
                     "nextQuestionId": -1,
@@ -1407,7 +1407,7 @@
                     ],
                     "title": "NO",
                     "url": "Summary Page",
-                    "value": 2
+                    "value": 1
                 },
                 {
                     "nextQuestionId": -1,

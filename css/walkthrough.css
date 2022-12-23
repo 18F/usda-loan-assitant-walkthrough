@@ -3045,7 +3045,7 @@ img {
     margin-bottom: 1.6rem;
 }
 .content-card.accent-top {
-    border-top: 0.6rem solid #006546;
+    border-top: 0.3rem solid #006546;
     border-radius: 0.2rem 0.2rem 0 0;
 }
 .content-card.accent-top .content p {
@@ -17280,7 +17280,7 @@ h6#related-resources {
 }
 
 
-/* Added by Johnny */
+/* Custom homepage (added by Johnny) */
 .backgroundHero {
     background-color: #006546;
     background-image: url('../images/hero.jpg');
@@ -17288,12 +17288,12 @@ h6#related-resources {
     display:flex;
     flex-direction: row-reverse;
     min-height: 70vh;
-
 }
 
 .backgroundHero div.container {
-    background-color: white; 
-    padding-bottom: 2rem;
+    background-color: white;
+    max-width: 75rem;
+    padding: 2rem;
 }
 
 .backgroundClear {
@@ -17303,6 +17303,12 @@ h6#related-resources {
 .homecard {
     margin: 1rem;
     float: right;
+}
+
+.homecard h1.primary-region__title {
+    font-family: "Public Sans";
+    font-size: 3rem;
+    margin-top: 0;
 }
 
 /* Warning text */

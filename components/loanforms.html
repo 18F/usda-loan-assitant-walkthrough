@@ -15,12 +15,12 @@
         color: #FFFFFF;
     }
 
-    .buttton-container {
+    .button-container {
         display: flex;
         flex-direction: row;
         column-gap: 2rem;
     }
-        .buttton-holder {
+        .button-holder {
             border-radius: 4px;
             font-family: 'Public Sans';
             font-style: normal;
@@ -159,12 +159,9 @@
                                         <div class="loantype-card-description">
                                             <p> ${type["descriptionShort"]} </p>
                                         </div>
-                                        <div class="loantype-card-spacer">
-                                            <p></p>
-                                        </div> 
                                         <div class="loantype-card-button-container">
                                             <div class="loantype-card-button">
-                                                <button class="btn lg-btn" onclick="showFormsList('${type["type"]}')" aria-label="Go to the ${type["type"]}" data-category="${type["type"]}" id="${type["type"]}"> ACCESS FORMS </button>
+                                                <button class="btn lg-btn" onclick="showFormsList('${type["type"]}')" aria-label="View the ${type["type"]} forms" data-category="${type["type"]}" id="${type["type"]}">ACCESS FORMS</button>
                                             </div>
                                         </div>
                                     </div>
@@ -299,10 +296,10 @@
         description.append(descriptionText);
 
         var buttonContainer = document.createElement("div");
-        buttonContainer.classList.add("buttton-container"); // style in this file
+        buttonContainer.classList.add("button-container"); // style in this file
 
         var buttonAssistance = document.createElement("button");
-        buttonAssistance.classList.add("buttton-holder"); // style in this file
+        buttonAssistance.classList.add("button-holder"); // style in this file
         buttonAssistance.classList.add("button-blue"); // style in this file
         var t = document.createTextNode("FILL OUT FORMS");
         buttonAssistance.appendChild(t);   
@@ -310,7 +307,7 @@
         buttonContainer.append(buttonAssistance);
 
         var buttonDownload = document.createElement("button");
-        buttonDownload.classList.add("buttton-holder"); // style in this file
+        buttonDownload.classList.add("button-holder"); // style in this file
         buttonDownload.classList.add("button-white"); // style in this file
         var t = document.createTextNode("DOWNLOAD");
         buttonDownload.appendChild(t);

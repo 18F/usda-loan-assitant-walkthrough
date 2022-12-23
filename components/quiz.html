@@ -478,6 +478,7 @@ input[type="radio"]:focus {
     
     /* Full Report */
     .result-container {
+        max-width: 720px;
         padding: 3rem;
     }
         .result-image-container {
@@ -573,7 +574,7 @@ input[type="radio"]:focus {
     report.classList.add("result-container");
     report.setAttribute("id","report-container");
     $('#main-content').append(report);
-    //$(report).hide();
+    $(report).hide();
 
     (function() {
         currentQuestion = 0;
@@ -839,20 +840,60 @@ input[type="radio"]:focus {
         loans.append(recomended);
         
         // add the loan details
-        var loanInfo = loanTypes.find(x => x.loanID == questionHistory[0].answer[i]);
+        // Find the multiselect question
+        var multiSelectQuestionId;
+        for ( var i = 0; i < questions.length; i++ ) {
+            if(questions[i].conditionals.includes("&")) {
+                multiSelectQuestionId = questions[i].questionId;
+            }
+        }
 
-        questionHistory[0].answer.sort(function(a, b) {return b - a;} );
-        for ( var i = 0; i < questionHistory[0].answer.length; i++ ) {
-            var loanInfo = loanTypes.find(x => x.loanID == questionHistory[0].answer[i]);
+        var multiselctAnswers = questionHistory.find(x=> x.question == multiSelectQuestionId).answer;
+        multiselctAnswers.sort(function(a, b) {return b - a;} );
+        
+        for ( var i = 0; i < multiselctAnswers.length; i++ ) {
+            var loanInfo = loanTypes.find(x => x.loanId == multiselctAnswers[i]);
             var category = categories.find(x => x.type == loanInfo.category);
-            var loansInCategory = loanTypes.filter(x => x.category == category.type);
+            var loansInCategory = [];
+            loansInCategory = loanTypes.filter(x => x.category == category.type);
+
+            if(category.type == "Farm Operating Loan"){
+                var operatingMicroloanList = questions.filter(x=> x.conditionals.includes("Operating Microloan"))
+                for ( var j = 0; j < operatingMicroloanList.length; j++ ) {
+                    var answer = questionHistory.find(x=> x.question == operatingMicroloanList[j].questionId);
+                    if(answer != undefined) {
+                        if(answer.answer[0] == 1) {
+                            loanInfo = loanTypes.find(x => x.name == "Operating Microloan");
+                            category = categories.find(x => x.type == loanInfo.category);
+                            loansInCategory = [];
+                            loansInCategory.push(loanInfo);
+                        }
+                    }
+                }
+            }
+
+            if(category.type == "Farm Ownership Loan"){
+                var microloanFarmOwnershipList = questions.filter(x=> x.conditionals.includes("Microloan Farm Ownership"))
+                for ( var j = 0; j < microloanFarmOwnershipList.length; j++ ) {
+                    var answer = questionHistory.find(x=> x.question == microloanFarmOwnershipList[j].questionId);
+                    if(answer != undefined) {
+                        if(answer.answer[0] == 1) {
+                            loanInfo = loanTypes.find(x => x.name.includes("Microloan Farm Ownership"));
+                            category = categories.find(x => x.type == loanInfo.category);
+                            loansInCategory = [];
+                            loansInCategory.push(loanInfo);
+                        }
+                    }
+                }
+            }
+
             recomended.append(_createSugestedLoanCards(category, loansInCategory, loanInfo, i, loan, recomended));
         }
         return loans;
     }
 
     // shows a detailed view of the primary loan, and if available minimal details for other loan types
-    // loanInfo = details from JSON, index = index from array of sugeted loans
+    // loanInfo = details from JSON, index = index from array of sugested loans
     function _createSugestedLoanCards(category, loansInCategory, loanInfo, index, loan, recomended) {
         // Image
         var imageContainer = document.createElement("img");
@@ -862,15 +903,18 @@ input[type="radio"]:focus {
         image.classList.add("recomended-image");
         image.src = './images/loantypes/'+loanInfo.image;
         loan.append(image);
-
-        loan.append(_createTitle(loanInfo.category));
+        var loanInfoCategoryTitle = loanInfo.category;
+        if(loanInfoCategoryTitle == "Microloan") {
+            loanInfoCategoryTitle = loansInCategory[0].name;
+        }
+        loan.append(_createTitle(loanInfoCategoryTitle));
         // Description
-        text = "Based on your responses we think you’re best suited for the FSA " + loanInfo.category + ".";
+        text = "Based on your responses we think you’re best suited for the FSA " + loanInfoCategoryTitle + ".";
         loan.append(_createParagraphElement(text));
         loan.append(_createParagraphElement(category.description));
         loan.append(_createParagraphElement(category.note));
 
-        loanInfoCategory = loanInfo.category
+        loanInfoCategory = loansInCategory[0].category;
         bestMatch = text;
         bestMatchDescription = category.description;
         bestMatchNote = category.note;
@@ -889,33 +933,36 @@ input[type="radio"]:focus {
             // List of details
             var list = document.createElement("ul");
             // Max dollar ammount description
-            let item = document.createElement("li");
-            item.innerHTML = loansInCategory[i].maximumDollarAmountDescription;
-            list.appendChild(item);
+            if(loansInCategory[i].maximumDollarAmountDescription != ""){
+                let item = document.createElement("li");
+                item.innerHTML = loansInCategory[i].maximumDollarAmountDescription;
+                list.appendChild(item);
+            }
 
             // down payment description
-            item = document.createElement("li");
-            item.innerHTML = loansInCategory[i].downPaymentDescription;
-            list.appendChild(item);
+            if(loansInCategory[i].downPaymentDescription != ""){
+                item = document.createElement("li");
+                item.innerHTML = loansInCategory[i].downPaymentDescription;
+                list.appendChild(item);
+            }
 
             // Loan term description
-            item = document.createElement("li");
-            item.innerHTML = loansInCategory[i].loanTermDescription;
-            list.appendChild(item);
+            if(loansInCategory[i].loanTermDescription != ""){
+                item = document.createElement("li");
+                item.innerHTML = loansInCategory[i].loanTermDescription;
+                list.appendChild(item);
+            }
 
             // other requirements description
-            if(loansInCategory[i].otherRequirements !== "N/A") {
+            if(loansInCategory[i].otherRequirements !== "N/A" && loansInCategory[i].otherRequirements !== "") {
                 item = document.createElement("li");
                 item.innerHTML = loansInCategory[i].otherRequirements;
                 list.appendChild(item);
             }
-
             loanCard.append(list);
-
             loanCardHolder.append(loanCard);
         }
         loan.append(loanCardHolder);
-        _createSaveableReport();
         return loan;
     }
 
@@ -925,9 +972,9 @@ input[type="radio"]:focus {
         
         questions.sort((a, b) => a.notificationType.localeCompare(b.notificationType));
 
-        var flagsList = questionHistory.filter(x=> x.answer[0] === 0);
+        var flagsList = questionHistory.filter(x=> x.answer[0] == 0);
         for (var i = 0; i < flagsList.length; i++) {
-            var flagMessage = questions.find(x=> x.questionId === flagsList[i].question);
+            var flagMessage = questions.find(x=> x.questionId == flagsList[i].question);
             flagContainer.append(_createFlag(flagMessage));
         }
         return flagContainer;
@@ -1150,7 +1197,7 @@ input[type="radio"]:focus {
             result.append(info);
 
             // Add Question Text
-            var answerInfo = questions.find(x => x.questionId === questionHistory[i].question)
+            var answerInfo = questions.find(x => x.questionId == questionHistory[i].question)
             var questionText = answerInfo['content'].title;
             var infoTitle = document.createElement("div");
             infoTitle.classList.add("full-report-result-info-title");
@@ -1161,15 +1208,15 @@ input[type="radio"]:focus {
             var answerText;
             var answerTexts = [...questionHistory[i].answer];
             for ( var j = 0; j < answerTexts.length; j++ ) {
-                var answer = answerInfo.options.find(x => x.value === answerTexts[j]).title;
-                answer = answer;
+                var answer = answerInfo.options.find(x => x.value == answerTexts[j]).title;
                 var infoMessage = document.createElement("div");
                 infoMessage.classList.add("full-report-result-info-message");
                 infoMessage.append(_createParagraphElement(answer));
                 info.append(infoMessage);
                 
-                var flagMessage = questions.find(x=> x.questionId === questionHistory[i].question);
-                if(flagMessage.notificationType !== '') {
+                var flagMessage = questions.find(x=> x.questionId == questionHistory[i].question);
+
+                if(questionHistory[i].answer == 0) {
                     var flag = document.createElement("div");
                     flag.classList.add("full-report-result-info-flag");
                     flag.append(_createFlag(flagMessage)); 
@@ -1183,6 +1230,7 @@ input[type="radio"]:focus {
             pdfData.push(qaPair);
             fullReport.append(result); 
         }
+        _createSaveableReport();
         return fullReport;
     }
     
@@ -1236,12 +1284,13 @@ input[type="radio"]:focus {
         fullQuizSubText.textContent = "Below are all of the questions and answers to the quiz. We recommend you review these with your loan officer. ";
         report.append(fullQuizSubText);
 
+
         var resultContainer = document.createElement("div");
         resultContainer.classList.add("result-tile-container");
         for ( var i = 0; i < pdfData.length; i++ ) {
             var resultTile = document.createElement("div");
             resultTile.classList.add("result-tile");
-            
+
             var resultNumber = document.createElement("div");
             resultNumber.classList.add("result-number");
             resultNumber.textContent = i + 1 +".";
@@ -1256,7 +1305,7 @@ input[type="radio"]:focus {
             resultAnswer.classList.add("result-answer");
             resultAnswer.textContent = pdfData[i].answer;
             resultTile.append(resultAnswer);
-            
+
             resultContainer.append(resultTile);
         }
         report.append(resultContainer);
@@ -1549,15 +1598,10 @@ input[type="radio"]:focus {
             for ( var i = 0; i < conditionals.length; i++ ) { 
                 var hasValue1 = answers.some( x => x.value == parseInt(conditionals[i]['value1']));
                 var hasValue2 = answers.some( x => x.value == parseInt(conditionals[i]['value2']));
-
                 if(hasValue1 && hasValue2) {
                     nextQuestionId = parseInt(conditionals[i]['nextQuestionId']);
+                    return;
                 }
-            }
-            var index = answers.findIndex(x => isNaN(x.nextQuestionId));
-
-            if (index >= 0) {
-                nextQuestionId = parseInt(answers[index]['nextQuestionId']);
             }
         }
     }
@@ -1847,7 +1891,6 @@ input[type="radio"]:focus {
     }
 
     function openURL(url) {
-        console.log(url)
         window.location = url;
     }
 
@@ -1880,10 +1923,11 @@ input[type="radio"]:focus {
         $(report).show();
         html2canvas(report).then((canvas) => {
             var myImage = canvas.toDataURL("image/png");
-            var tWindow = window.open("");
-            $(tWindow.document.body).html("<img id='Image' src=" + myImage + " 'style='max-width:50%;'></img>").ready(function() {
+            var tWindow = window.open("");     
+            $(tWindow.document.body).html("<img id='Image' src=" + myImage + " 'style='width:720px;'></img>").ready(function() {
                 tWindow.focus();
                 tWindow.print();
+                tWindow.close();
             });
         });
         $(report).hide();

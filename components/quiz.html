@@ -1646,14 +1646,17 @@ input[type="radio"]:focus {
             
             checkConditionals();
             setNextLinkValues();
+            console.log(nextQuestionId)
         });
     }
 
     function checkConditionals() {
         if(conditionals.length !==0) {
             for ( var i = 0; i < conditionals.length; i++ ) { 
+                var isYouth = answers.some( x => x.value == "9999");
                 var hasValue1 = answers.some( x => x.value == parseInt(conditionals[i]['value1']));
                 var hasValue2 = answers.some( x => x.value == parseInt(conditionals[i]['value2']));
+                console.log(isYouth)
                 if(hasValue1 && hasValue2) {
                     nextQuestionId = parseInt(conditionals[i]['nextQuestionId']);
                     return;

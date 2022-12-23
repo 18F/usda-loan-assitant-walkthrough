@@ -3,17 +3,94 @@
         height:10rem;
     }
 
-    .required {
-        background: #006546;
-        font-family: 'Public Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
-        align-items: center;
-        text-align: center;
-        color: #FFFFFF;
+    .category-forms-container {
+        height: fit-content;
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid black;
+        margin: 0 0 2rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
+    .category-forms-container-required {
+        height: fit-content;
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .category-forms-holder {
+        width: 100%;
+        height: fit-content;
+        padding: 2rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+        .category-forms-title {
+                font-size: large;
+            }
+        .category-forms-message {
+            
+        }
+        .category-forms-holder {
+            width: 100%;
+        }
+            
+        .required {
+            background: #006546;
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            align-items: center;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .recomended {
+            background: #DBEDE0;
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            align-items: center;
+            text-align: center;
+            color: #111221;
+        }
+
+        .additional {
+            background: #F7F7F7;
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            align-items: center;
+            text-align: center;
+            color: #111221;
+        }
+
+        .category-forms-card {
+            max-width: 30%;
+            height: 100%;
+            border: 1px solid #111221;
+            border-top: 6px solid #006546;
+            display: flex;
+            flex-direction: column;
+
+        }
+            .category-forms-card-content {
+                width: 100%;
+                height: 100%;
+                padding: 1rem;
+            }
 
     .button-container {
         display: flex;
@@ -113,7 +190,7 @@
 
     <!-- Holds contents based on conditions -->
     <div class="container">
-        <div class="row row-cols-1 row-cols-md-3 g-4" id="forms-holder"></div>
+        <div id="forms-holder"></div>
     </div>
     <div class="container-spacer-bottom"></div>
 </div>
@@ -135,6 +212,11 @@
     // Draws cards for all loan types
     function showAllLoans() {
         setloanType("all");
+        var descriptioText = "Below are all the loans FSA offers. Forms differ depending on which loan type you select.  Please note:";
+        
+        $('header-holder').empty();
+        document.getElementById('header-holder').innerHTML = descriptioText;
+
         // Show all loan types
         $.getJSON("/forms/loantypes.json", function(data) {
             var categories = [...data['categories']];
@@ -183,7 +265,8 @@
         setloanType(category);
         var message = `Below are the forms used to apply for the ${category}. You may need to fill many of them to complete your application. Please select a form to start the walk tough process. You may comeplete the form as you go though this process. You may download the each form to your computers at any point to save your progress and resume working on it later. Please note:`;
         
-        $("#header-note").append(message);
+        $("#header-holder").empty();
+        $("#header-holder").append(message);
 
         $.getJSON("/forms/loantypes.json", function(loantypesdata) {
             var categories = [...loantypesdata['categories']];
@@ -228,72 +311,157 @@
                 var descriptioText = categories.find(x=> x.type === loanName).description;
 
                 descriptioText = `<div class="col"> ${descriptioText} </div>`;
+                $('header-holder').empty();
                 document.getElementById('header-holder').innerHTML = descriptioText;
 
                 // The cards for the individual forms
                 var cards = [];
                 var formIds = [];
                 $("#forms-holder").empty();
-                $.each(categoryForms['formsRequired'], function(key, formId) {
-                    var form = data["Forms"].find((x)=> x.id == formId)
-                    if(form !== undefined) {
-                        $("#forms-holder").append(_createCard(form, "Required"));
-                        formIds.push(formId);
-                    }
-                });
 
-                $.each(categoryForms['formsRecommended'], function(key, formId) {
-                    var form = data["Forms"].find(x=> x.id = formId)
-                    if(form !== undefined) {
-                        $("#forms-holder").append(_createCard(form, "Recommended"));
-                        formIds.push(form);
-                    }
-                });
+                // Required
+                if(categoryForms['formsRequired'].length != 0) {
+                    var categoryFormsContainer = document.createElement("div");
+                    categoryFormsContainer.classList.add("category-forms-container-reuired");
 
-                $.each(categoryForms['formsAdditional'], function(key, formId) {
-                    var form = data["Forms"].find(x=> x.id = formId)
-                    if(form !== undefined) {
-                        $("#forms-holder").append(_createCard(form, "Additional"));
-                        formIds.push(form);
-                    }
-                });
+{                   //Do first
+                    var title = document.createElement("div");}
+                    title.classList.add("category-forms-holder-title");
+                    title.textContent = "Do first";
+                    categoryFormsContainer.append(title);
+
+                    var message = document.createElement("div");
+                    message.classList.add("category-forms-holder-message");
+                    message.textContent = "Your loan application is not complete without these forms, make sure you fill these out first.";
+                    categoryFormsContainer.append(message);
+
+                    var categoryFormsHolder = document.createElement("div");
+                    categoryFormsHolder.classList.add("category-forms-holder");
+
+                    $.each(categoryForms['formsRequired'], function(key, formId) {
+                        var form = data["Forms"].find((x)=> x.id == formId)
+                        if(form !== undefined) {
+                            categoryFormsHolder.append(_createCard(form, "Required"));
+                            formIds.push(formId);
+                        }
+                    });
+                    categoryFormsContainer.append(categoryFormsHolder);
+                    $("#forms-holder").append(categoryFormsContainer);
+                }
+
+                // Recommended
+                if(categoryForms['formsRecommended'].length != 0) {
+                    var categoryFormsContainer = document.createElement("div");
+                    categoryFormsContainer.classList.add("category-forms-container");
+
+{                   //Do next
+                    var title = document.createElement("div");}
+                    title.classList.add("category-forms-holder-title");
+                    title.textContent = "Do next";
+                    categoryFormsContainer.append(title);
+
+                    var message = document.createElement("div");
+                    message.classList.add("category-forms-holder-message");
+                    message.textContent = "It's important to have a strong relationship with your Loan Officer as you start your journey with the FSA. The information you provide in these recommended forms equips your Loan Officer with the best information to help you through the process.";
+                    categoryFormsContainer.append(message);
+
+                    var categoryFormsHolder = document.createElement("div");
+                    categoryFormsHolder.classList.add("category-forms-holder");
+                    
+                    $.each(categoryForms['formsRecommended'], function(key, formId) {
+                        
+                        var form = data["Forms"].find(x=> x.id == formId)
+                        console.log(categoryForms['formsRecommended'])
+                        if(form !== undefined) {
+                            categoryFormsHolder.append(_createCard(form, "Recommended"));
+                            formIds.push(form);
+                        }
+                    });
+                    categoryFormsContainer.append(categoryFormsHolder);
+                    $("#forms-holder").append(categoryFormsContainer);
+                }
+
+                // Additional
+                if(categoryForms['formsAdditional'].length != 0) {
+                    var categoryFormsContainer = document.createElement("div");
+                    categoryFormsContainer.classList.add("category-forms-container");
+
+{                   //Do last
+                    var title = document.createElement("div");}
+                    title.classList.add("category-forms-holder-title");
+                    title.textContent = "Do last";
+                    categoryFormsContainer.append(title);
+
+                    var message = document.createElement("div");
+                    message.classList.add("category-forms-holder-message");
+                    message.textContent = "These documents are not required, but you must be able to discuss the topics below with your loan officer. Use these forms to help frame your conversation.";
+                    categoryFormsContainer.append(message);
+
+                    var categoryFormsHolder = document.createElement("div");
+                    categoryFormsHolder.classList.add("category-forms-holder");
+                    
+                    $.each(categoryForms['formsAdditional'], function(key, formId) {
+                        var form = data["Forms"].find(x=> x.id == formId)
+                        
+                        if(form !== undefined) {
+                            categoryFormsHolder.append(_createCard(form, "Additional"));
+                            formIds.push(form);
+                        }
+                    });
+                    categoryFormsContainer.append(categoryFormsHolder);
+                    $("#forms-holder").append(categoryFormsContainer);
+                }
                 
-                $('#return-form-suport').html(`<a href="" onclick="showAllLoans();return false;"  class="page-link" data-label="" aria-label="Go to Form Support Page" data-category="Loans">Back to all loan types</a>`);
+                $('#return-form-suport').html(`<a href="" onclick="showAllLoans();return false;"  class="page-link" data-label="" aria-label="Go to Form Support Page" data-category="Loans">See all loan types</a>`);
             });
         });
     }
 
     function _createCard(form, required) {
-        var new_card = document.createElement("div");
-        new_card.classList.add("col");
 
-        var contentHolder = document.createElement("div");
-        contentHolder.classList.add("content-card");
-        contentHolder.classList.add("accent-top");
-        contentHolder.classList.add("form-card");
-        contentHolder.classList.add("h-100");
+        var new_card = document.createElement("div");
+        new_card.classList.add("category-forms-card");
 
         var requirementType = document.createElement("div");
-        requirementType.classList.add("required"); // style in this file
+        switch(required) {
+            case "Required":
+                requirementType.classList.add("required"); // style in this file
+                break;
+            case "Recommended":
+                requirementType.classList.add("recomended"); // style in this file
+                break;
+            case "Additional":
+                requirementType.classList.add("additional"); // style in this file
+                break;
+            default:
+            }
+
+        
         requirementType.textContent = required
         new_card.append(requirementType);
         
-        var headline = document.createElement("div");
+        var contentHolder = document.createElement("div");
+        contentHolder.classList.add("category-forms-card-content");
+        
+        var headline;
+        headline = document.createElement("div");
         headline.classList.add("headline");
-        var h3 = document.createElement("h3");
+        var h3;
+        h3 = document.createElement("h3");
         h3.innerHTML = `<a href="" onclick="loadForm('${form.id}');return false;" "class="text-link" id="${form.id}">${form.name} </a>`
         headline.append(h3);
 
         contentHolder.append(headline);        
-        new_card.append(contentHolder);        
 
         var description = document.createElement("div");
         description.classList.add("content");
-        contentHolder.append(description);
 
         var descriptionText = document.createElement("p");
-        descriptionText.textContent = form["description"];
+        descriptionText.textContent = form.description;
         description.append(descriptionText);
+
+        contentHolder.append(description);
+
 
         var buttonContainer = document.createElement("div");
         buttonContainer.classList.add("button-container"); // style in this file
@@ -303,7 +471,7 @@
         buttonAssistance.classList.add("button-blue"); // style in this file
         var t = document.createTextNode("FILL OUT FORMS");
         buttonAssistance.appendChild(t);   
-        buttonAssistance.onclick = function(){loadForm(form['id'])};
+        buttonAssistance.onclick = function(){loadForm(form.id)};
         buttonContainer.append(buttonAssistance);
 
         var buttonDownload = document.createElement("button");
@@ -311,11 +479,12 @@
         buttonDownload.classList.add("button-white"); // style in this file
         var t = document.createTextNode("DOWNLOAD");
         buttonDownload.appendChild(t);
-        buttonDownload.onclick = function(){downloadFile(`/forms/${form['file_name']}`, form['file_name'])};
+        buttonDownload.onclick = function(){downloadFile(`/forms/${form.file_name}`, form.file_name)};
         
         buttonContainer.append(buttonDownload);
-        
+
         contentHolder.append(buttonContainer);
+        new_card.append(contentHolder);
         return new_card;
     }
 

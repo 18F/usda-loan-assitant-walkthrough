@@ -61,7 +61,7 @@ for row in range(2, step_sheet.max_row + 1):
     if not step_sheet[f"B{row}"].value: continue
     try:											
         loanType = {
-            "loanID": step_sheet[f"A{row}"].value or "",
+            "loanId": step_sheet[f"A{row}"].value or "",
             "type": step_sheet[f"B{row}"].value or "",
             "category": step_sheet[f"C{row}"].value or "",
             "formsRequired": step_sheet[f"D{row}"].value  or "",

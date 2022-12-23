@@ -225,7 +225,7 @@
             "type": "multiselect"
         },
         {
-            "conditionals": "None",
+            "conditionals": "Operating Microloan",
             "content": {
                 "paragraphs": [
                     {
@@ -337,7 +337,7 @@
             "type": "singlesselect"
         },
         {
-            "conditionals": "None",
+            "conditionals": "Microloan Farm Ownership",
             "content": {
                 "paragraphs": [
                     {
@@ -1457,7 +1457,7 @@
             "type": "yesno"
         },
         {
-            "conditionals": "None",
+            "conditionals": "Operating Microloan",
             "content": {
                 "paragraphs": [
                     {
@@ -1501,7 +1501,7 @@
                     "value": 1
                 },
                 {
-                    "nextQuestionId": 4,
+                    "nextQuestionId": 3,
                     "optionId": 1,
                     "paragraphs": [
                         {

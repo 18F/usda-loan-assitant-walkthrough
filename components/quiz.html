@@ -793,23 +793,60 @@ input[type="radio"]:focus {
         loans.append(recomended);
         
         // add the loan details
-        var loanInfo = loanTypes.find(x => x.loanID == questionHistory[0].answer[i]);
-
-        questionHistory[1].answer.sort(function(a, b) {return b - a;} );
-        for ( var i = 0; i < questionHistory[1].answer.length; i++ ) {
-            var loanInfo = loanTypes.find(x => x.loanID == questionHistory[1].answer[i]);
-            var category = categories.find(x => x.type == loanInfo.category);
-            var loansInCategory = loanTypes.filter(x => x.category == category.type);
-            if(questionHistory[2].answer[0] == 1 || questionHistory[3].answer[0] == 1) {
-                //console.log("questionHistory[2].answer[0]")
+        // Find the multiselect question
+        var multiSelectQuestionId;
+        for ( var i = 0; i < questions.length; i++ ) {
+            if(questions[i].conditionals.includes("&")) {
+                multiSelectQuestionId = questions[i].questionId;
             }
+        }
+
+        var multiselctAnswers = questionHistory.find(x=> x.question == multiSelectQuestionId).answer;
+        multiselctAnswers.sort(function(a, b) {return b - a;} );
+        
+        for ( var i = 0; i < multiselctAnswers.length; i++ ) {
+            var loanInfo = loanTypes.find(x => x.loanId == multiselctAnswers[i]);
+            var category = categories.find(x => x.type == loanInfo.category);
+            var loansInCategory = [];
+            loansInCategory = loanTypes.filter(x => x.category == category.type);
+
+            if(category.type == "Farm Operating Loan"){
+                var operatingMicroloanList = questions.filter(x=> x.conditionals.includes("Operating Microloan"))
+                for ( var j = 0; j < operatingMicroloanList.length; j++ ) {
+                    var answer = questionHistory.find(x=> x.question == operatingMicroloanList[j].questionId);
+                    if(answer != undefined) {
+                        if(answer.answer[0] == 1) {
+                            loanInfo = loanTypes.find(x => x.name == "Operating Microloan");
+                            category = categories.find(x => x.type == loanInfo.category);
+                            loansInCategory = [];
+                            loansInCategory.push(loanInfo);
+                        }
+                    }
+                }
+            }
+
+            if(category.type == "Farm Ownership Loan"){
+                var microloanFarmOwnershipList = questions.filter(x=> x.conditionals.includes("Microloan Farm Ownership"))
+                for ( var j = 0; j < microloanFarmOwnershipList.length; j++ ) {
+                    var answer = questionHistory.find(x=> x.question == microloanFarmOwnershipList[j].questionId);
+                    if(answer != undefined) {
+                        if(answer.answer[0] == 1) {
+                            loanInfo = loanTypes.find(x => x.name.includes("Microloan Farm Ownership"));
+                            category = categories.find(x => x.type == loanInfo.category);
+                            loansInCategory = [];
+                            loansInCategory.push(loanInfo);
+                        }
+                    }
+                }
+            }
+
             recomended.append(_createSugestedLoanCards(category, loansInCategory, loanInfo, i, loan, recomended));
         }
         return loans;
     }
 
     // shows a detailed view of the primary loan, and if available minimal details for other loan types
-    // loanInfo = details from JSON, index = index from array of sugeted loans
+    // loanInfo = details from JSON, index = index from array of sugested loans
     function _createSugestedLoanCards(category, loansInCategory, loanInfo, index, loan, recomended) {
         // Image
         var imageContainer = document.createElement("img");
@@ -819,15 +856,18 @@ input[type="radio"]:focus {
         image.classList.add("recomended-image");
         image.src = './images/loantypes/'+loanInfo.image;
         loan.append(image);
-
-        loan.append(_createTitle(loanInfo.category));
+        var loanInfoCategoryTitle = loanInfo.category;
+        if(loanInfoCategoryTitle == "Microloan") {
+            loanInfoCategoryTitle = loansInCategory[0].name;
+        }
+        loan.append(_createTitle(loanInfoCategoryTitle));
         // Description
-        text = "Based on your responses we think you’re best suited for the FSA " + loanInfo.category + ".";
+        text = "Based on your responses we think you’re best suited for the FSA " + loanInfoCategoryTitle + ".";
         loan.append(_createParagraphElement(text));
         loan.append(_createParagraphElement(category.description));
         loan.append(_createParagraphElement(category.note));
 
-        loanInfoCategory = loanInfo.category
+        loanInfoCategory = loansInCategory[0].category;
         bestMatch = text;
         bestMatchDescription = category.description;
         bestMatchNote = category.note;
@@ -846,29 +886,33 @@ input[type="radio"]:focus {
             // List of details
             var list = document.createElement("ul");
             // Max dollar ammount description
-            let item = document.createElement("li");
-            item.innerHTML = loansInCategory[i].maximumDollarAmountDescription;
-            list.appendChild(item);
+            if(loansInCategory[i].maximumDollarAmountDescription != ""){
+                let item = document.createElement("li");
+                item.innerHTML = loansInCategory[i].maximumDollarAmountDescription;
+                list.appendChild(item);
+            }
 
             // down payment description
-            item = document.createElement("li");
-            item.innerHTML = loansInCategory[i].downPaymentDescription;
-            list.appendChild(item);
+            if(loansInCategory[i].downPaymentDescription != ""){
+                item = document.createElement("li");
+                item.innerHTML = loansInCategory[i].downPaymentDescription;
+                list.appendChild(item);
+            }
 
             // Loan term description
-            item = document.createElement("li");
-            item.innerHTML = loansInCategory[i].loanTermDescription;
-            list.appendChild(item);
+            if(loansInCategory[i].loanTermDescription != ""){
+                item = document.createElement("li");
+                item.innerHTML = loansInCategory[i].loanTermDescription;
+                list.appendChild(item);
+            }
 
             // other requirements description
-            if(loansInCategory[i].otherRequirements !== "N/A") {
+            if(loansInCategory[i].otherRequirements !== "N/A" && loansInCategory[i].otherRequirements !== "") {
                 item = document.createElement("li");
                 item.innerHTML = loansInCategory[i].otherRequirements;
                 list.appendChild(item);
             }
-
             loanCard.append(list);
-
             loanCardHolder.append(loanCard);
         }
         loan.append(loanCardHolder);
@@ -1506,10 +1550,8 @@ input[type="radio"]:focus {
             for ( var i = 0; i < conditionals.length; i++ ) { 
                 var hasValue1 = answers.some( x => x.value == parseInt(conditionals[i]['value1']));
                 var hasValue2 = answers.some( x => x.value == parseInt(conditionals[i]['value2']));
-                console.log(nextQuestionId);
                 if(hasValue1 && hasValue2) {
                     nextQuestionId = parseInt(conditionals[i]['nextQuestionId']);
-                    console.log(nextQuestionId);
                     return;
                 }
             }

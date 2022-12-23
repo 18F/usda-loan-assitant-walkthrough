@@ -5,7 +5,7 @@
             "description": "FSA Farm Operating Loans may be used for normal operating expenses, machinery and equipment, minor real estate repairs or improvements, and refinancing debt. Operating Loans are a valuable resource to start, maintain and strengthen a farm or ranch. For new agricultural producers, Operating Loans provide an essential gateway into agricultural production by financing the cost of operating a farm.",
             "descriptionShort": "Used to fund regular operating expenses like purchase livestock, seed, and equipment. Loan funds can also cover startup costs and family living expenses",
             "hasMicroloan": "Operating Microloan",
-            "image": "term.jpg",
+            "image": "annual.jpg",
             "imageAltText": "A closeup on the face of a cow",
             "note": "Note: Operating loans are not lines of credit and producers must reapply every year for an annual operating loan to continue the new year production cycle.",
             "type": "Farm Operating Loan"
@@ -149,7 +149,7 @@
             "formsAdditional": "FSA-2370, FSA-2150, FSA-2007, FSA-2014, FSA-2015, AD-3030",
             "formsRecommended": "AD-1026",
             "formsRequired": "FSA-2001, FSA-2002, FSA-2003, FSA-2004, FSA-2005, FSA-2006, FSA-2037, FSA-2038, FSA-2302",
-            "image": "term.jpg",
+            "image": "annual.jpg",
             "imageAltText": "A closeup on the face of a cow",
             "interestRate": "Based on agency borrowing cost. View current rates",
             "interestRateDescription": "",

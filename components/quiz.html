@@ -2,7 +2,6 @@
 :root {
     color: #212121;
     font-family: "Public Sans";
-    font-size: 12px;
     font-weight: 400;
     --lineheight: 36px;
     --control-color-grey: #BBBBBB;
@@ -89,7 +88,7 @@ input[type=checkbox]::after {
     min-height: 3rem;
     visibility: visible;
     border: 2px solid var(--control-color-green);
-    border-radius: 5px;
+    border-radius: 5px;font-size: 2rem;
 }
 
 input[type=checkbox]:checked {
@@ -99,9 +98,9 @@ input[type=checkbox]:checked:after,
 input[type=checkbox]:checked::after {
     background-color: var(--control-color-green);
     content: "\2713";
+    display: inline-block;
     font-size: 2rem;
     font-weight: 900;
-    line-height: var(--lineheight);
     text-align: center;
 }
 
@@ -109,21 +108,19 @@ input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
   margin: 0;
-
-  font: inherit;
   color: var(--control-color-green);
-  min-width: 1rem;
-  min-height: 1rem;
+  min-width: 2rem;
+  min-height: 2rem;
   border: 0.2rem solid var(--control-color-green);
   border-radius: 50%;
   display: grid;
-  place-content: center;
+  place-content: space-evenly;
 }
 
 input[type="radio"]::before {
   content: "";
-  width: 1rem;
-  height: 1rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   transform: scale(0);
   box-shadow: inset 2rem 2rem var(--control-color-green);
@@ -137,13 +134,13 @@ input[type="radio"]:checked::before {
 }
 
 input[type="radio"]:focus {
-  outline: max(1px, 2px) solid var(--control-color-green);;
+  outline: max(1px, 2px) solid var(--control-color-green);
   outline-offset: max(0px, 2px);
   background-color: var(--control-color-green);
 }
 
 .quiz-container {
-    min-height: 50vh;;
+    min-height: 50vh;
     box-sizing: border-box;
     display: grid;
     grid-template-areas:"progressBar progressBar" 
@@ -237,23 +234,57 @@ input[type="radio"]:focus {
         margin-left: 0.75rem;
     }
 
+    .quiz-next-container {
+        margin: 5rem 0 20rem;
+    }
+
     .quiz-next {
-        font-size: x-large;
+        font-size: 3rem;
         grid-area: next;
         text-align: center;
         margin: auto;
         padding: 2rem;
-        color: blue;
+        color: var(--button-color-blue);
+        text-decoration: underline;
+    }
+
+    .quiz-next a:hover, 
+    .quiz-next a:active, 
+    .quiz-next a:focus {
+        text-shadow: none;
+        -webkit-text-stroke: 0;
+        box-shadow: 0 0 5px var(--control-color-grey);
+    }
+
+    .quiz-next a,
+    .quiz-next-inactive a {
+        padding: 1rem 10rem 2rem;
+        border: 1pt solid var(--control-color-grey);
+        border-radius: 4px;
+        line-height: calc(.8 * var(--line-height));
+        box-shadow: 0 0 5px var(--control-color-grey-light);
     }
 
     .quiz-next-inactive {
-        font-size: x-large;
+        font-size: 3rem;
         grid-area: next;
         text-align: center;
         margin: auto;
         padding: 2rem;
-        color: gray;
+        color: var(--control-color-grey);
     }
+
+    .quiz-next-inactive a, 
+    .quiz-next-inactive a:hover, 
+    .quiz-next-inactive a:active 
+    .quiz-next-inactive a:focus {
+        color: var(--control-color-grey) !important;
+        cursor: default;
+        text-decoration: underline !important;
+        text-shadow: none;
+        -webkit-text-stroke: 0;
+    }
+
 
     .quiz-title-text {
         line-height: calc(.95 * var(--lineheight));
@@ -324,6 +355,23 @@ input[type="radio"]:focus {
         display: flex;
         flex-direction: row-reverse;
     }
+
+    /* Label elements for single-select radio buttons */
+    .optionLabel {
+        display: grid;
+        grid-auto-columns: max-content;
+        grid-auto-rows: max-content;
+        column-gap: 1.25rem;
+        padding: 1rem 0;
+    }
+
+    .optionLabel input {
+        grid-column: 1;
+    }
+
+    .optionLabel span {
+        grid-column: 2;
+    }
     
     /* Summary */
     .quiz-summary {
@@ -378,8 +426,15 @@ input[type="radio"]:focus {
                 width: 4rem;
                 height: 4rem;
                 text-align: center;
-                line-height: var(--lineheight);
+                line-height: calc(0.8 * var(--lineheight));
             }
+
+            .full-report-result-bullet-container .step-bullet {
+                margin: 1.5rem 1rem 0 0 ;
+                line-height: 3.25rem;
+                font-weight: 700;
+            }
+
             .step-bullet-green-fill {
                 background: var(--control-color-green);
                 border: 0.5rem var(--color-white) solid;
@@ -434,7 +489,7 @@ input[type="radio"]:focus {
             .quiz-summary-flag-leftbar-warning-background { background-color: #FFBE2E; }
             
             .quiz-summary-flag-iconholder {
-                padding: 10%;
+                padding: 2rem 10% 10% 1rem;
             }
             .quiz-summary-flag-text {
                 display:grid;
@@ -460,7 +515,7 @@ input[type="radio"]:focus {
         .full-report-result-container {
             margin: 1rem 0;
             display: grid;
-            grid-template-columns: 4rem 1fr;
+            grid-template-columns: 5.5rem 1fr;
         }
             .full-report-result-bullet-container {
                 width: 100%;
@@ -752,32 +807,32 @@ input[type="radio"]:focus {
         progressBar.append(map);
 
         // add the labels under the bar
-        var labels = document.createElement("div");
-        labels.classList.add("quiz-progress-bar-labels-container");
+        var progressLabels = document.createElement("div");
+        progressLabels.classList.add("quiz-progress-bar-labels-container");
         var active = "quiz-progress-bar-label-active";
 
-        var label = document.createElement("div");
-        label.classList.add("quiz-progress-bar-label", active);
-        label.textContent= "You and your farm";
-        labels.append(label);
+        var progressLabel = document.createElement("div");
+        progressLabel.classList.add("quiz-progress-bar-label", active);
+        progressLabel.textContent= "You and your farm";
+        progressLabels.append(progressLabel);
 
-        label = document.createElement("div");
-        label.classList.add("quiz-progress-bar-label");
-        label.textContent = "Loan eligibility";
-        labels.append(label);
+        progressLabel = document.createElement("div");
+        progressLabel.classList.add("quiz-progress-bar-label");
+        progressLabel.textContent = "Loan eligibility";
+        progressLabels.append(progressLabel);
         if(progressBarStage == "Loan Eligibility" || progressBarStage == "Results") {
-            label.classList.add("quiz-progress-bar-label", active);
+            progressLabel.classList.add("quiz-progress-bar-label", active);
         }
 
-        label = document.createElement("div");
-        label.classList.add("quiz-progress-bar-label");
-        label.textContent= "Results"
-        labels.append(label);
+        progressLabel = document.createElement("div");
+        progressLabel.classList.add("quiz-progress-bar-label");
+        progressLabel.textContent= "Results"
+        progressLabels.append(progressLabel);
         if(progressBarStage == "Results") {
-            label.classList.add("quiz-progress-bar-label", active);
+            progressLabel.classList.add("quiz-progress-bar-label", active);
         }
 
-        progressBar.append(labels);
+        progressBar.append(progressLabels);
 
         $('#progressbar').empty();
         return progressBar;
@@ -799,31 +854,31 @@ input[type="radio"]:focus {
     }
 
     function _createSummary() {
-        var sumarry = document.createElement("div");
-        sumarry.classList.add("quiz-summary");
+        var summary = document.createElement("div");
+        summary.classList.add("quiz-summary");
         
-        sumarry.append(_createProgressbar());
+        summary.append(_createProgressbar());
         
         // Title
         var text = "FSA Farm Loan Quiz Results";
-        sumarry.append(_createTitle(text));
+        summary.append(_createTitle(text));
         //Description
         text = "Based on your answers to the Farm Loan Quiz, we have matched you with a farm loan that will best fit your financing needs. Review the loan details and start your application process by completing the steps outline below.";
-        sumarry.append(_createParagraphElement(text));
+        summary.append(_createParagraphElement(text));
 
         // recomended loan
-        sumarry.append(_createRecomendedLoans());
+        summary.append(_createRecomendedLoans());
         
         // Flags
         text = "Below are the things we’ve flagged and recommend talking to your loan officer about.";
-        sumarry.append(_createParagraphElement(text));
-        sumarry.append(_createFlagMessages());
+        summary.append(_createParagraphElement(text));
+        summary.append(_createFlagMessages());
         
         // Steps
-        sumarry.append(_createSummarySteps());
+        summary.append(_createSummarySteps());
 
         $('#summary-container').empty();
-        $('#summary-container').append(sumarry);
+        $('#summary-container').append(summary);
     }
 
     function _createRecomendedLoans() {
@@ -1098,7 +1153,7 @@ input[type="radio"]:focus {
             var textHolder = document.createElement("div");
             textHolder.classList.add("summary-step-text");
 
-            div = document.createElement("div");
+            div = document.createElement("h3");
             div.classList.add("summary-step-text-title");
             div.textContent = stepinfo[i].text;
             textHolder.append(div);
@@ -1358,6 +1413,7 @@ input[type="radio"]:focus {
     // Creates a link to the next question.  If next step is based on user choice the link wil be inactive until choice is made
     function _createNextStepLink() {
         var parent = document.createElement('div');
+        parent.classList.add("quiz-next-container");
         
         // Add inactive link
         var div = document.createElement('div');
@@ -1698,23 +1754,25 @@ input[type="radio"]:focus {
 
     function _createSingleSelectItems(options) {
         var gridDiv = document.createElement("div");
+        // gridDiv.id = "singleSelectItems-container";
+        gridDiv.classList.add("quiz-singleSelectItems-container");
         for ( var i = 0; i < options.length; i++ ) {
             if(options[i]["optionId"] !== -1) { 
                 gridDiv.append(_createRadioButtons(options[i]));
-                //gridDiv.append(cardDiv);
             }
         }
         return gridDiv;
     }
 
     function _createRadioButtons(option) {
-        var div = document.createElement("div");
-        var label = document.createElement("label");
-        var labelText = document.createElement("p");
+        var singleRadioLabel = document.createElement("label");
+        singleRadioLabel.classList.add("optionLabel");
+        singleRadioLabel.id = "labelId-" + option['optionId'];
+        var labelText = document.createElement("span");
         var radio = document.createElement("input");
         radio.type = "radio";
         radio.name = "radio";
-        radio.id = option['value'];
+        radio.id = "inputId-" + option['value'];
         radio.value = option['nextQuestionId'];
 
         $(radio).off().on('click', setSingleSelectAnswers.bind(this, option, radio));
@@ -1724,11 +1782,10 @@ input[type="radio"]:focus {
         });
         
         labelText.textContent = option.title
-        label.appendChild(radio);
-        label.appendChild(labelText);
-        div.appendChild(label);
+        singleRadioLabel.appendChild(radio);
+        singleRadioLabel.appendChild(labelText);
 
-        return div;
+        return singleRadioLabel;
     }
 
     function setSingleSelectAnswers(option) {

@@ -17393,7 +17393,7 @@ h6#related-resources {
     max-width: 340px;
     height: 100%;
     display: grid;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-rows: max-content;
 }
     .loantype-card-image-container {
         width: 100%;
@@ -17406,25 +17406,24 @@ h6#related-resources {
         }
 
     .loantype-card-title {
-        padding-top: 24px;
-        padding-left: 24px;
-        padding-bottom: 8px;
+        padding-top: 2rem;
+        padding-left: 2rem;
+        padding-bottom: 0.75rem;
     }
 
     .loantype-card-description {
-        padding: 8px 24px;
+        padding: 0.75rem 2rem;
     }
 
-    .loantype-card-spacer {
+    /* .loantype-card-spacer {
         padding: 12px;
-    }
+    } */
 
     .loantype-card-button-container {
-        padding: 24px;
+        display: inline-grid;
+        align-content: flex-end;
+        padding: 2rem;
     }
-        .loantype-card-button {
-            
-        }
 
 .loantype-title {
     height: fit-content;

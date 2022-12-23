@@ -1,11 +1,29 @@
 <style>
 :root {
+    color: #212121;
+    font-family: "Public Sans";
     font-size: 12px;
-    --control-color-grey: rgb(200,200,200);
+    font-weight: 400;
+    --lineheight: 36px;
+    --control-color-grey: #BBBBBB;
+    --control-color-grey-light: #E6E6E6;
+    --control-color-grey-dark: #5C5C5C;
     --control-color-green: #49A564;
+    --control-color-green-dark: #006546;
     --button-color-blue: #1A6AD3;
     --color-white: #FFFFFF;
     --color-black: #0000;
+}
+
+h1 {
+    color: #000000;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+p {
+    font-size: 1.6rem;
+    line-height: 2.5rem;
 }
 
 .button {
@@ -57,18 +75,16 @@ input[type=checkbox] {
     appearance: none;
     margin: 0;
     transform: scale(1);
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
     cursor: pointer;
-    font-size: 17px;
     visibility: hidden;
 }
 
 input[type=checkbox]:after,
 input[type=checkbox]::after {
-    content: " ";
+    content: "";
     display: inline-block;
-
     min-width: 3rem;
     min-height: 3rem;
     visibility: visible;
@@ -81,10 +97,12 @@ input[type=checkbox]:checked {
 }
 input[type=checkbox]:checked:after,
 input[type=checkbox]:checked::after {
-    content: "\2713";
-    font-weight: bold;
     background-color: var(--control-color-green);
-    padding: 0px 25%;
+    content: "\2713";
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: var(--lineheight);
+    text-align: center;
 }
 
 input[type="radio"] {
@@ -94,8 +112,8 @@ input[type="radio"] {
 
   font: inherit;
   color: var(--control-color-green);
-  min-width: 3rem;
-  min-height: 3rem;
+  min-width: 1rem;
+  min-height: 1rem;
   border: 0.2rem solid var(--control-color-green);
   border-radius: 50%;
   display: grid;
@@ -104,8 +122,8 @@ input[type="radio"] {
 
 input[type="radio"]::before {
   content: "";
-  width: 2rem;
-  height: 2rem;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
   transform: scale(0);
   box-shadow: inset 2rem 2rem var(--control-color-green);
@@ -139,11 +157,24 @@ input[type="radio"]:focus {
     Progressbar 
     */
     .quiz-progress-bar-container {
-        width: 100%;
-        grid-area: progressBar;
         display: grid;
+        grid-area: progressBar;
         grid-template-rows: auto auto;
+        grid-template-columns: 2fr 10fr;
+        margin: 2rem 0 4rem 0;
+        width: 100%;
     }
+        /* Back button */
+        .quiz-back-container {
+            display: grid;
+            padding-top: .5rem;
+        }
+
+            .quiz-back {
+                width: 2rem;
+                display: grid;
+            }
+
         .quiz-progress-bar-map-container {
             width: 100%;
             display: grid;
@@ -152,16 +183,17 @@ input[type="radio"]:focus {
         }
             .quiz-progress-bar-map-bar {
                 background-color: var(--control-color-green);
-                margin: 1rem 0;
+                margin: 1rem;
                 width: 0%;
                 grid-column-start: 1;
                 grid-column-end: 2;
                 grid-row-start: 1;
             }
+
             .quiz-progress-bar-map-bar-back {
-                background-color: var(--control-color-grey);
-                max-width: 70%;
-                margin: 1rem 0;
+                background-color: var(--control-color-grey-light);
+                max-width: 68%;
+                margin: 1rem;
                 grid-column-start: 1;
                 grid-column-end: 2;
                 grid-row-start: 1;
@@ -178,31 +210,31 @@ input[type="radio"]:focus {
             }
                 .quiz-progress-bar-map-bar-marker {
                     width: 100%;
-                    height: 100%;
+                    height: 100%;    
+                    margin-top: -0.25rem;
                 }
                 
         .quiz-progress-bar-labels-container {
             grid-row-start: 2;
+            grid-column-start: 2;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr; 
+            grid-template-columns: 1fr 1fr 1fr;
+            padding-top: .25rem; 
         }
             .quiz-progress-bar-label {
+                color: var(--control-color-grey-dark);
+                font-weight: 300;
                  padding: 0.5rem;
             }
 
-/* Back button */
-    .quiz-back-container {
-        grid-area: back;
-        display:grid;
-    }
-
-        .quiz-back {
-            width: 2rem;
-            display:grid;
-        }
+            .quiz-progress-bar-label-active {
+                color: var(--control-color-green-dark);
+                font-weight: 700;
+            }
 
     .quiz-questions-container {
         grid-area: questions;
+        margin-left: 0.75rem;
     }
 
     .quiz-next {
@@ -224,21 +256,13 @@ input[type="radio"]:focus {
     }
 
     .quiz-title-text {
-        font-family: 'Public Sans';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 22px;
-        line-height: 26px;
-        color: #212121;
+        line-height: calc(.95 * var(--lineheight));
     }
 
     .quiz-paragraph-text {
-        font-family: 'Public Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 150%;
-        color: #212121;
+        color: var(--control-color-grey-dark);
+        margin-top: 1rem;
+        grid-row: 2;
     }
 
     .quiz-multiSelect-container {
@@ -249,43 +273,51 @@ input[type="radio"]:focus {
     }
     
     .quiz-multiSelect-card-container {
-        display: inline-block;
+        border: 0.2rem solid var(--control-color-grey-dark);
+        display: grid;
         min-width: 100%;
         min-height: fit-content;
-        border: 2px solid #212121;
         padding: 2rem;
+        grid-template-rows: max-content;
     }
 
     .quiz-multiSelect-card-container-selected {
-        display: inline-block;
+        border: 0.2rem solid var(--control-color-green);
+        box-shadow: 0 0 5px var(--control-color-green);
+        display: grid;
         min-width: 100%;
         min-height: fit-content;
-        border: 0.2rem solid var(--control-color-green);
         padding: 2rem;
+        grid-template-rows: max-content;
     }
 
     .quiz-multiSelect-card-title-text {
         font-family: 'Public Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 21px;
+        font-size: 2rem;
+        font-weight: 500;
+        line-height: calc(.95 * var(--lineheight));
         color: #212121;
+        grid-row: 1;
     }
 
     .quiz-multiSelect-card-paragraph-text {
+        grid-row: 2;
+    }
+
+    .quiz-multiSelect-card-paragraph-text > p {
         font-family: 'Public Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 16px;
-        color: #212121;
+        font-size: 0.6rem;
+        font-weight: 300;
+        line-height: calc(.5 * var(--lineheight));
+        color: var(--control-color-grey-dark);
     }
 
     .quiz-multiSelect-card-check-container {
-        min-width: 3rem;
-        min-height: 3rem;
-        float: right;
+        min-width: 2rem;
+        min-height: 2rem;
+        grid-row: 2;
+        display: inline-grid;
+        align-content: flex-end;
     }
 
     .quiz-singleSelectRadio-container {
@@ -327,7 +359,7 @@ input[type="radio"]:focus {
     }
     .summary-step {
         height: min-content;
-        display:grid;
+        display: grid;
         grid-template-areas:"header header"
                             "iconholder step-text"
                             "iconholder step-full-report";
@@ -343,22 +375,25 @@ input[type="radio"]:focus {
         }
             .step-bullet {
                 border-radius: 50%;
-                width: 38px;
-                height: 38px;
+                width: 4rem;
+                height: 4rem;
                 text-align: center;
+                line-height: var(--lineheight);
             }
             .step-bullet-green-fill {
                 background: var(--control-color-green);
+                border: 0.5rem var(--color-white) solid;
                 color: var(--color-white);
+                font-weight: 700;
 
             }
             .step-bullet-green-border {
-                border: 3px solid var(--control-color-green);
+                border: 0.3rem solid var(--control-color-green);
                 color: var(--control-color-green);
             }
             .step-bullet-grey-border {
-                border: 3px solid var(--control-color-grey);
-                color: var(--control-color-grey);
+                border: 0.5rem solid var(--control-color-grey-light);
+                color: var(--control-color-dark-grey);
                 background: var(--color-white);
             } 
         .summary-step-text {
@@ -655,14 +690,25 @@ input[type="radio"]:focus {
     // Summary Page
     //////////////////
     function _createProgressbar() {
+        // create container for all progress bar elements
         var progressBar = document.createElement("div");
         progressBar.classList.add("quiz-progress-bar-container");
         progressBar.setAttribute("id","progressbar"); 
+
+        // create back button
+        var backArrowContainer = document.createElement("div");
+        backArrowContainer.classList.add("quiz-back-container");
+        var backArrow = document.createElement("div");
+        backArrow.classList.add("quiz-back");
+        backArrow.id = "quiz-back";
+        backArrowContainer.append(backArrow);
+        progressBar.append(backArrowContainer);
         
         var map = document.createElement("div");
         map.classList.add("quiz-progress-bar-map-container");
         progressBar.append(map);
         
+        // create the bar
         var bar = document.createElement("div");
         bar.classList.add("quiz-progress-bar-map-bar-back");
         map.append(bar);
@@ -671,6 +717,7 @@ input[type="radio"]:focus {
         bar.classList.add("quiz-progress-bar-map-bar");
         map.append(bar);
         
+        // add the markers on the bar
         var markers = document.createElement("div");
         markers.classList.add("quiz-progress-bar-map-bar-markers");
         
@@ -695,7 +742,7 @@ input[type="radio"]:focus {
         fill = "border-grey"
         if(progressBarStage == "Results") {
             fill = "fill-green"
-            bar.style.width = '70%';
+            bar.style.width = '68%';
         }
         marker.append(_createStepBullet(3, fill));
         markers.append(marker);
@@ -703,23 +750,31 @@ input[type="radio"]:focus {
         map.append(markers);
         progressBar.append(map);
 
+        // add the labels under the bar
         var labels = document.createElement("div");
         labels.classList.add("quiz-progress-bar-labels-container");
+        var active = "quiz-progress-bar-label-active";
 
         var label = document.createElement("div");
-        label.classList.add("quiz-progress-bar-label");
-        label.textContent= "You and your farm"
+        label.classList.add("quiz-progress-bar-label", active);
+        label.textContent= "You and your farm";
         labels.append(label);
 
         label = document.createElement("div");
         label.classList.add("quiz-progress-bar-label");
-        label.textContent = "Loan eligibility"
+        label.textContent = "Loan eligibility";
         labels.append(label);
+        if(progressBarStage == "Loan Eligibility" || progressBarStage == "Results") {
+            label.classList.add("quiz-progress-bar-label", active);
+        }
 
         label = document.createElement("div");
         label.classList.add("quiz-progress-bar-label");
         label.textContent= "Results"
         labels.append(label);
+        if(progressBarStage == "Results") {
+            label.classList.add("quiz-progress-bar-label", active);
+        }
 
         progressBar.append(labels);
 
@@ -732,14 +787,6 @@ input[type="radio"]:focus {
         container.classList.add("quiz-container");
 
         container.append(_createProgressbar());
-
-        var backArrowContainer = document.createElement("div");
-        backArrowContainer.classList.add("quiz-back-container");
-        var backArrow = document.createElement("div");
-        backArrow.classList.add("quiz-back");
-        backArrow.id = "quiz-back";
-        backArrowContainer.append(backArrow);
-        container.append(backArrowContainer);
 
         var question = document.createElement("div");
         question.classList.add("quiz-questions-container");
@@ -1239,7 +1286,7 @@ input[type="radio"]:focus {
     ///////////////////////////////////////
     // Saves answer and shows next question
     function saveAndNext() {
-        // Get list of answers from the multi select mnswers
+        // Get list of answers from the multi select answers
         if(questionType == "multiselect") {
             if(answers.findIndex(x => x.value !== -1) > -1) {
                 var multiAnswers = [];
@@ -1305,10 +1352,11 @@ input[type="radio"]:focus {
         if(questionHistory[0]['question'] !== currentQuestion) {
             $('#quiz-back').show();
             var image = document.createElement("img");
-            image.setAttribute("src", "./images/arrow-left.png");
+            image.setAttribute("src", "./images/angle-arrow-down.png");
             image.setAttribute("height", "32");
             image.setAttribute("width", "32");
-            image.setAttribute("alt", "Back Arrow");
+            image.setAttribute("alt", "Back to previous step");
+            image.style.transform = "rotate(90deg)";
 
             var previoousLink = document.createElement('a');
 
@@ -1434,7 +1482,7 @@ input[type="radio"]:focus {
 
     function _createMultiselctCardTitle(title) {
         var titleDiv = document.createElement("div");
-        titleDiv.classList.add("quiz-MultiSelect-card-title-text");
+        titleDiv.classList.add("quiz-multiSelect-card-title-text");
         titleDiv.textContent = title;
         return titleDiv;  
     }
@@ -1715,9 +1763,9 @@ input[type="radio"]:focus {
     // Creates a bold title
     function _createTitle(title) {
         if(title == "") { return }
-        var titleDiv = document.createElement("div");
+        var titleDiv = document.createElement("h1");
         titleDiv.classList.add("quiz-title-text");
-        titleDiv.textContent = title
+        titleDiv.textContent = title;
         return titleDiv;
     }
 
@@ -1735,7 +1783,7 @@ input[type="radio"]:focus {
                 // If it's a string, then create a simple paragraph element
                 if (typeof paragraphText === 'string' || paragraphText instanceof String) {
                     var paragraphElement = _createParagraphElement(paragraphText);
-                    // If it's an object, then it should represent a bulvared list, so create that instead
+                // If it's an object, then it should represent a bulvared list, so create that instead
                 } else if (typeof paragraphText === 'object' && !Array.isArray(paragraphText)) {
                     var paragraphElement = _createBulvaredListElement(paragraphText.bulvars, paragraphText.type);
                 } else {

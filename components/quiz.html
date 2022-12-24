@@ -616,6 +616,8 @@ input[type="radio"]:focus {
     var conditionals = [];
     var progressBarStage = "You and your farm";
     var pdfData = [];
+    var hasYouthLoan = false;
+    var primaryRecomendation = "";
 
     // Printed/saved report
     var bestMatch;
@@ -894,7 +896,6 @@ input[type="radio"]:focus {
         recomended.classList.add("recomended-loans-container");
         loans.append(recomended);
         
-        // add the loan details
         // Find the multiselect question
         var multiSelectQuestionId;
         for ( var i = 0; i < questions.length; i++ ) {
@@ -940,6 +941,14 @@ input[type="radio"]:focus {
                         }
                     }
                 }
+            }
+
+            if(category.type == "Youth Loan") {
+                hasYouthLoan = true;
+            }
+
+            if(primaryRecomendation == "") {
+                primaryRecomendation = category.type;
             }
 
             recomended.append(_createSugestedLoanCards(category, loansInCategory, loanInfo, i, loan, recomended));
@@ -1122,22 +1131,24 @@ input[type="radio"]:focus {
             ],
             "hasFulleReport": false,
         });
- 
-        stepinfo.push({
-            "text": "Download your quiz responses",
-            "message": "We recommend downloading and/or printing the quiz and discussing your answers with your local loan officer.",
-            "buttons": [ {
-                    "buttonText": "DOWNLOAD QUIZ",
-                    "buttonURL": "onclick=savePDF",
-                },
-                {
-                    "buttonText": "PRINT QUIZ",
-                    "buttonURL": "onclick=printPDF",
-                }
-            ],
-            "hasFulleReport": true,
-        });
-   
+        
+        if(!hasYouthLoan) {
+            stepinfo.push({
+                "text": "Download your quiz responses",
+                "message": "We recommend downloading and/or printing the quiz and discussing your answers with your local loan officer.",
+                "buttons": [ {
+                        "buttonText": "DOWNLOAD QUIZ",
+                        "buttonURL": "onclick=savePDF",
+                    },
+                    {
+                        "buttonText": "PRINT QUIZ",
+                        "buttonURL": "onclick=printPDF",
+                    }
+                ],
+                "hasFulleReport": true,
+            });
+        }
+
         var steps = document.createElement("div");
         steps.classList.add("summary-step-container");
         
@@ -1186,7 +1197,7 @@ input[type="radio"]:focus {
                     var text = document.createTextNode(stepinfo[i].buttons[j].buttonText);
                     button.appendChild(text);
 
-                    var url = categories.find(x=> x.type == loanInfoCategory).checklist.toString();
+                    var url = categories.find(x=> x.type == primaryRecomendation).checklist.toString();
                     $(button).off().on('click', openURL.bind(this, url));
                     $(button).on('click',function() {
                         openURL.bind(this, url);
@@ -1646,17 +1657,14 @@ input[type="radio"]:focus {
             
             checkConditionals();
             setNextLinkValues();
-            console.log(nextQuestionId)
         });
     }
 
     function checkConditionals() {
         if(conditionals.length !==0) {
             for ( var i = 0; i < conditionals.length; i++ ) { 
-                var isYouth = answers.some( x => x.value == "9999");
                 var hasValue1 = answers.some( x => x.value == parseInt(conditionals[i]['value1']));
                 var hasValue2 = answers.some( x => x.value == parseInt(conditionals[i]['value2']));
-                console.log(isYouth)
                 if(hasValue1 && hasValue2) {
                     nextQuestionId = parseInt(conditionals[i]['nextQuestionId']);
                     return;
@@ -1946,7 +1954,9 @@ input[type="radio"]:focus {
     // Utilities
     ///////////////////////////////////
     function showRelatedForms() {
-        setloanType(loanInfoCategory);
+        console.log(primaryRecomendation)
+
+        setloanType(primaryRecomendation);
         setContent("loanforms");
     }
 

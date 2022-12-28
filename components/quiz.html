@@ -162,7 +162,7 @@ input[type="radio"]:focus {
         display: grid;
         grid-area: progressBar;
         grid-template-rows: auto auto;
-        grid-template-columns: 2fr 10fr;
+        grid-template-columns: 2fr 8fr 2fr;
         margin: 2rem 0 4rem 0;
         width: 100%;
     }
@@ -233,7 +233,11 @@ input[type="radio"]:focus {
                 color: var(--control-color-green-dark);
                 font-weight: 700;
             }
+        .quiz-retake-container{
+            
+        }
 
+/* QUestion COntainer */
     .quiz-questions-container {
         grid-area: questions;
         margin-left: 0.75rem;
@@ -665,6 +669,7 @@ input[type="radio"]:focus {
             // Get list of questions
             $.getJSON("../quiz.json", function(data) {
                 questions = data["questions"];
+                
                 // Clean up assigned values
                 for ( var i = 0; i < questions.length; i++ ) {
                     // remove options
@@ -704,9 +709,11 @@ input[type="radio"]:focus {
     //////////////////
     // Shows question
     function showQuestion(questionId) {
+
         // check the summary page should be loaded
         if(nextQuestionId === 9999 || currentQuestion === 9999) {
             progressBarStage = "Results";
+            nextQuestionId = questionHistory[questionHistory.length - 1].guestion;
             _createSummary();
         }
         else {
@@ -848,10 +855,33 @@ input[type="radio"]:focus {
 
         progressBar.append(progressLabels);
 
+        // create retake quiz button
+        var retakeQuizLink = document.createElement("div");
+        retakeQuizLink.classList.add("quiz-retake-container");
+
+        var a = document.createElement('a');
+        var linkText = document.createTextNode("Retake quiz");
+        a.appendChild(linkText);
+        a.title = "Retake quiz";
+        $(a).off().on('click', retakeQuiz.bind(this));
+        $(a).on('click',function() {
+            retakeQuiz.bind(this);
+            $(this).off('click');
+        });
+        retakeQuizLink.append(a);
+        progressBar.append(retakeQuizLink);
+
         $('#progressbar').empty();
         return progressBar;
     }
 
+    function retakeQuiz() {
+        console.log("retake")
+        setCookie("answers", '', -1);
+        setContent("quiz");
+    }
+        
+    
     function _createQuestionContainer() {
         var container = document.createElement("div");
         container.classList.add("quiz-container");
@@ -893,6 +923,7 @@ input[type="radio"]:focus {
 
         $('#summary-container').empty();
         $('#summary-container').append(summary);
+        _createBackStepLink();
     }
 
     function _createRecomendedLoans() {
@@ -1490,7 +1521,14 @@ input[type="radio"]:focus {
 
             previoousLink.onclick = function() { 
                 var id = questionHistory.findIndex(x => x.question === currentQuestion) -1;
+                if(id === -2) {
+                    id = questionHistory.length-1;
+                    currentQuestion = questionHistory[id].question;
+                    nextQuestionId = questionHistory[id].question;
+                }
+
                 showQuestion(questionHistory.at(id)['question']);
+                
                 if(id === 0) {
                     $('#quiz-back').hide();
                 }

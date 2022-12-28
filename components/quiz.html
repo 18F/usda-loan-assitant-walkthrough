@@ -634,6 +634,7 @@ input[type="radio"]:focus {
     var pdfData = [];
     var hasYouthLoan = false;
     var primaryRecomendation = "";
+    var categoryCount = 0; //used to count number of categories in report
 
     // Printed/saved report
     var bestMatch;
@@ -1006,13 +1007,18 @@ input[type="radio"]:focus {
         }
 
         // Image
-        var imageContainer = document.createElement("img");
-        imageContainer.classList.add("recomended-imageContainer");
+        if(categoryCount == 0) {
+            var imageContainer = document.createElement("img");
+            imageContainer.classList.add("recomended-imageContainer");
 
-        var image = document.createElement("img");
-        image.classList.add("recomended-image");
-        image.src = './images/loantypes/'+loanInfo.image;
-        loan.append(image);
+            var image = document.createElement("img");
+            image.classList.add("recomended-image");
+            image.src = './images/loantypes/'+loanInfo.image;
+            loan.append(image);
+        }
+        categoryCount++;
+        
+        // Title
         var loanInfoCategoryTitle = loanInfo.category;
         if(loanInfoCategoryTitle == "Microloan") {
             loanInfoCategoryTitle = loansInCategory[0].name;
@@ -2025,7 +2031,7 @@ input[type="radio"]:focus {
     }
 
     function openURL(url) {
-        window.location = url;
+        window.open(url, '_blank');
     }
 
     function savePDF() {

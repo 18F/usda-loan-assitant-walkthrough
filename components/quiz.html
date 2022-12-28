@@ -880,7 +880,6 @@ input[type="radio"]:focus {
         setContent("quiz");
     }
         
-    
     function _createQuestionContainer() {
         var container = document.createElement("div");
         container.classList.add("quiz-container");
@@ -984,15 +983,15 @@ input[type="radio"]:focus {
                     }
                 }
             }
+            console.log(category.type)
 
-            if(category.type.includes("youth")) {
+            if(category.type == "Youth Loan") {
                 hasYouthLoan = true;
             }
 
             if(primaryRecomendation == "") {
                 primaryRecomendation = category.type;
             }
-
             recomended.append(_createSugestedLoanCards(category, loansInCategory, loanInfo, i, loan, recomended));
         }
         return loans;
@@ -1001,6 +1000,11 @@ input[type="radio"]:focus {
     // shows a detailed view of the primary loan, and if available minimal details for other loan types
     // loanInfo = details from JSON, index = index from array of sugested loans
     function _createSugestedLoanCards(category, loansInCategory, loanInfo, index, loan, recomended) {
+        if(hasYouthLoan && category.type != "Youth Loan") {
+            console.log("NOT YOUTH")
+            return;
+        }
+
         // Image
         var imageContainer = document.createElement("img");
         imageContainer.classList.add("recomended-imageContainer");
@@ -1377,7 +1381,6 @@ input[type="radio"]:focus {
         report.append(bestMatchText);
 
         text = categories.find(x=> x.type == primaryRecomendation).description
-        console.log(text)
 
         var bestMatchDescriptionText = document.createElement("div");
         bestMatchDescriptionText.classList.add("result-recommendation-description");
@@ -1385,7 +1388,6 @@ input[type="radio"]:focus {
         report.append(bestMatchDescriptionText);
 
         text = categories.find(x=> x.type == primaryRecomendation).note
-        console.log(text)
 
         var bestMatchNoteText = document.createElement("div");
         bestMatchNoteText.classList.add("result-recommendation-note");

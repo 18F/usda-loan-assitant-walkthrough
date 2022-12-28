@@ -133,52 +133,52 @@
     <!-- List of conditions--> 
     <div class="container">
         <div class="farmers-landing-page row">
-            <div class="primary-region medium-12">
-                
-                <div class="primary-region__header">
+            <div class="primary-region medium-12" id="primary-region">
+      
+                <div class="primary-region__header" >
                     <div id="header-holder"> </div>
-                    <p id="header-note"></p>
-                    <ul>
-                        <li>The forms can only be saved to your computer;</li>
-                        <li>At no point in this process is any information saved to, or shared with USDA staff or systems; and</li>
-                        <li>You care encouraged to reach out to your Local Service Center if you have any further questions or concerns.</li>
-                    </ul>
-                    <p id="return-form-suport">
-                        
-                    </p>
+                    <div id="header-info-holder"> 
+                        <p id="header-note"></p>
+                        <ul>
+                            <li>The forms can only be saved to your computer;</li>
+                            <li>At no point in this process is any information saved to, or shared with USDA staff or systems; and</li>
+                            <li>You care encouraged to reach out to your Local Service Center if you have any further questions or concerns.</li>
+                        </ul>
 
-                    <!-- Yellow warning --> 
-                    <div class="warning-container">
-                        <div class="warning-left-bar"> </div>
-                        <div class="warning-icon">
-                            <img src="./images/alerts/warning.png" alt="warning icon" height="32" width="32">
+                        <!-- Yellow warning --> 
+                        <div class="warning-container">
+                            <div class="warning-left-bar"> </div>
+                            <div class="warning-icon">
+                                <img src="./images/alerts/warning.png" alt="warning icon" height="32" width="32">
+                            </div>
+                            <div class="warning-message">
+                                <div class="warning-message-title">
+                                    These forms can only be saved to your computer
+                                </div>
+                            </div>
                         </div>
-                        <div class="warning-message">
-                            <div class="warning-message-title">
-                                These forms can only be saved to your computer
+                        
+                        <!-- blue  info box --> 
+                        <div class="info-container" id="info-container-id">
+                            <div class="info-left-bar"> </div>
+                            <div class="info-icon">
+                                <img src="./images/alerts/info.png" alt="alert icon" height="32" width="32">
+                            </div>
+                            <div class="info-message">
+                                <div class="info-message-title">
+                                    Eligibility assesssment available
+                                </div>
+                                <div class="info-message-description">
+                                    Not sure where to start? Complete the eligibility assessment to understand which loan application best suits your needs.
+                                </div>
+                                    <button class="btn lg-btn info-button-container" onclick="setContent('quiz')" aria-label="Go to the Loan Readiness Tool">
+                                        Start Eligibility Self-Assessment
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- blue  info box --> 
-                    <div class="info-container" id="info-container-id">
-                        <div class="info-left-bar"> </div>
-                        <div class="info-icon">
-                            <img src="./images/alerts/info.png" alt="alert icon" height="32" width="32">
-                        </div>
-                        <div class="info-message">
-                            <div class="info-message-title">
-                                Eligibility assesssment available
-                            </div>
-                            <div class="info-message-description">
-                                Not sure where to start? Complete the eligibility assessment to understand which loan application best suits your needs.
-                            </div>
-                                <button class="btn lg-btn info-button-container" onclick="setContent('quiz')" aria-label="Go to the Loan Readiness Tool">
-                                    Start Eligibility Self-Assessment
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="return-form-suport"></div>
                 </div>
             </div>
         </div>
@@ -190,73 +190,100 @@
 
     <!-- Holds contents based on conditions -->
     <div class="container">
-        <div id="forms-holder"></div>
+        <div class="container-card-holder"id="forms-holder"></div>
     </div>
     <div class="container-spacer-bottom"></div>
 </div>
 
 <script>
+    var forms = [];
+    var loanTypes = [];
+    var categories = [];
+
     (function() {
-        // Get the current page
-        var loanType = getloanType();
-        
-        // load home page on first load SetContent
-        if(loanType === undefined || loanType === "" || loanType === "all") {
-            showAllLoans();
-        }
-        else {
-            showFormsList(loanType);
-        }
+        $.getJSON("/forms/forms.json", function(formData) {
+            forms = [...formData['Forms']];
+            $.getJSON("/forms/loantypes.json", function(data) {
+                loanTypes = [...data['loanType']];
+                categories = [...data['categories']];
+
+                if(getSearchQuerry() != undefined && getSearchQuerry() != "") {
+                    showSearchResults();
+                    return;
+                }
+                
+                // Get the current page
+                var loanType = getloanType();
+                
+                // load home page on first load SetContent
+                if(loanType === undefined || loanType === "" || loanType === "all") {
+                    showAllLoans();
+                }
+                else {
+                    showFormsList(loanType);
+                }
+            });
+        });
     })();
+
+    function showSearchResults() {
+        querry = getSearchQuerry().toLowerCase();
+
+        var loanTypeResults = loanTypes.filter(x => x.name.toLowerCase().includes(querry));
+        if(loanTypeResults != undefined && loanTypeResults.length != 0) {
+            showFormsList(loanTypeResults[0].category)
+        }
+        
+        var formResults = forms.filter(x => x.id.toLowerCase().includes(querry));
+        if(formResults != undefined) {
+            showSearchResultsForms(formResults);
+        }
+
+        setSearchQuerry("")
+    }
 
     // Draws cards for all loan types
     function showAllLoans() {
         setloanType("all");
-        var descriptioText = "Below are all the loans FSA offers. Forms differ depending on which loan type you select.  Please note:";
+        var message = "Below are all the loans FSA offers. Forms differ depending on which loan type you select.  Please note:";
         
-        $('header-holder').empty();
-        document.getElementById('header-holder').innerHTML = descriptioText;
+        $("#header-holder").empty();
+        $("#header-holder").append(message);
 
-        // Show all loan types
-        $.getJSON("/forms/loantypes.json", function(data) {
-            var categories = [...data['categories']];
-            var loanTypes = [...data['loanType']];
+        // Create a card for each loan category
+        var cards = [];
+        $.each(categories, function(key, type) {
+            // Title of support page
+            var titleText = `<div class="col"> Farm Loan Application Form Support </div>`
+            document.getElementById('title-holder').innerHTML = titleText;
 
-            // Create a card for each loan category
-            var cards = [];
-            $.each(categories, function(key, type) {
-                // Title of support page
-                var titleText = `<div class="col"> Farm Loan Application Form Support </div>`
-                document.getElementById('title-holder').innerHTML = titleText;
-
-                // Card for each loan type
-                var new_card = `<div class="col">
-                                    <div class="loantype-card-container">
-                                        <div class="loantype-card-image-container">
-                                            <img class="loantype-card-image" src="./images/loantypes/${type["image"]}" alt="${type["imageAltText"]}">
-                                        </div>
-                                        <div class="loantype-card-title">
-                                            <h3> ${type["type"]} </h3>
-                                        </div>
-                                        <div class="loantype-card-description">
-                                            <p> ${type["descriptionShort"]} </p>
-                                        </div>
-                                        <div class="loantype-card-button-container">
-                                            <div class="loantype-card-button">
-                                                <button class="btn lg-btn" onclick="showFormsList('${type["type"]}')" aria-label="View the ${type["type"]} forms" data-category="${type["type"]}" id="${type["type"]}">ACCESS FORMS</button>
-                                            </div>
+            // Card for each loan type
+            var new_card = `<div class="">
+                                <div class="loantype-card-container">
+                                    <div class="loantype-card-image-container">
+                                        <img class="loantype-card-image" src="./images/loantypes/${type["image"]}" alt="${type["imageAltText"]}">
+                                    </div>
+                                    <div class="loantype-card-title">
+                                        <h3> ${type["type"]} </h3>
+                                    </div>
+                                    <div class="loantype-card-description">
+                                        <p> ${type["descriptionShort"]} </p>
+                                    </div>
+                                    <div class="loantype-card-button-container">
+                                        <div class="loantype-card-button">
+                                            <button class="btn lg-btn" onclick="showFormsList('${type["type"]}')" aria-label="View the ${type["type"]} forms" data-category="${type["type"]}" id="${type["type"]}">ACCESS FORMS</button>
                                         </div>
                                     </div>
-                                </div>`;
-                cards.push(new_card);
-            });
-
-            $("#forms-holder").empty();
-            $("#forms-holder").append(cards.join(""));
-
-            // Remove back link
-            $('#return-form-suport').empty();
+                                </div>
+                            </div>`;
+            cards.push(new_card);
         });
+
+        $("#forms-holder").empty();
+        $("#forms-holder").append(cards.join(""));
+
+        // Remove back link
+        $('#return-form-suport').empty();
     }
 
     // Draw Forms for loan Category type
@@ -268,155 +295,197 @@
         $("#header-holder").empty();
         $("#header-holder").append(message);
 
-        $.getJSON("/forms/loantypes.json", function(loantypesdata) {
-            var categories = [...loantypesdata['categories']];
-            var loanTypes = [...loantypesdata['loanType']];
+        // Get the the loan types for this category
+        var categoryLoans = loanTypes.filter(function(item, i){ return item.category === category; });
+        var categoryForms;
+        $.each(categoryLoans, function(key, loan) { 
+            var formsRequired = loan['formsRequired'].split(", ");
+            if(formsRequired[0] == "") { formsRequired.pop(); }
+            var formsRecommended = loan['formsRecommended'].split(", ");
+            if(formsRecommended[0] == "") { formsRecommended.pop(); }
+            var formsAdditional = loan['formsAdditional'].split(", ");
+            if(formsAdditional[0] == "") { formsAdditional.pop(); }
 
-            // Show Forms Grid with forms for specific loan type
-            $.getJSON("/forms/forms.json", function(data) {
-                // Get the the loan types for this category
-                var categoryLoans = loanTypes.filter(function(item, i){ return item.category === category; });
-                var categoryForms;
-                $.each(categoryLoans, function(key, loan) { 
-                    var formsRequired = loan['formsRequired'].split(", ");
-                    var formsRecommended = loan['formsRecommended'].split(", ");
-                    var formsAdditional = loan['formsAdditional'].split(", ");
-                    
-                    categoryForms = {
-                        formsRequired,
-                        formsRecommended,
-                        formsAdditional
-                    }
-                });
+            categoryForms = {
+                formsRequired,
+                formsRecommended,
+                formsAdditional
+            }
+        });
 
-                // Get the loan name
-                var loanName = category;
+        // Get the loan name
+        var loanName = category;
 
-                // Title of support page
-                var titleText = `<div class="col">
-                                    <div class="loantype-title">    
-                                        <div class="">
-                                            <a href="" onclick="showAllLoans();return false;" data-label="/loanforms.html" aria-label="Go to Form Support Page" data-category="Loans">
-                                                <img class="loantype-title-back image-flip" src="./images/arrow-right.png" alt="Back arrow" width="32">
-                                            </a>
-                                        </div>
-                                        <div class="loantype-title-name">
-                                            <div>${loanName} Form Support</div>
-                                        </div>
-                                    </div>
-                                </div>`;
-                document.getElementById('title-holder').innerHTML = titleText;
-                
-                // Description of support page
-                var descriptioText = categories.find(x=> x.type === loanName).description;
+        // Title of support page
+        var titleText = `<div class="col">
+                            <div class="loantype-title">    
+                                <div class="">
+                                    <a href="" onclick="showAllLoans();return false;" data-label="/loanforms.html" aria-label="Go to Form Support Page" data-category="Loans">
+                                        <img class="loantype-title-back image-flip" src="./images/arrow-right.png" alt="Back arrow" width="32">
+                                    </a>
+                                </div>
+                                <div class="loantype-title-name">
+                                    <div>${loanName} Form Support</div>
+                                </div>
+                            </div>
+                        </div>`;
+        document.getElementById('title-holder').innerHTML = titleText;
+        
+        // Description of support page
+        var descriptioText = categories.find(x=> x.type === loanName).description;
 
-                descriptioText = `<div class="col"> ${descriptioText} </div>`;
-                $('header-holder').empty();
-                document.getElementById('header-holder').innerHTML = descriptioText;
+        descriptioText = `<div class="col"> ${descriptioText} </div>`;
+        $("header-holder").empty();
+        document.getElementById("header-holder").innerHTML = descriptioText;
 
-                // The cards for the individual forms
-                var cards = [];
-                var formIds = [];
-                $("#forms-holder").empty();
+        // The cards for the individual forms
+        var cards = [];
+        var formIds = [];
+        $("#forms-holder").empty();
 
-                // Required
-                if(categoryForms['formsRequired'].length != 0) {
-                    var categoryFormsContainer = document.createElement("div");
-                    categoryFormsContainer.classList.add("category-forms-container-reuired");
+        // Required
+        if(categoryForms['formsRequired'].length != 0) {
+            var categoryFormsContainer = document.createElement("div");
+            categoryFormsContainer.classList.add("category-forms-container-reuired");
 
 {                   //Do first
-                    var title = document.createElement("div");}
-                    title.classList.add("category-forms-holder-title");
-                    title.textContent = "Do first";
-                    categoryFormsContainer.append(title);
+            var title = document.createElement("div");}
+            title.classList.add("category-forms-holder-title");
+            title.textContent = "Do first";
+            categoryFormsContainer.append(title);
 
-                    var message = document.createElement("div");
-                    message.classList.add("category-forms-holder-message");
-                    message.textContent = "Your loan application is not complete without these forms, make sure you fill these out first.";
-                    categoryFormsContainer.append(message);
+            var message = document.createElement("div");
+            message.classList.add("category-forms-holder-message");
+            message.textContent = "Your loan application is not complete without these forms, make sure you fill these out first.";
+            categoryFormsContainer.append(message);
 
-                    var categoryFormsHolder = document.createElement("div");
-                    categoryFormsHolder.classList.add("category-forms-holder");
+            var categoryFormsHolder = document.createElement("div");
+            categoryFormsHolder.classList.add("category-forms-holder");
 
-                    $.each(categoryForms['formsRequired'], function(key, formId) {
-                        var form = data["Forms"].find((x)=> x.id == formId)
-                        if(form !== undefined) {
-                            categoryFormsHolder.append(_createCard(form, "Required"));
-                            formIds.push(formId);
-                        }
-                    });
-                    categoryFormsContainer.append(categoryFormsHolder);
-                    $("#forms-holder").append(categoryFormsContainer);
+            $.each(categoryForms['formsRequired'], function(key, formId) {
+                var form = forms.find((x)=> x.id == formId)
+                if(form !== undefined) {
+                    categoryFormsHolder.append(_createCard(form, "Required"));
+                    formIds.push(formId);
                 }
+            });
+            categoryFormsContainer.append(categoryFormsHolder);
+            $("#forms-holder").append(categoryFormsContainer);
+        }
 
-                // Recommended
-                if(categoryForms['formsRecommended'].length != 0) {
-                    var categoryFormsContainer = document.createElement("div");
-                    categoryFormsContainer.classList.add("category-forms-container");
+        // Recommended
+        if(categoryForms['formsRecommended'].length != 0) {
+            var categoryFormsContainer = document.createElement("div");
+            categoryFormsContainer.classList.add("category-forms-container");
 
 {                   //Do next
-                    var title = document.createElement("div");}
-                    title.classList.add("category-forms-holder-title");
-                    title.textContent = "Do next";
-                    categoryFormsContainer.append(title);
+            var title = document.createElement("div");}
+            title.classList.add("category-forms-holder-title");
+            title.textContent = "Do next";
+            categoryFormsContainer.append(title);
 
-                    var message = document.createElement("div");
-                    message.classList.add("category-forms-holder-message");
-                    message.textContent = "It's important to have a strong relationship with your Loan Officer as you start your journey with the FSA. The information you provide in these recommended forms equips your Loan Officer with the best information to help you through the process.";
-                    categoryFormsContainer.append(message);
+            var message = document.createElement("div");
+            message.classList.add("category-forms-holder-message");
+            message.textContent = "It's important to have a strong relationship with your Loan Officer as you start your journey with the FSA. The information you provide in these recommended forms equips your Loan Officer with the best information to help you through the process.";
+            categoryFormsContainer.append(message);
 
-                    var categoryFormsHolder = document.createElement("div");
-                    categoryFormsHolder.classList.add("category-forms-holder");
-                    
-                    $.each(categoryForms['formsRecommended'], function(key, formId) {
-                        
-                        var form = data["Forms"].find(x=> x.id == formId)
-                        console.log(categoryForms['formsRecommended'])
-                        if(form !== undefined) {
-                            categoryFormsHolder.append(_createCard(form, "Recommended"));
-                            formIds.push(form);
-                        }
-                    });
-                    categoryFormsContainer.append(categoryFormsHolder);
-                    $("#forms-holder").append(categoryFormsContainer);
+            var categoryFormsHolder = document.createElement("div");
+            categoryFormsHolder.classList.add("category-forms-holder");
+            
+            $.each(categoryForms['formsRecommended'], function(key, formId) {
+                var form = forms.find(x=> x.id == formId)
+                if(form !== undefined) {
+                    categoryFormsHolder.append(_createCard(form, "Recommended"));
+                    formIds.push(form);
                 }
-
-                // Additional
-                if(categoryForms['formsAdditional'].length != 0) {
-                    var categoryFormsContainer = document.createElement("div");
-                    categoryFormsContainer.classList.add("category-forms-container");
-
-{                   //Do last
-                    var title = document.createElement("div");}
-                    title.classList.add("category-forms-holder-title");
-                    title.textContent = "Do last";
-                    categoryFormsContainer.append(title);
-
-                    var message = document.createElement("div");
-                    message.classList.add("category-forms-holder-message");
-                    message.textContent = "These documents are not required, but you must be able to discuss the topics below with your loan officer. Use these forms to help frame your conversation.";
-                    categoryFormsContainer.append(message);
-
-                    var categoryFormsHolder = document.createElement("div");
-                    categoryFormsHolder.classList.add("category-forms-holder");
-                    
-                    $.each(categoryForms['formsAdditional'], function(key, formId) {
-                        var form = data["Forms"].find(x=> x.id == formId)
-                        
-                        if(form !== undefined) {
-                            categoryFormsHolder.append(_createCard(form, "Additional"));
-                            formIds.push(form);
-                        }
-                    });
-                    categoryFormsContainer.append(categoryFormsHolder);
-                    $("#forms-holder").append(categoryFormsContainer);
-                }
-                
-                $('#return-form-suport').html(`<a href="" onclick="showAllLoans();return false;"  class="page-link" data-label="" aria-label="Go to Form Support Page" data-category="Loans">See all loan types</a>`);
             });
-        });
+            categoryFormsContainer.append(categoryFormsHolder);
+            $("#forms-holder").append(categoryFormsContainer);
+        }
+
+        // Additional
+        if(categoryForms['formsAdditional'].length != 0) {
+            var categoryFormsContainer = document.createElement("div");
+            categoryFormsContainer.classList.add("category-forms-container");
+
+{           //Do last
+            var title = document.createElement("div");}
+            title.classList.add("category-forms-holder-title");
+            title.textContent = "Do last";
+            categoryFormsContainer.append(title);
+
+            var message = document.createElement("div");
+            message.classList.add("category-forms-holder-message");
+            message.textContent = "These documents are not required, but you must be able to discuss the topics below with your loan officer. Use these forms to help frame your conversation.";
+            categoryFormsContainer.append(message);
+
+            var categoryFormsHolder = document.createElement("div");
+            categoryFormsHolder.classList.add("category-forms-holder");
+            
+            $.each(categoryForms['formsAdditional'], function(key, formId) {
+                var form = forms.find(x=> x.id == formId)
+                
+                if(form !== undefined) {
+                    categoryFormsHolder.append(_createCard(form, "Additional"));
+                    formIds.push(form);
+                }
+            });
+            categoryFormsContainer.append(categoryFormsHolder);
+            $("#forms-holder").append(categoryFormsContainer);
+        }
+        
+        $('#return-form-suport').html(`<a href="" onclick="showAllLoans();return false;"  class="page-link" data-label="" aria-label="Go to Form Support Page" data-category="Loans">See all loan types</a>`);
     }
 
+    // Draw search results
+    function showSearchResultsForms(results) {
+        var message = `Below are the forms associated with your search.`;
+        if(results.length == 0) {
+            message = `No matches found.  Please try another search using either a form or name.`;
+        }
+        
+        $("#header-holder").empty();
+        $("#header-holder").append(message);
+        $("#header-info-holder").empty();
+
+        // Title of support page
+        var titleText = `<div class="col">
+                            <div class="loantype-title">    
+                                <div class="">
+                                    <a href="" onclick="showAllLoans();return false;" data-label="/loanforms.html" aria-label="Go to Form Support Page" data-category="Loans">
+                                        <img class="loantype-title-back image-flip" src="./images/arrow-right.png" alt="Back arrow" width="32">
+                                    </a>
+                                </div>
+                                <div class="loantype-title-name">
+                                    <div> Search Results </div>
+                                </div>
+                            </div>
+                        </div>`;
+        document.getElementById('title-holder').innerHTML = titleText;
+
+        // The cards for the individual forms
+        var cards = [];
+        var formIds = [];
+        $("#forms-holder").empty();
+
+        var categoryFormsContainer = document.createElement("div");
+            categoryFormsContainer.classList.add("category-forms-container");
+        
+        var categoryFormsHolder = document.createElement("div");
+            categoryFormsHolder.classList.add("category-forms-holder");
+
+        $.each(results, function(key, form) {
+            if(form !== undefined) {
+                categoryFormsHolder.append(_createCard(form, "All"));
+                formIds.push(form.id);
+            }
+        });
+        categoryFormsContainer.append(categoryFormsHolder);
+        $("#forms-holder").append(categoryFormsContainer);
+        $('#return-form-suport').html(`<a href="" onclick="showAllLoans();return false;"  class="page-link" data-label="" aria-label="Go to Form Support Page" data-category="Loans">See all loan types</a>`);
+    }
+
+    // 
     function _createCard(form, required) {
 
         var new_card = document.createElement("div");

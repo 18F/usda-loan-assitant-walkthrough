@@ -4,6 +4,17 @@
 // currentLoanType - the current loan type being viewed.
 // currentFormType - the current form type being viewed.
 
+
+var searchQuerry;
+
+function setSearchQuerry(querry) {
+    searchQuerry = querry;
+}
+
+function getSearchQuerry() {
+    return searchQuerry;
+}
+
 function setStep(question, answer) {
     // Create object for question  and ansers pairs
     var value = '{"q":' + parseInt(question) + ', ' + '"a":"' + answer + `"}`;
@@ -29,7 +40,7 @@ function getCurrentPage() {
 
 // Get list of pages
 function getPageList() {
-    return ["home","explore","loanforms","quiz","guides","eligibility","discovery","support","form"];
+    return ["home","explore","loanforms","quiz","guides","eligibility","discovery","support","form","search"];
 }
 
 // Get and Set Loan Type

@@ -10,6 +10,7 @@
     --control-color-green: #49A564;
     --control-color-green-dark: #006546;
     --button-color-blue: #1A6AD3;
+    --button-color-usda-blue: #004785;
     --color-white: #FFFFFF;
     --color-black: #0000;
 }
@@ -139,6 +140,10 @@ input[type="radio"]:focus {
   background-color: var(--control-color-green);
 }
 
+.btn-group {
+
+}
+
 .quiz-container {
     min-height: 50vh;
     box-sizing: border-box;
@@ -181,7 +186,7 @@ input[type="radio"]:focus {
             .quiz-progress-bar-map-bar {
                 background-color: var(--control-color-green);
                 margin: 1rem;
-                width: 0%;
+                width: 35%;
                 grid-column-start: 1;
                 grid-column-end: 2;
                 grid-row-start: 1;
@@ -233,40 +238,48 @@ input[type="radio"]:focus {
         grid-area: questions;
         margin-left: 0.75rem;
     }
+        .quiz-question {
+            min-height: 50rem;
+            display: grid;
+            grid-template-rows: auto auto auto auto;
+        }
 
     .quiz-next-container {
         margin: 5rem 0 20rem;
     }
 
     .quiz-next {
-        font-size: 3rem;
+        min-width: 132px;
+        height: 40px;
+        font-size: 16px;
+        line-height: 20px;
         grid-area: next;
         text-align: center;
         margin: auto;
-        padding: 2rem;
-        color: var(--button-color-blue);
+        padding: auto;
+        color: var(--button-color-usda-blue);
         text-decoration: underline;
     }
 
     .quiz-next a:hover, 
     .quiz-next a:active, 
     .quiz-next a:focus {
-        text-shadow: none;
+        /* text-shadow: none;
         -webkit-text-stroke: 0;
-        box-shadow: 0 0 5px var(--control-color-grey);
+        box-shadow: 0 0 5px var(--control-color-grey); */
     }
 
     .quiz-next a,
     .quiz-next-inactive a {
         padding: 1rem 10rem 2rem;
-        border: 1pt solid var(--control-color-grey);
         border-radius: 4px;
-        line-height: calc(.8 * var(--line-height));
-        box-shadow: 0 0 5px var(--control-color-grey-light);
+        font-size: 16px;
+        line-height: 20px;
     }
 
     .quiz-next-inactive {
-        font-size: 3rem;
+        font-size: 16px;
+        line-height: 20px;
         grid-area: next;
         text-align: center;
         margin: auto;
@@ -292,7 +305,7 @@ input[type="radio"]:focus {
 
     .quiz-paragraph-text {
         color: var(--control-color-grey-dark);
-        margin-top: 1rem;
+        margin: 1rem 0rem 2rem;
         grid-row: 2;
     }
 
@@ -541,7 +554,6 @@ input[type="radio"]:focus {
         }
             .result-image {
                 width:25%
-
             }
         .result-title {
 
@@ -790,7 +802,7 @@ input[type="radio"]:focus {
 
         if(progressBarStage == "Loan Eligibility" || progressBarStage == "Results") {
             fill = "fill-green"
-            bar.style.width = '35%';
+            bar.style.width = '68%';
         }
         marker.append(_createStepBullet(2, fill));
         markers.append(marker);

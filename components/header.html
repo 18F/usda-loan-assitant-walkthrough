@@ -117,7 +117,7 @@
                 </div>
             </div>
             <div id="search-field">
-                <form class="search" action="walkthrough.html" data-drupal-form-fields="affiliate,header-search">
+                <form class="search" action="javascript:;" onsubmit="search()" data-drupal-form-fields="affiliate,header-search">
                     <div role="search" aria-label="Site Search">
                         <input name="utf8" type="hidden" value="✓">
                         <input id="affiliatename" name="affiliate" type="hidden" value="Application Forms">
@@ -147,7 +147,7 @@
                 <div class="mm-top-section-container">
                     <div class="mm-search">
                         <div id="search-field-mobile">
-                            <form class="search" action="loanforms.html" data-drupal-form-fields="affiliate,header-search">
+                            <form class="search" action="javascript:;" onsubmit="search()" data-drupal-form-fields="affiliate,header-search">
                                 <div role="search" aria-label="Mobile Site Search">
                                     <input name="utf8" type="hidden" value="✓">
                                     <input id="affiliatename-mobile" name="affiliate" type="hidden" value="Application Form Search">
@@ -196,3 +196,17 @@
     </div>
 </div>
 
+<script>
+    function search() {
+        var querry;
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+            querry = $('#header-search-mobile')[0].value
+        }else{
+            querry = $('#header-search')[0].value
+        }
+        if(querry != undefined && querry != "") {
+            setSearchQuerry(querry);
+            setContent('loanforms');
+        }
+    }
+</script>

@@ -440,7 +440,7 @@ th {
     margin-top: 10px;
 }
 .uswds-main-content-wrapper {
-    margin-top: 1em;
+
 }
 .js-form-type-vertical-tabs {
     margin-top: 2em;
@@ -17457,4 +17457,12 @@ h6#related-resources {
 
 .main-header {
     height: fit-content;
+}
+
+.container-card-holder {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
 }

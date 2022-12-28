@@ -951,48 +951,50 @@ input[type="radio"]:focus {
         
         for ( var i = 0; i < multiselctAnswers.length; i++ ) {
             var loanInfo = loanTypes.find(x => x.loanId == multiselctAnswers[i]);
-            var category = categories.find(x => x.type == loanInfo.category);
+            var category = categories.find(x => x.type.includes(loanInfo.category));
+
             var loansInCategory = [];
             loansInCategory = loanTypes.filter(x => x.category == category.type);
 
-            if(category.type == "Farm Operating Loan"){
-                var operatingMicroloanList = questions.filter(x=> x.conditionals.includes("Operating Microloan"))
-                for ( var j = 0; j < operatingMicroloanList.length; j++ ) {
-                    var answer = questionHistory.find(x=> x.question == operatingMicroloanList[j].questionId);
-                    if(answer != undefined) {
-                        if(answer.answer[0] == 1) {
-                            loanInfo = loanTypes.find(x => x.name == "Operating Microloan");
-                            category = categories.find(x => x.type == loanInfo.category);
-                            loansInCategory = [];
-                            loansInCategory.push(loanInfo);
+            switch(category.type) {
+                case "Farm Operating Loan":
+                    var operatingMicroloanList = questions.filter(x=> x.conditionals.includes("Operating Microloan"))
+                    for ( var j = 0; j < operatingMicroloanList.length; j++ ) {
+                        var answer = questionHistory.find(x=> x.question == operatingMicroloanList[j].questionId);
+                        if(answer != undefined) {
+                            if(answer.answer[0] == 1) {
+                                loanInfo = loanTypes.find(x => x.name == "Operating Microloan");
+                                category = categories.find(x => x.type == loanInfo.category);
+                                loansInCategory = [];
+                                loansInCategory.push(loanInfo);
+                            }
                         }
                     }
-                }
-            }
-
-            if(category.type == "Farm Ownership Loan"){
-                var microloanFarmOwnershipList = questions.filter(x=> x.conditionals.includes("Microloan Farm Ownership"))
-                for ( var j = 0; j < microloanFarmOwnershipList.length; j++ ) {
-                    var answer = questionHistory.find(x=> x.question == microloanFarmOwnershipList[j].questionId);
-                    if(answer != undefined) {
-                        if(answer.answer[0] == 1) {
-                            loanInfo = loanTypes.find(x => x.name.includes("Microloan Farm Ownership"));
-                            category = categories.find(x => x.type == loanInfo.category);
-                            loansInCategory = [];
-                            loansInCategory.push(loanInfo);
+                    break;
+                case "Farm Ownership Loan":
+                    var microloanFarmOwnershipList = questions.filter(x=> x.conditionals.includes("Microloan Farm Ownership"))
+                    for ( var j = 0; j < microloanFarmOwnershipList.length; j++ ) {
+                        var answer = questionHistory.find(x=> x.question == microloanFarmOwnershipList[j].questionId);
+                        if(answer != undefined) {
+                            if(answer.answer[0] == 1) {
+                                loanInfo = loanTypes.find(x => x.name.includes("Microloan Farm Ownership"));
+                                category = categories.find(x => x.type == loanInfo.category);
+                                loansInCategory = [];
+                                loansInCategory.push(loanInfo);
+                            }
                         }
                     }
-                }
-            }
-            console.log(category.type)
-
-            if(category.type == "Youth Loan") {
-                hasYouthLoan = true;
+                    break;
+                case "Youth Loan":
+                    hasYouthLoan = true;
+                    break;
+                default:
             }
 
             if(primaryRecomendation == "") {
                 primaryRecomendation = category.type;
             }
+
             recomended.append(_createSugestedLoanCards(category, loansInCategory, loanInfo, i, loan, recomended));
         }
         return loans;
@@ -1002,7 +1004,6 @@ input[type="radio"]:focus {
     // loanInfo = details from JSON, index = index from array of sugested loans
     function _createSugestedLoanCards(category, loansInCategory, loanInfo, index, loan, recomended) {
         if(hasYouthLoan && category.type != "Youth Loan") {
-            console.log("NOT YOUTH")
             return;
         }
 
@@ -1017,13 +1018,15 @@ input[type="radio"]:focus {
             loan.append(image);
         }
         categoryCount++;
-        
+
         // Title
         var loanInfoCategoryTitle = loanInfo.category;
+
         if(loanInfoCategoryTitle == "Microloan") {
             loanInfoCategoryTitle = loansInCategory[0].name;
         }
         loan.append(_createTitle(loanInfoCategoryTitle));
+        
         // Description
         text = "Based on your responses we think you’re best suited for the FSA " + loanInfoCategoryTitle + ".";
         loan.append(_createParagraphElement(text));
@@ -1066,6 +1069,13 @@ input[type="radio"]:focus {
             if(loansInCategory[i].loanTermDescription != ""){
                 item = document.createElement("li");
                 item.innerHTML = loansInCategory[i].loanTermDescription;
+                list.appendChild(item);
+            }
+
+            // Interest Rate description
+            if(loansInCategory[i].interestRateDescription != ""){
+                item = document.createElement("li");
+                item.innerHTML = loansInCategory[i].interestRateDescription;
                 list.appendChild(item);
             }
 

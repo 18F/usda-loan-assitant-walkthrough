@@ -75,8 +75,8 @@ input[type=checkbox] {
     appearance: none;
     margin: 0;
     transform: scale(1);
-    width: 3rem;
-    height: 3rem;
+    width: 32px;
+    height: 32px;
     cursor: pointer;
     visibility: hidden;
 }
@@ -85,8 +85,8 @@ input[type=checkbox]:after,
 input[type=checkbox]::after {
     content: "";
     display: inline-block;
-    min-width: 3rem;
-    min-height: 3rem;
+    min-width: 32px;
+    min-height: 32px;
     visibility: visible;
     border: 2px solid var(--control-color-green);
     border-radius: 5px;font-size: 2rem;
@@ -647,7 +647,7 @@ input[type="radio"]:focus {
     report.classList.add("result-container");
     report.setAttribute("id","report-container");
     $('#main-content').append(report);
-    $(report).hide();
+    //$(report).hide();
 
     (function() {
         currentQuestion = 0;
@@ -876,7 +876,6 @@ input[type="radio"]:focus {
     }
 
     function retakeQuiz() {
-        console.log("retake")
         setCookie("answers", '', -1);
         setContent("quiz");
     }
@@ -986,7 +985,7 @@ input[type="radio"]:focus {
                 }
             }
 
-            if(category.type == "Youth Loan") {
+            if(category.type.includes("youth")) {
                 hasYouthLoan = true;
             }
 
@@ -1282,7 +1281,7 @@ input[type="radio"]:focus {
         var fullReport = document.createElement("div");
         fullReport.classList.add("full-report-container");
 
-        text = "Full printable questionnaire";
+        text = "Full printable quiz";
         fullReport.append(_createTitle(text));
 
         text = "Print this out and bring it to your appointment with your loan officer to help guide your conversation.";
@@ -1316,8 +1315,9 @@ input[type="radio"]:focus {
             //  Add Answer
             var answerText;
             var answerTexts = [...questionHistory[i].answer];
+            var answer = [];
             for ( var j = 0; j < answerTexts.length; j++ ) {
-                var answer = answerInfo.options.find(x => x.value == answerTexts[j]).title;
+                answer.push(answerInfo.options.find(x => x.value == answerTexts[j]).title);
                 var infoMessage = document.createElement("div");
                 infoMessage.classList.add("full-report-result-info-message");
                 infoMessage.append(_createParagraphElement(answer));
@@ -1332,6 +1332,7 @@ input[type="radio"]:focus {
                     info.append(flag);
                 }
             }
+
             var qaPair = {
                 "question": questionText,
                 "answer": answer,
@@ -1370,17 +1371,25 @@ input[type="radio"]:focus {
 
         var bestMatchText = document.createElement("div");
         bestMatchText.classList.add("result-recommendation");
-        bestMatchText.textContent = bestMatch;
+        var text = "Based on your responses we think you’re best suited for the FSA " + primaryRecomendation + ".";
+        bestMatchText.textContent = text;
+        //multiselctAnswers
         report.append(bestMatchText);
+
+        text = categories.find(x=> x.type == primaryRecomendation).description
+        console.log(text)
 
         var bestMatchDescriptionText = document.createElement("div");
         bestMatchDescriptionText.classList.add("result-recommendation-description");
-        bestMatchDescriptionText.textContent = bestMatchDescription;
+        bestMatchDescriptionText.textContent = text;
         report.append(bestMatchDescriptionText);
+
+        text = categories.find(x=> x.type == primaryRecomendation).note
+        console.log(text)
 
         var bestMatchNoteText = document.createElement("div");
         bestMatchNoteText.classList.add("result-recommendation-note");
-        bestMatchNoteText.textContent = bestMatchNote;
+        bestMatchNoteText.textContent = text;
         report.append(bestMatchNoteText);
        
         var fullQuizText = document.createElement("div");
@@ -1396,6 +1405,7 @@ input[type="radio"]:focus {
 
         var resultContainer = document.createElement("div");
         resultContainer.classList.add("result-tile-container");
+
         for ( var i = 0; i < pdfData.length; i++ ) {
             var resultTile = document.createElement("div");
             resultTile.classList.add("result-tile");
@@ -1409,12 +1419,15 @@ input[type="radio"]:focus {
             resultQuestion.classList.add("result-question");
             resultQuestion.textContent = pdfData[i].question;
             resultTile.append(resultQuestion);
-
+            
             var resultAnswer = document.createElement("div");
-            resultAnswer.classList.add("result-answer");
-            resultAnswer.textContent = pdfData[i].answer;
+                resultAnswer.classList.add("result-answer");
+            for ( var j = 0; j < pdfData[i].answer.length; j++ ) {
+                var resultAnswerText = document.createElement("div");
+                resultAnswerText.textContent = pdfData[i].answer[j];
+                resultAnswer.append(resultAnswerText);
+            }
             resultTile.append(resultAnswer);
-
             resultContainer.append(resultTile);
         }
         report.append(resultContainer);
@@ -1704,8 +1717,9 @@ input[type="radio"]:focus {
                     nextQuestionId = answers[0]['nextQuestionId'];
                 }
             }
-            
-            checkConditionals();
+            if(nextQuestionId !== 9999) {
+                checkConditionals();
+            }
             setNextLinkValues();
         });
     }
@@ -2004,8 +2018,6 @@ input[type="radio"]:focus {
     // Utilities
     ///////////////////////////////////
     function showRelatedForms() {
-        console.log(primaryRecomendation)
-
         setloanType(primaryRecomendation);
         setContent("loanforms");
     }

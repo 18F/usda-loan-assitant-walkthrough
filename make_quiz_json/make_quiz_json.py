@@ -116,7 +116,7 @@ wb.close()
 
 json_data = json.dumps(data, sort_keys=True, indent=4)
 # print(json_data)
-filename = "../quiz.json."
+filename = "quiz.json."+datetime.strftime(datetime.now(), '%Y-%m-%d_%H:%M:%S')+"_out"
 print(f"Saving output to {filename}")
 with open(filename, "w") as output:
     output.write(json_data)

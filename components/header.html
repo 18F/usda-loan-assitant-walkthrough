@@ -1,4 +1,3 @@
-<script src="js/farmers.min.js"></script>
 <header class="main-header" role="banner" aria-label="Page Header">
     <!--wrapper for main header used to hide on print-->
     <div class="head-main">
@@ -11,7 +10,7 @@
                         <img src="/images/flag-favicon-57.png" alt="U.S. flag">
                         <div class="usa-banner-text">
                             <p> An official website of the United States government
-                                <button class="usa-accordion-button usa-banner-button" aria-expanded="false" aria-controls="gov-banner">        
+                                <button class="usa-accordion-button usa-banner-button" aria-expanded="false" aria-controls="gov-banner" onclick="toggleGovernemtSite()">        
                                 <span class="usa-banner-button-text">Here’s how you know</span>    
                                 </button>
                             </p>
@@ -125,7 +124,7 @@
                         <div role="search" aria-label="Site Search">
                             <input name="utf8" type="hidden" value="✓">
                             <input id="affiliatename" name="affiliate" type="hidden" value="Application Forms">
-                            <label class="usa-sr-only" for="header-search">Search Application Forms</label>
+                            <label class="usa-sr-only" for="header-search">Search Loan Forms</label>
                             <input id="header-search" autocomplete="off" name="query" type="search" placeholder="Search Application Forms" tabindex="0">
                             <button type="submit" tabindex="0">    
                                 <span class="usa-sr-only">Search</span>
@@ -150,7 +149,7 @@
                                     <div role="search" aria-label="Mobile Site Search">
                                         <input name="utf8" type="hidden" value="✓">
                                         <input id="affiliatename-mobile" name="affiliate" type="hidden" value="Application Form Search">
-                                        <label class="usa-sr-only" for="header-search-mobile">Search Application Forms</label>
+                                        <label class="usa-sr-only" for="header-search-mobile">Search Loan Forms</label>
                                         <input id="header-search-mobile" autocomplete="off" name="query" type="search" placeholder="Search Application Forms" tabindex="0">
                                         <button type="submit" tabindex="0">                
                                         <span class="usa-sr-only">Search</span>            
@@ -198,6 +197,8 @@
 </header>
 
 <script>
+    function toggleGovernemtSite() {
+    }
     function search() {
         var querry;
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){

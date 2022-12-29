@@ -49,7 +49,7 @@ p {
 .button {
   float: left;
   margin: 0 2rem 0 0;
-  width: 132px;
+  min-width: 132px;
   height: 42px;
   position: relative;
 }
@@ -63,18 +63,20 @@ p {
     right: 0;
     bottom: 0;
     font-family: 'Public Sans';
-    font-style: normal;
+    font-style: bold;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 40px;
+    font-size: 22px;
+    line-height: 26px;
     text-align: center;
     background-color: var(--color-white);
     border: 1px solid #BBBBBB;
-    color: #BBBBBB;
+    color: var(--button-color-blue);
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px solid var(--button-color-blue);
+
 }
 
 .button input[type="radio"] {
@@ -85,6 +87,7 @@ p {
 .button input[type="radio"]:checked + label {
   color: var(--color-white);
   background: #004785;
+  border: 2px solid #004785;
 }
 
 .button label {
@@ -284,16 +287,13 @@ input[type="radio"]:focus {
 
     .quiz-next {
         min-width: 132px;
-        height: 40px;
         font-family: 'Public Sans';
-        font-style: normal;
+        font-style: bold;
         font-weight: 700;
-        font-size: 16px;
-        line-height: 40px;
+        font-size: 22px;
+        line-height: 26px;
         text-align: center;
-        margin: auto;
-        padding: auto;
-        color: var(--button-color-usda-blue);
+        color: var(--button-color-blue);
         text-decoration: underline;
         grid-area: next;
     }
@@ -308,26 +308,23 @@ input[type="radio"]:focus {
 
     .quiz-next a,
     .quiz-next-inactive a {
-        padding: 1rem 10rem 2rem;
-        border-radius: 4px;
         font-family: 'Public Sans';
-        font-style: normal;
+        font-style: bold;
         font-weight: 700;
-        font-size: 16px;
-        line-height: 40px;
+        font-size: 22px;
+        line-height: 26px;
         text-align: center;
+        color: #BBBBBB;
     }
 
     .quiz-next-inactive {
         font-family: 'Public Sans';
-        font-style: normal;
+        font-style: bold;
         font-weight: 700;
-        font-size: 16px;
-        line-height: 40px;
+        font-size: 22px;
+        line-height: 26px;
         text-align: center;
-        margin: auto;
-        padding: 2rem;
-        color: var(--control-color-grey);
+        color: #BBBBBB;
         grid-area: next;
     }
 
@@ -656,9 +653,10 @@ input[type="radio"]:focus {
 
         /* Full Report */
         .full-report-container {
-            padding: 2rem;
+            padding: 32px;
+            padding-bottom: 24px;
             margin: 2rem 0;
-            border: 1px solid #212121;
+            border: 1px solid #E0E0E0;
             grid-area: step-full-report;
 
         }
@@ -669,7 +667,7 @@ input[type="radio"]:focus {
         }
 
         .result-acccordion-open {
-            height: 100%;
+            height: fit-content;
         }
 
         .full-report-result-container {
@@ -1077,13 +1075,15 @@ input[type="radio"]:focus {
         summary.append(_createRecomendedLoans());
         
         // Flags
-        text = "Below are the things we’ve flagged and recommend talking to your loan officer about.";
-        var flagDescriptionDiv = document.createElement("h1");
-        flagDescriptionDiv.classList.add("quiz-summary-paragraph-highlight");
-        flagDescriptionDiv.textContent = text;
-        summary.append(flagDescriptionDiv);
+        if(primaryRecomendation != "Youth Loan") {
+            text = "Below are the things we’ve flagged and recommend talking to your loan officer about.";
+            var flagDescriptionDiv = document.createElement("h1");
+            flagDescriptionDiv.classList.add("quiz-summary-paragraph-highlight");
+            flagDescriptionDiv.textContent = text;
+            summary.append(flagDescriptionDiv);
 
-        summary.append(_createFlagMessages());
+            summary.append(_createFlagMessages());
+        }
         
         // Steps
         summary.append(_createSummarySteps());
@@ -1589,11 +1589,11 @@ input[type="radio"]:focus {
         let x = document.getElementById('accordion')
         if (x.className === 'result-acccordion-closed') {
             x.className = 'result-acccordion-open'
-            toggle.textContent = "SHOW LESS +"
+            toggle.textContent = "SHOW LESS -"
         } 
         else {
             x.className = 'result-acccordion-closed'
-            toggle.textContent = "SHOW MORE -"
+            toggle.textContent = "SHOW MORE +"
         }
 	}
 
@@ -1726,6 +1726,7 @@ input[type="radio"]:focus {
 
         updateAnswers();
         showQuestion(nextQuestionId);
+        nextQuestionId = -1;
     }
     
     // Creates a link to the next question.  If next step is based on user choice the link wil be inactive until choice is made
@@ -1762,6 +1763,7 @@ input[type="radio"]:focus {
 
         if(nextQuestionId >= 0 || isNaN(nextQuestionId)) {
             $('#quiz-next-active').show();
+            console.log("active")
         }
         else {
             $('#quiz-next-inactive').show();

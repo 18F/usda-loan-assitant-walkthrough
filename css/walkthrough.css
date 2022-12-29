@@ -17466,3 +17466,12 @@ h6#related-resources {
     flex-wrap: wrap;
     gap: 2rem;
 }
+
+.cta-container {
+    background-color: white;
+    margin-top: 40px;
+    margin-right: 40px;
+    margin-left: auto;
+    max-width: 1080px;
+    padding: 2rem;
+}

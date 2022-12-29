@@ -789,7 +789,7 @@
             "content": {
                 "paragraphs": [
                     {
-                        "paragraphText": "*U.S. Citizen\n*U.S. non-citizen national\n*Qualified alien under applicable federal immigration laws"
+                        "paragraphText": "U.S. Citizen*\nU.S. non-citizen national*\nQualified alien under applicable federal immigration laws*"
                     },
                     {
                         "paragraphText": ""
@@ -1352,7 +1352,7 @@
                         "paragraphText": "Applicants who have been forgiven of a past FSA loan will be considered ineligible for Direct Loan Assistance, with the exception of Annual Operating Loans, unless they have extenuating circumstances such as:"
                     },
                     {
-                        "paragraphText": "*Received a debt reduction through a conservation easement or contract\n*Had a debt written off as a part of the resolution for a discrimination complaint against the Farm Service Agency\n*Had a prior debt forgiven that has been repaid entirely\n*Had a debt forgiven on a Youth Loan for circumstances beyond the applicant\u2019s control"
+                        "paragraphText": "Received a debt reduction through a conservation easement or contract*\nHad a debt written off as a part of the resolution for a discrimination complaint against the Farm Service Agency*\nHad a prior debt forgiven that has been repaid entirely*\nHad a debt forgiven on a Youth Loan for circumstances beyond the applicant\u2019s control*"
                     },
                     {
                         "paragraphText": ""

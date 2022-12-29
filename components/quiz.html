@@ -49,8 +49,8 @@ p {
 .button {
   float: left;
   margin: 0 2rem 0 0;
-  width: 200px;
-  height: 40px;
+  width: 132px;
+  height: 42px;
   position: relative;
 }
 
@@ -62,16 +62,20 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    align-items: center;
-    border-radius: 4px;
-    border: 3px solid var(--button-color-blue);
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
-    line-height: 19px;
+    line-height: 40px;
     text-align: center;
-    color: var(--button-color-blue);
+
+    background-color: var(--color-white);
+    border: 1px solid #BBBBBB;
+    color: #BBBBBB;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button input[type="radio"] {
@@ -80,8 +84,8 @@ p {
 }
 
 .button input[type="radio"]:checked + label {
-  background: var(--button-color-blue);
   color: var(--color-white);
+  background: #004785;
 }
 
 .button label {
@@ -442,7 +446,6 @@ input[type="radio"]:focus {
             line-height: 150%;
             color: #212121;
             margin-bottom: 1.5rem;
-
         }
             .quiz-summary-paragraph-highlight {
                 font-family: 'Public Sans';
@@ -1803,8 +1806,8 @@ input[type="radio"]:focus {
             if(options[i]['title'] !== "") { 
                 var button = document.createElement("button");
                 button.type = "button";
-                button.classList.add("btn");
-                button.classList.add("btn-default");
+                //button.classList.add("btn");
+                //button.classList.add("btn-default");
                 button.textContent = options[i]['title'];
                 $(button).off().on('click', setInformationLinks.bind(this, options[i], button));
                 $(button).on('click',function() {
@@ -2137,8 +2140,8 @@ input[type="radio"]:focus {
         radio.value = option['nextQuestionId'];
 
         var label = document.createElement("label");
-        label.classList.add(".btn");
-        label.classList.add(".btn-default");
+        //label.classList.add("btn");
+        //label.classList.add("btn-default");
         label.textContent = option.title;
 
         button.append(radio);
@@ -2174,30 +2177,29 @@ input[type="radio"]:focus {
 
     // Creates one or more paragraphs
     function _createParagraphs(paragraphs) {
-        if(paragraphs == "") { return }
-
-        var gridDiv = document.createElement("div");
-        gridDiv.classList.add("quiz-paragraph-text");
-        for (var i = 0; i < paragraphs.length; i++) {
-            var paragraph = paragraphs[i];
-            var paragraphText = paragraph.paragraphText;
-            // For each paragraph, check if it's a string or an object 
-            if (paragraphText !== null && paragraphText !== undefined) {
-                // If it's a string, then create a simple paragraph element
-                if (typeof paragraphText === 'string' || paragraphText instanceof String) {
-                    var paragraphElement = _createParagraphElement(paragraphText);
-                // If it's an object, then it should represent a bulvared list, so create that instead
-                } else if (typeof paragraphText === 'object' && !Array.isArray(paragraphText)) {
-                    var paragraphElement = _createBulvaredListElement(paragraphText.bulvars, paragraphText.type);
-                } else {
-                    alert("Unrecognized paragraphText element detected: " + paragraphText.toString());
-                }
+        console.log(paragraphs)
+        if(paragraphs == "") { return };
+        
+        var paragraphDiv = document.createElement("div");
+        paragraphDiv.classList.add("quiz-paragraph-text");
+        if(paragraphs[0].paragraphText.includes("*")) {
+            var bullets = paragraphs[0].paragraphText.replace("\n","").split("*")
+            bullets = bullets.filter(n => n)
+            console.log(bullets)
+            var list = document.createElement("ul");
+            for ( var i = 0; i < bullets.length; i++ ) { 
+                var bullet = bullets[i].replace("*","")
+                let item = document.createElement("li");
+                item.innerHTML = bullet;
+                list.append(item);
             }
-            // Append the paragraph to the parent div
-            gridDiv.appendChild(paragraphElement);
+            paragraphDiv.append(list);
+        }
+        else {
+            paragraphDiv.append(_createParagraphElement(paragraphs[0].paragraphText));
         }
 
-        return gridDiv;
+        return paragraphDiv;        
     }
 
     // Creates each paragraph text

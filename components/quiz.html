@@ -68,7 +68,6 @@ p {
     font-size: 16px;
     line-height: 40px;
     text-align: center;
-
     background-color: var(--color-white);
     border: 1px solid #BBBBBB;
     color: #BBBBBB;
@@ -258,7 +257,14 @@ input[type="radio"]:focus {
                 font-weight: 700;
             }
         .quiz-retake-container{
-            
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 40px;
+            text-align: center;
+            text-decoration: underline;
+            color: #006546;
         }
 
 /* QUestion COntainer */
@@ -267,9 +273,9 @@ input[type="radio"]:focus {
         margin-left: 0.75rem;
     }
         .quiz-question {
-            min-height: 50rem;
             display: grid;
             grid-template-rows: auto auto auto auto;
+            row-gap: 0px;
         }
 
     .quiz-next-container {
@@ -279,14 +285,17 @@ input[type="radio"]:focus {
     .quiz-next {
         min-width: 132px;
         height: 40px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
         font-size: 16px;
-        line-height: 20px;
-        grid-area: next;
+        line-height: 40px;
         text-align: center;
         margin: auto;
         padding: auto;
         color: var(--button-color-usda-blue);
         text-decoration: underline;
+        grid-area: next;
     }
 
     .quiz-next a:hover, 
@@ -301,18 +310,25 @@ input[type="radio"]:focus {
     .quiz-next-inactive a {
         padding: 1rem 10rem 2rem;
         border-radius: 4px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
         font-size: 16px;
-        line-height: 20px;
+        line-height: 40px;
+        text-align: center;
     }
 
     .quiz-next-inactive {
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
         font-size: 16px;
-        line-height: 20px;
-        grid-area: next;
+        line-height: 40px;
         text-align: center;
         margin: auto;
         padding: 2rem;
         color: var(--control-color-grey);
+        grid-area: next;
     }
 
     .quiz-next-inactive a, 
@@ -328,12 +344,17 @@ input[type="radio"]:focus {
 
 
     .quiz-title-text {
-        line-height: calc(.95 * var(--lineheight));
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 22px;
+        color: #212121;
     }
 
     .quiz-paragraph-text {
         color: var(--control-color-grey-dark);
-        margin: 1rem 0rem 2rem;
+        margin: 0rem 0rem 2rem;
         grid-row: 2;
     }
 

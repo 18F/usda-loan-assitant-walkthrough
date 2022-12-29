@@ -15,6 +15,26 @@
     --color-black: #0000;
 }
 
+ul {
+  list-style: none; /* Remove default bullets */
+  font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #000000;
+}
+
+ul li::before {
+  content: "\2022"; 
+  color: 006546; 
+  font-weight: bold; 
+  display: inline-block;
+  width: 1em; 
+  margin-left: -1em;
+}
+
 h1 {
     color: #000000;
     font-size: 2rem;
@@ -394,29 +414,87 @@ input[type="radio"]:focus {
     .quiz-summary {
 
     }
+        .quiz-summary-title {
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 40px;
+            display: flex;
+            align-items: center;
+            color: #000000;
+            margin: 0 0 20px 0;
+        }
+        .quiz-summary-subtitle {
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 26px;
+            color: #212121;
+        }
+
+        .quiz-summary-paragraph {
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            color: #212121;
+            margin-bottom: 1.5rem;
+
+        }
+            .quiz-summary-paragraph-highlight {
+                font-family: 'Public Sans';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 150%;
+                color: #212121;
+            }
+
+        .quiz-summary-note {
+            font-family: 'Public Sans';
+            font-style: italic;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            color: #212121;
+        }
         .recomended-loans-container {
             margin: 2rem 0;
         }
             .recomended-loan-card-holder {
+                margin: 40px 0;
                 display: flex;
                 flex-direction: row;
             }
             .recomended-imageContainer {
                 width: 100%;
-                height: 260px;
             }
                 .recomended-image {
                     width: 100%;
                     height: 260px;
                     object-fit: cover;
+                    margin: 72px 0 24px ;
+
                 }
             .recomended-loans-card {
+                border: 1px solid #BBBBBB;
+                border-top: 4px solid #016546;
+                box-shadow: 0px 1px 4px #BBBBBB;
+                border-radius: 5px;
                 flex-grow: 1;
                 flex-basis: 0;
-                border: 2px solid black;
+                padding: 2rem;
             }
                 .recomended-loans-card-title {
-                    
+                    font-family: 'Public Sans';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 24px;
+                    line-height: 150%;
+                    color: #000000;
                 }
 
     .summary-step-container {
@@ -429,7 +507,7 @@ input[type="radio"]:focus {
                             "iconholder step-text"
                             "iconholder step-full-report";
         grid-template-columns: 4rem 1fr;
-        margin: 2rem 0;
+        margin: 2rem 0 3rem;
     }
         .summary-step-header {
             grid-area: header;
@@ -486,15 +564,46 @@ input[type="radio"]:focus {
             }
                 .summary-step-text-button {
                     background-color: var(--button-color-blue);
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 12px 20px;
+                    gap: 10px;
+                    border: 2px solid var(--button-color-blue);
+                    border-radius: 4px;
+                    font-family: 'Public Sans';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 19px;
+                    text-align: center;
                     color: var(--color-white);
-                    padding: 1rem;
+                }
+                .summary-step-text-button-second {
+                    background-color: var(--color-white);
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 12px 20px;
+                    gap: 10px;
+                    border: 2px solid #005EA2;
+                    border-radius: 4px;
+                    font-family: 'Public Sans';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 19px;
+                    text-align: center;
+                    color: #005EA2;
                 }
 
         /* Flags */
         .quiz-summary-flag {
             display: grid;
             grid-template-columns: 8px 4rem 1fr;
-            margin: 1rem 0 0;
+            margin: 1rem 0 2rem;
         }
         .quiz-summary-flag-alert-background { background-color: rgb(255,220,220); }
         .quiz-summary-flag-warning-background { background-color: #F8EDC7; }
@@ -525,8 +634,18 @@ input[type="radio"]:focus {
         .full-report-container {
             padding: 2rem;
             margin: 2rem 0;
-            border: 2px solid black;
+            border: 1px solid #212121;
             grid-area: step-full-report;
+
+        }
+        .result-acccordion-closed {
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+            height: 200px;
+        }
+
+        .result-acccordion-open {
+            height: 100%;
         }
 
         .full-report-result-container {
@@ -610,6 +729,21 @@ input[type="radio"]:focus {
                         grid-column-start: 2;
                         grid-row-start: 2;
                     }
+
+    .result-accordion-toggle {
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        display: grid;
+        align-items: center;
+        text-align: center;
+        color: #316ACC;
+        width: 100%;
+        margin: auto;
+    }
+
 </style>
 
 <div class="fit-content">
@@ -648,7 +782,7 @@ input[type="radio"]:focus {
     report.classList.add("result-container");
     report.setAttribute("id","report-container");
     $('#main-content').append(report);
-    //$(report).hide();
+    $(report).hide();
 
     (function() {
         currentQuestion = 0;
@@ -710,7 +844,6 @@ input[type="radio"]:focus {
     //////////////////
     // Shows question
     function showQuestion(questionId) {
-
         // check the summary page should be loaded
         if(nextQuestionId === 9999 || currentQuestion === 9999) {
             progressBarStage = "Results";
@@ -901,24 +1034,36 @@ input[type="radio"]:focus {
         summary.classList.add("quiz-summary");
         
         summary.append(_createProgressbar());
-        
+
         // Title
         var text = "FSA Farm Loan Quiz Results";
-        summary.append(_createTitle(text));
+        var titleDiv = document.createElement("h1");
+        titleDiv.classList.add("quiz-summary-title");
+        titleDiv.textContent = text;
+        summary.append(titleDiv);
+        
         //Description
         text = "Based on your answers to the Farm Loan Quiz, we have matched you with a farm loan that will best fit your financing needs. Review the loan details and start your application process by completing the steps outline below.";
-        summary.append(_createParagraphElement(text));
+        var descriptionDiv = document.createElement("h1");
+        descriptionDiv.classList.add("quiz-summary-paragraph");
+        descriptionDiv.textContent = text;
+        summary.append(descriptionDiv);
 
         // recomended loan
         summary.append(_createRecomendedLoans());
         
         // Flags
         text = "Below are the things we’ve flagged and recommend talking to your loan officer about.";
-        summary.append(_createParagraphElement(text));
+        var flagDescriptionDiv = document.createElement("h1");
+        flagDescriptionDiv.classList.add("quiz-summary-paragraph-highlight");
+        flagDescriptionDiv.textContent = text;
+        summary.append(flagDescriptionDiv);
+
         summary.append(_createFlagMessages());
         
         // Steps
         summary.append(_createSummarySteps());
+
 
         $('#summary-container').empty();
         $('#summary-container').append(summary);
@@ -1004,7 +1149,7 @@ input[type="radio"]:focus {
     // loanInfo = details from JSON, index = index from array of sugested loans
     function _createSugestedLoanCards(category, loansInCategory, loanInfo, index, loan, recomended) {
         if(hasYouthLoan && category.type != "Youth Loan") {
-            return;
+            return "";
         }
 
         // Image
@@ -1025,13 +1170,42 @@ input[type="radio"]:focus {
         if(loanInfoCategoryTitle == "Microloan") {
             loanInfoCategoryTitle = loansInCategory[0].name;
         }
-        loan.append(_createTitle(loanInfoCategoryTitle));
         
+        var titleDiv = document.createElement("h1");
+        titleDiv.classList.add("quiz-summary-subtitle");
+        titleDiv.textContent = loanInfoCategoryTitle;
+        loan.append(titleDiv);
+
+        // quiz-summary-note
+
         // Description
-        text = "Based on your responses we think you’re best suited for the FSA " + loanInfoCategoryTitle + ".";
-        loan.append(_createParagraphElement(text));
-        loan.append(_createParagraphElement(category.description));
-        loan.append(_createParagraphElement(category.note));
+        var text =  +  + ".";
+        
+        var descriptionDiv = document.createElement("span");
+        descriptionDiv.classList.add("quiz-summary-paragraph");
+        descriptionDiv.textContent = "Based on your responses we think you’re best suited for the ";
+        
+        var descriptionHighlight = document.createElement("span");
+        descriptionHighlight.classList.add("quiz-summary-paragraph-highlight");
+        descriptionHighlight.textContent = "FSA "+loanInfoCategoryTitle;
+        descriptionDiv.append(descriptionHighlight);
+        
+        var descriptionPeriod = document.createElement("span");
+        descriptionPeriod.classList.add("quiz-summary-paragraph");
+        descriptionPeriod.textContent = ".";
+        descriptionDiv.append(descriptionPeriod);
+
+        loan.append(descriptionDiv);
+
+        var descriptionDiv = document.createElement("h1");
+        descriptionDiv.classList.add("quiz-summary-paragraph");
+        descriptionDiv.textContent = category.description;
+        loan.append(descriptionDiv);
+
+        var noteDiv = document.createElement("h1");
+        noteDiv.classList.add("quiz-summary-note");
+        noteDiv.textContent = category.note;
+        loan.append(noteDiv);
 
         loanInfoCategory = loansInCategory[0].category;
         bestMatch = text;
@@ -1145,11 +1319,13 @@ input[type="radio"]:focus {
 
         div = document.createElement("div");
         div.classList.add("quiz-summary-flag-text-title");
+        div.classList.add("quiz-summary-subtitle");
         div.append(_createTitle(flagMessage.notificationTitle));
         textHolder.append(div);
 
         div = document.createElement("div");
         div.classList.add("quiz-summary-flag-text-message");
+        div.classList.add("quiz-summary-paragraph");
         div.textContent = flagMessage.notificationMessge;
         textHolder.append(div);
 
@@ -1228,11 +1404,13 @@ input[type="radio"]:focus {
 
             div = document.createElement("h3");
             div.classList.add("summary-step-text-title");
+            div.classList.add("quiz-summary-subtitle");
             div.textContent = stepinfo[i].text;
             textHolder.append(div);
 
             div = document.createElement("div");
             div.classList.add("summary-step-text-message");
+            div.classList.add("quiz-summary-paragraph");
             div.textContent = stepinfo[i].message
             textHolder.append(div);
             
@@ -1243,6 +1421,9 @@ input[type="radio"]:focus {
                 if(stepinfo[i].buttons[j].buttonURL.includes("onclick")){
                     var button = document.createElement('button');
                     button.classList.add("summary-step-text-button");
+                    if(j==1) {
+                        button.classList.add("summary-step-text-button-second");
+                    }
                     var text = document.createTextNode(stepinfo[i].buttons[j].buttonText);
                     button.appendChild(text);
 
@@ -1250,7 +1431,7 @@ input[type="radio"]:focus {
                     $(button).off().on('click', eval(func_name).bind(this));
                     $(button).on('click',function() {
                         eval(func_name).bind(this);
-                        $(this).off('click');
+                        //$(this).off('click');
                     });
                 }
                 if(stepinfo[i].buttons[j].buttonURL.includes("checklist")) {
@@ -1263,7 +1444,7 @@ input[type="radio"]:focus {
                     $(button).off().on('click', openURL.bind(this, url));
                     $(button).on('click',function() {
                         openURL.bind(this, url);
-                        $(this).off('click');
+                        //$(this).off('click');
                     });     
                 }
                 if(stepinfo[i].buttons[j].buttonURL.includes("http")) {
@@ -1300,13 +1481,16 @@ input[type="radio"]:focus {
         //  Full Report
         var fullReport = document.createElement("div");
         fullReport.classList.add("full-report-container");
-
+        
         text = "Full printable quiz";
         fullReport.append(_createTitle(text));
 
         text = "Print this out and bring it to your appointment with your loan officer to help guide your conversation.";
         fullReport.append(_createParagraphElement(text));
 
+        var fullReportResultsContainer = document.createElement("div");
+        fullReportResultsContainer.classList.add("result-acccordion-closed");
+        fullReportResultsContainer.id = "accordion"
         // Results
         for( var i = 0; i < questionHistory.length; i++ ) {
             // Create a result container
@@ -1358,12 +1542,37 @@ input[type="radio"]:focus {
                 "answer": answer,
             }
             pdfData.push(qaPair);
-            fullReport.append(result); 
+            fullReportResultsContainer.append(result);
+            
         }
+        fullReport.append(fullReportResultsContainer); 
+        
+        var toggle = document.createElement("div");
+        toggle.classList.add("result-accordion-toggle");
+        toggle.textContent = "SHOW MORE +"
+        $(toggle).off().on('click', toggleAccordion.bind(this, toggle));
+        $(toggle).on('click',function() {
+            toggleAccordion.bind(this);
+        });
+
+        fullReport.append(toggle); 
+
         _createSaveableReport();
         return fullReport;
     }
     
+    function toggleAccordion(toggle) {
+        let x = document.getElementById('accordion')
+        if (x.className === 'result-acccordion-closed') {
+            x.className = 'result-acccordion-open'
+            toggle.textContent = "SHOW LESS +"
+        } 
+        else {
+            x.className = 'result-acccordion-closed'
+            toggle.textContent = "SHOW MORE -"
+        }
+	}
+
     function _createSaveableReport() {
         var imageContainer = document.createElement("div");
         imageContainer.classList.add("result-image-container");

@@ -17438,9 +17438,13 @@ h6#related-resources {
         vertical-align: middle;
     }
     .loantype-title-name {
-        display: flex;
-        justify-content:space-around;
-        padding: 0 1rem;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+        color: #212121;
+        margin: 40px 0;
     }
 
 /* Helpers */
@@ -17450,7 +17454,6 @@ h6#related-resources {
 }
 
 .image-center-div {
-    padding:auto;
 }
 
 .fit-content {

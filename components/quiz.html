@@ -1,4 +1,3 @@
-<link href="./css/quiz.css" rel="stylesheet" type="text/css" media="all"/>
 
 <div class="fit-content">
     <div class="container" id="summary-container"></div>
@@ -464,6 +463,10 @@
                 descriptionDiv.append(paragraphDiv);
             }
         }
+        else {
+            descriptionDiv.textContent =category.description;
+        }
+
         loan.append(descriptionDiv);
 
         var noteDiv = document.createElement("h1");

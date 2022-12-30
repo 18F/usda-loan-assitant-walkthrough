@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="primary-region medium-12">
-                <h1 class="primary-region__title" id="form-name">
+                <h1 class="primary-region__title loantype-title-name" id="form-name">
                     ...
                 </h1>
             </div>
@@ -14,6 +14,17 @@
             <div class="primary-region medium-12">
                 <div class="primary-region__header">
                     <p id="form-description"></p>
+                    <div class="warning-container">
+                        <div class="warning-left-bar"> </div>
+                        <div class="warning-icon">
+                            <img src="./images/alerts/warning.png" alt="warning icon" height="32" width="32">
+                        </div>
+                        <div class="warning-message">
+                            <div class="warning-message-title">
+                                These forms can only be saved to your computer
+                            </div>
+                        </div>
+                    </div>
                     <div class="divider-dot"></div>
                     <p id="form-footer"></p>
                     <p id="return-form-suport"></p>
@@ -22,6 +33,7 @@
         </div>
     </div>
 
+ 
     <div class="container">
         <div class="divider-line"></div>
     </div>
@@ -33,6 +45,7 @@
                     <div class="accordion" id="form_walkthrough"></div>
                 </div>
             </div>
+
 
             <div class="col-md-9">
                 <div class="content-card accent-top sticky-top">
@@ -61,8 +74,42 @@
                 form_data = data["Forms"][index];
                 if(form_data !== undefined) {  
                     showPDF(form_data.file_name);
-                    $('#form-name').html(form_data.name)
-                    $('#form-description').html(form_data.description)
+                    $('#form-name').html(form_data.name);
+
+                    var description = document.createElement("div");
+                    description.classList.add("category-forms-holder-message");
+                    paragraph = document.createElement("p");
+                    paragraph.textContent = `Using the Form Support module, you can walk through each FSA form field by field and get instructions on how to complete it.`;
+                    description.append(paragraph);
+
+                    var paragraph = document.createElement("p");
+                    paragraph.textContent = `Forms can be filled out online and downloaded to a local machine for printing. However, please note:`
+                    description.append(paragraph);
+                    
+                    var ul = document.createElement("ul");
+                    
+                    var li = document.createElement("li");
+                    li.textContent = "is not possible to save your work online. Currently, you are only able to save forms by downloading them to your local machine as PDFs;";
+                    ul.append(li);
+                    
+                    var li = document.createElement("li");
+                    li.textContent = "This process does not save or submit any information online; and";
+                    ul.append(li);
+                    
+                    var li = document.createElement("li");
+                    li.textContent = "Completed applications must be printed out and sent to your Local Service Center if you have any further questions or concerns.";
+                    ul.append(li);
+                    
+                    var li = document.createElement("li");
+                    li.textContent = "Any further questions or concerns should be directed to your Local Service Center.";
+                    ul.append(li);
+
+                    description.append(ul);
+
+                $('#form-description').append(description)
+
+/////////////////////////////
+/////////////////////////////
                     $('#form-footer').html(`Click here to <a href="/forms/${form_data.file_name}" download>download the form</a> to fill it with <a href="https://get.adobe.com/reader/" target=_BLANK>Adobe Acrobat Reader</a>`);
 
                     var loanType = getCookie('currentLoanType');

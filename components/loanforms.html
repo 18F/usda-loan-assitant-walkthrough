@@ -212,24 +212,7 @@
                         </div>
                         
                         <!-- blue  info box --> 
-                        <div class="info-container" id="info-container-id">
-                            <div class="info-left-bar"> </div>
-                            <div class="info-icon">
-                                <img src="./images/alerts/info.png" alt="alert icon" height="32" width="32">
-                            </div>
-                            <div class="info-message">
-                                <div class="info-message-title">
-                                    Eligibility assesssment available
-                                </div>
-                                <div class="info-message-description">
-                                    Not sure where to start? Complete the eligibility assessment to understand which loan application best suits your needs.
-                                </div>
-                                    <button class="btn lg-btn info-button-container" onclick="setContent('quiz')" aria-label="Go to the Loan Readiness Tool">
-                                        Start Eligibility Self-Assessment
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="flag"><div class="flag-leftbar"></div><div class="flag-iconholder"><img src="./images/alerts/info.png"></div><div class="flag-text"><div class="flag-text-title">Take the Farm Loan Quiz</div><div class="flag-text-message">Not sure where to start? Complete the FSA Farm Loan Quiz to understand which loan best suits your needs.</div><button class="flag-button">GET STARTED</button></div></div>
                     </div>
                 </div>
             </div>
@@ -306,7 +289,7 @@
         var cards = [];
         $.each(categories, function(key, type) {
             // Title of support page
-            var titleText = `<div class="col"> Farm Loan Application Form Support </div>`
+            var titleText = `<div class="col loantype-title-name"> Farm Loan Application Form Support </div>`
             document.getElementById('title-holder').innerHTML = titleText;
 
             // Card for each loan type
@@ -505,9 +488,9 @@
         // Title of support page
         var titleText = `<div class="col">
                             <div class="loantype-title">    
-                                <div class="">
+                                <div class="loantype-title-back">
                                     <a href="" onclick="showAllLoans();return false;" data-label="/loanforms.html" aria-label="Go to Form Support Page" data-category="Loans">
-                                        <img class="loantype-title-back image-flip" src="./images/arrow-right.png" alt="Back arrow" width="32">
+                                        <img class="" src="./images/arrow-right.png" alt="Back arrow" width="32">
                                     </a>
                                 </div>
                                 <div class="loantype-title-name">

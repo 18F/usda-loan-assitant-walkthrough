@@ -493,7 +493,7 @@ input[type="radio"]:focus {
             margin: 2rem 0;
         }
             .recomended-loan-card-holder {
-                margin: 40px 0;
+                margin: 40px 0 96px;
                 display: flex;
                 flex-direction: row;
                 gap: 16px;
@@ -527,7 +527,7 @@ input[type="radio"]:focus {
                 }
 
     .summary-step-container {
-        margin: 2rem 0;
+        margin: 96px 0;
     }
     .summary-step {
         height: min-content;
@@ -536,7 +536,7 @@ input[type="radio"]:focus {
                             "iconholder step-text"
                             "iconholder step-full-report";
         grid-template-columns: 4rem 1fr;
-        margin: 2rem 0 3rem;
+        margin: 0 0 72px;
     }
         .summary-step-header {
             grid-area: header;

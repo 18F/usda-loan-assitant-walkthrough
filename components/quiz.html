@@ -1578,8 +1578,14 @@
         newWindow.document.write(divContents);
         newWindow.document.write('</body></html>');
         newWindow.document.close();
-        newWindow.print();
-        newWindow.close();
+        // newWindow.print();
+        // 
+
+        setTimeout(function () {
+            newWindow.print();
+            newWindow.close();
+        },1000);
+        
         $(report).hide();
         return true;
     }

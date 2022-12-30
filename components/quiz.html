@@ -1234,7 +1234,16 @@ input[type="radio"]:focus {
 
         var descriptionDiv = document.createElement("h1");
         descriptionDiv.classList.add("quiz-summary-paragraph");
-        descriptionDiv.textContent = category.description;
+        if(category.description.includes("|")) {
+            var paragraphs = category.description.split("|");
+            paragraphs = paragraphs.filter(n => n);
+            for( var i = 0; i < paragraphs.length; i++ ) {
+                var paragraph = paragraphs[i].replace("|","");
+                var paragraphDiv = document.createElement("p");
+                paragraphDiv.textContent = paragraph;
+                descriptionDiv.append(paragraphDiv);
+            }
+        }
         loan.append(descriptionDiv);
 
         var noteDiv = document.createElement("h1");
@@ -1305,7 +1314,6 @@ input[type="radio"]:focus {
                     linkDiv.appendChild(link);
 
                     interestRateValue = linkDiv;
-                    console.log(link);
                 }
 
                 item = document.createElement("li");
@@ -1800,7 +1808,6 @@ input[type="radio"]:focus {
 
         if(nextQuestionId >= 0 || isNaN(nextQuestionId)) {
             $('#quiz-next-active').show();
-            console.log("active")
         }
         else {
             $('#quiz-next-inactive').show();
@@ -2246,12 +2253,7 @@ input[type="radio"]:focus {
                 var bullets = paragraphs[i].paragraphText.replace("\n","").split("*")
                 bullets = bullets.filter(n => n)
                 var list = document.createElement("ul");
-                for ( var j = 0; j < bullets.length; j++ ) { 
-                    var bullet = bullets[j].replace("*","")
-                    let item = document.createElement("li");
-                    item.innerHTML = bullet;
-                    list.append(item);
-                }
+                category.description
                 paragraphDiv.append(list);
             }
             else {

@@ -47,11 +47,12 @@ p {
 }
 
 .button {
-  float: left;
-  margin: 0 2rem 0 0;
-  min-width: 132px;
-  height: 42px;
-  position: relative;
+    float: left;
+    width: 30%;
+    height: 42px;
+    margin: 0 2rem 0 0;
+    position: relative;
+    padding: 0 2rem;
 }
 
 .button label,
@@ -71,7 +72,6 @@ p {
     background-color: var(--color-white);
     color: var(--button-color-blue);
     border-radius: 4px;
-    display: inline-block;
     align-items: center;
     border: 2px solid var(--button-color-blue);
     padding: 0 1rem;
@@ -99,8 +99,8 @@ input[type=checkbox] {
     appearance: none;
     margin: 0;
     transform: scale(1);
-    width: 32px;
-    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
     cursor: pointer;
     visibility: hidden;
 }
@@ -264,6 +264,16 @@ input[type="radio"]:focus {
             font-size: 16px;
             line-height: 40px;
             text-align: center;
+            text-decoration: underline;
+            color: #006546;
+        }
+
+        .quiz-view-rates{
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
             text-decoration: underline;
             color: #006546;
         }
@@ -487,6 +497,7 @@ input[type="radio"]:focus {
                 margin: 40px 0;
                 display: flex;
                 flex-direction: row;
+                gap: 16px;
             }
             .recomended-imageContainer {
                 width: 100%;
@@ -624,13 +635,13 @@ input[type="radio"]:focus {
             grid-template-columns: 8px 4rem 1fr;
             margin: 1rem 0 2rem;
         }
-        .quiz-summary-flag-alert-background { background-color: rgb(255,220,220); }
+        .quiz-summary-flag-alert-background { background-color: #EEDAD9; }
         .quiz-summary-flag-warning-background { background-color: #F8EDC7; }
             
             .quiz-summary-flag-leftbar {
                 width: 100%;
             }
-            .quiz-summary-flag-leftbar-alert-background { background-color: rgb(255,80,80); }
+            .quiz-summary-flag-leftbar-alert-background { background-color: #AE2924; }
             .quiz-summary-flag-leftbar-warning-background { background-color: #FFBE2E; }
             
             .quiz-summary-flag-iconholder {
@@ -762,6 +773,7 @@ input[type="radio"]:focus {
         color: #316ACC;
         width: 100%;
         margin: auto;
+        cursor: pointer;
     }
 
 </style>
@@ -864,6 +876,7 @@ input[type="radio"]:focus {
     //////////////////
     // Shows question
     function showQuestion(questionId) {
+        categoryCount = 0;
         // check the summary page should be loaded
         if(nextQuestionId === 9999 || currentQuestion === 9999) {
             progressBarStage = "Results";
@@ -1270,8 +1283,34 @@ input[type="radio"]:focus {
 
             // Interest Rate description
             if(loansInCategory[i].interestRateDescription != ""){
+                var interestRateValue = loansInCategory[i].interestRateDescription;
+                if(loansInCategory[i].interestRateURL != "") {
+                    var urlText = "View current rates"
+                    interestRateValue = interestRateValue.replace(urlText, "")
+                    var link = document.createElement("a");
+                    link.classList.add("quiz-view-rates");
+                    var linkText = document.createTextNode(urlText);
+                    link.appendChild(linkText);
+                    link.title = urlText;
+                    $(link).off().on('click', openURL.bind(this, loansInCategory[i].interestRateURL));
+                    $(link).on('click',function() {
+                        openURL.bind(this, loansInCategory[i].interestRateURL);
+                        $(this).off('click');
+                    });  
+
+                    linkDiv = document.createElement("div");
+                    
+
+                    linkDiv.textContent = interestRateValue;
+                    linkDiv.appendChild(link);
+
+                    interestRateValue = linkDiv;
+                    console.log(link);
+                }
+
                 item = document.createElement("li");
-                item.innerHTML = loansInCategory[i].interestRateDescription;
+                item.appendChild(interestRateValue);
+
                 list.appendChild(item);
             }
 
@@ -2161,9 +2200,9 @@ input[type="radio"]:focus {
         radio.value = option['nextQuestionId'];
 
         var label = document.createElement("label");
-        //label.classList.add("btn");
-        //label.classList.add("btn-default");
-        label.textContent = option.title;
+        document
+        var labeltext = document.createTextNode(option.title);
+        label.appendChild(labeltext);
 
         button.append(radio);
         button.append(label);
@@ -2198,28 +2237,27 @@ input[type="radio"]:focus {
 
     // Creates one or more paragraphs
     function _createParagraphs(paragraphs) {
-        console.log(paragraphs)
         if(paragraphs == "") { return };
         
         var paragraphDiv = document.createElement("div");
         paragraphDiv.classList.add("quiz-paragraph-text");
-        if(paragraphs[0].paragraphText.includes("*")) {
-            var bullets = paragraphs[0].paragraphText.replace("\n","").split("*")
-            bullets = bullets.filter(n => n)
-            console.log(bullets)
-            var list = document.createElement("ul");
-            for ( var i = 0; i < bullets.length; i++ ) { 
-                var bullet = bullets[i].replace("*","")
-                let item = document.createElement("li");
-                item.innerHTML = bullet;
-                list.append(item);
+        for ( var i = 0; i < paragraphs.length; i++ ) {
+            if(paragraphs[i].paragraphText.includes("*")) {
+                var bullets = paragraphs[i].paragraphText.replace("\n","").split("*")
+                bullets = bullets.filter(n => n)
+                var list = document.createElement("ul");
+                for ( var j = 0; j < bullets.length; j++ ) { 
+                    var bullet = bullets[j].replace("*","")
+                    let item = document.createElement("li");
+                    item.innerHTML = bullet;
+                    list.append(item);
+                }
+                paragraphDiv.append(list);
             }
-            paragraphDiv.append(list);
+            else {
+                paragraphDiv.append(_createParagraphElement(paragraphs[0].paragraphText));
+            }
         }
-        else {
-            paragraphDiv.append(_createParagraphElement(paragraphs[0].paragraphText));
-        }
-
         return paragraphDiv;        
     }
 

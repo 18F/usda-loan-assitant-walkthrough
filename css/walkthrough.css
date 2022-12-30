@@ -2297,8 +2297,8 @@ ul.links-horizontal-bar li:not(:last-child):after {
     margin-top: 0;
 }
 .usa-alert-info {
-    background-color: #e2eeff;
-    border-left: 1rem solid #1a6ad3;
+    background-color: #D9E8F6;
+    border-left: 1rem solid #1A6AD3;
 }
 .usa-alert-info:before {
     background-color: #1a6ad3;
@@ -17319,6 +17319,7 @@ h6#related-resources {
     margin: initial;
     display: grid;
     grid-template-columns: 1rem auto 1fr;
+    margin-bottom: 24px;
 }
     .warning-left-bar {
         background-color: #FFBE2E;
@@ -17350,6 +17351,7 @@ h6#related-resources {
     width: 100%;
     display: none;
     grid-template-columns: 1rem auto 1fr;
+    margin-top: 24px;
 }
     .info-left-bar {
         background-color: #00BDE3;

@@ -24,20 +24,59 @@
         max-width: 100%;
         padding: 3rem;
     }
+    .comparision-title {
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+        display: flex;
+        align-items: center;
+        color: #212121;
+        margin-top: 40px;
+    }
+        .comparision-description {
+            width: 100%;
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+            color: #212121;
+            margin: 24px 0 40px;
+        }
         /*  Category Details */
         .category-details {
             width: 100%;
         }
             .category-details-title {
-
+                font-family: 'Public Sans';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 24px;
+                color: #212121;
+                margin-bottom: 1rem;
             }
             
             .category-details-description {
-
+                font-family: 'Public Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 28px;
+                color: #212121;
+                margin-bottom: 1rem;
             }
 
             .category-details-note {
-
+                font-family: 'Public Sans';
+                font-style: italic;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 28px;
+                color: #212121;
+                margin-bottom: 1rem;
             }
 
         /*  Table of details for each loan in the eategory */
@@ -66,10 +105,8 @@
                     font-weight: 700;
                     font-size: 18px;
                     line-height: 28px;
-
                     display: flex;
                     align-items: center;
-
                     color: #212121;
                     background: #EDEDED;
                 }
@@ -96,28 +133,72 @@
                     .comparisonTable-maxDollarValue-container {
                         width: 100%;
                         height: 100%;
-                        display:flex;
-                        flex-direction: row;
+                        display:grid;
+                        grid-template-columns: auto auto auto auto;
                     }
                         .comparisonTable-maxDollarValue {
-                            width: 100%;
-                            padding: 14px 24px;
+                            padding: 10px 24px;
                         }
 
-                    .comparisonTable-maxDollarNote {
-                        
-                    }
+                        .comparisonTable-maxDollarNote {
+                            width: 100%;
+                            padding: 10px 0;
+                        }
+        .comparisonTable-definition-bold {
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 28px;
+            color: #212121;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+        }
+        .comparisonTable-definition {
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 28px;
+            color: #212121;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+        }
+
 
     /* Interest Rate*/
     .comparisonTable-interestRate-container {
-            
-        }
+          
+    }
         .comparisonTable-interestRateTitle {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
             padding: 14px 24px;
+            gap: 10px;
+            background: #F7F7F7;
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 28px;
+            color: #212121;
         }
-
-        .comparisonTable-InterestRateValue {
+        .comparisonTable-interestRateValue-container {
+            width: 100%;
+            height: 100%;
+            display:flex;
+            flex-direction: row;
+            justify-content: left;
             padding: 14px 24px;
+
+        }
+        .comparisonTable-InterestRateValue {
+            width: 100%;
+            
         }
 
     /* Loan Term */
@@ -126,7 +207,19 @@
     }
 
         .comparisonTable-loanTermTitle {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
             padding: 14px 24px;
+            gap: 10px;
+            background: #F7F7F7;
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 28px;
+            color: #212121;
 
         }
         .comparisonTable-loanTermValue-container {
@@ -139,20 +232,31 @@
             }
                 .comparisonTable-loanTermValue {
                     width: 100%;
-                    padding: 14px 24px;
-
+                    padding: 10px 24px;
                 }
 
                 .comparisonTable-loanTermNote {
                     width: 100%;
-                    padding: 14px 24px;
+                    padding: 0 24px 10px;
                 }
-
+    /* Down Payment*/
     .comparisonTable-downPayment-container {
 
     }
         .comparisonTable-downPaymentTitle {
-            width: 100%
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 14px 24px;
+            gap: 10px;
+            background: #F7F7F7;
+            font-family: 'Public Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 28px;
+            color: #212121;
         }
         .comparisonTable-downPaymentValue-container {
             width: 100%;
@@ -168,21 +272,20 @@
                 line-height: 150%;
                 display: flex;
                 align-items: center;
-                color: #212121;
-                flex: none;
-                order: 0;
-                flex-grow: 0;
-                padding: 14px 24px;
+                color: #212121; 
+                padding: 10px 24px;
             }
             .comparisonTable-downPaymentNote {
-                    width: 100%;
-                }
-
+                width: 100%;
+                padding: 10px 24px;
+            }
+/* Other Rquirements*/
     .comparisonTable-otherRequirements-container {
         width: 100%;
     }
         .comparisonTable-otherRequirementsTitle  {
-            width: 100%;
+            max-width: 100%;
+            padding: 14px 24px;
         }
         .comparisonTable-otherRequirementsValue-container {
             width: 100%;
@@ -191,6 +294,7 @@
         }
             .comparisonTable-otherRequirementsValue  {
                 width: 100%;
+                padding: 14px 24px;
             }
     
     /* Flags */
@@ -198,20 +302,22 @@
         display: grid;
         grid-template-columns: 8px 5rem 1fr;
         margin: 1rem 0 0;
-        background-color: #E7F6F8;
+        background-color: #D9E8F6;
     }
         
         .flag-leftbar {
             width: 100%;
-            background-color: #00BDE3;
+            background-color: #1A6AD3;
         }
         
         .flag-iconholder {
             padding: 1rem;
+            padding-top: 2rem;
         }
         .flag-text {
             display:grid;
             grid-template-rows: auto auto auto;
+            padding-bottom: 2rem;
         }
             .flag-text-title {
                 font-family: 'Public Sans';
@@ -222,6 +328,7 @@
                 color: #212121;
                 min-height: fit-content;
                 padding: 1rem;
+                padding-top: 1.5rem;
             }
             .flag-text-message {
                 min-height: fit-content;
@@ -271,6 +378,9 @@
 
             comparision.append(_createFlag());
 
+            var bar = `<div class="container"><div class="divider-line"></div></div>`;
+            comparision.insertAdjacentHTML('beforeend', bar);
+
             /////////////////
             // holds the comparison tables
             var comparisionContainer = document.createElement("div");
@@ -293,14 +403,12 @@
                 // Title
                 var title = document.createElement("div");
                 title.classList.add("category-details-title");
-                title.classList.add("comparision-table-border");
 
                 title.textContent = categories[i].type;
                 details.append(title);
                 // Description
                 var description = document.createElement("div");
                 description.classList.add("category-details-description");
-                description.classList.add("comparision-table-border");
 
                 description.textContent = categories[i].description;
                 details.append(description);
@@ -332,34 +440,63 @@
                 var definitionsContainer = document.createElement("div");
                 definitionsContainer.classList.add("comparisonTable-definitionsContainer");
 
+                // Max dollar
                 var definition = document.createElement("div");
-                definition.classList.add("comparisonTable-definition");
-                
-                definition.textContent = "Maximum Dollar Amount: " + definitions.maximumDollarAmount;
+                var definitionName = document.createElement("text");
+                definitionName.classList.add("comparisonTable-definition-bold");
+                definitionName.textContent = "Maximum Dollar Amount: ";
+
+                var definitionText = document.createElement("text");
+                definitionText.classList.add("comparisonTable-definition");
+                definitionText.textContent = definitions.maximumDollarAmount;
+                definitionName.append(definitionText);
+
+                definition.append(definitionName);
                 definitionsContainer.append(definition);
 
-                definition = document.createElement("div");
-                definition.classList.add("comparisonTable-definition");
-                definition.textContent = "Interest Rate: " + definitions.InterestRate;
+                // Interest Rate
+                var definition = document.createElement("div");
+                var definitionName = document.createElement("text");
+                definitionName.classList.add("comparisonTable-definition-bold");
+                definitionName.textContent = "Interest Rate: ";
+
+                var definitionText = document.createElement("text");
+                definitionText.classList.add("comparisonTable-definition");
+                definitionText.textContent = definitions.InterestRate;
+                definitionName.append(definitionText);
+
+                definition.append(definitionName);
                 definitionsContainer.append(definition);
 
-                definition = document.createElement("div");
-                definition.classList.add("comparisonTable-definition");
-                definition.textContent = "Loan Term: " + definitions.loanTerm;
+                // Loan Term
+                var definition = document.createElement("div");
+                var definitionName = document.createElement("text");
+                definitionName.classList.add("comparisonTable-definition-bold");
+                definitionName.textContent = "Loan Term: ";
+
+                var definitionText = document.createElement("text");
+                definitionText.classList.add("comparisonTable-definition");
+                definitionText.textContent = definitions.loanTerm;
+                definitionName.append(definitionText);
+
+                definition.append(definitionName);
                 definitionsContainer.append(definition);
-                
-                definition = document.createElement("div");
-                definition.classList.add("comparisonTable-definition");
-                
-                definition.textContent = "Down Payment Requirement: " + definitions.downPaymentRequirement;
+
+                // Down Payment Requirement
+                var definition = document.createElement("div");
+                var definitionName = document.createElement("text");
+                definitionName.classList.add("comparisonTable-definition-bold");
+                definitionName.textContent = "Down Payment Requirement: ";
+
+                var definitionText = document.createElement("text");
+                definitionText.classList.add("comparisonTable-definition");
+                definitionText.textContent = definitions.loanTerm;
+                definitionName.append(definitionText);
+
+                definition.append(definitionName);
                 definitionsContainer.append(definition);
 
                 categoryContainer.append(definitionsContainer);
-
-                var showLess = document.createElement("div");
-                showLess.classList.add("comparisonTable-showLess");
-                showLess.innerHTML = "<a href=''>show less</a>"
-                categoryContainer.append(showLess);
 
                 comparisionContainer.append(categoryContainer);
             }
@@ -416,11 +553,14 @@
             }
             uniqueDollarAmmounts.push(dollarammount);
         }
-        
+        var totalCells = uniqueDollarAmmounts.length;
         uniqueDollarAmmounts = uniqueDollarAmmounts.filter((tag, index, array) => array.findIndex(t => t.description == tag.description && t.note == tag.note) == index);
+        var actualCells = uniqueDollarAmmounts.length;
 
         for (var l = 0; l < uniqueDollarAmmounts.length; l++) {
+            var elementCount = 0;
             var maxDollar = document.createElement("div");
+           
             maxDollar.classList.add("comparisonTable-maxDollarValue");
             maxDollar.classList.add("comparision-table-border");
 
@@ -431,7 +571,11 @@
                 note.textContent = uniqueDollarAmmounts[l].note;
                 maxDollar.append(note);
             }
+            if(totalCells/actualCells != 1 && elementCount == 0) {
+                maxDollar.style.width = 66 + "%";
+            }
             maxDollarValue.append(maxDollar);
+            elementCount++;
         }
         maxDollarContainer.append(maxDollarValue);
         comparisonTable.append(maxDollarContainer);
@@ -457,15 +601,26 @@
             uniqueInterestRates.push(interestRate);
         }
         uniqueInterestRates = uniqueInterestRates.filter((tag, index, array) => array.findIndex(t => t.description == tag.description && t.url == tag.url) == index);
+        
+        var interestRateValueContainer = document.createElement("div");
+        interestRateValueContainer.classList.add("comparisonTable-interestRateValue-container");
         for (var l = 0; l < uniqueInterestRates.length; l++) {
             var interestRateValue = document.createElement("div");
             interestRateValue.classList.add("comparisonTable-interestRateValue");
-            interestRateValue.classList.add("comparision-table-border");
-            var text = uniqueInterestRates[l].description.replace(" View current rates","");
-            var urlText = text + " <a href=" + uniqueInterestRates[l].url+">View current rates</a>";
-            console.log(urlText)
-            interestRateValue.innerHTML = urlText;
-            interestRateContainer.append(interestRateValue);
+
+            var interestRateValueLink = document.createElement("a");
+            interestRateValueLink.href =  uniqueInterestRates[l].url;
+            interestRateValueLink.innerHTML = "View current rates ";
+
+            var interestRateValueLinkText = document.createElement("text");
+
+            interestRateValueLinkText.textContent = uniqueInterestRates[l].description.replace(" View current rates","");
+            interestRateValueLinkText.append(interestRateValueLink);
+            interestRateValue.append(interestRateValueLinkText);
+
+            interestRateValueContainer.append(interestRateValue);
+
+            interestRateContainer.append(interestRateValueContainer);
         }
         
         comparisonTable.append(interestRateContainer);

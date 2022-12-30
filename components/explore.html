@@ -1,6 +1,6 @@
 <style>
     .comparision-table-border {
-        border: 0.5px solid black;
+        border: 0.5px solid #BBBB;
     }
     .comparision-table-header {
         font-family: 'Public Sans';
@@ -60,6 +60,18 @@
             }
                 .comparisonTable-title {
                     width: 100%;
+                    padding: 14px 24px;
+                    font-family: 'Public Sans';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 28px;
+
+                    display: flex;
+                    align-items: center;
+
+                    color: #212121;
+                    background: #EDEDED;
                 }
 
                 /* Max Dollar */
@@ -67,15 +79,29 @@
                     
                 }
                     .comparisonTable-maxDollarTitle {
-                        
+                        box-sizing: border-box;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: flex-start;
+                        padding: 14px 24px;
+                        gap: 10px;
+                        background: #F7F7F7;
+                        font-family: 'Public Sans';
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 18px;
+                        line-height: 28px;
+                        color: #212121;
                     }
                     .comparisonTable-maxDollarValue-container {
                         width: 100%;
+                        height: 100%;
                         display:flex;
                         flex-direction: row;
                     }
                         .comparisonTable-maxDollarValue {
-                            
+                            width: 100%;
+                            padding: 14px 24px;
                         }
 
                     .comparisonTable-maxDollarNote {
@@ -87,11 +113,11 @@
             
         }
         .comparisonTable-interestRateTitle {
-            
+            padding: 14px 24px;
         }
 
         .comparisonTable-InterestRateValue {
-            
+            padding: 14px 24px;
         }
 
     /* Loan Term */
@@ -100,7 +126,8 @@
     }
 
         .comparisonTable-loanTermTitle {
-            
+            padding: 14px 24px;
+
         }
         .comparisonTable-loanTermValue-container {
             width: 100%;
@@ -111,11 +138,14 @@
                 width: 100%;
             }
                 .comparisonTable-loanTermValue {
-                    width: 100%
+                    width: 100%;
+                    padding: 14px 24px;
+
                 }
 
                 .comparisonTable-loanTermNote {
-                    width: 100%
+                    width: 100%;
+                    padding: 14px 24px;
                 }
 
     .comparisonTable-downPayment-container {
@@ -131,6 +161,18 @@
         }
             .comparisonTable-downPaymentValue {
                 width: 100%;
+                font-family: 'Public Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 150%;
+                display: flex;
+                align-items: center;
+                color: #212121;
+                flex: none;
+                order: 0;
+                flex-grow: 0;
+                padding: 14px 24px;
             }
             .comparisonTable-downPaymentNote {
                     width: 100%;
@@ -251,11 +293,15 @@
                 // Title
                 var title = document.createElement("div");
                 title.classList.add("category-details-title");
+                title.classList.add("comparision-table-border");
+
                 title.textContent = categories[i].type;
                 details.append(title);
                 // Description
                 var description = document.createElement("div");
                 description.classList.add("category-details-description");
+                description.classList.add("comparision-table-border");
+
                 description.textContent = categories[i].description;
                 details.append(description);
                 // Note if available
@@ -288,6 +334,7 @@
 
                 var definition = document.createElement("div");
                 definition.classList.add("comparisonTable-definition");
+                
                 definition.textContent = "Maximum Dollar Amount: " + definitions.maximumDollarAmount;
                 definitionsContainer.append(definition);
 
@@ -303,6 +350,7 @@
                 
                 definition = document.createElement("div");
                 definition.classList.add("comparisonTable-definition");
+                
                 definition.textContent = "Down Payment Requirement: " + definitions.downPaymentRequirement;
                 definitionsContainer.append(definition);
 
@@ -352,13 +400,13 @@
         var maxDollarTitle = document.createElement("div");
         maxDollarTitle.classList.add("comparisonTable-maxDollarTitle");
         maxDollarTitle.classList.add("comparision-table-border");
-        maxDollarTitle.classList.add("comparision-table-header");
         maxDollarTitle.textContent = "Maximum Dollar Amount";
         maxDollarContainer.append(maxDollarTitle);
         
         // Max Dollar Ammount Values
         var maxDollarValue = document.createElement("div");
         maxDollarValue.classList.add("comparisonTable-maxDollarValue-container");
+        maxDollarValue.classList.add("comparision-table-border");
 
         var uniqueDollarAmmounts = [];
         for (var c = 0; c < categoryLoans.length; c++) {
@@ -374,6 +422,8 @@
         for (var l = 0; l < uniqueDollarAmmounts.length; l++) {
             var maxDollar = document.createElement("div");
             maxDollar.classList.add("comparisonTable-maxDollarValue");
+            maxDollar.classList.add("comparision-table-border");
+
             maxDollar.textContent = uniqueDollarAmmounts[l].description;
             if(uniqueDollarAmmounts[l].note !== "") {
                 var note = document.createElement("div");
@@ -407,12 +457,13 @@
             uniqueInterestRates.push(interestRate);
         }
         uniqueInterestRates = uniqueInterestRates.filter((tag, index, array) => array.findIndex(t => t.description == tag.description && t.url == tag.url) == index);
-
         for (var l = 0; l < uniqueInterestRates.length; l++) {
             var interestRateValue = document.createElement("div");
             interestRateValue.classList.add("comparisonTable-interestRateValue");
-            var text = uniqueInterestRates[l].description.split(".").pop();
+            interestRateValue.classList.add("comparision-table-border");
+            var text = uniqueInterestRates[l].description.replace(" View current rates","");
             var urlText = text + " <a href=" + uniqueInterestRates[l].url+">View current rates</a>";
+            console.log(urlText)
             interestRateValue.innerHTML = urlText;
             interestRateContainer.append(interestRateValue);
         }

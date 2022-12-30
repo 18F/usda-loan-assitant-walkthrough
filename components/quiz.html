@@ -15,7 +15,7 @@
     --color-black: #0000;
 }
 
-/* ul {
+.custom-ul {
   list-style: none;
   font-family: 'Public Sans';
     font-style: normal;
@@ -26,14 +26,14 @@
     color: #000000;
 }
 
-ul li::before {
+.custom-ul .custom-li::before {
   content: "\2022"; 
   color: 006546; 
   font-weight: bold; 
   display: inline-block;
   width: 1em; 
   margin-left: -1em;
-} */
+}
 
 h1 {
     color: #000000;
@@ -1211,8 +1211,6 @@ input[type="radio"]:focus {
         titleDiv.textContent = loanInfoCategoryTitle;
         loan.append(titleDiv);
 
-        // quiz-summary-note
-
         // Description
         var text =  +  + ".";
         
@@ -2251,9 +2249,13 @@ input[type="radio"]:focus {
         for ( var i = 0; i < paragraphs.length; i++ ) {
             if(paragraphs[i].paragraphText.includes("*")) {
                 var bullets = paragraphs[i].paragraphText.replace("\n","").split("*")
-                bullets = bullets.filter(n => n)
+                bullets = bullets.filter(n => n);
                 var list = document.createElement("ul");
-                category.description
+                for ( var j = 0; j < bullets.length; j++ ) {
+                    var listItem = document.createElement("li");
+                    listItem.textContent = bullets[j];
+                    list.append(listItem);
+                }
                 paragraphDiv.append(list);
             }
             else {

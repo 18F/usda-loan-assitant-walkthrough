@@ -232,7 +232,7 @@ def process_forms_spreadsheet(source_filename, form_count, field_count, update_p
 
 
 @click.command()
-@click.option('--filename', '-f', type=click.Path(exists=True), show_default=True, default='FSA Forms Analysis.xlsx')
+@click.option('--filename', '-f', type=click.Path(exists=True), show_default=True, default='../../data/FSA Forms Analysis.xlsx')
 @click.option('--updatepids', '-u', is_flag=True, show_default=True, default=False)
 @click.option('--verbose', '-v', is_flag=True, show_default=True, default=False)
 @click.option('--debug', '-d', is_flag=True, show_default=True, default=False)

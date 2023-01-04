@@ -6,7 +6,7 @@ from datetime import datetime
 
 from pprint import pprint
 
-source_filename = 'LAT-content_Mod1_2.xlsx'
+source_filename = '../../data/LAT-content_Mod1_2.xlsx'
 print(f"Loading {source_filename}")
 wb = load_workbook(filename = source_filename)
 

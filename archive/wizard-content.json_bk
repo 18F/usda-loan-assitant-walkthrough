@@ -1,0 +1,2279 @@
+{
+    "steps": [
+        {
+            "buttons": [
+                {
+                    "buttonText": "Start Eligibility<br>Self-Assessment",
+                    "color": "white",
+                    "nextStepId": 2,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "The first step is to determine if you qualify for a FSA Farm Loan."
+                    },
+                    {
+                        "paragraphContent": "Our short questionnaire will help you learn whether you meet the basic eligibility criteria for FSA loans."
+                    },
+                    {
+                        "paragraphContent": "Click the button below to determine your eligibility."
+                    }
+                ]
+            },
+            "id": 1,
+            "progressBarStage": "start",
+            "sectionHeader": "",
+            "subtitle": "Eligibility Self-Assessment",
+            "title": "Are you eligible for a FSA loan?\n",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 4,
+                    "textColor": "#df5d79"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 5,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "Learn More",
+                    "color": "white",
+                    "nextStepId": 3,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "In the last four years, have you been convicted for planting, cultivating, growing, producing, harvesting, storing, trafficking, or possessing controlled substances?"
+                    }
+                ]
+            },
+            "id": 2,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 1,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "",
+            "title": "Recent Drug Convictions",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Return to Question",
+                    "color": "white",
+                    "nextStepId": 2,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Applicants are not eligible for FSA loans if convicted under Federal or State law for planting, cultivating, growing, producing, harvesting, or storing a controlled substance."
+                    },
+                    {
+                        "paragraphContent": "However, if applicants can provide documentation that the convictions were more than 4 years ago, then they may be eligible."
+                    }
+                ]
+            },
+            "id": 3,
+            "progressBarStage": "eligibility",
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "What Does This Mean?",
+            "title": "Recent Drug Convictions",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Acknowledge & Continue",
+                    "color": "white",
+                    "nextStepId": 5,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "You indicated that you have a recent drug conviction."
+                    },
+                    {
+                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans."
+                    }
+                ]
+            },
+            "id": 4,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 2,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "Possible Eligibility Issue!",
+            "title": "Recent Drug Convictions",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 8,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 7,
+                    "textColor": "#df5d79"
+                },
+                {
+                    "buttonText": "Learn More",
+                    "color": "white",
+                    "nextStepId": 6,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Do you (or anyone who will sign the promissory note) have the legal competency to enter into a loan agreement?"
+                    }
+                ]
+            },
+            "id": 5,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 2,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "",
+            "title": "Legal Competency",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Return to Question",
+                    "color": "white",
+                    "nextStepId": 5,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "All applicants must be of legal age and have the mental capacity to receive a Direct Loan. Each applicant must have the authority to sign a legally binding contract."
+                    }
+                ]
+            },
+            "id": 6,
+            "progressBarStage": "eligibility",
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "What does this mean?",
+            "title": "Legal Competency",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Acknowledge & Continue",
+                    "color": "white",
+                    "nextStepId": 8,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "You indicated that you are unable to sign a legally binding agreement"
+                    },
+                    {
+                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans."
+                    }
+                ]
+            },
+            "id": 7,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 5,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "Possible Eligibility Issue!",
+            "title": "Legal Competency",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 11,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 10,
+                    "textColor": "#df5d79"
+                },
+                {
+                    "buttonText": "Learn More",
+                    "color": "white",
+                    "nextStepId": 9,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Are you a U.S. citizen, a non-citizen national, or a legal resident alien of the United States?"
+                    }
+                ]
+            },
+            "id": 8,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 5,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "",
+            "title": "Citizenship",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Return to Question",
+                    "color": "white",
+                    "nextStepId": 8,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Applicants born in American Samoa and Swains Island are considered U.S. non-citizens and will require documentation to meet eligibility."
+                    },
+                    {
+                        "paragraphContent": "Qualified aliens who are lawfully admitted for permanent residence under the Immigration and Nationality Act will be eligible. Additional information will be needed to document qualified alien status."
+                    }
+                ]
+            },
+            "id": 9,
+            "progressBarStage": "eligibility",
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "What Does This Mean?",
+            "title": "Citizenship",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Acknowledge & Continue",
+                    "color": "white",
+                    "nextStepId": 11,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "You indicated that you may not meet the citizenship requirement."
+                    },
+                    {
+                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans."
+                    }
+                ]
+            },
+            "id": 10,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 8,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "Possible Eligibility Issue!",
+            "title": "Citizenship",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 14,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 13,
+                    "textColor": "#df5d79"
+                },
+                {
+                    "buttonText": "Learn More",
+                    "color": "white",
+                    "nextStepId": 12,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Do you have an acceptable credit history demonstrating timely payments?"
+                    }
+                ]
+            },
+            "id": 11,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 8,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "",
+            "title": "Credit History",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Return to Question",
+                    "color": "white",
+                    "nextStepId": 11,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "While FSA does not consider credit scores as a determining factor, our agency evaluates credit history and determines whether the applicant has a history of making payments as they come due. The applicant will be deemed ineligible if FSA notes a general pattern of past due or delinquent payments, with the exception of circumstances beyond the applicant\u2019s control."
+                    }
+                ]
+            },
+            "id": 12,
+            "progressBarStage": "eligibility",
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "What Does This Mean?",
+            "title": "Credit History",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Acknowledge & Continue",
+                    "color": "white",
+                    "nextStepId": 14,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "You indicated that you may not meet the credit history requirement, demonstrating on-time payments."
+                    },
+                    {
+                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans."
+                    }
+                ]
+            },
+            "id": 13,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 11,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "Possible Eligibility Issue!",
+            "title": "Credit History",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 16,
+                    "textColor": "#df5d79"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 17,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "Learn More",
+                    "color": "white",
+                    "nextStepId": 15,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Are you able to obtain alternative financing through a commercial lender?"
+                    }
+                ]
+            },
+            "id": 14,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 11,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "",
+            "title": "Credit Alternatives",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Return to Question",
+                    "color": "white",
+                    "nextStepId": 14,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "To meet this requirement, applicants must be unable to receive financing from a commercial lending institution. If an applicant has not applied for credit elsewhere, after reviewing the application, FSA will determine if there is a possibility that the applicant is able to receive credit elsewhere."
+                    }
+                ]
+            },
+            "id": 15,
+            "progressBarStage": "eligibility",
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "What Does This Mean?",
+            "title": "Credit Alternatives",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Acknowledge & Continue",
+                    "color": "white",
+                    "nextStepId": 17,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "You indicated that you may be able to receive financing from a commercial lender."
+                    },
+                    {
+                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans."
+                    }
+                ]
+            },
+            "id": 16,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 14,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "Possible Eligibility Issue!",
+            "title": "Credit Alternatives",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 19,
+                    "textColor": "#df5d79"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 20,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "Learn More",
+                    "color": "white",
+                    "nextStepId": 18,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Do you have delinquent federal debts or unpaid federal judgements, other than IRS tax debt?"
+                    }
+                ]
+            },
+            "id": 17,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 14,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "",
+            "title": "Federal Debts",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Return to Question",
+                    "color": "white",
+                    "nextStepId": 17,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Applicants who are delinquent on any federal debts or have any unpaid federal judgments are ineligible."
+                    },
+                    {
+                        "paragraphContent": "However, applicants may become eligible if they are able to pay in full or resolve the delinquent federal debt or judgment before loan closing."
+                    },
+                    {
+                        "paragraphContent": "IRS tax debt does not apply but may be used to evaluate credit worthiness."
+                    }
+                ]
+            },
+            "id": 18,
+            "progressBarStage": "eligibility",
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "What Does This Mean?",
+            "title": "Federal Debts",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Acknowledge & Continue",
+                    "color": "white",
+                    "nextStepId": 20,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "You indicated that you have delinquent federal debts or unpaid federal judgements."
+                    },
+                    {
+                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans."
+                    }
+                ]
+            },
+            "id": 19,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 17,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "Possible Eligibility Issue!",
+            "title": "Federal Debts",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 22,
+                    "textColor": "#df5d79"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 23,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "Learn More",
+                    "color": "white",
+                    "nextStepId": 21,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Have you ever been forgiven of a past debt by FSA?"
+                    }
+                ]
+            },
+            "id": 20,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 17,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "",
+            "title": "FSA Debt Forgiveness",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Return to Question",
+                    "color": "white",
+                    "nextStepId": 20,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Applicants who have been forgiven of a past FSA loan will be considered ineligible for Direct Loan Assistance, with the exception of Annual Operating Loans, unless they have extenuating circumstances such as:"
+                    },
+                    {
+                        "paragraphContent": {
+                            "bullets": [
+                                {
+                                    "bulletContent": "Received a debt reduction through a conservation easement or contract."
+                                },
+                                {
+                                    "bulletContent": "Had a debt written off as a part of the resolution for a discrimination complaint against the Farm Service Agency."
+                                },
+                                {
+                                    "bulletContent": "Had a prior debt forgiven that has been repaid entirely."
+                                },
+                                {
+                                    "bulletContent": "Had a debt forgiven on a Youth Loan for circumstances beyond the applicant\u2019s control."
+                                }
+                            ],
+                            "type": "unordered"
+                        }
+                    }
+                ]
+            },
+            "id": 21,
+            "progressBarStage": "eligibility",
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "What Does This Mean?",
+            "title": "FSA Debt Forgiveness",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Acknowledge & Continue",
+                    "color": "white",
+                    "nextStepId": 23,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "You indicated that you have been forgiven for a past FSA loan."
+                    },
+                    {
+                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans, except Annual Operating Loans."
+                    }
+                ]
+            },
+            "id": 22,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 20,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "Possible Eligibility Issue!",
+            "title": "FSA Debt Forgiveness",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 25,
+                    "textColor": "#df5d79"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 26,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "Learn More",
+                    "color": "white",
+                    "nextStepId": 24,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Are you disqualified as a result of a Federal Crop Insurance violation?"
+                    }
+                ]
+            },
+            "id": 23,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 20,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "",
+            "title": "Federal Crop Insurance Violations",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Return to Question",
+                    "color": "white",
+                    "nextStepId": 23,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Applicants who willfully and intentionally provide false or inaccurate information to FCIC or to any approved insurance provider with respect to a policy or plan will be ineligible."
+                    }
+                ]
+            },
+            "id": 24,
+            "progressBarStage": "eligibility",
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "What Does This Mean?",
+            "title": "Federal Crop Insurance Violations",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Acknowledge & Continue",
+                    "color": "white",
+                    "nextStepId": 26,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "You indicated that you may be disqualified as a result of a Federal Crop Insurance violation."
+                    },
+                    {
+                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans."
+                    }
+                ]
+            },
+            "id": 25,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 23,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "Possible Eligibility Issue!",
+            "title": "Federal Crop Insurance Violations",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 29,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 28,
+                    "textColor": "#df5d79"
+                },
+                {
+                    "buttonText": "Learn More",
+                    "color": "white",
+                    "nextStepId": 27,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Do you have prior farming experience or relevant training?"
+                    }
+                ]
+            },
+            "id": 26,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 23,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "",
+            "title": "Farming Experience",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Return to Question",
+                    "color": "white",
+                    "nextStepId": 26,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "The applicant must demonstrate sufficient managerial ability to assure reasonable prospects of loan repayment, as determined by FSA."
+                    },
+                    {
+                        "paragraphContent": "Note: Farming experience requirements vary by loan type."
+                    }
+                ]
+            },
+            "id": 27,
+            "progressBarStage": "eligibility",
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "What Does This Mean?",
+            "title": "Farming Experience",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Acknowledge & Continue",
+                    "color": "white",
+                    "nextStepId": 29,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "You indicated that you may lack sufficient farm management experience."
+                    },
+                    {
+                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans."
+                    }
+                ]
+            },
+            "id": 28,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 26,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "Possible Eligibility Issue!",
+            "title": "Farming Experience",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 32,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 31,
+                    "textColor": "#df5d79"
+                },
+                {
+                    "buttonText": "Learn More",
+                    "color": "white",
+                    "nextStepId": 30,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Will you be the operator of a family farm?"
+                    }
+                ]
+            },
+            "id": 29,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 26,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "",
+            "title": "Farm Operations",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Return to Question",
+                    "color": "white",
+                    "nextStepId": 29,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "After the loan has closed, the applicant must be the operator of the farm. Applicants must make the management and operating decisions for the farm and not a third-party entity."
+                    }
+                ]
+            },
+            "id": 30,
+            "progressBarStage": "eligibility",
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "What Does This Mean?",
+            "title": "Farm Operations",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Acknowledge & Continue",
+                    "color": "white",
+                    "nextStepId": 32,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "You indicated that you will not be the operator of a family farm."
+                    },
+                    {
+                        "paragraphContent": "Based on your response to this question, you may not be eligible for FSA loans."
+                    }
+                ]
+            },
+            "id": 31,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 29,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "Possible Eligibility Issue!",
+            "title": "Farm Operations",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 34,
+                    "textColor": "#df5d79"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 35,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "Learn More",
+                    "color": "white",
+                    "nextStepId": 33,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Are you applying as a non-profit organization?"
+                    }
+                ]
+            },
+            "id": 32,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 29,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "",
+            "title": "Non-Profit Organizations",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Return to Question",
+                    "color": "white",
+                    "nextStepId": 32,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Non-Profit Organizations (NPOs) are not eligible to receive FSA loan assistance."
+                    }
+                ]
+            },
+            "id": 33,
+            "progressBarStage": "eligibility",
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "What Does This Mean?",
+            "title": "Non-Profit Organizations",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Acknowledge & Continue",
+                    "color": "white",
+                    "nextStepId": 35,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "You indicated that you are applying as a Non-Profit Organization."
+                    },
+                    {
+                        "paragraphContent": "Based on your response to this question, you are not eligible for FSA loans. However, you can proceed as a for-profit entity or individual applicant."
+                    }
+                ]
+            },
+            "id": 34,
+            "progressBarStage": "eligibility",
+            "resetText": "Go Back",
+            "resetToStepId": 32,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "Possible Eligibility Issue!",
+            "title": "Non-Profit Organizations",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Proceed to Loan Discovery",
+                    "color": "white",
+                    "nextStepId": 36,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "You have completed the eligibility self-assessment. Click the button below to discover which FSA loans are right for you."
+                    }
+                ]
+            },
+            "id": 35,
+            "progressBarStage": "eligibility",
+            "resetText": "Restart Eligibility\nSelf-Assessment",
+            "resetToStepId": 1,
+            "sectionHeader": "Eligibility Self-Assessment",
+            "subtitle": "",
+            "title": "Self-Assessment Completed",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Discover FSA Loans",
+                    "color": "white",
+                    "nextStepId": 37,
+                    "textColor": "#20a286"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "FSA offers various loan programs including Microloans, Operating Loans, Farm Ownership Loans, Emergency Loans, and Youth Loans. While FSA is committed to serving all farmers and ranchers, by statute, FSA targets a portion of all Guaranteed loan funds, Microloan funding, and Youth loans, to historically underserved farmers and ranchers."
+                    },
+                    {
+                        "paragraphContent": "The following screens will take you through a series of questions to find the loan product that is right for you and provide you with a checklist of the documents you will need to begin the loan application process."
+                    },
+                    {
+                        "paragraphContent": "Click the button below to discover the loans that align with your circumstances."
+                    }
+                ]
+            },
+            "id": 36,
+            "progressBarStage": "discovery",
+            "sectionHeader": "",
+            "subtitle": "Loan Discovery",
+            "title": "Which Loans Are Right For You?",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 38,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 40,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Are you seeking a loan amount less than or equal to $50,000?"
+                    }
+                ]
+            },
+            "id": 37,
+            "progressBarStage": "discovery",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Loans up to $50,000",
+            "title": "Microloans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Proceed with a Microloan",
+                    "color": "white",
+                    "nextStepId": 39,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "Discover Additional Loan Options",
+                    "color": "white",
+                    "nextStepId": 40,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Microloans are designed to fit the needs of small farms, beginning farmers, niche and non-traditional farm operations, to include truck farms, farms participating in direct marketing, such as farmers\u2019 markets, CSAs (Community Supported Agriculture), restaurants, and grocery stores. Microloans can also be used for hydroponic, aquaponic, organic and vertical growing methods."
+                    },
+                    {
+                        "paragraphContent": "You may request up to $50,000 for a Farm Ownership Microloan and up to an additional $50,000 for an Operating Microloan. \n\nNote: The $50,000 limit includes any possible outstanding FSA Direct Operating or Farm Ownership unpaid principal loan balances."
+                    },
+                    {
+                        "paragraphContent": "A loan applicant may have a Guaranteed Operating Loan, Farm Ownership loan or Emergency Loan and still qualify for a Microloan.\n\nNeed More Capital? Consider a Farm Ownership or Operating Loan."
+                    }
+                ]
+            },
+            "id": 38,
+            "progressBarStage": "discovery",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Loans up to $50,000",
+            "title": "Microloans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Microloan%20Readiness%20Checklist.pdf"
+                },
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "nextStepId": 62,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Your Next Steps"
+                    },
+                    {
+                        "paragraphContent": "IMPORTANT: Make sure you have gathered all documentation before proceeding with the loan forms."
+                    },
+                    {
+                        "paragraphContent": {
+                            "bullets": [
+                                {
+                                    "bulletContent": "Download and print out the Readiness Checklist for the Microloan Program."
+                                },
+                                {
+                                    "bulletContent": "Gather the necessary loan application forms and documentation from the checklist."
+                                },
+                                {
+                                    "bulletContent": "Fill out and submit your forms."
+                                }
+                            ],
+                            "type": "numbered"
+                        }
+                    }
+                ]
+            },
+            "id": 39,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Additional Loan Options",
+            "resetToStepId": 40,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Loans up to $50,000",
+            "title": "Microloans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Explore Farm Ownership Loans",
+                    "color": "white",
+                    "nextStepId": 41,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "Explore Operating Loans",
+                    "color": "white",
+                    "nextStepId": 49,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "FSA offers Direct Loans that can be used to purchase, enlarge, or improve a farm, as well as loans to cover farm operating expenses."
+                    }
+                ]
+            },
+            "id": 40,
+            "progressBarStage": "discovery",
+            "resetText": "Discover Additional Loan Options",
+            "resetToStepId": 54,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "For Farm Ownership and Operating Expenses",
+            "title": "Direct Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Learn About Farm Ownership Loans",
+                    "color": "white",
+                    "nextStepId": 42,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Farm Ownership Loans may be used to purchase a farm, enlarge an existing farm, construct new farm buildings and/or improve structures, pay closing costs, and promote soil and water conservation and protection."
+                    },
+                    {
+                        "paragraphContent": "Note: Farm Ownership Loans can be used in combination with other FSA and commercial loan products to meet your total financing need."
+                    }
+                ]
+            },
+            "id": 41,
+            "progressBarStage": "discovery",
+            "resetText": "Explore Other Direct Loans",
+            "resetToStepId": 49,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "To Purchase or Enlarge Family Farms",
+            "title": "Farm Ownership Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Explore Down Payment Loans",
+                    "color": "white",
+                    "nextStepId": 43,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "Explore Joint Financing/ Participation Loans",
+                    "color": "white",
+                    "nextStepId": 45,
+                    "textColor": "#094785"
+                },
+                {
+                    "buttonText": "Explore Direct Farm Ownership Loans",
+                    "color": "white",
+                    "nextStepId": 47,
+                    "textColor": "#065941"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "There are three types of Farm Ownership Loans:"
+                    },
+                    {
+                        "paragraphContent": {
+                            "bullets": [
+                                {
+                                    "bulletContent": "Down Payment Loans \u2013 The applicant must make a down payment of at least 5% of the purchase price"
+                                },
+                                {
+                                    "bulletContent": "Joint Financing/Participation Loans \u2013 No down payment required, but at least 50% of the purchase price must be financed by a commercial lender or contract for deed holder."
+                                },
+                                {
+                                    "bulletContent": "Direct Farm Ownership Loans \u2013 No down payment required; FSA can finance up to 100% of the purchase price or the appraised value, whichever is lower."
+                                }
+                            ],
+                            "type": "unordered"
+                        }
+                    }
+                ]
+            },
+            "id": 42,
+            "progressBarStage": "discovery",
+            "resetText": "Explore Other Direct Loans",
+            "resetToStepId": 49,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "To Purchase or Enlarge Family Farms",
+            "title": "Farm Ownership Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Proceed with a Down Payment Loan",
+                    "color": "white",
+                    "nextStepId": 44,
+                    "textColor": "#20a286"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Down Payment Loans assist socially disadvantaged, military veterans, and beginning farmers in purchasing a farm."
+                    },
+                    {
+                        "paragraphContent": "Requirements: Applicant must make a down payment of at least 5% of the purchase price."
+                    }
+                ]
+            },
+            "id": 43,
+            "progressBarStage": "discovery",
+            "resetText": "Explore Other Farm Ownership Loans",
+            "resetToStepId": 42,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "",
+            "title": "Down Payment Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Farm%20Ownership%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "nextStepId": 63,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Your Next Steps"
+                    },
+                    {
+                        "paragraphContent": "IMPORTANT: Make sure you have gathered all documentation before proceeding with the loan forms."
+                    },
+                    {
+                        "paragraphContent": {
+                            "bullets": [
+                                {
+                                    "bulletContent": "Download and print out the Readiness Checklist for the Down Payment Loan Program."
+                                },
+                                {
+                                    "bulletContent": "Gather the necessary loan application forms and documentation from the checklist."
+                                },
+                                {
+                                    "bulletContent": "Fill out and submit your forms."
+                                }
+                            ],
+                            "type": "numbered"
+                        }
+                    }
+                ]
+            },
+            "id": 44,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Additional Loan Options",
+            "resetToStepId": 40,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "",
+            "title": "Down Payment Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Proceed with a Joint Financing Loan",
+                    "color": "white",
+                    "nextStepId": 46,
+                    "textColor": "#20a286"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Joint Financing/Participation Loans may be used to purchase a farm, enlarge an existing farm, construct new farm buildings and/or improve structures, pay closing costs, and promote soil and water conservation and protection."
+                    },
+                    {
+                        "paragraphContent": "Requirements:"
+                    },
+                    {
+                        "paragraphContent": {
+                            "bullets": [
+                                {
+                                    "bulletContent": "No down payment required."
+                                },
+                                {
+                                    "bulletContent": "At least 50% of the purchase price must be financed by a commercial lender or contract for deed holder."
+                                }
+                            ],
+                            "type": "unordered"
+                        }
+                    }
+                ]
+            },
+            "id": 45,
+            "progressBarStage": "discovery",
+            "resetText": "Explore Other Farm Ownership Loans",
+            "resetToStepId": 42,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "",
+            "title": "Joint Financing/Participation Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Farm%20Ownership%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "nextStepId": 64,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Your Next Steps"
+                    },
+                    {
+                        "paragraphContent": "IMPORTANT: Make sure you have gathered all documentation before proceeding with the loan forms."
+                    },
+                    {
+                        "paragraphContent": {
+                            "bullets": [
+                                {
+                                    "bulletContent": "Download and print out the Readiness Checklist for the Joint Financing Program."
+                                },
+                                {
+                                    "bulletContent": "Gather the necessary loan application forms and documentation from the checklist."
+                                },
+                                {
+                                    "bulletContent": "Fill out and submit your forms."
+                                }
+                            ],
+                            "type": "numbered"
+                        }
+                    }
+                ]
+            },
+            "id": 46,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Additional Loan Options",
+            "resetToStepId": 40,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "",
+            "title": "Joint Financing/Participation Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Proceed with a Direct Farm Ownership Loan",
+                    "color": "white",
+                    "nextStepId": 48,
+                    "textColor": "#20a286"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Direct Farm Ownership Loans offer up to 100 percent financing and are a valuable resource to help farmers and ranchers purchase or enlarge family farms, improve and expand current operations, increase agricultural productivity, and assist with land tenure to save farmland for future generations. It has a maximum loan amount of $600,000."
+                    }
+                ]
+            },
+            "id": 47,
+            "progressBarStage": "discovery",
+            "resetText": "Explore Other Farm Ownership Loans",
+            "resetToStepId": 42,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "",
+            "title": "Direct Farm Ownership Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Farm%20Ownership%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "nextStepId": 65,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Your Next Steps"
+                    },
+                    {
+                        "paragraphContent": "IMPORTANT: Make sure you have gathered all documentation before proceeding with the loan forms."
+                    },
+                    {
+                        "paragraphContent": {
+                            "bullets": [
+                                {
+                                    "bulletContent": "Download and print out the Readiness Checklist for the Direct Farm Ownership Loan Program."
+                                },
+                                {
+                                    "bulletContent": "Gather the necessary loan application forms and documentation from the checklist."
+                                },
+                                {
+                                    "bulletContent": "Fill out and submit your forms."
+                                }
+                            ],
+                            "type": "numbered"
+                        }
+                    }
+                ]
+            },
+            "id": 48,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Additional Loan Options",
+            "resetToStepId": 40,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "",
+            "title": "Direct Farm Ownership Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Explore Term Operating Loans",
+                    "color": "white",
+                    "nextStepId": 50,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "Explore Annual Operating Loans",
+                    "color": "white",
+                    "nextStepId": 52,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Farm Operating Loans may be used for normal operating expenses, machinery and equipment, minor real estate repairs or improvements, and refinancing farm debt."
+                    },
+                    {
+                        "paragraphContent": "Operating Loan options include term loans of up to seven years and annual operating loans that are generally repaid within 12 months."
+                    }
+                ]
+            },
+            "id": 49,
+            "progressBarStage": "discovery",
+            "resetText": "Explore Other Direct Loans",
+            "resetToStepId": 40,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Loan Options for Financing Operating Expenses",
+            "title": "Operating Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Proceed with a Term Operating Loan",
+                    "color": "white",
+                    "nextStepId": 51,
+                    "textColor": "#20a286"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Farm Operating Loans may be used for normal operating expenses, machinery and equipment, minor real estate repairs or improvements, and refinancing farm debt. The direct loans are available up to a maximum of $400,000."
+                    },
+                    {
+                        "paragraphContent": "FSA will guarantee farm operating loans through a commercial leader up to $2,037,000. The repayment term may vary, but it cannot exceed seven years."
+                    },
+                    {
+                        "paragraphContent": "Direct operating loans require applicants to have sufficient education, training, or at least one year\u2019s experience in managing or operating a farm or ranch within the last five years."
+                    }
+                ]
+            },
+            "id": 50,
+            "progressBarStage": "discovery",
+            "resetText": "Discover Other Operating Loans",
+            "resetToStepId": 49,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Term Loans of Up to 7 Years",
+            "title": "Term Operating Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Annual%20and%20Term%20Operating%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "nextStepId": 66,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Your Next Steps"
+                    },
+                    {
+                        "paragraphContent": "IMPORTANT: Make sure you have gathered all documentation before proceeding with the loan forms."
+                    },
+                    {
+                        "paragraphContent": {
+                            "bullets": [
+                                {
+                                    "bulletContent": "Download and print out the Readiness Checklist for the Term Operating Loan Program."
+                                },
+                                {
+                                    "bulletContent": "Gather the necessary loan application forms and documentation from the checklist."
+                                },
+                                {
+                                    "bulletContent": "Fill out and submit your forms."
+                                }
+                            ],
+                            "type": "numbered"
+                        }
+                    }
+                ]
+            },
+            "id": 51,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Additional Loan Options",
+            "resetToStepId": 40,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Term Loans of Up to 7 Years",
+            "title": "Term Operating Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Proceed with an Annual Operating Loan",
+                    "color": "white",
+                    "nextStepId": 53,
+                    "textColor": "#20a286"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Farm Operating Loans may be used for normal operating expenses, machinery and equipment, minor real estate repairs or improvements, and refinancing farm debt. The direct loans are available up to a maximum of $400,000. FSA will guarantee farm operating loans through a commercial leader up to $2,037,000."
+                    },
+                    {
+                        "paragraphContent": "Annual operating loans are generally repaid within 12 months or when the commodities produced are sold."
+                    },
+                    {
+                        "paragraphContent": "Direct operating loans require applicants to have sufficient education, training, or at least one year\u2019s experience in managing or operating a farm or ranch within the last five years."
+                    }
+                ]
+            },
+            "id": 52,
+            "progressBarStage": "discovery",
+            "resetText": "Discover Other Operating Loans",
+            "resetToStepId": 49,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "For Annual Production Expenses",
+            "title": "Annual Operating Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Annual%20and%20Term%20Operating%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "nextStepId": 67,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Your Next Steps"
+                    },
+                    {
+                        "paragraphContent": "IMPORTANT: Make sure you have gathered all documentation before proceeding with the loan forms."
+                    },
+                    {
+                        "paragraphContent": {
+                            "bullets": [
+                                {
+                                    "bulletContent": "Download and print out the Readiness Checklist for the Annual Operating Loan Program."
+                                },
+                                {
+                                    "bulletContent": "Gather the necessary loan application forms and documentation from the checklist."
+                                },
+                                {
+                                    "bulletContent": "Fill out and submit your forms."
+                                }
+                            ],
+                            "type": "numbered"
+                        }
+                    }
+                ]
+            },
+            "id": 53,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Additional Loan Options",
+            "resetToStepId": 40,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "For Annual Production Expenses",
+            "title": "Annual Operating Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 55,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 57,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Are you seeking an Emergency Loan for a loss associated with a natural disaster or emergency declaration?"
+                    }
+                ]
+            },
+            "id": 54,
+            "progressBarStage": "discovery",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Associated with a Natural Disaster of Emergency Declaration\n",
+            "title": "Emergency Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Proceed with an Emergency Loan",
+                    "color": "white",
+                    "nextStepId": 56,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "Discover Additional Loan Options",
+                    "color": "white",
+                    "nextStepId": 57,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "The Emergency Loan Program is triggered when a natural disaster is designated by the Secretary of Agriculture, or a natural disaster or emergency is declared by the President under the Stafford Act. These loans help producers who suffer qualifying farm related losses directly caused by the disaster in a county declared or designated as a primary disaster or quarantine area."
+                    },
+                    {
+                        "paragraphContent": "For production losses, a 30% reduction in a primary crop in a designated or contiguous county is required. Losses to quality, such as receiving a 30% reduced price for flood-damaged crops, may be eligible for assistance, too."
+                    }
+                ]
+            },
+            "id": 55,
+            "progressBarStage": "discovery",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Associated with a Natural Disaster of Emergency Declaration\n",
+            "title": "Emergency Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Emergency%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "nextStepId": 61,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Your Next Steps"
+                    },
+                    {
+                        "paragraphContent": "IMPORTANT: Make sure you have gathered all documentation before proceeding with the loan forms."
+                    },
+                    {
+                        "paragraphContent": {
+                            "bullets": [
+                                {
+                                    "bulletContent": "Download and print out the Readiness Checklist for the Emergency Loan Program."
+                                },
+                                {
+                                    "bulletContent": "Gather the necessary loan application forms and documentation from the checklist."
+                                },
+                                {
+                                    "bulletContent": "Fill out and submit your forms."
+                                }
+                            ],
+                            "type": "numbered"
+                        }
+                    }
+                ]
+            },
+            "id": 56,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Additional Loan Options",
+            "resetToStepId": 57,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Associated with a Natural Disaster of Emergency Declaration\n",
+            "title": "Emergency Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Yes",
+                    "color": "white",
+                    "nextStepId": 58,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "No",
+                    "color": "white",
+                    "nextStepId": 36,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "FSA makes loans to young people to start and operate income-producing projects of modest size in connection with their participation in 4-H clubs, FFA, Tribal youth groups, or similar agricultural youth organizations."
+                    },
+                    {
+                        "paragraphContent": "For a project to be eligible for a Youth Loan, it needs to provide an opportunity for the young person to acquire experience and education in agriculture-related skills."
+                    },
+                    {
+                        "paragraphContent": "Are you seeking financial assistance with an educational agricultural project?"
+                    }
+                ]
+            },
+            "id": 57,
+            "progressBarStage": "discovery",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "",
+            "title": "Youth Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Proceed with a Youth Loan",
+                    "color": "white",
+                    "nextStepId": 59,
+                    "textColor": "#20a286"
+                },
+                {
+                    "buttonText": "Discover Other Loan Options",
+                    "color": "white",
+                    "nextStepId": 36,
+                    "textColor": "#4472c4"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "To qualify for a FSA Youth Loan, you must be between the ages of 10 and 20 at the time of the loan closing. You must be seeking a loan for educational purposes, up to $5,000. You will need to have a Project Advisor/Sponsor and the consent of a parent or legal guardian."
+                    },
+                    {
+                        "paragraphContent": "Note: If you are over 18 years of age, and seeking more than $5,000, you may qualify for other FSA loans."
+                    }
+                ]
+            },
+            "id": 58,
+            "progressBarStage": "discovery",
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "",
+            "title": "Youth Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Download the Readiness Checklist",
+                    "color": "white",
+                    "textColor": "#20a286",
+                    "url": "/checklists/Youth%20Loan%20Readiness%20Checklist.pdf"
+                },
+                {
+                    "buttonText": "Obtain Assistance with Loan Forms",
+                    "color": "white",
+                    "nextStepId": 60,
+                    "textColor": "#094785"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Your Next Steps"
+                    },
+                    {
+                        "paragraphContent": "IMPORTANT: Make sure you have gathered all documentation before proceeding with the loan forms."
+                    },
+                    {
+                        "paragraphContent": {
+                            "bullets": [
+                                {
+                                    "bulletContent": "Download and print out the Readiness Checklist for the Youth Loan Program."
+                                },
+                                {
+                                    "bulletContent": "Gather the necessary loan application forms and documentation from the checklist."
+                                },
+                                {
+                                    "bulletContent": "Fill out and submit your forms."
+                                }
+                            ],
+                            "type": "numbered"
+                        }
+                    }
+                ]
+            },
+            "id": 59,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "",
+            "title": "Youth Loans",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Access Instructions for Completing the Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?loan_type=youth"
+                },
+                {
+                    "buttonText": "Find your local Farm Loan Manager",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 60,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Youth Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Access Instructions for Completing the Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?loan_type=emergency"
+                },
+                {
+                    "buttonText": "Find your local Farm Loan Manager",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 61,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Emergency Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Access Instructions for Completing the Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?loan_type=microloan"
+                },
+                {
+                    "buttonText": "Find your local Farm Loan Manager",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 62,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 40,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Microloans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Access Instructions for Completing the Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?loan_type=ownership"
+                },
+                {
+                    "buttonText": "Find your local Farm Loan Manager",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 63,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Down Payment Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Access Instructions for Completing the Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?loan_type=ownership"
+                },
+                {
+                    "buttonText": "Find your local Farm Loan Manager",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 64,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Joint Financing/Participation Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Access Instructions for Completing the Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?loan_type=ownership"
+                },
+                {
+                    "buttonText": "Find your local Farm Loan Manager",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 65,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Direct Farm Ownership Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Access Instructions for Completing the Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?loan_type=term"
+                },
+                {
+                    "buttonText": "Find your local Farm Loan Manager",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 66,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Term Operating Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        },
+        {
+            "buttons": [
+                {
+                    "buttonText": "Access Instructions for Completing the Loan Forms",
+                    "color": "white",
+                    "textColor": "#094785",
+                    "url": "/walkthrough.html?loan_type=annual"
+                },
+                {
+                    "buttonText": "Find your local Farm Loan Manager",
+                    "color": "white",
+                    "textColor": "#4472c4",
+                    "url": "https://offices.sc.egov.usda.gov/locator/app?state=us&agency=fsa"
+                }
+            ],
+            "content": {
+                "paragraphs": [
+                    {
+                        "paragraphContent": "Get Help Filling Out the Forms"
+                    },
+                    {
+                        "paragraphContent": "We provide step-by-step instructions on completing each loan application form."
+                    },
+                    {
+                        "paragraphContent": "NOTE: This system does not store your data. You will need to print out your loan application forms and submit your completed application to your local FSA office."
+                    }
+                ]
+            },
+            "id": 67,
+            "progressBarStage": "preparation",
+            "resetText": "Discover Other Loan Options",
+            "resetToStepId": 36,
+            "sectionHeader": "Loan Discovery",
+            "subtitle": "Annual Operating Loans",
+            "title": "Forms Support",
+            "type": "informational"
+        }
+    ]
+}

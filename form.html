@@ -441,14 +441,20 @@
                 $('#form-description').html(form_data.description)
                 $('#form-footer').html(`Click here to <a href="/forms/${form_data.file_name}" download>download the form</a> to fill it with <a href="https://get.adobe.com/reader/" target=_BLANK>Adobe Acrobat Reader</a>`);
 
-                var loanType = getCookie('currentLoanType');
-                // Get the index of the loanType 
-                var index = data['LoanType'].findIndex(function(item, i){ return item.type === loanType; });
+                try{
+                    // Some browser settings block our cookies, the rest of teh form works so we log and move on.
+                    var loanType = getCookie('currentLoanType');
+                    console.log(loanType);
+                    // Get the index of the loanType 
+                    var index = data['LoanType'].findIndex(function(item, i){ return item.type === loanType; });
 
-                // Get the loan name
-                var loanName = data['LoanType'][index]['name'];
+                    // Get the loan name
+                    var loanName = data['LoanType'][index]['name'];
                 
-                $('#return-form-suport').html(`<a href="/walkthrough.html?loan_type=${loanType}"> Return to ${loanName} Form Support page </a>`);
+                    $('#return-form-suport').html(`<a href="/walkthrough.html?loan_type=${loanType}"> Return to ${loanName} Form Support page </a>`);
+                } catch (e) {
+                    console.log(e);
+                }  
 
 
                 $.each(form_data.parts, function (part_index, part) {

@@ -116,7 +116,7 @@ def Scrape_PDF_Input_Attrs( file_name, verbose=True, debug=True ):
     # This isn't working right now:
     #driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    sleep_time = 30 # seconds
+    sleep_time = 60 # seconds
     print( "*"*80)
     print( "*"*80 )
     print( f"SLEEPING FOR {sleep_time} seconds, please scroll through open Selenium window TO EACH PAGE to ensure all the elements have been rendered, THEN scroll back to the top." )
@@ -238,7 +238,7 @@ def Process_Forms_Spreadsheet(
         output_excel_filepath = \
             input_excel_path_obj.stem + \
             "_updated_" + \
-            datetime.strftime( datetime.now(), '%Y-%m-%d_%H:%M:%S' ) + \
+            datetime.strftime( datetime.now(), '%Y-%m-%d_%Hh%Mm%Ss' ) + \
             input_excel_path_obj.suffix
 
         # Make a copy of the file upon which to "overlay" new pids
@@ -535,7 +535,7 @@ def main(filename, updatepids, verbose, debug, form_limit, field_limit, form ):
     json_data = json.dumps(forms_data, sort_keys=True, indent=4)
     #if debug:
     #    pprint(json_data)
-    filename = "forms.json."+datetime.strftime(datetime.now(), '%Y-%m-%d_%H:%M:%S')+"_out"
+    filename = "forms_"+datetime.strftime(datetime.now(), '%Y-%m-%d_%Hh%Mm%Ss') + ".json"
     print(f"Saving output to {filename}")
     with open(filename, "w") as output:
         output.write(json_data)
